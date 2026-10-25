@@ -73,6 +73,9 @@ async function checkSite() {
         /^https?:\/\/github\.com\//,
         /^https?:\/\/fonts\.googleapis\.com\//,
         /^https?:\/\/fonts\.gstatic\.com\//,
+        // Production absolute URLs in canonical / og:*; DNS is operator-side.
+        // Presence and shape are asserted in check-seo.mjs; assets are served locally.
+        /^https?:\/\/nabecco\.media\//,
       ],
     });
     const broken = result.links.filter((l) => l.state === 'BROKEN');

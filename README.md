@@ -65,16 +65,15 @@ npm run preview  # ビルド結果のプレビュー
 | リンク切れ | markdown-link-check + linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
 | デザイン禁止（カード枠ヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
 | 出典の有無（構造） | `scripts/check-citations.mjs` | CI + pre-commit | はい |
-| a11y | Playwright + axe（WCAG A/AA、デスクトップ） | CI のみ | はい |
-| SEO | `scripts/check-seo.mjs`（title / description / canonical / OG / lang / robots / sitemap） | CI のみ | はい |
-| ビューポート | Playwright（375 / 768 / 1280） | CI のみ | はい |
+| a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク | CI のみ | はい |
+| SEO / OGP | `scripts/check-seo.mjs`（title / description / canonical / lang / og:* / twitter:card / robots / sitemap） | CI のみ | はい |
 | ファクトチェック（LLM） | stub（`npm run factcheck`） | 手動 / `workflow_dispatch` のみ | **いいえ** |
 
 ローカルでは次を使います。
 
 ```bash
 npm run check:fast   # textlint / design / citations / md links
-npm run build && npm run check:links:site && npm run check:a11y && npm run check:seo && npm run check:viewports
+npm run build && npm run check:links:site && npm run check:a11y && npm run check:seo
 npm run check        # 上記の一括（要 Playwright Chromium）
 ```
 
@@ -86,11 +85,10 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 
 **デザインチェックの対象:** 同一 CSS ルール内で `border-radius`（0 / 50% 以外）と箱型 `border` または `box-shadow` が同居するパターンを検出します。`border-top` などの直線のみは許容します。
 
-**SEO の対象:** `/`・`/issues/`・`/issues/vol-1/` です。
-`lang`、title、description、絶対 URL の canonical、OG 基本項目、`robots.txt`、`sitemap-index.xml` を見ます。
-Lighthouse は使わず、ビルド後 HTML を直接検証します。
-
-**ビューポートの対象:** 幅 375 / 768 / 1280 で横スクロールなし、`main` が見える、ハンバーガーが開閉できる、開いたメニューが画面内に収まること。CSS に `@media` があること自体は必須にしません。
+**SEO / OGP の対象:** `/`・`/issues/`・`/issues/vol-1/` です。
+`lang`、title、description、絶対 URL の canonical、`robots.txt`、`sitemap-index.xml` を見ます。
+OGP は `og:title` / `og:description` / `og:type` / `og:url` / `og:image` / `og:locale` と `twitter:card` です。
+共有画像は `public/og.png`（1200×630）。Lighthouse は使わず、ビルド後 HTML を直接検証します。
 
 ## 記事の追加
 

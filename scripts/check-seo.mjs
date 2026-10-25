@@ -1,16 +1,18 @@
 #!/usr/bin/env node
 /**
- * SEO essentials on built HTML (preview):
+ * SEO + OGP essentials on built HTML (preview):
  * - <html lang>
  * - <title>, meta description
  * - canonical absolute URL on nabecco.media
- * - Open Graph: type, title, description, url, locale, site_name
+ * - Open Graph: title, description, type, url, image, locale, site_name
+ * - Twitter card basics
  * - robots.txt + sitemap-index.xml exist and reference each other
  */
 import { startPreview } from './preview.mjs';
 
 const BASE = 'http://127.0.0.1:4324';
 const SITE = 'https://nabecco.media';
+const OG_IMAGE = `${SITE}/og.png`;
 const ROUTES = ['/', '/issues/', '/issues/vol-1/'];
 
 function attr(html, name, attrName = 'content') {
@@ -57,6 +59,16 @@ try {
   const sitemap = await fetch(`${BASE}/sitemap-index.xml`);
   if (!sitemap.ok) failures.push(`sitemap-index.xml: HTTP ${sitemap.status}`);
 
+  const ogAsset = await fetch(`${BASE}/og.png`);
+  if (!ogAsset.ok) {
+    failures.push(`og.png: HTTP ${ogAsset.status}`);
+  } else {
+    const buf = Buffer.from(await ogAsset.arrayBuffer());
+    if (buf.length < 8 || buf.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') {
+      failures.push('og.png: not a PNG');
+    }
+  }
+
   for (const route of ROUTES) {
     const res = await fetch(`${BASE}${route}`);
     if (!res.ok) {
@@ -76,9 +88,18 @@ try {
       ['og:type', ['website', 'article'].includes(attr(html, 'og:type'))],
       ['og:locale', attr(html, 'og:locale') === 'ja_JP'],
       ['og:site_name', attr(html, 'og:site_name') === 'なべっこ'],
+      ['og:image', attr(html, 'og:image') === OG_IMAGE],
+      ['twitter:card', ['summary', 'summary_large_image'].includes(attr(html, 'twitter:card'))],
     ];
     for (const [name, ok] of checks) {
       if (!ok) failures.push(`${route}: missing/invalid ${name}`);
+    }
+    if (route === '/') {
+      if (attr(html, 'og:type') !== 'website') {
+        failures.push(`${route}: og:type should be website`);
+      }
+    } else if (attr(html, 'og:type') !== 'article') {
+      failures.push(`${route}: og:type should be article`);
     }
     console.log(`ok ${route}`);
   }
@@ -87,9 +108,9 @@ try {
 }
 
 if (failures.length) {
-  console.error('\nSEO check failed:\n');
+  console.error('\nSEO / OGP check failed:\n');
   for (const f of failures) console.error(`  - ${f}`);
   process.exit(1);
 }
 
-console.log('\nSEO check passed.');
+console.log('\nSEO / OGP check passed.');

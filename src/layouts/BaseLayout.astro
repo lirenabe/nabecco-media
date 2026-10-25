@@ -15,6 +15,7 @@ const {
 
 const pageTitle = title === 'なべっこ' ? title : `${title} | なべっこ`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og.png', Astro.site).href;
 const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 ---
 
@@ -32,6 +33,10 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
