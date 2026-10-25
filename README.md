@@ -2,7 +2,7 @@
 
 秋田県および全市町村の公式広報と、街の声を週ごとに要約・統合するオープンソース地域メディアです。
 
-- **サイト（予定）:** https://nabecco.media
+- **サイト:** https://nabecco.media（カスタムドメイン） / https://lirenabe.github.io/nabecco-media/（Pages 既定URL）
 - **リポジトリ:** https://github.com/lirenabe/nabecco-media
 - **方針:** バナー広告なし。協賛ロゴとクレジットで支える
 
@@ -44,6 +44,16 @@ npm run dev
 npm run build    # 本番ビルド → dist/
 npm run preview  # ビルド結果のプレビュー
 ```
+
+## デプロイ（GitHub Pages）
+
+`main` への push（または Actions の手動実行）で `.github/workflows/deploy.yml` が Astro をビルドし、[actions/deploy-pages](https://github.com/actions/deploy-pages) 経由で GitHub Pages に公開します。
+
+- Astro `site`: `https://nabecco.media`（`astro.config.mjs`）。カスタムドメインのため `base` は `/`
+- `public/CNAME`: `nabecco.media`
+- リポジトリ Settings → Pages → Source を **GitHub Actions** にする（初回のみ）
+
+**DNS（運営者側）:** `nabecco.media` の DNS（Cloudflare 等）はリポジトリ外で設定します。GitHub Pages のカスタムドメイン案内に従い、A / AAAA または CNAME を向けてください。DNS が未接続でも `*.github.io` 側でビルド結果は確認できます。
 
 ## 記事の追加
 
