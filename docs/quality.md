@@ -29,6 +29,12 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 トップレベル `*.md`、`docs/` 配下、`src/content/` 配下の Markdown です。
 パス一覧は `node scripts/markdown-paths.mjs` で確認できます。
 
+### 文体と textlint
+
+地の文（散文）は読者向け方針・説明では**ですます調**を基本とする（POLICY の本文など）。
+
+箇条書きは例外とする。リスト項目は textlint の `no-mix-dearu-desumasu` に合わせ、**である調／体言止め**（「〜する／しない」など）でよい。散文と箇条の語尾を無理に揃えなくてよい。
+
 ## 補足
 
 **ファクトチェックの限界:** 自動での真偽判定は行いません。実質的なガードは「まとまった本文セクションに URL または `> 出典` があること」と、公開前の人の確認（[POLICY.md](../POLICY.md)）です。プレースホルダ（「ここに書く」）は免除されます。

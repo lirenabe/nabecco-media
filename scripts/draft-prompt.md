@@ -97,7 +97,7 @@ Heading map (locked):
   - a usable extract image
   - content rich enough for **10+ lines** of prose
 - **Select 1–3** from candidates; **remove** them from 直近のイベント情報 and 今週のあきた (no duplicate)
-- **Soft taste (prefer):** (a) a title that catches the eye, (b) an image that catches the eye, (c) an interesting topic
+- **Baseline criteria** when choosing among candidates: (a) eye-catching title, (b) eye-catching image, (c) interesting topic
 - Body: media 読み物 and ですます. Full citation. **10+ lines** plus image. Not a PR digest.
 
 #### `## 直近のイベント情報` (locked)
