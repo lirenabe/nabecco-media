@@ -1,12 +1,14 @@
 :root {
-  /* Cool ink / digital surface / signal accent (editorial, not pamphlet kaki) */
-  --color-sumi: #12141a;
-  --color-sumi-soft: #5a6170;
-  --color-paper: #f5f6f8;
+  /* Palette A1 — paper / sumi / ash / fire (kaki) / seri */
+  --color-sumi: #1a1814;
+  --color-sumi-soft: #6b6560;
+  --color-paper: #f7f6f4;
   --color-paper-raised: #ffffff;
-  --color-ash: #d9dde5;
-  --color-kaki: #e11d48;
-  --color-kaki-deep: #be123c;
+  --color-ash: #6b6560;
+  --color-line: #e4e1dc;
+  --color-kaki: #d97706;
+  --color-kaki-deep: #b45309;
+  --color-seri: #3f6b4a;
 
   --font-display: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
   --font-body: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
@@ -39,7 +41,7 @@ body {
   line-height: 1.7;
   color: var(--color-sumi);
   background-color: var(--color-paper);
-  background-image: linear-gradient(180deg, #ffffff 0%, var(--color-paper) 14rem);
+  background-image: linear-gradient(180deg, var(--color-paper-raised) 0%, var(--color-paper) 14rem);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -106,7 +108,7 @@ p {
 .prose h2 {
   margin: 2.5rem 0 0.75rem;
   padding-top: 1.15rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-ash) 75%, transparent);
+  border-top: 1px solid var(--color-line);
   font-size: clamp(1.18rem, 3.5vw, 1.35rem);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -125,7 +127,7 @@ p {
   gap: 0.55rem;
   margin: 2.75rem 0 0.9rem;
   padding-top: 1.4rem;
-  border-top: 1px solid var(--color-ash);
+  border-top: 1px solid var(--color-line);
   font-size: clamp(1.22rem, 3.8vw, 1.42rem);
   letter-spacing: -0.015em;
 }
@@ -137,7 +139,7 @@ p {
   box-sizing: border-box;
 }
 
-/* Calendar-ish mark for upcoming events */
+/* Calendar-ish mark for upcoming events — fire accent */
 .prose h2[id='直近のイベント情報']::before {
   width: 0.78rem;
   height: 0.78rem;
@@ -147,14 +149,14 @@ p {
     var(--color-paper-raised);
 }
 
-/* Dot-in-square mark for weekly recap (no radius — design lint) */
+/* Dot-in-square mark for weekly recap — seri secondary (no radius) */
 .prose h2[id='今週のあきた']::before {
   width: 0.72rem;
   height: 0.72rem;
   border: 1.5px solid var(--color-sumi-soft);
   background: radial-gradient(
     circle at center,
-    var(--color-kaki) 0 0.12rem,
+    var(--color-seri) 0 0.12rem,
     transparent 0.14rem
   );
 }
@@ -212,7 +214,7 @@ p {
 .prose .info-note {
   margin: 0.15rem 0 1.25rem;
   padding: 0.55rem 0 0.55rem 0.9rem;
-  border-left: 2px solid var(--color-ash);
+  border-left: 2px solid var(--color-line);
   color: var(--color-sumi-soft);
   font-size: 0.9rem;
   line-height: 1.55;
