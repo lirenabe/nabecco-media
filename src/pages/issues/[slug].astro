@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import BackIssueList from '../../components/BackIssueList.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -14,16 +13,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const allPosts = await getCollection('posts');
-const issues = allPosts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .map((entry) => ({
-    id: entry.id,
-    title: entry.data.title,
-    pubDate: entry.data.pubDate,
-    href: `/issues/${entry.id}/`,
-  }));
-
 const dateLabel = new Intl.DateTimeFormat('ja-JP', {
   year: 'numeric',
   month: 'long',
@@ -33,7 +22,9 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="issue">
-    <p class="issue__crumb"><a href="/">なべっこ</a> / バックナンバー</p>
+    <p class="issue__crumb">
+      <a href="/">なべっこ</a> / <a href="/issues/">バックナンバー</a>
+    </p>
     <header class="issue__header">
       <p class="issue__meta">
         <span>第{post.data.vol}号</span>
@@ -45,11 +36,10 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     <div class="prose">
       <Content />
     </div>
+    <p class="issue__nav">
+      <a href="/issues/">バックナンバー一覧へ</a>
+    </p>
   </article>
-
-  <div class="back-wrap">
-    <BackIssueList issues={issues} excludeId={post.id} />
-  </div>
 </BaseLayout>
 
 <style>
@@ -100,8 +90,22 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     color: var(--color-sumi-soft);
   }
 
-  .back-wrap {
-    padding-bottom: var(--section-gap);
+  .issue__nav {
+    margin: 2.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-ash);
+    font-size: 0.95rem;
+  }
+
+  .issue__nav a {
+    color: var(--color-kaki-deep);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.1rem;
+  }
+
+  .issue__nav a:hover {
+    color: var(--color-kaki);
   }
 
   .prose :global(h2),

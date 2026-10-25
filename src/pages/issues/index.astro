@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BackIssueList from '../../components/BackIssueList.astro';
+
+const posts = await getCollection('posts');
+const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latest = sorted[0];
+
+// Past issues only — latest lives on `/`. Cleaner than duplicating it here.
+const issues = sorted.map((post) => ({
+  id: post.id,
+  title: post.data.title,
+  pubDate: post.data.pubDate,
+  href: `/issues/${post.id}/`,
+}));
+---
+
+<BaseLayout
+  title="バックナンバー"
+  description="なべっこの過去号一覧。日付とタイトルから各号を読めます。"
+>
+  <div class="issues-page">
+    <p class="issues-page__crumb"><a href="/">なべっこ</a> / バックナンバー</p>
+    <BackIssueList issues={issues} excludeId={latest?.id} />
+    {
+      latest && (
+        <p class="issues-page__latest">
+          最新号は <a href="/">トップページ</a> で読めます（第{latest.data.vol}号）。
+        </p>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .issues-page {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 8vw, 4rem) 0 var(--section-gap);
+    animation: rise 0.8s var(--ease-out) both;
+  }
+
+  .issues-page__crumb {
+    margin: 0 0 1.5rem;
+    padding: 0 var(--page-pad);
+    font-size: 0.9rem;
+    color: var(--color-sumi-soft);
+  }
+
+  .issues-page__crumb a {
+    color: var(--color-sumi-soft);
+    text-decoration: none;
+  }
+
+  .issues-page__crumb a:hover {
+    color: var(--color-kaki);
+  }
+
+  .issues-page__latest {
+    margin: 1.5rem 0 0;
+    padding: 0 var(--page-pad);
+    font-size: 0.92rem;
+    color: var(--color-sumi-soft);
+  }
+
+  .issues-page__latest a {
+    color: var(--color-kaki-deep);
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.6rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

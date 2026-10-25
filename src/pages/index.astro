@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BackIssueList from '../components/BackIssueList.astro';
 
 const posts = await getCollection('posts');
 const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -12,13 +11,6 @@ if (!latest) {
 }
 
 const { Content } = await render(latest);
-
-const issues = sorted.map((post) => ({
-  id: post.id,
-  title: post.data.title,
-  pubDate: post.data.pubDate,
-  href: `/issues/${post.id}/`,
-}));
 
 const dateLabel = new Intl.DateTimeFormat('ja-JP', {
   year: 'numeric',
@@ -52,18 +44,14 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
           <p class="latest__desc">{latest.data.description}</p>
         )
       }
-      <p class="latest__more">
-        <a href={`/issues/${latest.id}/`}>この号のページを開く</a>
-      </p>
     </header>
     <div class="prose">
       <Content />
     </div>
+    <p class="latest__back">
+      <a href="/issues/">バックナンバーを見る</a>
+    </p>
   </article>
-
-  <div class="back-wrap">
-    <BackIssueList issues={issues} excludeId={latest.id} />
-  </div>
 </BaseLayout>
 
 <style>
@@ -170,13 +158,22 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     color: var(--color-sumi-soft);
   }
 
-  .latest__more {
-    margin: 1rem 0 0;
+  .latest__back {
+    margin: 2.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-ash);
     font-size: 0.95rem;
   }
 
-  .back-wrap {
-    padding-bottom: var(--section-gap);
+  .latest__back a {
+    color: var(--color-kaki-deep);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.1rem;
+  }
+
+  .latest__back a:hover {
+    color: var(--color-kaki);
   }
 
   .prose :global(h2),
