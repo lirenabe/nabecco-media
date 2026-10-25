@@ -61,8 +61,8 @@ npm run preview  # ビルド結果のプレビュー
 
 | チェック | ツール | 実行場所 | PR/`main` で失敗するか |
 | :--- | :--- | :--- | :---: |
-| 日本語校正 | textlint（ja-technical-writing、緩い設定） | CI + pre-commit | はい |
-| リンク切れ | markdown-link-check + linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
+| 日本語校正 | textlint（ja-technical-writing、緩い設定）。対象は下記「Markdown 対象」 | CI + pre-commit | はい |
+| リンク切れ | markdown-link-check（同 Markdown 対象）+ linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
 | デザイン禁止（カード枠ヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
 | 出典の有無（構造） | `scripts/check-citations.mjs` | CI + pre-commit | はい |
 | a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク | CI のみ | はい |
@@ -80,6 +80,11 @@ npm run check        # 上記の一括（要 Playwright Chromium）
 初回のみ a11y 用ブラウザ: `npx playwright install chromium`
 
 Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。任意で [pre-commit](https://pre-commit.com/) も `.pre-commit-config.yaml` あり。
+
+**Markdown 対象（textlint / md リンク）:**
+トップレベル `*.md`（`README.md` / `POLICY.md` / `CONTRIBUTING.md` / `SPONSORS.md` / `AGENTS.md` など）。
+`docs/` 配下（あれば）と `src/content/` 配下の Markdown も含みます。
+パス一覧は `node scripts/markdown-paths.mjs` で確認できます。
 
 **ファクトチェックの限界:** 自動での真偽判定は行いません。実質的なガードは「まとまった本文セクションに URL または `> 出典` があること」と、公開前の人の確認（POLICY.md）です。プレースホルダ（「ここに書く」）は免除されます。
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
  * Link checks:
- * 1) markdown-link-check on content + key root docs (offline-ish http checks)
+ * 1) markdown-link-check on shared Markdown set (site content + non-site docs)
  * 2) linkinator crawl of built site via astro preview (CI / npm run check:links)
  */
 import { spawn } from 'node:child_process';
-import { readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { absoluteMarkdownPaths, listMarkdownPaths } from './markdown-paths.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 
@@ -17,17 +17,18 @@ function run(cmd, args, opts = {}) {
   });
 }
 
-async function checkMarkdown() {
+async function checkMarkdown(explicitFiles = []) {
   const mlc = path.join(ROOT, 'node_modules/markdown-link-check/markdown-link-check');
-  const posts = (await readdir(path.join(ROOT, 'src/content/posts')))
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => path.join('src/content/posts', f));
-  const docs = ['README.md', 'POLICY.md', 'CONTRIBUTING.md', 'SPONSORS.md'].map((f) =>
-    path.join(ROOT, f),
-  );
   const config = path.join(ROOT, '.markdown-link-check.json');
+  const relPaths = explicitFiles.length ? explicitFiles : await listMarkdownPaths();
+  const files = absoluteMarkdownPaths(relPaths);
 
-  for (const file of [...posts, ...docs]) {
+  if (!files.length) {
+    throw new Error('No Markdown files found for link check');
+  }
+
+  console.log(`markdown-link-check (${files.length} files)`);
+  for (const file of files) {
     console.log(`\n[md] ${path.relative(ROOT, file)}`);
     await run(process.execPath, [mlc, '-c', config, '-q', file]);
   }
@@ -91,7 +92,8 @@ async function checkSite() {
 }
 
 const mode = process.argv[2] || 'all';
-if (mode === 'md') await checkMarkdown();
+const extra = process.argv.slice(3).filter((a) => !a.startsWith('-'));
+if (mode === 'md') await checkMarkdown(extra);
 else if (mode === 'site') await checkSite();
 else {
   await checkMarkdown();

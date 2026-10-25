@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check:textlint": "textlint \"src/content/**/*.md\" README.md POLICY.md CONTRIBUTING.md SPONSORS.md",
+    "check:textlint": "node scripts/check-textlint.mjs",
     "check:design": "node scripts/check-design.mjs",
     "check:citations": "node scripts/check-citations.mjs",
     "check:links:md": "node scripts/check-links.mjs md",
@@ -27,14 +27,14 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*.{md,mdx}": [
+    "**/*.{md,mdx}": [
       "textlint"
-    ],
-    "src/**/*.{css,astro}": [
-      "node scripts/check-design.mjs"
     ],
     "src/content/posts/*.md": [
       "node scripts/check-citations.mjs"
+    ],
+    "src/**/*.{css,astro}": [
+      "node scripts/check-design.mjs"
     ]
   },
   "dependencies": {

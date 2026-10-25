@@ -1,13 +1,15 @@
 # Optional: pipx install pre-commit && pre-commit install
 # Heavy a11y / full site link crawl stay in GitHub Actions.
+# textlint + md links cover: top-level *.md, docs/**/*.md, src/content/**/*.md
 repos:
   - repo: local
     hooks:
       - id: textlint
-        name: textlint
+        name: textlint (content + docs)
         entry: npm run check:textlint
         language: system
         pass_filenames: false
+        files: '(\.mdx?$|^(README|POLICY|CONTRIBUTING|SPONSORS|AGENTS)\.md$|^docs/)'
       - id: design
         name: design guidelines
         entry: npm run check:design
@@ -18,8 +20,10 @@ repos:
         entry: npm run check:citations
         language: system
         pass_filenames: false
+        files: '^src/content/'
       - id: markdown-links
-        name: markdown links
+        name: markdown links (content + docs)
         entry: npm run check:links:md
         language: system
         pass_filenames: false
+        files: '(\.mdx?$|^(README|POLICY|CONTRIBUTING|SPONSORS|AGENTS)\.md$|^docs/)'
