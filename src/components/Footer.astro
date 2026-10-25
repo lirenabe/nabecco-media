@@ -1,35 +1,42 @@
 ---
+import SponsorStrip from './SponsorStrip.astro';
+import AboutNabecco from './AboutNabecco.astro';
 ---
 
 <footer class="site-footer">
-  <p class="site-footer__brand">なべっこ</p>
-  <nav class="site-footer__links" aria-label="フッター">
-    <a href="/issues/">バックナンバー</a>
-    <a href="/#about">について</a>
-    <a href="/#sponsors">サポーター</a>
-    <a href="https://github.com/lirenabe/nabecco-media">GitHub</a>
-  </nav>
+  <div class="site-footer__inner">
+    <SponsorStrip />
+    <AboutNabecco />
+    <nav class="site-footer__links" aria-label="フッター">
+      <a href="/issues/">バックナンバー</a>
+      <a href="https://github.com/lirenabe/nabecco-media/blob/main/POLICY.md">メディアポリシー</a>
+      <a href="https://github.com/lirenabe/nabecco-media/blob/main/CONTRIBUTING.md">貢献ガイド</a>
+      <a href="https://github.com/lirenabe/nabecco-media">GitHub</a>
+    </nav>
+  </div>
 </footer>
 
 <style>
   .site-footer {
-    max-width: 72rem;
-    margin: 0 auto;
-    padding: 2rem var(--page-pad) 3rem;
+    margin-top: var(--section-gap);
     border-top: 1px solid var(--color-ash);
+    padding: var(--section-gap) 0 3rem;
   }
 
-  .site-footer__brand {
-    margin: 0 0 0.75rem;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    letter-spacing: 0.06em;
+  .site-footer__inner {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
   }
 
   .site-footer__links {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
+    padding-top: 0.25rem;
     font-size: 0.9rem;
   }
 
