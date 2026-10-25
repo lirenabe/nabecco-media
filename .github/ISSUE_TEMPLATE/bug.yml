@@ -1,0 +1,24 @@
+name: バグ報告
+description: サイトやスクリプトの不具合
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 何が起きましたか
+      description: 現象と期待した動き
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 再現手順
+      description: 機微な悪用手順は最小限にしてください（SECURITY.md）
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: 環境（任意）
+      placeholder: ブラウザ / Node バージョンなど

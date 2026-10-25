@@ -1,0 +1,25 @@
+name: 内容の訂正・追記
+description: 記事の誤字・日付・出典などの修正提案
+title: "[content] "
+labels: ["content"]
+body:
+  - type: input
+    id: target
+    attributes:
+      label: 対象号・URL
+      placeholder: 例 /issues/vol-1/ または記事見出し
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 何を・なぜ直したいか
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: 出典（分かる場合）
+      description: 公式 URL や広報の号など
+    validations:
+      required: false

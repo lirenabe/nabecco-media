@@ -10,7 +10,7 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 ## Weekly kouhou pipeline (3 steps)
 
-File I/O only — no vendor LLM in repo scripts. Cursor is an **operator policy** for Step C, not a runtime dependency.
+File I/O only — no vendor LLM in repo scripts. An agent may be used for Step C as an **operator choice**, not a runtime dependency.
 
 ```
 # A — PDF取得 (skip-if-unchanged via data/kouhou/manifest.json: sha256 + etag)
@@ -23,14 +23,25 @@ npm run extract:kouhou
 npm run draft -- --vol N --date YYYY-MM-DD
 ```
 
-Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
+Write `src/content/posts/vol-N.md`, then **stop for human review** (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
 
 Step C: weekly **media 読み物** (not a 広報 digest). ですます; full citations (no 「同上」); images via `public/images/kouhou/vol-N/`.
 
 Locked heading map: first pickup `#`, later pickups / 直近 / 今週のあきた `##`,
 items `###`. No umbrella ピックアップ. See `scripts/draft-prompt.md`.
 
-## Documentation
+## Project docs (read these)
+
+- Policy: `POLICY.md`
+- Step C contract: `scripts/draft-prompt.md`
+- Pipeline / YAML / cache: `docs/pipeline.md`
+- Quality checks: `docs/quality.md`
+- Deploy / DNS: `docs/deploy-dns.md`
+- Contributing: `CONTRIBUTING.md`
+
+Do not rely on untracked local helper configs; the portable contract is the tracked files above.
+
+## Astro
 
 Full documentation: https://docs.astro.build
 

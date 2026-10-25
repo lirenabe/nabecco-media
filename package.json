@@ -1,5 +1,6 @@
 {
   "name": "nabecco-media",
+  "description": "なべっこ — 秋田の公式広報と街の声を週ごとに読み物へまとめるオープンソース地域メディア（nabecco.media）",
   "type": "module",
   "version": "0.0.1",
   "engines": {

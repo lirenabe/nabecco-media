@@ -12,7 +12,7 @@ Use this file for **Step C — 記事下書き**. The runtime dependency is **fi
 - Sources stay official; the **writing** is media, not a clipping service
 - Applies to selection, framing, and style in every section
 
-> Policy note: operators currently ask a **Cursor agent** to follow these steps. That is an operational choice, not a code dependency. A future OpenAI / Anthropic / Gemini (or other) adapter can plug in behind the same I/O contract without changing fetch/YAML/extract.
+> Policy note: operators may ask an **agent** to follow these steps. That is an operational choice, not a code dependency. Any LLM adapter can plug in behind the same I/O contract without changing fetch/YAML/extract.
 
 ## Pipeline (3 steps)
 
