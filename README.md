@@ -103,6 +103,8 @@ OGP は `og:title` / `og:description` / `og:type` / `og:url` / `og:image` / `og:
 
 自治体ごとの取得ルールは [`sources/municipalities.yaml`](./sources/municipalities.yaml) です（秋田県＋全市町村 26 件。NM-16 時点でいずれも `status: active`。`active` のみ自動取得）。
 
+週次フローはファイル I/O のみです（リポジトリは特定 LLM / IDE API に依存しません）。
+
 ```bash
 # 1) 最新広報 PDF を data/kouhou/ へ（gitignored。失敗しても他は続行）
 npm run fetch:kouhou
@@ -111,15 +113,16 @@ npm run fetch:kouhou -- --dry-run
 
 # 2) 口コミメモ（任意）を data/kuchikomi/ に置く。例は data/kuchikomi/example.txt
 
-# 3) 下書き生成（既定は data/drafts/。git には自動 commit しない）
-npm run draft -- --vol 2 --date 2026-11-01 --dry-run
-GEMINI_API_KEY=your_key npm run draft -- --vol 2 --date 2026-11-01
-# 確認後に content へ書く（上書きは --force。公開は手動 commit）
-GEMINI_API_KEY=your_key npm run draft -- --vol 2 --date 2026-11-01 --apply
+# 3) 下書き用チェックリスト（パス一覧を表示するだけ。外部 LLM API は呼ばない）
+npm run draft -- --vol 2 --date 2026-11-01
+
+# 4) エージェント（運用ポリシー上は Cursor）に scripts/draft-prompt.md を読ませて
+#    src/content/posts/vol-2.md を書かせる → 人間が確認 → commit / push
 ```
 
-- 環境変数: `GEMINI_API_KEY`（未設定時は mock 下書き）。任意で `GEMINI_MODEL`（既定 `gemini-2.0-flash`）
-- PDF・下書き・取得レポートは `data/` 配下（gitignore）。巨大 PDF を commit しない
+- 下書き手順の正本: [`scripts/draft-prompt.md`](./scripts/draft-prompt.md)（入力 `data/kouhou/`・任意口コミ、出力 `src/content/posts/vol-N.md`）
+- **運用ポリシー:** 当面は Cursor エージェントに下書きを依頼する。コード上の必須依存ではない（将来 OpenAI / Anthropic / Gemini 等のアダプタを同じ I/O 契約で足せる）
+- PDF・取得レポートは `data/` 配下（gitignore）。巨大 PDF を commit しない
 - 抽出方針は [POLICY.md](./POLICY.md) どおり（丸写し禁止、イベント等を優先、定例手続きは載せない）
 - **人間が Markdown を確認してから** `git commit` / `git push` する（自動公開なし）
 
@@ -141,9 +144,9 @@ sources:
 
 ## 記事の追加
 
-手動でも、上記下書きでも可。
+手動でも、上記エージェント下書きでも可。
 
-1. `src/content/posts/vol-N.md` を追加（または `draft --apply` 後に編集）
+1. `src/content/posts/vol-N.md` を追加
 2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。`title` は例: `第1号 2026年10月25日`（ページ見出し用。本文に H1 は書かない）
 3. 本文は次の骨子:
 
