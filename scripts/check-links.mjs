@@ -2,9 +2,16 @@
 /**
  * Link checks:
  * 1) markdown-link-check on shared Markdown set (site content + non-site docs)
- * 2) linkinator crawl of built site via astro preview (CI / npm run check:links)
+ * 2) guard against mangled bare autolinks (e.g. URL glued to fullwidth 「（」)
+ * 3) linkinator crawl of built site via astro preview (CI / npm run check:links)
+ *
+ * Production nabecco.media URLs in built HTML (canonical / og:*) are skipped in
+ * the site crawl because HTTPS for the custom domain may lag DNS; shape is
+ * asserted by check-seo.mjs. Markdown docs must not ignore nabecco.media /
+ * github.io — use a working Pages URL until custom-domain HTTPS is ready.
  */
 import { spawn } from 'node:child_process';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { absoluteMarkdownPaths, listMarkdownPaths } from './markdown-paths.mjs';
 
@@ -15,6 +22,33 @@ function run(cmd, args, opts = {}) {
     const child = spawn(cmd, args, { stdio: 'inherit', cwd: ROOT, ...opts });
     child.on('exit', (code) => (code === 0 ? resolve() : reject(new Error(`${cmd} exited ${code}`))));
   });
+}
+
+/** True when an http(s) URL contains non-ASCII after percent-decoding (e.g. glued「（」). */
+function isMangledHttpUrl(url) {
+  if (!/^https?:\/\//i.test(url)) return false;
+  let decoded = url;
+  try {
+    decoded = decodeURIComponent(url);
+  } catch {
+    return true;
+  }
+  return /[^\x21-\x7E]/.test(decoded);
+}
+
+/** Catch bare URLs that swallowed trailing Japanese punctuation into the href. */
+async function assertCleanHttpLinks(file) {
+  const { default: extract } = await import('markdown-link-extractor');
+  const md = await readFile(file, 'utf8');
+  const links = extract(md);
+  const bad = links.filter(isMangledHttpUrl);
+  if (bad.length) {
+    const rel = path.relative(ROOT, file);
+    const detail = bad.map((u) => `  - ${u}`).join('\n');
+    throw new Error(
+      `${rel}: mangled http(s) autolink(s) — put labels outside the URL or use [text](url):\n${detail}`,
+    );
+  }
 }
 
 async function checkMarkdown(explicitFiles = []) {
@@ -30,7 +64,9 @@ async function checkMarkdown(explicitFiles = []) {
   console.log(`markdown-link-check (${files.length} files)`);
   for (const file of files) {
     console.log(`\n[md] ${path.relative(ROOT, file)}`);
-    await run(process.execPath, [mlc, '-c', config, '-q', file]);
+    await assertCleanHttpLinks(file);
+    // Non-quiet so ignored/skipped links stay visible in CI logs.
+    await run(process.execPath, [mlc, '-c', config, file]);
   }
 }
 

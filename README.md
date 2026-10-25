@@ -2,8 +2,9 @@
 
 秋田県および全市町村の公式広報と、街の声を週ごとに要約・統合するオープンソース地域メディアです。
 
-- **サイト:** https://nabecco.media（カスタムドメイン） / https://lirenabe.github.io/nabecco-media/（Pages 既定URL）
-- **リポジトリ:** https://github.com/lirenabe/nabecco-media
+- **サイト（確認用）:** [GitHub Pages](https://lirenabe.github.io/nabecco-media/)
+- **カスタムドメイン:** `nabecco.media`（DNS は Pages 向け。HTTPS 証明書が通るまで README からはリンクしない）
+- **リポジトリ:** [lirenabe/nabecco-media](https://github.com/lirenabe/nabecco-media)
 - **方針:** バナー広告なし。協賛ロゴとクレジットで支える
 
 ## ドキュメント
@@ -51,18 +52,21 @@ npm run preview  # ビルド結果のプレビュー
 ワークフローは Astro をビルドし、GitHub Pages へ公開します。
 実装は `actions/deploy-pages` です（`.github/workflows/deploy.yml`）。
 
-- Astro `site`: `https://nabecco.media`（`astro.config.mjs`）。カスタムドメインのため `base` は `/`
+- Astro `site`: `nabecco.media`（`astro.config.mjs` の `site` URL）。カスタムドメインのため `base` は `/`
 - `public/CNAME`: `nabecco.media`
 - リポジトリ Settings → Pages → Source を **GitHub Actions** にする（初回のみ）
 
-**DNS（運営者側）:** `nabecco.media` の DNS（Cloudflare 等）はリポジトリ外で設定します。GitHub Pages のカスタムドメイン案内に従い、A / AAAA または CNAME を向けてください。DNS が未接続でも `*.github.io` 側でビルド結果は確認できます。
+**DNS / HTTPS（運営者側）:** `nabecco.media` の DNS はリポジトリ外で設定します。
+現時点では A レコードは Pages に向いていますが、カスタムドメインの HTTPS 証明書が未整備です。
+公開確認は [GitHub Pages URL](https://lirenabe.github.io/nabecco-media/) を使ってください。
+証明書が有効になったら README のサイトリンクを `nabecco.media` に戻します。
 
 ## 品質チェック
 
 | チェック | ツール | 実行場所 | PR/`main` で失敗するか |
 | :--- | :--- | :--- | :---: |
 | 日本語校正 | textlint（ja-technical-writing、緩い設定）。対象は下記「Markdown 対象」 | CI + pre-commit | はい |
-| リンク切れ | markdown-link-check（同 Markdown 対象）+ linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
+| リンク切れ | markdown-link-check（同 Markdown 対象。`nabecco.media` / `github.io` は無視しない）+ linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
 | デザイン禁止（カード枠ヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
 | 出典の有無（構造） | `scripts/check-citations.mjs` | CI + pre-commit | はい |
 | a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク | CI のみ | はい |
