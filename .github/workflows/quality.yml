@@ -61,7 +61,7 @@ jobs:
       - run: npm run check:links
 
   a11y:
-    name: A11y + responsive smoke
+    name: A11y
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -73,6 +73,33 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run build
       - run: npm run check:a11y
+
+  seo:
+    name: SEO
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.4
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:seo
+
+  viewports:
+    name: Viewports
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.4
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run check:viewports
 
   factcheck-stub:
     name: Factcheck stub (non-blocking info)

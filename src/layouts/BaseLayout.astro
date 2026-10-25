@@ -14,6 +14,8 @@ const {
 } = Astro.props;
 
 const pageTitle = title === 'なべっこ' ? title : `${title} | なべっこ`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 ---
 
 <!doctype html>
@@ -23,6 +25,13 @@ const pageTitle = title === 'なべっこ' ? title : `${title} | なべっこ`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="なべっこ" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
