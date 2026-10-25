@@ -101,6 +101,30 @@ p {
   font-size: 0.92rem;
 }
 
+/* Section info notice (直近のイベント情報) — not a card; distinct from 出典 quotes */
+.prose .info-note {
+  margin: 0.15rem 0 1.25rem;
+  padding: 0.55rem 0 0.55rem 0.9rem;
+  border-left: 2px solid var(--color-ash);
+  color: var(--color-sumi-soft);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.prose .info-note::before {
+  content: "ご案内";
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-sumi-soft);
+}
+
+.prose .info-note p {
+  margin: 0;
+}
+
 .prose a {
   color: var(--color-kaki-deep);
 }

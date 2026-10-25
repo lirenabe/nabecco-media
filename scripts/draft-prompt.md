@@ -73,6 +73,20 @@ description: （任意・短い要約）
 - **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
 - Extract images may illustrate an item when useful
+- **Info note (required):** immediately under the `##` heading, before any lead or items, insert:
+
+```html
+<aside class="info-note" role="note">
+<p>日程・料金は各広報の記載時点の情報です。出かける前に、問い合わせ先で最終確認をお願いします。</p>
+</aside>
+```
+
+- **Section lead (optional):** one short curiosity-led line after the info note
+- Lead tone: human interest; not hype; not bureaucratic
+- **問い合わせ format:** `問い合わせ: {部署・団体}（{電話}）`
+- Example: `問い合わせ: 文化財課（0187-63-8972）`
+- Name only: `問い合わせ: {部署・団体}`. Ban `問:` / mixed labels
+- Omit the contact line when the source has no contact
 
 #### `## 今週のあきた` (locked)
 
@@ -82,6 +96,7 @@ description: （任意・短い要約）
 - **No 短報:** each topic is a **short article**, not a skimpy bullet digest
 - **Length:** about **5–10 phone-screen lines** per topic
 - Full citation every topic; extract images when useful (same global voice rules)
+- **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
 
 #### `## ピックアップ`
 
@@ -101,8 +116,11 @@ Role details **TBD** (operator locks later). Until then use POLICY + hard rules 
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
-- **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first when crowded; 3–5 lines of charm OK
-- **`## 今週のあきた`:** past only; ~1-week window; no item-count cap; short articles (5–10 lines), not 短報
+- **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first
+- Same section: info-note under heading; `問い合わせ: …` house style
+- Same section: 3–5 charm lines OK
+- **`## 今週のあきた`:** past only; ~1-week window; no item-count cap
+- Same section: short articles (5–10 lines); **no** 問い合わせ lines
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft
