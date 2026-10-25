@@ -53,15 +53,19 @@ description: （任意・短い要約）
 ## 今週のあきた
 ```
 
-5. Attach citations per item (`> 出典: …` with municipality / issue and listing URL from `municipalities.yaml` or manifest).
-6. Stop for **human review**. Operator runs quality checks and commits manually.
+5. Attach a **full** citation per item (`> 出典: …` + listing URL). Never use 「同上」「同」「前掲」.
+6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
+7. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
 
 ## Hard rules
 
 - Japanese Markdown only for the article body
+- **ですます調** for body prose (です・ます). Do not use だ・である as the default article voice
 - No丸写し of 広報 text
 - Do not invent dates, places, or fees — omit if unclear
-- Do not commit, push, or deploy
+- **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
+- **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
+- Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft
 - This file is the **complete** portable Step C contract

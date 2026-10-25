@@ -12,6 +12,8 @@ import path from 'node:path';
 const POSTS = path.resolve(import.meta.dirname, '../src/content/posts');
 const STUB = /^[（(].*(ここに書く|TODO|TBD|下書き).*[）)]$/u;
 const CITE = /https?:\/\/\S+|^\s*>\s*出典/m;
+/** Abbreviated citations are not allowed — every item needs a full source. */
+const BAD_ABBREV = /^\s*>\s*出典\s*[:：]\s*(同上|同|前掲)(?:\s|[（(]|$)/u;
 
 function stripFrontmatter(md) {
   if (!md.startsWith('---')) return md;
@@ -45,6 +47,11 @@ const failures = [];
 for (const file of files) {
   const raw = await readFile(path.join(POSTS, file), 'utf8');
   const body = stripFrontmatter(raw);
+  for (const line of body.split('\n')) {
+    if (BAD_ABBREV.test(line)) {
+      failures.push(`${file}: abbreviated citation not allowed (${line.trim()})`);
+    }
+  }
   for (const { title, content } of sections(body)) {
     if (!isSubstantial(content)) continue;
     if (!CITE.test(content)) {
