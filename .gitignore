@@ -24,6 +24,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Local Cursor skills / rules / operator knowledge (never push)
+.cursor/
+
 # Phase 4: fetched PDFs, extracts (text/images), local drafts, run reports
 # (never commit binaries / large extract artifacts; manifest lives under data/kouhou/)
 data/kouhou/

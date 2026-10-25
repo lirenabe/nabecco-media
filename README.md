@@ -127,6 +127,7 @@ npm run draft -- --vol 2 --date 2026-11-01
 - 手順の正本: [`scripts/draft-prompt.md`](./scripts/draft-prompt.md)（主入力は `data/kouhou/extracted/`。PDF は突合用）
 - キャッシュ: `data/kouhou/manifest.json` に `url` / `sha256` / 任意で `etag`・`last-modified`。HTTP 304 またはハッシュ一致で再ダウンロードしない
 - **運用ポリシー:** 当面は Cursor エージェントに Step C を依頼する。コード上の必須依存ではない
+- **ローカル Cursor skills:** 運営者向けの詳細手順・選定ヒューリスティックは gitignore された `.cursor/` に置く（リモートには載せない）
 - PDF・抽出物・レポートは `data/` 配下（gitignore）。巨大バイナリを commit しない
 - 抽出方針は [POLICY.md](./POLICY.md) どおり（丸写し禁止、イベント等を優先、定例手続きは載せない）
 - **人間が Markdown を確認してから** `git commit` / `git push` する（自動公開なし）
