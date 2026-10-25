@@ -25,6 +25,8 @@ npm run draft -- --vol N --date YYYY-MM-DD
 
 Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
 
+Optional: a gitignored `.cursor/` on some clones adds Cursor skills/heuristics for drafting quality. The three steps above do **not** require it.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
