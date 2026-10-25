@@ -27,6 +27,8 @@ Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). S
 
 Optional: a gitignored `.cursor/` on some clones adds Cursor skills/heuristics for drafting quality. The three steps above do **not** require it.
 
+When unsure if a change is tracked pipeline vs local-only tooling, ask Kenta Watanabe before editing.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
