@@ -53,6 +53,21 @@ description: （任意・短い要約）
 ## 今週のあきた
 ```
 
+### Section roles
+
+#### `## 直近のイベント情報` (locked)
+
+- **Future only:** upcoming from the issue `pubDate` (skip ended / undated)
+- **Horizon:** about **3 months** ahead may be included
+- **When crowded:** prefer **nearer-term** items inside that window
+- **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
+- **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
+- Extract images may illustrate an item when useful
+
+#### `## ピックアップ` / `## 今週のあきた`
+
+Role details **TBD** (operator locks later). Until then use POLICY + hard rules below; do not invent section rules.
+
 5. Attach a **full** citation per item (`> 出典: …` + listing URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
 7. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
@@ -65,6 +80,7 @@ description: （任意・短い要約）
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
+- **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first when crowded; 3–5 lines of charm OK
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft
