@@ -25,11 +25,14 @@
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 1.05rem;
@@ -74,13 +77,32 @@ p {
   outline-offset: 3px;
 }
 
+.prose {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .prose h2,
 .prose h3 {
   margin: 2.25rem 0 0.55rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+/* First pickup title = visual 大見出し (layout no longer shows issue H1) */
+.prose > h2:first-of-type {
+  margin-top: 0;
+  font-size: clamp(1.55rem, 5.2vw, 2rem);
+  letter-spacing: -0.025em;
+  line-height: 1.28;
 }
 
 .prose h2 {
-  font-size: 1.2rem;
+  font-size: clamp(1.12rem, 3.4vw, 1.28rem);
   letter-spacing: -0.015em;
 }
 
@@ -99,6 +121,35 @@ p {
   border-left: 2px solid var(--color-kaki);
   color: var(--color-sumi-soft);
   font-size: 0.92rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose a {
+  color: var(--color-kaki-deep);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose pre,
+.prose code,
+.prose table {
+  max-width: 100%;
+}
+
+.prose pre {
+  overflow-x: auto;
+}
+
+.prose table {
+  display: block;
+  overflow-x: auto;
 }
 
 /* Section info notice (直近のイベント情報) — not a card; distinct from 出典 quotes */
@@ -109,12 +160,10 @@ p {
   color: var(--color-sumi-soft);
   font-size: 0.9rem;
   line-height: 1.55;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .prose .info-note p {
   margin: 0;
-}
-
-.prose a {
-  color: var(--color-kaki-deep);
 }

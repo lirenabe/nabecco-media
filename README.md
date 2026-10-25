@@ -152,7 +152,7 @@ sources:
 手動でも、上記エージェント下書きでも可。
 
 1. `src/content/posts/vol-N.md` を追加
-2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。`title` は例: `第1号 2026年10月25日`（ページ見出し用。本文に H1 は書かない）
+2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。`title` は例: `第1号 2026年10月25日`（`<title>` / OGP 用）。本文に H1 は書かない。発行日はレイアウトが末尾に表示する
 3. 本文は次の骨子:
 
 ```markdown

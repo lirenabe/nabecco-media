@@ -46,7 +46,10 @@ npm run draft -- --vol N --date YYYY-MM-DD
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
-4. Write `src/content/posts/vol-N.md` as **readable articles** (no H1 in the body) with this shape:
+4. Write `src/content/posts/vol-N.md` as **readable articles** with this shape.
+   **No H1** in the Markdown body. Do **not** put `第N号` / 発行日 as a top heading —
+   the layout shows `pubDate` as trailing gray text at the article end.
+   The **first** pickup `##` is the visual 大見出し on the page.
 
 ```markdown
 ---
@@ -58,7 +61,7 @@ description: （任意・短い要約）
 
 ## {生成したピックアップ題名1}
 
-（10行以上の読み物＋画像＋フル出典）
+（10行以上の読み物＋画像＋フル出典。先頭題名＝ページ大見出し）
 
 ## {生成したピックアップ題名2}
 
@@ -127,6 +130,8 @@ description: （任意・短い要約）
 - **Media 読み物 first** — never ship a municipal 広報誌のまとめ / extract digest; rewrite into weekly-media voice
 - Ban 広報まとめ口調 and bullet-dumps of PR text; use connective prose and clear framing
 - Japanese Markdown only for the article body
+- **No issue H1** in Markdown (`第N号` / date belongs to layout trailing date)
+- Do not append 試験下書き / 要確認 footer disclaimers in the article body
 - **ですます調** for body prose (です・ます). Do not use だ・である as the default article voice
 - No丸写し of 広報 text
 - Do not invent dates, places, or fees — omit if unclear

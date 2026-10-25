@@ -58,5 +58,8 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 <style is:global>
   main {
     display: block;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: clip;
   }
 </style>

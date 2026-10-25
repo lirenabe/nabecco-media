@@ -18,20 +18,21 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
   month: 'long',
   day: 'numeric',
 }).format(post.data.pubDate);
+
+const dateIso = post.data.pubDate.toISOString().slice(0, 10);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="issue">
+  <article class="issue" aria-label={`第${post.data.vol}号`}>
     <p class="issue__crumb">
       <a href="/">なべっこ</a> / <a href="/issues/">バックナンバー</a>
     </p>
-    <h1 class="issue__meta">
-      <span>第{post.data.vol}号</span>
-      <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
-    </h1>
     <div class="prose">
       <Content />
     </div>
+    <p class="issue-date">
+      <time datetime={dateIso}>{dateLabel}</time>
+    </p>
   </article>
 </BaseLayout>
 
@@ -39,11 +40,13 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
   .issue {
     max-width: var(--measure);
     margin: 0 auto;
-    padding: clamp(2rem, 5vw, 2.75rem) var(--page-pad) var(--section-gap);
+    padding: clamp(1.5rem, 4vw, 2.5rem) var(--page-pad) var(--section-gap);
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
 
   .issue__crumb {
-    margin: 0 0 1.5rem;
+    margin: 0 0 1.25rem;
     font-size: 0.9rem;
     color: var(--color-sumi-soft);
   }
@@ -57,24 +60,14 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     color: var(--color-kaki);
   }
 
-  .issue__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.5rem 1rem;
-    margin: 0 0 1.75rem;
-    font-family: var(--font-display);
-    font-size: clamp(1.45rem, 3vw, 1.9rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-    color: var(--color-sumi);
+  .issue-date {
+    margin: 2.5rem 0 0;
+    text-align: right;
+    font-size: 0.88rem;
+    color: var(--color-sumi-soft);
   }
 
-  .issue__meta time {
-    font-size: 0.72em;
-    font-weight: 500;
-    letter-spacing: 0;
-    color: var(--color-sumi-soft);
+  .issue-date time {
+    font-variant-numeric: tabular-nums;
   }
 </style>
