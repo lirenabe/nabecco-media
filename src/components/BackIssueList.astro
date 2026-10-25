@@ -28,7 +28,7 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
   <h2 id="back-issues-heading">バックナンバー</h2>
   {
     listed.length === 0 ? (
-      <p class="back-issues__empty">過去号はまだありません。第1号から蓄積していきます。</p>
+      <p class="back-issues__empty">過去号はまだありません。</p>
     ) : (
       <ul class="back-issues__list">
         {listed.map((issue) => (
@@ -55,7 +55,7 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
 
   .back-issues h2 {
     margin: 0 0 1rem;
-    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-size: 1.35rem;
   }
 
   .back-issues__empty {
@@ -67,10 +67,13 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
     list-style: none;
     margin: 0;
     padding: 0;
-    border-top: 1px solid var(--color-ash);
   }
 
   .back-issues__list li {
+    border-top: 1px solid var(--color-ash);
+  }
+
+  .back-issues__list li:last-child {
     border-bottom: 1px solid var(--color-ash);
   }
 

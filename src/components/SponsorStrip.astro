@@ -1,148 +1,71 @@
 ---
-interface Tier {
-  id: string;
-  label: string;
-  hint: string;
-  slots: number;
-}
-
-const tiers: Tier[] = [
-  {
-    id: 'platinum',
-    label: 'プラチナパートナー',
-    hint: 'サイト上部・フッターの大枠ロゴ掲出',
-    slots: 3,
-  },
-  {
-    id: 'gold',
-    label: 'ゴールドサポーター',
-    hint: 'フッターの中枠ロゴ掲出',
-    slots: 4,
-  },
-  {
-    id: 'silver',
-    label: 'シルバー・地域店舗',
-    hint: 'サポーター一覧への店舗名・リンク',
-    slots: 5,
-  },
+const tiers = [
+  { label: 'プラチナパートナー', note: '未掲出' },
+  { label: 'ゴールドサポーター', note: '未掲出' },
+  { label: 'シルバー・地域店舗', note: '未掲出' },
 ];
 ---
 
 <section class="sponsors" id="sponsors" aria-labelledby="sponsors-heading">
-  <div class="sponsors__intro">
-    <h2 id="sponsors-heading">オフィシャルサポーター</h2>
-    <p>
-      バナー広告は置きません。地域の情報インフラを支えるパートナーを募集中です。詳細は
-      <a href="https://github.com/lirenabe/nabecco-media/blob/main/SPONSORS.md">SPONSORS.md</a>
-      へ。
-    </p>
-  </div>
-
-  {
-    tiers.map((tier) => (
-      <div class={`sponsors__tier sponsors__tier--${tier.id}`}>
-        <div class="sponsors__tier-head">
-          <h3>{tier.label}</h3>
-          <p>{tier.hint}</p>
-        </div>
-        <ul class="sponsors__slots" aria-label={`${tier.label}の掲出枠`}>
-          {Array.from({ length: tier.slots }).map((_, i) => (
-            <li class="sponsors__slot">
-              <span class="sponsors__placeholder">枠 {i + 1}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ))
-  }
+  <h2 id="sponsors-heading">サポーター</h2>
+  <p class="sponsors__intro">
+    詳細は
+    <a href="https://github.com/lirenabe/nabecco-media/blob/main/SPONSORS.md">SPONSORS.md</a>
+  </p>
+  <ul class="sponsors__list">
+    {
+      tiers.map((tier) => (
+        <li>
+          <span class="sponsors__label">{tier.label}</span>
+          <span class="sponsors__note">{tier.note}</span>
+        </li>
+      ))
+    }
+  </ul>
 </section>
 
 <style>
   .sponsors {
-    max-width: 72rem;
+    max-width: var(--measure);
     margin: 0 auto;
     padding: 0 var(--page-pad) var(--section-gap);
-    animation: rise 0.9s var(--ease-out) both;
+  }
+
+  .sponsors h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
   }
 
   .sponsors__intro {
-    max-width: 36rem;
-    margin-bottom: 2rem;
-  }
-
-  .sponsors__intro h2 {
-    margin: 0 0 0.5rem;
-    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-  }
-
-  .sponsors__intro p {
-    margin: 0;
+    margin: 0 0 1.25rem;
     color: var(--color-sumi-soft);
+    font-size: 0.95rem;
   }
 
-  .sponsors__tier {
-    margin-bottom: 1.75rem;
-  }
-
-  .sponsors__tier-head h3 {
-    margin: 0 0 0.2rem;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-  }
-
-  .sponsors__tier-head p {
-    margin: 0 0 0.75rem;
-    font-size: 0.85rem;
-    color: var(--color-sumi-soft);
-  }
-
-  .sponsors__slots {
+  .sponsors__list {
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+
+  .sponsors__list li {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.65rem;
+    gap: 0.5rem 1.25rem;
+    padding: 0.65rem 0;
+    border-top: 1px solid var(--color-ash);
+    font-size: 0.95rem;
   }
 
-  .sponsors__slot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 3.25rem;
-    border: 1px dashed var(--color-ash);
-    background: rgba(255, 255, 255, 0.28);
+  .sponsors__list li:last-child {
+    border-bottom: 1px solid var(--color-ash);
   }
 
-  .sponsors__tier--platinum .sponsors__slot {
-    width: clamp(9rem, 28vw, 12.5rem);
-    min-height: 4rem;
+  .sponsors__label {
+    color: var(--color-sumi);
   }
 
-  .sponsors__tier--gold .sponsors__slot {
-    width: clamp(7rem, 22vw, 9.5rem);
-  }
-
-  .sponsors__tier--silver .sponsors__slot {
-    width: clamp(5.5rem, 18vw, 7.5rem);
-    min-height: 2.75rem;
-  }
-
-  .sponsors__placeholder {
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
+  .sponsors__note {
     color: var(--color-sumi-soft);
-    opacity: 0.75;
-  }
-
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(0.6rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 </style>

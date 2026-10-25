@@ -37,7 +37,7 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
       <Content />
     </div>
     <p class="latest__back">
-      <a href="/issues/">バックナンバーを見る</a>
+      <a href="/issues/">バックナンバー</a>
     </p>
   </article>
 </BaseLayout>
@@ -46,14 +46,11 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
   .latest {
     max-width: var(--measure);
     margin: 0 auto;
-    padding: clamp(2rem, 6vw, 3rem) var(--page-pad) var(--section-gap);
-    animation: rise 0.8s var(--ease-out) both;
+    padding: clamp(2rem, 5vw, 2.75rem) var(--page-pad) var(--section-gap);
   }
 
   .latest__header {
     margin-bottom: 1.75rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--color-ash);
   }
 
   .latest__meta {
@@ -77,55 +74,6 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 
   .latest__back {
     margin: 2.5rem 0 0;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-ash);
     font-size: 0.95rem;
-  }
-
-  .latest__back a {
-    color: var(--color-kaki-deep);
-    text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 0.1rem;
-  }
-
-  .latest__back a:hover {
-    color: var(--color-kaki);
-  }
-
-  .prose :global(h2),
-  .prose :global(h3) {
-    margin: 2rem 0 0.65rem;
-  }
-
-  .prose :global(h2) {
-    font-size: 1.35rem;
-  }
-
-  .prose :global(h3) {
-    font-size: 1.1rem;
-  }
-
-  .prose :global(blockquote) {
-    margin: 1rem 0;
-    padding: 0.25rem 0 0.25rem 1rem;
-    border-left: 2px solid var(--color-kaki);
-    color: var(--color-sumi-soft);
-    font-size: 0.95rem;
-  }
-
-  .prose :global(a) {
-    color: var(--color-kaki-deep);
-  }
-
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(0.6rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 </style>

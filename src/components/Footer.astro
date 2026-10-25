@@ -3,11 +3,10 @@
 
 <footer class="site-footer">
   <p class="site-footer__brand">なべっこ</p>
-  <p class="site-footer__tag">nabecco.media</p>
   <nav class="site-footer__links" aria-label="フッター">
     <a href="/issues/">バックナンバー</a>
-    <a href="/#about">なべっこについて</a>
-    <a href="https://github.com/lirenabe/nabecco-media/blob/main/SPONSORS.md">サポーター</a>
+    <a href="/#about">について</a>
+    <a href="/#sponsors">サポーター</a>
     <a href="https://github.com/lirenabe/nabecco-media">GitHub</a>
   </nav>
 </footer>
@@ -15,22 +14,16 @@
 <style>
   .site-footer {
     max-width: 72rem;
-    margin: var(--section-gap) auto 0;
-    padding: 2.5rem var(--page-pad) 3rem;
+    margin: 0 auto;
+    padding: 2rem var(--page-pad) 3rem;
     border-top: 1px solid var(--color-ash);
   }
 
   .site-footer__brand {
-    margin: 0;
+    margin: 0 0 0.75rem;
     font-family: var(--font-display);
-    font-size: 1.35rem;
-    letter-spacing: 0.08em;
-  }
-
-  .site-footer__tag {
-    margin: 0.35rem 0 1.25rem;
-    color: var(--color-sumi-soft);
-    font-size: 0.92rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
   }
 
   .site-footer__links {
@@ -38,5 +31,14 @@
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
     font-size: 0.9rem;
+  }
+
+  .site-footer__links a {
+    color: var(--color-sumi-soft);
+    text-decoration: none;
+  }
+
+  .site-footer__links a:hover {
+    color: var(--color-kaki);
   }
 </style>

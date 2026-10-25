@@ -37,7 +37,7 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
       <Content />
     </div>
     <p class="issue__nav">
-      <a href="/issues/">バックナンバー一覧へ</a>
+      <a href="/issues/">バックナンバー</a>
     </p>
   </article>
 </BaseLayout>
@@ -46,8 +46,7 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
   .issue {
     max-width: var(--measure);
     margin: 0 auto;
-    padding: clamp(2rem, 6vw, 3rem) var(--page-pad) var(--section-gap);
-    animation: rise 0.8s var(--ease-out) both;
+    padding: clamp(2rem, 5vw, 2.75rem) var(--page-pad) var(--section-gap);
   }
 
   .issue__crumb {
@@ -67,8 +66,6 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 
   .issue__header {
     margin-bottom: 1.75rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--color-ash);
   }
 
   .issue__meta {
@@ -82,7 +79,7 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 
   .issue__header h1 {
     margin: 0;
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-size: clamp(1.7rem, 3.5vw, 2.25rem);
   }
 
   .issue__desc {
@@ -92,51 +89,6 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 
   .issue__nav {
     margin: 2.5rem 0 0;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-ash);
     font-size: 0.95rem;
-  }
-
-  .issue__nav a {
-    color: var(--color-kaki-deep);
-    text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 0.1rem;
-  }
-
-  .issue__nav a:hover {
-    color: var(--color-kaki);
-  }
-
-  .prose :global(h2),
-  .prose :global(h3) {
-    margin: 2rem 0 0.65rem;
-  }
-
-  .prose :global(h2) {
-    font-size: 1.35rem;
-  }
-
-  .prose :global(h3) {
-    font-size: 1.1rem;
-  }
-
-  .prose :global(blockquote) {
-    margin: 1rem 0;
-    padding: 0.25rem 0 0.25rem 1rem;
-    border-left: 2px solid var(--color-kaki);
-    color: var(--color-sumi-soft);
-    font-size: 0.95rem;
-  }
-
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(0.6rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 </style>
