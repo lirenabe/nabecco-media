@@ -1,21 +1,10 @@
 ---
-/** Real logos later: `{ name, href?, logoSrc? }[]`. Empty = quiet heading only. */
-const sponsors: { name: string; href?: string; logoSrc?: string }[] = [];
+/** Logos / recruitment UI later. Until then: quiet 準備中 only. */
 ---
 
 <section class="sponsors" id="sponsors" aria-labelledby="sponsors-heading">
   <h2 id="sponsors-heading">サポーター</h2>
-  {
-    sponsors.length > 0 ? (
-      <ul class="sponsors__list">
-        {sponsors.map((s) => (
-          <li>
-            {s.href ? <a href={s.href}>{s.name}</a> : <span>{s.name}</span>}
-          </li>
-        ))}
-      </ul>
-    ) : null
-  }
+  <p class="sponsors__status">準備中です。</p>
 </section>
 
 <style>
@@ -25,22 +14,9 @@ const sponsors: { name: string; href?: string; logoSrc?: string }[] = [];
     letter-spacing: -0.01em;
   }
 
-  .sponsors__list {
-    list-style: none;
-    margin: 0.75rem 0 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
-    font-size: 0.95rem;
-  }
-
-  .sponsors__list a {
+  .sponsors__status {
+    margin: 0.55rem 0 0;
+    font-size: 0.92rem;
     color: var(--color-sumi-soft);
-    text-decoration: none;
-  }
-
-  .sponsors__list a:hover {
-    color: var(--color-kaki);
   }
 </style>
