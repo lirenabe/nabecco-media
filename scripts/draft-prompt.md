@@ -10,7 +10,7 @@ Use this file for **Step C — 記事下書き**. The runtime dependency is **fi
 - **Do not:** paste or lightly paraphrase 広報 into a summary dump
 - Avoid 広報まとめ口調, bullet-only PR calendars, and “extract → list” voice
 - Sources stay official; the **writing** is media, not a clipping service
-- Applies to selection, framing, and style in every section (ピックアップ TBD still must be 読み物)
+- Applies to selection, framing, and style in every section
 
 > Policy note: operators currently ask a **Cursor agent** to follow these steps. That is an operational choice, not a code dependency. A future OpenAI / Anthropic / Gemini (or other) adapter can plug in behind the same I/O contract without changing fetch/YAML/extract.
 
@@ -56,7 +56,13 @@ vol: N
 description: （任意・短い要約）
 ---
 
-## ピックアップ
+## {生成したピックアップ題名1}
+
+（10行以上の読み物＋画像＋フル出典）
+
+## {生成したピックアップ題名2}
+
+（1〜3本。題名はトピックごと。傘見出し「ピックアップ」は使わない）
 
 ## 直近のイベント情報
 
@@ -65,11 +71,24 @@ description: （任意・短い要約）
 
 ### Section roles
 
+#### ピックアップ（題名つき記事・locked）
+
+- **No** `## ピックアップ` umbrella heading
+- Each selected topic is its own top-of-body `## {生成タイトル}`
+- Place **1–3** such blocks **before** `## 直近のイベント情報`
+- **Candidate pool:** topics that would otherwise go in 直近のイベント情報 or 今週のあきた, and that meet **both**:
+  - a usable extract image
+  - content rich enough for **10+ lines** of prose
+- **Select 1–3** from candidates; **remove** them from 直近のイベント情報 and 今週のあきた (no duplicate)
+- **Soft taste (prefer):** (a) a title that catches the eye, (b) an image that catches the eye, (c) an interesting topic
+- Body: media 読み物 and ですます. Full citation. **10+ lines** plus image. Not a PR digest.
+
 #### `## 直近のイベント情報` (locked)
 
 - **Future only:** upcoming from the issue `pubDate` (skip ended / undated)
 - **Horizon:** about **3 months** ahead may be included
 - **When crowded:** prefer **nearer-term** items inside that window
+- **Exclude** topics already used as ピックアップ in this issue
 - **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
 - Extract images may illustrate an item when useful
@@ -93,14 +112,11 @@ description: （任意・短い要約）
 - **Past only:** what already happened / recent buzz (not the future-events list)
 - **Window:** roughly **within 1 week** before run / issue time
 - **No special cap** on how many topics may appear when they qualify
+- **Exclude** topics already used as ピックアップ in this issue
 - **No 短報:** each topic is a **short article**, not a skimpy bullet digest
 - **Length:** about **5–10 phone-screen lines** per topic
 - Full citation every topic; extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
-
-#### `## ピックアップ`
-
-Role details **TBD** (operator locks later). Until then use POLICY + hard rules below; do not invent section rules.
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
@@ -116,11 +132,14 @@ Role details **TBD** (operator locks later). Until then use POLICY + hard rules 
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
+- **ピックアップ:** 1–3 titled `##` pieces (no umbrella ピックアップ heading)
+- Same: image + 10+ lines; remove selected topics from the other two sections
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first
 - Same section: info-note under heading; `問い合わせ: …` house style
-- Same section: 3–5 charm lines OK
+- Same section: 3–5 charm lines OK; no pickup duplicates
 - **`## 今週のあきた`:** past only; ~1-week window; no item-count cap
 - Same section: short articles (5–10 lines); **no** 問い合わせ lines
+- Same section: no pickup duplicates
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft

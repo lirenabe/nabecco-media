@@ -111,16 +111,6 @@ p {
   line-height: 1.55;
 }
 
-.prose .info-note::before {
-  content: "ご案内";
-  display: block;
-  margin-bottom: 0.2rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--color-sumi-soft);
-}
-
 .prose .info-note p {
   margin: 0;
 }
