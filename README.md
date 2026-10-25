@@ -47,13 +47,42 @@ npm run preview  # ビルド結果のプレビュー
 
 ## デプロイ（GitHub Pages）
 
-`main` への push（または Actions の手動実行）で `.github/workflows/deploy.yml` が Astro をビルドし、[actions/deploy-pages](https://github.com/actions/deploy-pages) 経由で GitHub Pages に公開します。
+`main` への push、または Actions の手動実行でデプロイします。
+ワークフローは Astro をビルドし、GitHub Pages へ公開します。
+実装は `actions/deploy-pages` です（`.github/workflows/deploy.yml`）。
 
 - Astro `site`: `https://nabecco.media`（`astro.config.mjs`）。カスタムドメインのため `base` は `/`
 - `public/CNAME`: `nabecco.media`
 - リポジトリ Settings → Pages → Source を **GitHub Actions** にする（初回のみ）
 
 **DNS（運営者側）:** `nabecco.media` の DNS（Cloudflare 等）はリポジトリ外で設定します。GitHub Pages のカスタムドメイン案内に従い、A / AAAA または CNAME を向けてください。DNS が未接続でも `*.github.io` 側でビルド結果は確認できます。
+
+## 品質チェック
+
+| チェック | ツール | 実行場所 | PR/`main` で失敗するか |
+| :--- | :--- | :--- | :---: |
+| 日本語校正 | textlint（ja-technical-writing、緩い設定） | CI + pre-commit | はい |
+| リンク切れ | markdown-link-check + linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
+| デザイン禁止（カード枠ヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
+| 出典の有無（構造） | `scripts/check-citations.mjs` | CI + pre-commit | はい |
+| a11y + レスポンシブ煙 | Playwright + axe（375 / 1280） | CI のみ | はい |
+| ファクトチェック（LLM） | stub（`npm run factcheck`） | 手動 / `workflow_dispatch` のみ | **いいえ** |
+
+ローカルでは次を使います。
+
+```bash
+npm run check:fast   # textlint / design / citations / md links
+npm run build && npm run check:links:site && npm run check:a11y
+npm run check        # 上記の一括（要 Playwright Chromium）
+```
+
+初回のみ a11y 用ブラウザ: `npx playwright install chromium`
+
+Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。任意で [pre-commit](https://pre-commit.com/) も `.pre-commit-config.yaml` あり。
+
+**ファクトチェックの限界:** 自動での真偽判定は行いません。実質的なガードは「まとまった本文セクションに URL または `> 出典` があること」と、公開前の人の確認（POLICY.md）です。プレースホルダ（「ここに書く」）は免除されます。
+
+**デザインチェックの対象:** 同一 CSS ルール内で `border-radius`（0 / 50% 以外）と箱型 `border` または `box-shadow` が同居するパターンを検出します。`border-top` などの直線のみは許容します。
 
 ## 記事の追加
 

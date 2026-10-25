@@ -1,0 +1,28 @@
+{
+  "filters": {
+    "comments": true
+  },
+  "rules": {
+    "preset-ja-technical-writing": {
+      "ja-no-mixed-period": true,
+      "no-doubled-joshi": false,
+      "max-kanji-continuous-len": false,
+      "max-ten": false,
+      "no-exclamation-question-mark": false,
+      "ja-no-weak-phrase": false,
+      "ja-no-redundant-expression": false,
+      "ja-unnatural-alphabet": true,
+      "sentence-length": {
+        "max": 120
+      },
+      "no-doubled-conjunction": true,
+      "no-doubled-conjunctive-particle-ga": true,
+      "no-dropping-the-ra": true,
+      "no-nfd": true,
+      "no-start-duplicated-conjunction": true,
+      "prefer-tari-tari": false,
+      "ja-no-abusage": false,
+      "ja-no-successive-word": false
+    }
+  }
+}

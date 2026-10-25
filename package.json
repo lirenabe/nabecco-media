@@ -9,9 +9,45 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:textlint": "textlint \"src/content/**/*.md\" README.md POLICY.md CONTRIBUTING.md SPONSORS.md",
+    "check:design": "node scripts/check-design.mjs",
+    "check:citations": "node scripts/check-citations.mjs",
+    "check:links:md": "node scripts/check-links.mjs md",
+    "check:links:site": "node scripts/check-links.mjs site",
+    "check:links": "node scripts/check-links.mjs all",
+    "check:a11y": "node scripts/check-a11y.mjs",
+    "check:fast": "npm run check:textlint && npm run check:design && npm run check:citations && npm run check:links:md",
+    "check": "npm run build && npm run check:fast && npm run check:links:site && npm run check:a11y",
+    "factcheck": "node scripts/factcheck.mjs",
+    "prepare": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{md,mdx}": [
+      "textlint"
+    ],
+    "src/**/*.{css,astro}": [
+      "node scripts/check-design.mjs"
+    ],
+    "src/content/posts/*.md": [
+      "node scripts/check-citations.mjs"
+    ]
   },
   "dependencies": {
     "astro": "^7.4.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "linkinator": "^8.1.0",
+    "lint-staged": "^17.6.0",
+    "markdown-link-check": "^3.15.0",
+    "playwright": "^1.64.1",
+    "simple-git-hooks": "^2.14.0",
+    "textlint": "^15.8.0",
+    "textlint-filter-rule-comments": "^1.3.0",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2"
   }
 }

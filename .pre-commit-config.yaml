@@ -1,0 +1,25 @@
+# Optional: pipx install pre-commit && pre-commit install
+# Heavy a11y / full site link crawl stay in GitHub Actions.
+repos:
+  - repo: local
+    hooks:
+      - id: textlint
+        name: textlint
+        entry: npm run check:textlint
+        language: system
+        pass_filenames: false
+      - id: design
+        name: design guidelines
+        entry: npm run check:design
+        language: system
+        pass_filenames: false
+      - id: citations
+        name: citation structure
+        entry: npm run check:citations
+        language: system
+        pass_filenames: false
+      - id: markdown-links
+        name: markdown links
+        entry: npm run check:links:md
+        language: system
+        pass_filenames: false
