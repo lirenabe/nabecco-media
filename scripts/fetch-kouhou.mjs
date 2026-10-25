@@ -10,8 +10,10 @@
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { extractHrefs, fetchBinary, fetchText, pickHref } from './lib/http.mjs';
+import { extractAnchors, fetchBinary, fetchText, pickHref, sleep } from './lib/http.mjs';
 import { loadSources, sourceOutPath } from './lib/sources.mjs';
+
+const POLITE_DELAY_MS = 800;
 
 function parseArgs(argv) {
   const opts = { only: null, includeIncomplete: false, dryRun: false };
@@ -37,11 +39,14 @@ async function resolvePdfUrl(source, defaults) {
 
   if (strategy === 'listing-pdf') {
     const page = await fetchText(source.listingUrl, { userAgent: ua, timeoutMs });
-    const hrefs = extractHrefs(page.text, page.url);
-    const pdf = pickHref(hrefs, {
+    const anchors = extractAnchors(page.text, page.url);
+    const pdf = pickHref(anchors, {
       pattern: f.pdfHrefPattern || '\\.pdf($|\\?)',
       preferPattern: f.preferHrefPattern,
+      preferTextPattern: f.preferTextPattern,
       excludePattern: f.excludeHrefPattern,
+      excludeTextPattern: f.excludeTextPattern,
+      textPattern: f.pdfTextPattern,
       pick: f.pick || 'first',
     });
     if (!pdf) throw new Error('no PDF link on listing page');
@@ -50,18 +55,27 @@ async function resolvePdfUrl(source, defaults) {
 
   if (strategy === 'issue-then-pdf') {
     const listing = await fetchText(source.listingUrl, { userAgent: ua, timeoutMs });
-    const listingHrefs = extractHrefs(listing.text, listing.url);
-    const issueUrl = pickHref(listingHrefs, {
+    const listingAnchors = extractAnchors(listing.text, listing.url);
+    const issueUrl = pickHref(listingAnchors, {
       pattern: f.issueHrefPattern,
+      textPattern: f.issueTextPattern,
+      preferPattern: f.preferIssueHrefPattern,
+      preferTextPattern: f.preferIssueTextPattern,
+      excludePattern: f.excludeIssueHrefPattern,
+      excludeTextPattern: f.excludeIssueTextPattern,
       pick: f.pick || 'first',
     });
     if (!issueUrl) throw new Error('no issue page link on listing');
+    await sleep(POLITE_DELAY_MS);
     const issue = await fetchText(issueUrl, { userAgent: ua, timeoutMs });
-    const issueHrefs = extractHrefs(issue.text, issue.url);
-    const pdf = pickHref(issueHrefs, {
+    const issueAnchors = extractAnchors(issue.text, issue.url);
+    const pdf = pickHref(issueAnchors, {
       pattern: f.pdfHrefPattern || '\\.pdf($|\\?)',
       preferPattern: f.preferHrefPattern,
+      preferTextPattern: f.preferTextPattern,
       excludePattern: f.excludeHrefPattern,
+      excludeTextPattern: f.excludeTextPattern,
+      textPattern: f.pdfTextPattern,
       pick: f.pdfPick || 'first',
     });
     if (!pdf) throw new Error(`no PDF on issue page ${issueUrl}`);
@@ -92,7 +106,9 @@ async function main() {
   const results = [];
   console.log(`fetch-kouhou: ${selected.length} source(s) (of ${sources.length} total)\n`);
 
-  for (const source of selected) {
+  for (let i = 0; i < selected.length; i++) {
+    const source = selected[i];
+    if (i > 0) await sleep(POLITE_DELAY_MS);
     const row = { id: source.id, name: source.name, status: source.status, ok: false };
     try {
       if (source.status === 'incomplete' && (source.fetch?.strategy || 'skip') === 'skip') {

@@ -101,7 +101,7 @@ OGP は `og:title` / `og:description` / `og:type` / `og:url` / `og:image` / `og:
 
 ## 広報取得〜記事下書き（Phase 4）
 
-自治体ごとの取得ルールは [`sources/municipalities.yaml`](./sources/municipalities.yaml) です（秋田県＋全市町村をシード。`status: active` のみ自動取得）。
+自治体ごとの取得ルールは [`sources/municipalities.yaml`](./sources/municipalities.yaml) です（秋田県＋全市町村 26 件。NM-16 時点でいずれも `status: active`。`active` のみ自動取得）。
 
 ```bash
 # 1) 最新広報 PDF を data/kouhou/ へ（gitignored。失敗しても他は続行）
@@ -134,8 +134,9 @@ sources:
     listingUrl: https://www.pref.akita.lg.jp/pages/archive/94977
     fetch:
       strategy: listing-pdf   # listing-pdf | issue-then-pdf | skip
-      pick: first
+      pick: first             # or last
       pdfHrefPattern: "\\.pdf($|\\?)"
+      # 任意: preferHrefPattern / preferTextPattern / issueHrefPattern / issueTextPattern など
 ```
 
 ## 記事の追加

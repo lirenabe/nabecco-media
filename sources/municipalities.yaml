@@ -1,4 +1,4 @@
-# 秋田県 + 全市町村の広報紙取得ルール（Phase 4）
+# 秋田県 + 全市町村の広報紙取得ルール（Phase 4 / NM-16）
 # status:
 #   active     — listingUrl + strategy 検証済み（取得を試行）
 #   incomplete — URL 未確定 / 要手直し（スキップして続行）
@@ -43,11 +43,15 @@ sources:
   - id: city-noshiro
     name: 能代市
     code: "05202"
-    status: incomplete
-    listingUrl: https://www.city.noshiro.lg.jp/
+    status: active
+    listingUrl: https://www.city.noshiro.lg.jp/city/koho/noshiro/back/reiwa08_2026/
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査（サイト改修・ドメイン要確認）。
+      strategy: issue-then-pdf
+      pick: last
+      issueHrefPattern: "/city/koho/noshiro/back/reiwa08_2026/\\d+"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      pdfPick: first
+    notes: 令和8年バックナンバー。末尾が最新号。号ページは分割 PDF（先頭ページから取得）。
 
   - id: city-yokote
     name: 横手市
@@ -77,188 +81,267 @@ sources:
   - id: city-oga
     name: 男鹿市
     code: "05205"
-    status: incomplete
-    listingUrl: https://www.city.oga.lg.jp/
+    status: active
+    listingUrl: https://www.city.oga.akita.jp/soshik/kikakuseisakuka/kohooga/8361.html
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "kouhouR8|R8_"
+    notes: 広報男鹿バックナンバー（令和8年）。先頭 PDF が最新号。公式ドメインは city.oga.akita.jp。
 
   - id: city-yuzawa
     name: 湯沢市
     code: "05206"
-    status: incomplete
-    listingUrl: https://www.city.yuzawa.lg.jp/
+    status: active
+    listingUrl: https://www.city-yuzawa.jp/life/5/46/274/
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/soshiki/4/\\d+\\.html"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferTextPattern: "\\ball\\b"
+    notes: 今年度発行の広報ゆざわ「コネクト」。号ページの all PDF を優先。
 
   - id: city-kazuno
     name: 鹿角市
     code: "05207"
-    status: incomplete
-    listingUrl: https://www.city.kazuno.lg.jp/
+    status: active
+    listingUrl: https://www.city.kazuno.lg.jp/shisei_machizukuri/koho/1/saisinngou/index.html
     fetch:
-      strategy: skip
-    notes: 公式トップは応答あり。広報 PDF 一覧パス要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/saisinngou/\\d+\\.html"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "mihiraki"
+      excludeHrefPattern: "tirashi|チラシ"
+    notes: 広報かづの最新号ハブ → 最新号ページ → 見開き PDF。
 
   - id: city-yurihonjo
     name: 由利本荘市
     code: "05208"
-    status: incomplete
-    listingUrl: https://www.city.yurihonjo.lg.jp/
+    status: active
+    listingUrl: https://www.city.yurihonjo.lg.jp/1001506/1001553/1001598/1007676/index.html
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/1007676/\\d+\\.html"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferTextPattern: "A3"
+    notes: 広報ゆりほんじょう（令和8年）。先頭が最新号。A3・見開き PDF を優先。
 
   - id: city-katagami
     name: 潟上市
     code: "05209"
-    status: incomplete
-    listingUrl: https://www.city.katagami.lg.jp/
+    status: active
+    listingUrl: https://www.city.katagami.lg.jp/soshiki/somu/kikakuseisaku/kohotokei/kohokatagami/1115.html
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "katagami_\\d+\\.pdf"
+    notes: 広報かたがみ最新号ページ（一体 PDF）。
 
   - id: city-daisen
     name: 大仙市
     code: "05210"
-    status: incomplete
-    listingUrl: https://www.city.daisen.lg.jp/
+    status: active
+    listingUrl: https://www.city.daisen.lg.jp/archive/p20260929090044
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "HP\\d+\\.pdf|/uploads/public/.*\\.pdf"
+      preferHrefPattern: "HP\\d+\\.pdf"
+    notes: だいせん日和最新号アーカイブ（一体 PDF）。URL は号ごとに変わる可能性あり。
 
   - id: city-kitaakita
     name: 北秋田市
     code: "05211"
-    status: incomplete
-    listingUrl: https://www.city.kitaakita.lg.jp/
+    status: active
+    listingUrl: https://www.city.kitaakita.akita.jp/genre/kouhou/p20251226112152
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/archive/p20\\d+"
+      issueTextPattern: "広報きたあきた"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferTextPattern: "一括"
+      pdfPick: first
+    notes: 2026年一覧。先頭が最新号。一括ダウンロード PDF を優先。
 
   - id: city-nikaho
     name: にかほ市
     code: "05212"
-    status: incomplete
-    listingUrl: https://www.city.nikaho.lg.jp/
+    status: active
+    listingUrl: https://www.city.nikaho.akita.jp/soshikikarasagasu/sogoseisakuka/gyomuannai/2_1/2/kouhou2026/index.html
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: last
+      issueHrefPattern: "/kouhou2026/\\d+\\.html"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+    notes: 広報にかほ令和8年。末尾が最新号。
 
   - id: city-semboku
     name: 仙北市
     code: "05213"
-    status: incomplete
-    listingUrl: https://www.city.semboku.akita.jp/
+    status: active
+    listingUrl: https://www.city.semboku.akita.jp/government/kouhou/back26index.html
     fetch:
-      strategy: skip
-    notes: 公式トップは応答あり。広報 PDF 一覧パス要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/government/kouhou/2026/\\d+/"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "_0144\\.pdf|_01-\\d+\\.pdf|all"
+    notes: 2026年バックナンバー。先頭月が最新。一体 PDF（*_0144.pdf 等）を優先。
 
   - id: town-kosaka
     name: 小坂町
     code: "05303"
-    status: incomplete
-    listingUrl: https://www.town.kosaka.akita.jp/
+    status: active
+    listingUrl: https://www.town.kosaka.akita.jp/machinososhiki/somuka/somukanzaihan/9/r02koho_6/
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: last
+      issueHrefPattern: "/r02koho_6/\\d+\\.html"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferTextPattern: "全ページ"
+    notes: 令和8年度広報こさか。末尾が最新号。
 
   - id: village-kamikoani
     name: 上小阿仁村
     code: "05327"
-    status: incomplete
-    listingUrl: https://www.kamikoani.jp/
+    status: active
+    listingUrl: https://www.vill.kamikoani.akita.jp/Info/885
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: last
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "All\\.pdf"
+    notes: 広報一覧。全ページ PDF のうち末尾（最新月）を取得。公式は vill.kamikoani.akita.jp。
 
   - id: town-fujisato
     name: 藤里町
     code: "05346"
-    status: incomplete
-    listingUrl: https://www.town.fujisato.akita.jp/
+    status: active
+    listingUrl: https://www.town.fujisato.akita.jp/town/koho/koho_2026/
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: last
+      issueHrefPattern: "/town/koho/koho_2026/\\d+"
+      issueTextPattern: "号（"
+      excludeIssueTextPattern: "お知らせ"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+    notes: 2026年一覧。本誌（○○号）のみ。お知らせ版は除外。
 
   - id: town-mitane
     name: 三種町
     code: "05348"
-    status: incomplete
-    listingUrl: https://www.town.mitane.akita.jp/
+    status: active
+    listingUrl: https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "_all\\.pdf"
+    notes: 広報みたね最新号。全ページ PDF を優先。
 
   - id: town-happou
     name: 八峰町
     code: "05349"
-    status: incomplete
-    listingUrl: https://www.town.happou.lg.jp/
+    status: active
+    listingUrl: https://www.town.happo.lg.jp/genre/kurashi/ghosei/koho
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/archive/p20\\d+"
+      issueTextPattern: "広報"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferTextPattern: "全ページ"
+    notes: 広報はっぽう。先頭が最新号。公式ドメインは town.happo.lg.jp。全ページ PDF を優先。
 
   - id: town-gojome
     name: 五城目町
     code: "05361"
-    status: incomplete
-    listingUrl: https://www.town.gojome.akita.jp/
+    status: active
+    listingUrl: https://www.town.gojome.akita.jp/town/kouhou-sns/kouhou/2901
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: last
+      issueHrefPattern: "/sosikiannai/machi/koho/\\d+$"
+      issueTextPattern: "月号"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "koho\\d+_all\\.pdf"
+      excludeHrefPattern: "_all-\\d"
+    notes: 2026年バックナンバー。末尾月が最新。一体 PDF（*_all.pdf）を優先。
 
   - id: town-hachirogata
     name: 八郎潟町
     code: "05363"
-    status: incomplete
-    listingUrl: https://www.town.hachirogata.akita.jp/
+    status: active
+    listingUrl: https://www.town.hachirogata.akita.jp/chosei/1001532/1001533/1004496/index.html
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/1004496/\\d+\\.html"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+    notes: 広報八郎潟（令和8年度）。先頭が最新号。
 
   - id: town-ikawa
     name: 井川町
     code: "05366"
-    status: incomplete
-    listingUrl: https://www.town.ikawa.akita.jp/
+    status: active
+    listingUrl: https://www.town.ikawa.akita.jp/site/koho/4133.html
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "\\.pdf($|\\?)"
+    notes: 広報いかわ 2026年一覧。先頭 PDF が最新号。
 
   - id: village-ogata
     name: 大潟村
     code: "05368"
-    status: incomplete
-    listingUrl: https://www.ogata.or.jp/
+    status: active
+    listingUrl: https://www.vill.ogata.akita.jp/genre/medias/kouhou-ogata
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/archive/p2026\\d+"
+      issueTextPattern: "年度分"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      pdfPick: first
+    notes: 広報おおがた。令和8年度分ページへ進み先頭（最新）PDF。
 
   - id: town-misato
     name: 美郷町
     code: "05434"
-    status: incomplete
-    listingUrl: https://www.town.misato.akita.jp/
+    status: active
+    listingUrl: https://www.town.misato.akita.jp/genre/chousei/kouhou/kouhoushi
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/archive/p20\\d+"
+      issueTextPattern: "広報美郷令和"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+    notes: 広報美郷。先頭が最新号。
 
   - id: town-ugo
     name: 羽後町
     code: "05463"
-    status: incomplete
-    listingUrl: https://www.town.ugo.lg.jp/
+    status: active
+    listingUrl: https://www.town.ugo.lg.jp/public/
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "/uploads/public/file/\\d+_f\\.pdf"
+    notes: 広報うご公開ページ。先頭 PDF が最新号。
 
   - id: village-higashinaruse
     name: 東成瀬村
     code: "05464"
-    status: incomplete
-    listingUrl: https://www.higashinaruse.com/
+    status: active
+    listingUrl: https://vill.higashinaruse.lg.jp/villager/village_government/kouhoushi/post-1407/
     fetch:
-      strategy: skip
-    notes: 広報一覧 URL 要調査。
+      strategy: listing-pdf
+      pick: last
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "/uploads/2026/(0[4-9]|1[0-2])/"
+    notes: 公式は vill.higashinaruse.lg.jp。年度内（4–12月）アップロードの末尾＝最新月 PDF。
