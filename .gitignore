@@ -16,9 +16,18 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.local
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# Phase 4: fetched PDFs, local drafts, run reports (never commit binaries)
+data/kouhou/
+data/drafts/
+data/reports/
+data/kuchikomi/*.txt
+!data/kuchikomi/.gitkeep
+!data/kuchikomi/example.txt

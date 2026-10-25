@@ -21,6 +21,8 @@
     "check:fast": "npm run check:textlint && npm run check:design && npm run check:citations && npm run check:links:md",
     "check": "npm run build && npm run check:fast && npm run check:links:site && npm run check:a11y && npm run check:seo",
     "factcheck": "node scripts/factcheck.mjs",
+    "fetch:kouhou": "node scripts/fetch-kouhou.mjs",
+    "draft": "node scripts/draft-issue.mjs",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
@@ -39,7 +41,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.4.2"
+    "@google/generative-ai": "^0.24.1",
+    "astro": "^7.4.2",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

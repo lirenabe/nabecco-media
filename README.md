@@ -99,11 +99,52 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 OGP は `og:title` / `og:description` / `og:type` / `og:url` / `og:image` / `og:locale` と `twitter:card` です。
 共有画像は `public/og.png`（1200×630）。Lighthouse は使わず、ビルド後 HTML を直接検証します。
 
+## 広報取得〜記事下書き（Phase 4）
+
+自治体ごとの取得ルールは [`sources/municipalities.yaml`](./sources/municipalities.yaml) です（秋田県＋全市町村をシード。`status: active` のみ自動取得）。
+
+```bash
+# 1) 最新広報 PDF を data/kouhou/ へ（gitignored。失敗しても他は続行）
+npm run fetch:kouhou
+npm run fetch:kouhou -- --only pref-akita,city-akita,city-yokote
+npm run fetch:kouhou -- --dry-run
+
+# 2) 口コミメモ（任意）を data/kuchikomi/ に置く。例は data/kuchikomi/example.txt
+
+# 3) 下書き生成（既定は data/drafts/。git には自動 commit しない）
+npm run draft -- --vol 2 --date 2026-11-01 --dry-run
+GEMINI_API_KEY=your_key npm run draft -- --vol 2 --date 2026-11-01
+# 確認後に content へ書く（上書きは --force。公開は手動 commit）
+GEMINI_API_KEY=your_key npm run draft -- --vol 2 --date 2026-11-01 --apply
+```
+
+- 環境変数: `GEMINI_API_KEY`（未設定時は mock 下書き）。任意で `GEMINI_MODEL`（既定 `gemini-2.0-flash`）
+- PDF・下書き・取得レポートは `data/` 配下（gitignore）。巨大 PDF を commit しない
+- 抽出方針は [POLICY.md](./POLICY.md) どおり（丸写し禁止、イベント等を優先、定例手続きは載せない）
+- **人間が Markdown を確認してから** `git commit` / `git push` する（自動公開なし）
+
+`municipalities.yaml` の形は次のとおりです（抜粋）。
+
+```yaml
+sources:
+  - id: pref-akita
+    name: 秋田県
+    code: "05000"
+    status: active   # or incomplete
+    listingUrl: https://www.pref.akita.lg.jp/pages/archive/94977
+    fetch:
+      strategy: listing-pdf   # listing-pdf | issue-then-pdf | skip
+      pick: first
+      pdfHrefPattern: "\\.pdf($|\\?)"
+```
+
 ## 記事の追加
 
-1. `src/content/posts/vol-N.md` を追加
+手動でも、上記下書きでも可。
+
+1. `src/content/posts/vol-N.md` を追加（または `draft --apply` 後に編集）
 2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。`title` は例: `第1号 2026年10月25日`（ページ見出し用。本文に H1 は書かない）
-3. 本文は次の骨子（細部は今後調整）:
+3. 本文は次の骨子:
 
 ```markdown
 ## ピックアップ

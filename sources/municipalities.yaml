@@ -1,0 +1,264 @@
+# 秋田県 + 全市町村の広報紙取得ルール（Phase 4）
+# status:
+#   active     — listingUrl + strategy 検証済み（取得を試行）
+#   incomplete — URL 未確定 / 要手直し（スキップして続行）
+# strategy:
+#   listing-pdf     — 一覧 HTML から最新 PDF リンクを拾う
+#   issue-then-pdf  — 一覧 → 最新号ページ → PDF
+#   skip            — 取得しない（incomplete 用）
+
+version: 1
+defaults:
+  userAgent: nabecco-media-fetch/0.1 (+https://github.com/lirenabe/nabecco-media)
+  timeoutMs: 45000
+  outDir: data/kouhou
+
+sources:
+  - id: pref-akita
+    name: 秋田県
+    code: "05000"
+    status: active
+    listingUrl: https://www.pref.akita.lg.jp/pages/archive/94977
+    fetch:
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      excludeHrefPattern: "音声|voice|mp3"
+    notes: 令和8年度 秋田県広報紙一覧。先頭 PDF が最新号。
+
+  - id: city-akita
+    name: 秋田市
+    code: "05201"
+    status: active
+    listingUrl: https://www.city.akita.lg.jp/shisei/koho/1003635/index.html
+    fetch:
+      strategy: issue-then-pdf
+      pick: first
+      issueHrefPattern: "/shisei/koho/1003635/\\d+\\.html"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "new\\.pdf"
+      excludeHrefPattern: "spread|音声"
+    notes: 一覧の先頭が最新号。ページごと PDF（*new.pdf）を優先。
+
+  - id: city-noshiro
+    name: 能代市
+    code: "05202"
+    status: incomplete
+    listingUrl: https://www.city.noshiro.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査（サイト改修・ドメイン要確認）。
+
+  - id: city-yokote
+    name: 横手市
+    code: "05203"
+    status: active
+    listingUrl: https://www.city.yokote.lg.jp/shisei/1001175/1001439/1013178.html
+    fetch:
+      strategy: listing-pdf
+      pick: first
+      pdfHrefPattern: "shiho\\.pdf($|\\?)"
+      excludeHrefPattern: "betsu|別冊"
+    notes: 市報よこて令和8年度発行分。先頭が最新号。
+
+  - id: city-odate
+    name: 大館市
+    code: "05204"
+    status: active
+    listingUrl: https://www.city.odate.lg.jp/city/handbook/handbook14/page61/kouhou_odate/bucknumber/backnumber2025
+    fetch:
+      strategy: issue-then-pdf
+      pick: last
+      issueHrefPattern: "backnumber2025/p\\d+"
+      pdfHrefPattern: "\\.pdf($|\\?)"
+      preferHrefPattern: "202[5-9]\\d+\\.pdf"
+    notes: 2025年以降バックナンバー。末尾の号ページ＋ファイル名の新しい年を優先。
+
+  - id: city-oga
+    name: 男鹿市
+    code: "05205"
+    status: incomplete
+    listingUrl: https://www.city.oga.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: city-yuzawa
+    name: 湯沢市
+    code: "05206"
+    status: incomplete
+    listingUrl: https://www.city.yuzawa.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: city-kazuno
+    name: 鹿角市
+    code: "05207"
+    status: incomplete
+    listingUrl: https://www.city.kazuno.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 公式トップは応答あり。広報 PDF 一覧パス要調査。
+
+  - id: city-yurihonjo
+    name: 由利本荘市
+    code: "05208"
+    status: incomplete
+    listingUrl: https://www.city.yurihonjo.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: city-katagami
+    name: 潟上市
+    code: "05209"
+    status: incomplete
+    listingUrl: https://www.city.katagami.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: city-daisen
+    name: 大仙市
+    code: "05210"
+    status: incomplete
+    listingUrl: https://www.city.daisen.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: city-kitaakita
+    name: 北秋田市
+    code: "05211"
+    status: incomplete
+    listingUrl: https://www.city.kitaakita.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: city-nikaho
+    name: にかほ市
+    code: "05212"
+    status: incomplete
+    listingUrl: https://www.city.nikaho.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: city-semboku
+    name: 仙北市
+    code: "05213"
+    status: incomplete
+    listingUrl: https://www.city.semboku.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 公式トップは応答あり。広報 PDF 一覧パス要調査。
+
+  - id: town-kosaka
+    name: 小坂町
+    code: "05303"
+    status: incomplete
+    listingUrl: https://www.town.kosaka.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: village-kamikoani
+    name: 上小阿仁村
+    code: "05327"
+    status: incomplete
+    listingUrl: https://www.kamikoani.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-fujisato
+    name: 藤里町
+    code: "05346"
+    status: incomplete
+    listingUrl: https://www.town.fujisato.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-mitane
+    name: 三種町
+    code: "05348"
+    status: incomplete
+    listingUrl: https://www.town.mitane.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-happou
+    name: 八峰町
+    code: "05349"
+    status: incomplete
+    listingUrl: https://www.town.happou.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-gojome
+    name: 五城目町
+    code: "05361"
+    status: incomplete
+    listingUrl: https://www.town.gojome.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-hachirogata
+    name: 八郎潟町
+    code: "05363"
+    status: incomplete
+    listingUrl: https://www.town.hachirogata.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-ikawa
+    name: 井川町
+    code: "05366"
+    status: incomplete
+    listingUrl: https://www.town.ikawa.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: village-ogata
+    name: 大潟村
+    code: "05368"
+    status: incomplete
+    listingUrl: https://www.ogata.or.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-misato
+    name: 美郷町
+    code: "05434"
+    status: incomplete
+    listingUrl: https://www.town.misato.akita.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: town-ugo
+    name: 羽後町
+    code: "05463"
+    status: incomplete
+    listingUrl: https://www.town.ugo.lg.jp/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
+
+  - id: village-higashinaruse
+    name: 東成瀬村
+    code: "05464"
+    status: incomplete
+    listingUrl: https://www.higashinaruse.com/
+    fetch:
+      strategy: skip
+    notes: 広報一覧 URL 要調査。
