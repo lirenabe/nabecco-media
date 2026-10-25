@@ -129,7 +129,7 @@ async function main() {
 Next (operator / any agent — Cursor by current policy):
   1. Read ${PROMPT_REL} and POLICY.md
   2. Skim extracted text/images above (PDF only for spot-check)
-  3. Write ${outRel} with citations; no H1 in body
+  3. Write ${outRel} with citations; first pickup `#`, later `##`, items `###`
   4. Human review → npm run check → git commit / push (never auto-publish)
 `);
 }

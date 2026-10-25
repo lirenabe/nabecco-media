@@ -84,6 +84,7 @@ p {
   word-break: break-word;
 }
 
+.prose h1,
 .prose h2,
 .prose h3 {
   margin: 2.25rem 0 0.55rem;
@@ -93,8 +94,8 @@ p {
   line-height: 1.35;
 }
 
-/* First pickup title = visual 大見出し (layout no longer shows issue H1) */
-.prose > h2:first-of-type {
+/* First pickup only — Markdown `#` → page 大見出し */
+.prose > h1:first-of-type {
   margin-top: 0;
   font-size: clamp(1.55rem, 5.2vw, 2rem);
   letter-spacing: -0.025em;

@@ -46,10 +46,9 @@ npm run draft -- --vol N --date YYYY-MM-DD
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
-4. Write `src/content/posts/vol-N.md` as **readable articles** with this shape.
-   **No H1** in the Markdown body. Do **not** put `第N号` / 発行日 as a top heading —
-   the layout shows `pubDate` as trailing gray text at the article end.
-   The **first** pickup `##` is the visual 大見出し on the page.
+4. Write `src/content/posts/vol-N.md` as **readable articles** with this heading hierarchy
+   (real ATX levels — not CSS-only). Do **not** put `第N号` as a heading.
+   Layout shows trailing gray `発行日 {pubDate}` at the article end.
 
 ```markdown
 ---
@@ -59,25 +58,40 @@ vol: N
 description: （任意・短い要約）
 ---
 
-## {生成したピックアップ題名1}
+# {生成したピックアップ題名1}
 
-（10行以上の読み物＋画像＋フル出典。先頭題名＝ページ大見出し）
+（h1 = ページ大見出し。最初のピックアップのみ `#`）
 
 ## {生成したピックアップ題名2}
 
-（1〜3本。題名はトピックごと。傘見出し「ピックアップ」は使わない）
+（2本目以降のピックアップは `##`。傘見出し「ピックアップ」は使わない）
 
 ## 直近のイベント情報
 
+<aside class="info-note" role="note">…</aside>
+
+### {各イベント題名}
+
 ## 今週のあきた
+
+### {各トピック題名}
 ```
+
+Heading map (locked):
+
+| Level | Use |
+| :--- | :--- |
+| `#` (h1) | **Only** the first pickup title |
+| `##` (h2) | Later pickups (if any); `直近のイベント情報`; `今週のあきた` |
+| `###` (h3) | Each event under 直近; each topic under 今週のあきた |
 
 ### Section roles
 
 #### ピックアップ（題名つき記事・locked）
 
 - **No** `## ピックアップ` umbrella heading
-- Each selected topic is its own top-of-body `## {生成タイトル}`
+- First selected topic: `# {生成タイトル}` (sole body h1)
+- Further pickups (if any): `## {生成タイトル}`
 - Place **1–3** such blocks **before** `## 直近のイベント情報`
 - **Candidate pool:** topics that would otherwise go in 直近のイベント情報 or 今週のあきた, and that meet **both**:
   - a usable extract image
@@ -92,7 +106,7 @@ description: （任意・短い要約）
 - **Horizon:** about **3 months** ahead may be included
 - **When crowded:** prefer **nearer-term** items inside that window
 - **Exclude** topics already used as ピックアップ in this issue
-- **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
+- **Each item:** `### {題名}` then date, place, what it is, full citation (fee / capacity / signup when clear)
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
 - Extract images may illustrate an item when useful
 - **Info note (required):** immediately under the `##` heading, before any lead or items, insert:
@@ -117,7 +131,7 @@ description: （任意・短い要約）
 - **No special cap** on how many topics may appear when they qualify
 - **Exclude** topics already used as ピックアップ in this issue
 - **No 短報:** each topic is a **short article**, not a skimpy bullet digest
-- **Length:** about **5–10 phone-screen lines** per topic
+- **Each topic:** `### {題名}` then about **5–10 phone-screen lines**
 - Full citation every topic; extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
 
@@ -130,20 +144,21 @@ description: （任意・短い要約）
 - **Media 読み物 first** — never ship a municipal 広報誌のまとめ / extract digest; rewrite into weekly-media voice
 - Ban 広報まとめ口調 and bullet-dumps of PR text; use connective prose and clear framing
 - Japanese Markdown only for the article body
-- **No issue H1** in Markdown (`第N号` / date belongs to layout trailing date)
+- Body h1 is **only** the first pickup title (never `第N号`)
+- Layout owns trailing `発行日` label + `pubDate` (do not invent a body date line)
 - Do not append 試験下書き / 要確認 footer disclaimers in the article body
 - **ですます調** for body prose (です・ます). Do not use だ・である as the default article voice
 - No丸写し of 広報 text
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
-- **ピックアップ:** 1–3 titled `##` pieces (no umbrella ピックアップ heading)
+- **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
 - Same: image + 10+ lines; remove selected topics from the other two sections
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first
-- Same section: info-note under heading; `問い合わせ: …` house style
+- Same section: info-note under h2; each event is `###`; `問い合わせ: …` house style
 - Same section: 3–5 charm lines OK; no pickup duplicates
 - **`## 今週のあきた`:** past only; ~1-week window; no item-count cap
-- Same section: short articles (5–10 lines); **no** 問い合わせ lines
+- Same section: each topic is `###`; short articles (5–10 lines); **no** 問い合わせ
 - Same section: no pickup duplicates
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added

@@ -21,14 +21,19 @@ function stripFrontmatter(md) {
   return end === -1 ? md : md.slice(end + 4);
 }
 
+/** Split on ATX h1–h3 so pickup (# / ##) and item (###) blocks are checked. */
 function sections(body) {
-  const parts = body.split(/^##\s+/m).slice(1);
-  return parts.map((part) => {
-    const nl = part.indexOf('\n');
-    const title = (nl === -1 ? part : part.slice(0, nl)).trim();
-    const content = (nl === -1 ? '' : part.slice(nl + 1)).trim();
-    return { title, content };
-  });
+  const parts = body.split(/^(#{1,3})\s+/m).slice(1);
+  const out = [];
+  for (let i = 0; i < parts.length; i += 2) {
+    const marks = parts[i];
+    const rest = parts[i + 1] ?? '';
+    const nl = rest.indexOf('\n');
+    const title = (nl === -1 ? rest : rest.slice(0, nl)).trim();
+    const content = (nl === -1 ? '' : rest.slice(nl + 1)).trim();
+    out.push({ level: marks.length, title, content });
+  }
+  return out;
 }
 
 function isSubstantial(content) {
@@ -36,7 +41,9 @@ function isSubstantial(content) {
     .split('\n')
     .map((l) => l.trim())
     .filter(Boolean)
-    .filter((l) => !STUB.test(l));
+    .filter((l) => !STUB.test(l))
+    // Nested headings belong to their own section slice
+    .filter((l) => !/^#{1,3}\s+/.test(l));
   const text = lines.join('');
   return text.length >= 40;
 }
@@ -52,10 +59,12 @@ for (const file of files) {
       failures.push(`${file}: abbreviated citation not allowed (${line.trim()})`);
     }
   }
-  for (const { title, content } of sections(body)) {
+  for (const { level, title, content } of sections(body)) {
+    // Section shells hold ### items; cites live on pickups (# / ##) and items (###).
+    if (level === 2 && /^(直近のイベント情報|今週のあきた)$/u.test(title)) continue;
     if (!isSubstantial(content)) continue;
     if (!CITE.test(content)) {
-      failures.push(`${file} ## ${title}: needs http(s) link or 「> 出典」 line`);
+      failures.push(`${file} ${'#'.repeat(level)} ${title}: needs http(s) link or 「> 出典」 line`);
     }
   }
 }

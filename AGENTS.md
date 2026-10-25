@@ -27,8 +27,8 @@ Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). S
 
 Step C: weekly **media 読み物** (not a 広報 digest). ですます; full citations (no 「同上」); images via `public/images/kouhou/vol-N/`.
 
-Locked section roles: titled pickup pieces (no umbrella ピックアップ heading),
-`## 直近のイベント情報`, `## 今週のあきた`. See `scripts/draft-prompt.md`.
+Locked heading map: first pickup `#`, later pickups / 直近 / 今週のあきた `##`,
+items `###`. No umbrella ピックアップ. See `scripts/draft-prompt.md`.
 
 ## Documentation
 
