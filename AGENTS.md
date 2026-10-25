@@ -27,10 +27,6 @@ Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). S
 
 Step C basics: ですます調; full citations (no 「同上」); images via `public/images/kouhou/vol-N/` (see `draft-prompt.md`).
 
-Optional: a gitignored `.cursor/` on some clones adds Cursor skills/heuristics for drafting quality. The three steps above do **not** require it.
-
-When unsure if a change is tracked pipeline vs local-only tooling, ask Kenta Watanabe before editing.
-
 ## Documentation
 
 Full documentation: https://docs.astro.build

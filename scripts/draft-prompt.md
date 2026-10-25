@@ -69,7 +69,6 @@ description: （任意・短い要約）
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft
 - This file is the **complete** portable Step C contract
-- Optional local IDE skills (gitignored `.cursor/`) may refine judgment; not required
 
 ## Future adapters (optional)
 
