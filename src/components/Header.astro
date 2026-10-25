@@ -1,0 +1,52 @@
+---
+---
+
+<header class="site-header">
+  <a class="site-header__home" href="/">なべっこ</a>
+  <nav class="site-header__nav" aria-label="主要ナビ">
+    <a href="/#latest">最新号</a>
+    <a href="/#back-issues">バックナンバー</a>
+    <a href="/#sponsors">サポーター</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem var(--page-pad) 0;
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .site-header__home {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-sumi);
+    text-decoration: none;
+  }
+
+  .site-header__home:hover {
+    color: var(--color-kaki);
+  }
+
+  .site-header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.35rem;
+    font-size: 0.9rem;
+  }
+
+  .site-header__nav a {
+    color: var(--color-sumi-soft);
+    text-decoration: none;
+  }
+
+  .site-header__nav a:hover {
+    color: var(--color-kaki);
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+interface Issue {
+  id: string;
+  title: string;
+  pubDate: Date;
+  href: string;
+}
+
+interface Props {
+  issues: Issue[];
+  excludeId?: string;
+}
+
+const { issues, excludeId } = Astro.props;
+
+const listed = issues
+  .filter((issue) => issue.id !== excludeId)
+  .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
+
+const formatter = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+---
+
+<section class="back-issues" id="back-issues" aria-labelledby="back-issues-heading">
+  <h2 id="back-issues-heading">バックナンバー</h2>
+  {
+    listed.length === 0 ? (
+      <p class="back-issues__empty">過去号はまだありません。第1号から蓄積していきます。</p>
+    ) : (
+      <ul class="back-issues__list">
+        {listed.map((issue) => (
+          <li>
+            <a href={issue.href}>
+              <time datetime={issue.pubDate.toISOString().slice(0, 10)}>
+                {formatter.format(issue.pubDate)}
+              </time>
+              <span>{issue.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</section>
+
+<style>
+  .back-issues {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0 var(--page-pad);
+  }
+
+  .back-issues h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  }
+
+  .back-issues__empty {
+    margin: 0;
+    color: var(--color-sumi-soft);
+  }
+
+  .back-issues__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-ash);
+  }
+
+  .back-issues__list li {
+    border-bottom: 1px solid var(--color-ash);
+  }
+
+  .back-issues__list a {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    color: var(--color-sumi);
+    text-decoration: none;
+  }
+
+  .back-issues__list a:hover span {
+    color: var(--color-kaki);
+  }
+
+  .back-issues__list time {
+    font-variant-numeric: tabular-nums;
+    color: var(--color-sumi-soft);
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 520px) {
+    .back-issues__list a {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

@@ -1,0 +1,138 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BackIssueList from '../../components/BackIssueList.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = await getCollection('posts');
+const issues = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map((entry) => ({
+    id: entry.id,
+    title: entry.data.title,
+    pubDate: entry.data.pubDate,
+    href: `/issues/${entry.id}/`,
+  }));
+
+const dateLabel = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(post.data.pubDate);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="issue">
+    <p class="issue__crumb"><a href="/">なべっこ</a> / バックナンバー</p>
+    <header class="issue__header">
+      <p class="issue__meta">
+        <span>第{post.data.vol}号</span>
+        <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
+      </p>
+      <h1>{post.data.title}</h1>
+      {post.data.description && <p class="issue__desc">{post.data.description}</p>}
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+
+  <div class="back-wrap">
+    <BackIssueList issues={issues} excludeId={post.id} />
+  </div>
+</BaseLayout>
+
+<style>
+  .issue {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 8vw, 4rem) var(--page-pad) var(--section-gap);
+    animation: rise 0.8s var(--ease-out) both;
+  }
+
+  .issue__crumb {
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-sumi-soft);
+  }
+
+  .issue__crumb a {
+    color: var(--color-sumi-soft);
+    text-decoration: none;
+  }
+
+  .issue__crumb a:hover {
+    color: var(--color-kaki);
+  }
+
+  .issue__header {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-ash);
+  }
+
+  .issue__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-sumi-soft);
+  }
+
+  .issue__header h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+  }
+
+  .issue__desc {
+    margin: 0.75rem 0 0;
+    color: var(--color-sumi-soft);
+  }
+
+  .back-wrap {
+    padding-bottom: var(--section-gap);
+  }
+
+  .prose :global(h2),
+  .prose :global(h3) {
+    margin: 2rem 0 0.65rem;
+  }
+
+  .prose :global(h2) {
+    font-size: 1.35rem;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.1rem;
+  }
+
+  .prose :global(blockquote) {
+    margin: 1rem 0;
+    padding: 0.25rem 0 0.25rem 1rem;
+    border-left: 2px solid var(--color-kaki);
+    color: var(--color-sumi-soft);
+    font-size: 0.95rem;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.6rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
