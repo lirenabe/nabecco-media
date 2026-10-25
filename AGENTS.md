@@ -25,7 +25,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
 
 Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
 
-Step C basics: ですます調; full citations (no 「同上」); images via `public/images/kouhou/vol-N/`.
+Step C: weekly **media 読み物** (not a 広報 digest). ですます; full citations (no 「同上」); images via `public/images/kouhou/vol-N/`.
 
 Locked section roles in `scripts/draft-prompt.md`: `## 直近のイベント情報`, `## 今週のあきた`. `## ピックアップ` is still TBD.
 

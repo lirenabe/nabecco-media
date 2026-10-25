@@ -2,6 +2,16 @@
 
 Use this file for **Step C — 記事下書き**. The runtime dependency is **files on disk**, not any specific IDE or LLM vendor.
 
+## Core concept — media 読み物 (not a 広報 digest)
+
+なべっこ is a **weekly media**. Each issue must read as **articles / 読み物** for residents.
+
+- **Do:** select what matters, frame why it matters this week, rewrite as weekly-media prose
+- **Do not:** paste or lightly paraphrase 広報 into a summary dump
+- Avoid 広報まとめ口調, bullet-only PR calendars, and “extract → list” voice
+- Sources stay official; the **writing** is media, not a clipping service
+- Applies to selection, framing, and style in every section (ピックアップ TBD still must be 読み物)
+
 > Policy note: operators currently ask a **Cursor agent** to follow these steps. That is an operational choice, not a code dependency. A future OpenAI / Anthropic / Gemini (or other) adapter can plug in behind the same I/O contract without changing fetch/YAML/extract.
 
 ## Pipeline (3 steps)
@@ -35,8 +45,8 @@ npm run draft -- --vol N --date YYYY-MM-DD
 
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
-3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Prefer breadth over deep paraphrase of one issue. Open a raw PDF only to verify an unclear date/name.
-4. Write `src/content/posts/vol-N.md` with this shape (no H1 in the body):
+3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
+4. Write `src/content/posts/vol-N.md` as **readable articles** (no H1 in the body) with this shape:
 
 ```markdown
 ---
@@ -83,6 +93,8 @@ Role details **TBD** (operator locks later). Until then use POLICY + hard rules 
 
 ## Hard rules
 
+- **Media 読み物 first** — never ship a municipal 広報誌のまとめ / extract digest; rewrite into weekly-media voice
+- Ban 広報まとめ口調 and bullet-dumps of PR text; use connective prose and clear framing
 - Japanese Markdown only for the article body
 - **ですます調** for body prose (です・ます). Do not use だ・である as the default article voice
 - No丸写し of 広報 text
