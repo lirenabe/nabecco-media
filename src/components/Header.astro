@@ -171,9 +171,9 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     top: 100%;
     right: var(--page-pad);
     left: var(--page-pad);
-    max-width: 22rem;
+    max-width: 24rem;
     margin-left: auto;
-    padding: 0.85rem 0 1.1rem;
+    padding: 1.35rem 1.25rem 1.5rem;
     background: var(--color-paper-raised);
     border-bottom: 1px solid var(--color-ash);
     z-index: 20;
@@ -188,8 +188,8 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
   .site-header__list a {
     display: grid;
     grid-template-columns: 6.5rem 1fr;
-    gap: 0.75rem;
-    padding: 0.65rem 0;
+    gap: 0.75rem 1rem;
+    padding: 1rem 0;
     border-top: 1px solid var(--color-ash);
     color: var(--color-sumi);
     text-decoration: none;
@@ -198,6 +198,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
 
   .site-header__list li:first-child a {
     border-top: 0;
+    padding-top: 0.25rem;
   }
 
   .site-header__list a:hover span {
@@ -210,14 +211,14 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
   }
 
   .site-header__empty {
-    margin: 0 0 0.75rem;
+    margin: 0 0 1rem;
     font-size: 0.92rem;
     color: var(--color-sumi-soft);
   }
 
   .site-header__all {
-    margin: 0.75rem 0 0;
-    padding-top: 0.75rem;
+    margin: 1.15rem 0 0;
+    padding-top: 1.15rem;
     border-top: 1px solid var(--color-ash);
     font-size: 0.92rem;
   }
