@@ -21,14 +21,14 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="issue" aria-label={post.data.title}>
+  <article class="issue">
     <p class="issue__crumb">
       <a href="/">なべっこ</a> / <a href="/issues/">バックナンバー</a>
     </p>
-    <p class="issue__meta">
+    <h1 class="issue__meta">
       <span>第{post.data.vol}号</span>
       <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
-    </p>
+    </h1>
     <div class="prose">
       <Content />
     </div>
@@ -61,8 +61,12 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
-    margin: 0 0 1rem;
-    font-size: 0.9rem;
-    color: var(--color-sumi-soft);
+    margin: 0 0 1.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+    color: var(--color-sumi);
   }
 </style>

@@ -20,11 +20,11 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 ---
 
 <BaseLayout title="なべっこ" description={latest.data.description}>
-  <article class="latest" id="latest" aria-label={latest.data.title}>
-    <p class="latest__meta">
+  <article class="latest" id="latest" aria-labelledby="latest-heading">
+    <h1 id="latest-heading" class="latest__meta">
       <span>第{latest.data.vol}号</span>
       <time datetime={latest.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
-    </p>
+    </h1>
     <div class="prose">
       <Content />
     </div>
@@ -42,8 +42,16 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
-    margin: 0 0 1rem;
-    font-size: 0.9rem;
-    color: var(--color-sumi-soft);
+    margin: 0 0 1.5rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+    color: var(--color-sumi);
+  }
+
+  .latest__meta time {
+    font-weight: 600;
   }
 </style>

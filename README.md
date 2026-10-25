@@ -46,12 +46,10 @@ npm run preview  # ビルド結果のプレビュー
 ## 記事の追加
 
 1. `src/content/posts/vol-N.md` を追加
-2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。`title` は日付号（例: `2026/10/25号`）
+2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。`title` は例: `第1号 2026年10月25日`（ページ見出し用。本文に H1 は書かない）
 3. 本文は次の骨子（細部は今後調整）:
 
 ```markdown
-# {日付}号
-
 ## ピックアップ
 
 ## 直近のイベント情報
