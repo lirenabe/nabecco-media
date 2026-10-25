@@ -24,7 +24,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Phase 4: fetched PDFs, local drafts, run reports (never commit binaries)
+# Phase 4: fetched PDFs, extracts (text/images), local drafts, run reports
+# (never commit binaries / large extract artifacts; manifest lives under data/kouhou/)
 data/kouhou/
 data/drafts/
 data/reports/

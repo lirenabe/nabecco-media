@@ -17,18 +17,33 @@ export async function fetchText(url, { userAgent = DEFAULT_UA, timeoutMs = 45000
   }
 }
 
-export async function fetchBinary(url, { userAgent = DEFAULT_UA, timeoutMs = 45000 } = {}) {
+/**
+ * Fetch a binary URL. Optional etag / lastModified enable conditional GET (304).
+ * Returns { url, buf, etag, lastModified } or { url, notModified: true, etag, lastModified }.
+ */
+export async function fetchBinary(
+  url,
+  { userAgent = DEFAULT_UA, timeoutMs = 45000, etag = '', lastModified = '' } = {},
+) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
+    const headers = { 'user-agent': userAgent, accept: 'application/pdf,*/*' };
+    if (etag) headers['if-none-match'] = etag;
+    if (lastModified) headers['if-modified-since'] = lastModified;
     const res = await fetch(url, {
       redirect: 'follow',
       signal: ctrl.signal,
-      headers: { 'user-agent': userAgent, accept: 'application/pdf,*/*' },
+      headers,
     });
+    const resEtag = res.headers.get('etag') || etag || '';
+    const resLastMod = res.headers.get('last-modified') || lastModified || '';
+    if (res.status === 304) {
+      return { url: res.url || url, notModified: true, etag: resEtag, lastModified: resLastMod };
+    }
     if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
     const buf = Buffer.from(await res.arrayBuffer());
-    return { url: res.url, buf };
+    return { url: res.url, buf, etag: resEtag, lastModified: resLastMod };
   } finally {
     clearTimeout(timer);
   }

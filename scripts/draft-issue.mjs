@@ -1,16 +1,9 @@
 #!/usr/bin/env node
 /**
- * Draft checklist helper — no external LLM API.
+ * Step C checklist helper — no external LLM API.
  *
- * Assembles paths and a short checklist for *any* agent (Cursor today by
- * operator policy). Does not call Cursor SDK/APIs or vendor models.
- *
- * I/O contract (see scripts/draft-prompt.md):
- *   in:  data/kouhou/ PDFs, optional data/kuchikomi/, POLICY.md, municipalities.yaml
- *   out: src/content/posts/vol-N.md (written by the agent / human, not this CLI)
- *
- * A future OpenAI/Anthropic/Gemini adapter could plug in behind the same
- * contract (e.g. scripts/lib/draft-adapter.mjs) without rewriting fetch/YAML.
+ * Prints paths for *any* agent (Cursor today by operator policy).
+ * Prefers data/kouhou/extracted/<id>/ artifacts from Step B.
  *
  * Usage:
  *   npm run draft -- --vol 2 --date 2026-11-01
@@ -18,6 +11,7 @@
  */
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { extractDirRel, loadManifest } from './lib/manifest.mjs';
 import { loadSources } from './lib/sources.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -28,7 +22,6 @@ function parseArgs(argv) {
     vol: null,
     date: null,
     kuchikomi: path.join(ROOT, 'data/kuchikomi/example.txt'),
-    pdfDir: path.join(ROOT, 'data/kouhou'),
     printPrompt: false,
     help: false,
   };
@@ -37,7 +30,6 @@ function parseArgs(argv) {
     if (a === '--vol') opts.vol = Number(argv[++i]);
     else if (a === '--date') opts.date = argv[++i];
     else if (a === '--kuchikomi') opts.kuchikomi = path.resolve(argv[++i]);
-    else if (a === '--pdf-dir') opts.pdfDir = path.resolve(argv[++i]);
     else if (a === '--print-prompt') opts.printPrompt = true;
     else if (a === '--help' || a === '-h') opts.help = true;
   }
@@ -53,22 +45,6 @@ function formatTitle(vol, dateStr) {
   return `第${vol}号 ${y}年${m}月${day}日`;
 }
 
-async function listPdfs(dir) {
-  try {
-    const names = await readdir(dir);
-    const out = [];
-    for (const name of names) {
-      if (!/\.pdf$/i.test(name)) continue;
-      const abs = path.join(dir, name);
-      const st = await stat(abs);
-      if (st.isFile() && st.size > 0) out.push({ name, abs, size: st.size });
-    }
-    return out.sort((a, b) => a.name.localeCompare(b.name));
-  } catch {
-    return [];
-  }
-}
-
 async function fileExists(p) {
   try {
     await stat(p);
@@ -82,8 +58,7 @@ async function main() {
   const opts = parseArgs(process.argv.slice(2));
   if (opts.help) {
     console.log(`Usage: node scripts/draft-issue.mjs --vol N --date YYYY-MM-DD [--print-prompt]
-  Prints a draft checklist and paths. No LLM API calls.
-  Full instructions: ${PROMPT_REL}`);
+  Step C checklist. Full instructions: ${PROMPT_REL}`);
     process.exit(0);
   }
   if (!opts.vol || !opts.date) {
@@ -95,49 +70,67 @@ async function main() {
   const title = formatTitle(opts.vol, opts.date);
   const outRel = path.join('src/content/posts', `vol-${opts.vol}.md`);
   const outAbs = path.join(ROOT, outRel);
-  const { sources } = await loadSources();
-  const pdfs = await listPdfs(opts.pdfDir);
+  const { sources, root } = await loadSources();
+  const { doc: manifest } = await loadManifest(root);
   const kuchikomiOk = await fileExists(opts.kuchikomi);
-  const promptAbs = path.join(ROOT, PROMPT_REL);
 
   if (opts.printPrompt) {
-    process.stdout.write(await readFile(promptAbs, 'utf8'));
+    process.stdout.write(await readFile(path.join(ROOT, PROMPT_REL), 'utf8'));
     process.stdout.write('\n');
   }
 
-  console.log('=== nabecco draft checklist (no LLM API) ===\n');
+  const extracted = [];
+  for (const s of sources) {
+    const entry = manifest.sources?.[s.id];
+    const dirRel = entry?.extractPath || extractDirRel(s.id);
+    const textAbs = path.join(root, dirRel, 'text.txt');
+    if (await fileExists(textAbs)) {
+      let images = 0;
+      try {
+        const imgs = await readdir(path.join(root, dirRel, 'images'));
+        images = imgs.filter((n) => !n.startsWith('.')).length;
+      } catch {
+        /* no images dir */
+      }
+      extracted.push({
+        id: s.id,
+        name: s.name,
+        dir: dirRel,
+        sha256: entry?.sha256 || '',
+        images,
+      });
+    }
+  }
+
+  console.log('=== nabecco draft checklist (Step C — no LLM API) ===\n');
   console.log(`Target title : ${title}`);
   console.log(`pubDate      : ${opts.date}`);
   console.log(`vol          : ${opts.vol}`);
   console.log(`Output       : ${outRel}${await fileExists(outAbs) ? ' (exists — review before overwrite)' : ' (new)'}`);
   console.log(`Instructions : ${PROMPT_REL}`);
   console.log(`Policy       : POLICY.md`);
-  console.log(`Sources YAML : sources/municipalities.yaml (${sources.length} entries)`);
-  console.log(`PDF dir      : ${path.relative(ROOT, opts.pdfDir)} (${pdfs.length} file(s))`);
+  console.log(`Manifest     : data/kouhou/manifest.json`);
+  console.log(`Extracted    : ${extracted.length} dir(s) under data/kouhou/extracted/`);
   console.log(
     `口コミ        : ${path.relative(ROOT, opts.kuchikomi)}${kuchikomiOk ? '' : ' (missing — optional)'}`,
   );
 
-  if (!pdfs.length) {
-    console.log('\n⚠ No PDFs found. Run first:\n  npm run fetch:kouhou\n');
+  if (!extracted.length) {
+    console.log(`\n⚠ No extracts found. Run Steps A then B:\n  npm run fetch:kouhou\n  npm run extract:kouhou\n`);
   } else {
-    console.log('\nPDFs:');
-    for (const p of pdfs) {
-      const id = p.name.split('_')[1] || '';
-      const src = sources.find((s) => s.id === id);
-      const label = src ? src.name : id || '—';
-      console.log(`  - ${p.name}  (${label}, ${p.size} bytes)`);
+    console.log('\nPrimary inputs (prefer these over raw PDFs):');
+    for (const e of extracted) {
+      const short = e.sha256 ? e.sha256.slice(0, 12) : '—';
+      console.log(`  - ${e.dir}/text.txt  (${e.name}, sha ${short}…, images=${e.images})`);
     }
   }
 
   console.log(`
 Next (operator / any agent — Cursor by current policy):
   1. Read ${PROMPT_REL} and POLICY.md
-  2. Use the PDFs (+ optional口コミ) above as the only evidence
+  2. Skim extracted text/images above (PDF only for spot-check)
   3. Write ${outRel} with citations; no H1 in body
   4. Human review → npm run check → git commit / push (never auto-publish)
-
-Note: This CLI does not generate article text and does not call vendor APIs.
 `);
 }
 

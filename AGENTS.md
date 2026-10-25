@@ -8,17 +8,22 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
-## Weekly issue draft (file I/O only)
+## Weekly kouhou pipeline (3 steps)
 
-Automated step: `npm run fetch:kouhou` → PDFs under `data/kouhou/`.
-
-Drafting is **not** wired to a vendor LLM in this repo. Follow [`scripts/draft-prompt.md`](./scripts/draft-prompt.md) (I/O contract + article shape). Checklist helper:
+File I/O only — no vendor LLM in repo scripts. Cursor is an **operator policy** for Step C, not a runtime dependency.
 
 ```
+# A — PDF取得 (skip-if-unchanged via data/kouhou/manifest.json: sha256 + etag)
+npm run fetch:kouhou
+
+# B — 内容抽出 (text + embedded images → data/kouhou/extracted/<id>/; skip if sha unchanged)
+npm run extract:kouhou
+
+# C — 記事下書き checklist (agent reads extracts; see scripts/draft-prompt.md)
 npm run draft -- --vol N --date YYYY-MM-DD
 ```
 
-Operators currently use a Cursor agent for the draft step (policy). That is not a runtime dependency — do not call Cursor or other LLM APIs from core fetch/content scripts. Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push).
+Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
 
 ## Documentation
 

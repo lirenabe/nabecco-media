@@ -103,26 +103,31 @@ OGP は `og:title` / `og:description` / `og:type` / `og:url` / `og:image` / `og:
 
 自治体ごとの取得ルールは [`sources/municipalities.yaml`](./sources/municipalities.yaml) です（秋田県＋全市町村 26 件。NM-16 時点でいずれも `status: active`。`active` のみ自動取得）。
 
-週次フローはファイル I/O のみです（リポジトリは特定 LLM / IDE API に依存しません）。
+週次フローはファイル I/O のみの **3 ステップ**です（リポジトリは特定 LLM / IDE API に依存しません）。
 
 ```bash
-# 1) 最新広報 PDF を data/kouhou/ へ（gitignored。失敗しても他は続行）
+# A) PDF取得 → data/kouhou/<code>_<id>.pdf + manifest.json（未変化はスキップ）
 npm run fetch:kouhou
-npm run fetch:kouhou -- --only pref-akita,city-akita,city-yokote
-npm run fetch:kouhou -- --dry-run
+npm run fetch:kouhou -- --only pref-akita,city-yokote
+npm run fetch:kouhou -- --force   # キャッシュ無視
 
-# 2) 口コミメモ（任意）を data/kuchikomi/ に置く。例は data/kuchikomi/example.txt
+# B) 内容抽出 → data/kouhou/extracted/<id>/{text.txt,content.md,images/}
+#    PDF の sha256 が同じなら再抽出スキップ。要 Python3 + pypdf
+#    埋め込み画像は pillow があると取得（python3 -m pip install 'pypdf[image]'）
+npm run extract:kouhou
 
-# 3) 下書き用チェックリスト（パス一覧を表示するだけ。外部 LLM API は呼ばない）
+# （任意）口コミメモを data/kuchikomi/ に置く。例は data/kuchikomi/example.txt
+
+# C) 下書きチェックリスト（抽出成果物のパスを表示。外部 LLM API は呼ばない）
 npm run draft -- --vol 2 --date 2026-11-01
-
-# 4) エージェント（運用ポリシー上は Cursor）に scripts/draft-prompt.md を読ませて
-#    src/content/posts/vol-2.md を書かせる → 人間が確認 → commit / push
+# エージェント（運用ポリシー上は Cursor）が scripts/draft-prompt.md に従い
+# extracted テキスト／画像を読んで src/content/posts/vol-2.md を書く → 人間確認 → commit / push
 ```
 
-- 下書き手順の正本: [`scripts/draft-prompt.md`](./scripts/draft-prompt.md)（入力 `data/kouhou/`・任意口コミ、出力 `src/content/posts/vol-N.md`）
-- **運用ポリシー:** 当面は Cursor エージェントに下書きを依頼する。コード上の必須依存ではない（将来 OpenAI / Anthropic / Gemini 等のアダプタを同じ I/O 契約で足せる）
-- PDF・取得レポートは `data/` 配下（gitignore）。巨大 PDF を commit しない
+- 手順の正本: [`scripts/draft-prompt.md`](./scripts/draft-prompt.md)（主入力は `data/kouhou/extracted/`。PDF は突合用）
+- キャッシュ: `data/kouhou/manifest.json` に `url` / `sha256` / 任意で `etag`・`last-modified`。HTTP 304 またはハッシュ一致で再ダウンロードしない
+- **運用ポリシー:** 当面は Cursor エージェントに Step C を依頼する。コード上の必須依存ではない
+- PDF・抽出物・レポートは `data/` 配下（gitignore）。巨大バイナリを commit しない
 - 抽出方針は [POLICY.md](./POLICY.md) どおり（丸写し禁止、イベント等を優先、定例手続きは載せない）
 - **人間が Markdown を確認してから** `git commit` / `git push` する（自動公開なし）
 

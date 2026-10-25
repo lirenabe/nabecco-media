@@ -22,6 +22,7 @@
     "check": "npm run build && npm run check:fast && npm run check:links:site && npm run check:a11y && npm run check:seo",
     "factcheck": "node scripts/factcheck.mjs",
     "fetch:kouhou": "node scripts/fetch-kouhou.mjs",
+    "extract:kouhou": "node scripts/extract-kouhou.mjs",
     "draft": "node scripts/draft-issue.mjs",
     "prepare": "simple-git-hooks"
   },
