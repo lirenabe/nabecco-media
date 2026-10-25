@@ -87,16 +87,17 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: 1.25rem var(--page-pad) 0;
+    padding: 1.1rem var(--page-pad) 0.85rem;
     max-width: 72rem;
     margin: 0 auto;
+    border-bottom: 1px solid var(--color-ash);
   }
 
   .site-header__home {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 0.35rem 0.65rem;
+    gap: 0.2rem 0.55rem;
     min-width: 0;
     color: var(--color-sumi);
     text-decoration: none;
@@ -107,16 +108,17 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
   }
 
   .site-header__qualifier {
-    font-size: 0.82rem;
-    letter-spacing: 0.04em;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--color-sumi-soft);
   }
 
   .site-header__brand {
     font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   .site-header__toggle {
@@ -166,14 +168,13 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
 
   .site-header__panel {
     position: absolute;
-    top: calc(100% + 0.75rem);
+    top: 100%;
     right: var(--page-pad);
     left: var(--page-pad);
     max-width: 22rem;
     margin-left: auto;
-    padding: 1rem 0 1.25rem;
-    background: var(--color-paper);
-    border-top: 1px solid var(--color-ash);
+    padding: 0.85rem 0 1.1rem;
+    background: var(--color-paper-raised);
     border-bottom: 1px solid var(--color-ash);
     z-index: 20;
   }

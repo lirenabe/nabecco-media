@@ -41,17 +41,21 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
   .latest__meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem 1.25rem;
-    margin: 0 0 1.5rem;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    margin: 0 0 1.75rem;
     font-family: var(--font-display);
-    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    line-height: 1.35;
+    font-size: clamp(1.45rem, 3vw, 1.9rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
     color: var(--color-sumi);
   }
 
   .latest__meta time {
-    font-weight: 600;
+    font-size: 0.72em;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--color-sumi-soft);
   }
 </style>
