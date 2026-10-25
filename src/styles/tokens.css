@@ -114,14 +114,12 @@ p {
   color: var(--color-sumi);
 }
 
-/* Nested item titles — quieter, closer to following prose */
+/* Item titles — pre-hierarchy-change sizing (h2 keeps the new band styles) */
 .prose h3 {
-  margin: 1.55rem 0 0.35rem;
-  font-size: 1rem;
+  margin: 2.25rem 0 0.55rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.4;
-  color: var(--color-sumi-soft);
+  line-height: 1.35;
 }
 
 .prose p {
