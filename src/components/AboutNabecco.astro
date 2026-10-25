@@ -1,0 +1,59 @@
+---
+---
+
+<section class="about" id="about" aria-labelledby="about-heading">
+  <h2 id="about-heading">なべっこについて</h2>
+  <p class="about__lead">
+    秋田の週刊ダイジェスト。公式広報と街の声を、週ごとにひとつの読みものへ。
+  </p>
+  <p>
+    火と鍋と人の輪のように、県と全市町村の一次情報と、現場の口コミをつなぎます。バナー広告は置かず、協賛ロゴとクレジットで支えるオープンソースの地域メディアです。
+  </p>
+  <p class="about__links">
+    <a href="https://github.com/lirenabe/nabecco-media/blob/main/POLICY.md">メディアポリシー</a>
+    <a href="https://github.com/lirenabe/nabecco-media/blob/main/CONTRIBUTING.md">貢献する</a>
+    <a href="https://github.com/lirenabe/nabecco-media">GitHub</a>
+  </p>
+</section>
+
+<style>
+  .about {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: var(--section-gap) var(--page-pad);
+    border-top: 1px solid var(--color-ash);
+  }
+
+  .about h2 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  }
+
+  .about__lead {
+    margin: 0 0 0.75rem;
+    color: var(--color-sumi);
+  }
+
+  .about p {
+    margin: 0 0 0.75rem;
+    color: var(--color-sumi-soft);
+    font-size: 0.95rem;
+  }
+
+  .about__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin: 1rem 0 0 !important;
+    font-size: 0.9rem;
+  }
+
+  .about__links a {
+    color: var(--color-sumi-soft);
+    text-decoration: none;
+  }
+
+  .about__links a:hover {
+    color: var(--color-kaki);
+  }
+</style>
