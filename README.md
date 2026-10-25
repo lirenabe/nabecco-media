@@ -14,6 +14,7 @@
 - [行動規範（CODE_OF_CONDUCT.md）](./CODE_OF_CONDUCT.md)
 - [セキュリティ（SECURITY.md）](./SECURITY.md)
 - [オフィシャルサポーター草案（SPONSORS.md）](./SPONSORS.md)
+- [エージェント向け契約（AGENTS.md）](./AGENTS.md)
 - [詳細 docs/](./docs/README.md)（品質チェック・デプロイ / DNS・パイプライン）
 - [記事下書き契約（scripts/draft-prompt.md）](./scripts/draft-prompt.md)
 

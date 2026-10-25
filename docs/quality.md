@@ -1,6 +1,6 @@
 # 品質チェック
 
-入口の README から移した詳細です。ローカルでは次を使います。
+ローカルと CI で使う品質チェックの詳細です。
 
 ```bash
 npm run check:fast   # textlint / design / citations / md links

@@ -39,7 +39,7 @@ items `###`. No umbrella ピックアップ. See `scripts/draft-prompt.md`.
 - Deploy / DNS: `docs/deploy-dns.md`
 - Contributing: `CONTRIBUTING.md`
 
-Do not rely on untracked local helper configs; the portable contract is the tracked files above.
+The portable contract is the tracked files above (do not require untracked local helper settings).
 
 ## Astro
 
