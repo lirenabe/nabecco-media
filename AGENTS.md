@@ -27,7 +27,7 @@ Write `src/content/posts/vol-N.md`, then stop for human review (no auto-push). S
 
 Step C basics: ですます調; full citations (no 「同上」); images via `public/images/kouhou/vol-N/`.
 
-`## 直近のイベント情報` role is locked in `scripts/draft-prompt.md`.
+Locked section roles in `scripts/draft-prompt.md`: `## 直近のイベント情報`, `## 今週のあきた`. `## ピックアップ` is still TBD.
 
 ## Documentation
 

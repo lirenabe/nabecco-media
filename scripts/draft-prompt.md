@@ -64,7 +64,16 @@ description: （任意・短い要約）
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
 - Extract images may illustrate an item when useful
 
-#### `## ピックアップ` / `## 今週のあきた`
+#### `## 今週のあきた` (locked)
+
+- **Past only:** what already happened / recent buzz (not the future-events list)
+- **Window:** roughly **within 1 week** before run / issue time
+- **No special cap** on how many topics may appear when they qualify
+- **No 短報:** each topic is a **short article**, not a skimpy bullet digest
+- **Length:** about **5–10 phone-screen lines** per topic
+- Full citation every topic; extract images when useful (same global voice rules)
+
+#### `## ピックアップ`
 
 Role details **TBD** (operator locks later). Until then use POLICY + hard rules below; do not invent section rules.
 
@@ -81,6 +90,7 @@ Role details **TBD** (operator locks later). Until then use POLICY + hard rules 
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first when crowded; 3–5 lines of charm OK
+- **`## 今週のあきた`:** past only; ~1-week window; no item-count cap; short articles (5–10 lines), not 短報
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft
