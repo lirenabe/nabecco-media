@@ -5,6 +5,7 @@
   "aliveStatusCodes": [200, 206, 301, 302, 303, 307, 308],
   "ignorePatterns": [
     { "pattern": "^https?://localhost(:\\d+)?(/|$)" },
-    { "pattern": "^https?://127\\.0\\.0\\.1(:\\d+)?(/|$)" }
+    { "pattern": "^https?://127\\.0\\.0\\.1(:\\d+)?(/|$)" },
+    { "pattern": "^/images/" }
   ]
 }
