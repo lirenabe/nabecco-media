@@ -46,9 +46,20 @@ npm run preview  # ビルド結果のプレビュー
 ## 記事の追加
 
 1. `src/content/posts/vol-N.md` を追加
-2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）
-3. 本文を Markdown で書く（出典付き・丸写し禁止）
-4. 人間確認のうえ commit / push
+2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。`title` は日付号（例: `2026/10/25号`）
+3. 本文は次の骨子（細部は今後調整）:
+
+```markdown
+# {日付}号
+
+## ピックアップ
+
+## 直近のイベント情報
+
+## 今週のあきた
+```
+
+4. 出典付き・丸写し禁止。人間確認のうえ commit / push
 
 ## スポンサー概要
 

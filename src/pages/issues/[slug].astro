@@ -21,18 +21,14 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="issue">
+  <article class="issue" aria-label={post.data.title}>
     <p class="issue__crumb">
       <a href="/">なべっこ</a> / <a href="/issues/">バックナンバー</a>
     </p>
-    <header class="issue__header">
-      <p class="issue__meta">
-        <span>第{post.data.vol}号</span>
-        <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
-      </p>
-      <h1>{post.data.title}</h1>
-      {post.data.description && <p class="issue__desc">{post.data.description}</p>}
-    </header>
+    <p class="issue__meta">
+      <span>第{post.data.vol}号</span>
+      <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
+    </p>
     <div class="prose">
       <Content />
     </div>
@@ -61,26 +57,12 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     color: var(--color-kaki);
   }
 
-  .issue__header {
-    margin-bottom: 1.75rem;
-  }
-
   .issue__meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
     font-size: 0.9rem;
-    color: var(--color-sumi-soft);
-  }
-
-  .issue__header h1 {
-    margin: 0;
-    font-size: clamp(1.7rem, 3.5vw, 2.25rem);
-  }
-
-  .issue__desc {
-    margin: 0.75rem 0 0;
     color: var(--color-sumi-soft);
   }
 </style>

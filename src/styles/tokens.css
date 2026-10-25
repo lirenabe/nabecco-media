@@ -71,6 +71,11 @@ p {
   outline-offset: 3px;
 }
 
+.prose h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.7rem, 3.5vw, 2.25rem);
+}
+
 .prose h2,
 .prose h3 {
   margin: 2rem 0 0.65rem;

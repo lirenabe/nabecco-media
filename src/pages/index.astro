@@ -20,19 +20,11 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
 ---
 
 <BaseLayout title="なべっこ" description={latest.data.description}>
-  <article class="latest" id="latest" aria-labelledby="latest-heading">
-    <header class="latest__header">
-      <p class="latest__meta">
-        <span>第{latest.data.vol}号</span>
-        <time datetime={latest.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
-      </p>
-      <h1 id="latest-heading">{latest.data.title}</h1>
-      {
-        latest.data.description && (
-          <p class="latest__desc">{latest.data.description}</p>
-        )
-      }
-    </header>
+  <article class="latest" id="latest" aria-label={latest.data.title}>
+    <p class="latest__meta">
+      <span>第{latest.data.vol}号</span>
+      <time datetime={latest.data.pubDate.toISOString().slice(0, 10)}>{dateLabel}</time>
+    </p>
     <div class="prose">
       <Content />
     </div>
@@ -46,26 +38,12 @@ const dateLabel = new Intl.DateTimeFormat('ja-JP', {
     padding: clamp(2rem, 5vw, 2.75rem) var(--page-pad) var(--section-gap);
   }
 
-  .latest__header {
-    margin-bottom: 1.75rem;
-  }
-
   .latest__meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem 1.25rem;
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
     font-size: 0.9rem;
-    color: var(--color-sumi-soft);
-  }
-
-  .latest__header h1 {
-    margin: 0;
-    font-size: clamp(1.7rem, 3.5vw, 2.25rem);
-  }
-
-  .latest__desc {
-    margin: 0.75rem 0 0;
     color: var(--color-sumi-soft);
   }
 </style>
