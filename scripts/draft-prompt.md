@@ -136,9 +136,12 @@ Heading map (locked):
 - **Each topic:** `### {題名}` then about **5–10 phone-screen lines**
 - Full citation every topic; extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
-- **口コミ (optional):** may seed or color topics here (past buzz / recent talk). Frame as voice — e.g. 「〜という投稿があります」— never assert rumor as fact. If a pickup already used the same tip, do not duplicate
-- **口コミ citation:** full every time, e.g. `> 出典: 口コミ（Web）` + the post/page URL (no 「同上」). Prefer URL from the kuchikomi line; omit the tip if there is no usable source
-- Do **not** invent dates/places from口コミ; do not narrate process meta（「口コミファイルから選びました」等）
+- **口コミ (optional):** may seed or color topics here (past buzz / recent talk)
+- Frame as voice (e.g. 「〜という投稿があります」); never assert rumor as fact
+- If a pickup already used the same tip, do not duplicate
+- **口コミ citation:** full every time — `> 出典: 口コミ（Web）` + URL (no 「同上」)
+- Prefer URL from the kuchikomi line; omit the tip if there is no usable source
+- Do **not** invent dates/places from口コミ; no process meta in body
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
