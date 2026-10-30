@@ -141,7 +141,7 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 
 #### 秋田まるごと食の祭典2026
 
-〜11月3日 10:00〜16:00、秋田ふるさと村。テーマは「秋田の美酒と日本のうまいもの」。入場無料で、地酒やクラフトビール、地元農産物のドリンクなどが並びます。菊まつりと同じ会場なので、花と食を一日で組み立てやすいのではないでしょうか。  
+〜11月3日 10:00〜16:00、秋田ふるさと村。テーマは「秋田の美酒と日本のうまいもの」。入場無料で、地酒やクラフトビール、地元農産物のドリンクなどが並びます。菊まつりと同じ会場なので、花と食を一日で組み立てやすい催しです。  
 問い合わせ: 横手市観光協会（0182-33-7111）
 
 > 出典: 横手市「市報よこて」2026年10月号 イベントカレンダー  
@@ -161,7 +161,7 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 
 #### 三種町民祭の余韻 — 20周年の舞台裏
 
-10月17日、琴丘総合体育館で三種町町民祭2026が開かれました。誕生20周年の特別企画として、秋田県警察音楽隊と三種中学校吹奏楽部の合同演奏会、なだぎ武さんらによるお笑いライブなどが組まれ、こどもストリートや移動動物園、種の市も同時ににぎわったと11月号が振り返っています。公式キャラクターの最終投票も会場で実施され、発表は来年2月予定。夏のみたねフェス以来の大きな集まりの余韻が、いまの広報面に残っています。
+10月17日、琴丘総合体育館で三種町町民祭2026が開かれました。誕生20周年の特別企画として、秋田県警察音楽隊と三種中学校吹奏楽部の合同演奏会、なだぎ武さんらによるお笑いライブなどが組まれ、こどもストリートや移動動物園、種の市も同時ににぎわったと11月号が振り返っています。公式キャラクターの最終投票も会場で実施され、発表は来年2月予定。夏のみたねフェス以来の大きな集まりの余韻が、いまの町の話題に残っています。
 
 > 出典: 三種町「広報みたね」2026年11月号 No.248（三種町町民祭2026）  
 > https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
@@ -182,7 +182,7 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 > 出典: 井川町「広報いかわ」2026年11月号 Vol.840（かずりん活動報告会）  
 > https://www.town.ikawa.akita.jp/site/koho/4133.html
 
-手形に今月オープンした「ちゅんちゅん」では、酒田系に近いワンタンラーメンと、炭火の香りのチャーシューが話題です。
+手形に今月オープンした「ちゅんちゅん」では、酒田系に近いワンタンラーメンと、炭火の香りのチャーシューが並びます。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfA4ozDE9_j" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -196,7 +196,7 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@akita_gurumemania/post/DfA4ozDE9_j
 
-山王の陸王では、大盛り・豚増しの豚らーめんが、乳化スープとともに残っています。
+山王の陸王では、大盛り・豚増しの豚らーめんが、乳化スープで出てきます。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfCNP5vI2tK" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -210,7 +210,7 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@assari.mochiko/post/DfCNP5vI2tK
 
-秋田に初雪が降り、景色があっという間に白くなりました。
+秋田に初雪が降り、景色があっという間に白くなった、という声が残っています。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfBjqEWk2le?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfBjqEWk2le" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfBjqEWk2le?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
