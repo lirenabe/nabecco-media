@@ -131,9 +131,9 @@ Heading map (locked):
 - Place **1–3** such blocks **before** `## 直近のイベント情報`
 - **Candidate pool:** topics that would otherwise go in 直近 or 今週のあきた, with enough content for **10+ lines** of prose
 - **Select 1–3** from candidates; **remove** them from 直近のイベント情報 and 今週のあきた (no duplicate)
-- **Baseline criteria:** (a) eye-catching title, (b) interesting topic
-- Local extract photos may inform selection only — **do not embed** and **do not** feed them to image generators
-- **AI visuals (locked):** for each pickup, generate an image from **topic text only** per [`docs/ai-generated-images.md`](../docs/ai-generated-images.md). Save under `public/images/generated/vol-N/`. Burn a short corner watermark (`AI生成`, bottom-right or bottom-left). Alt may say AI生成. Do **not** add a long prose disclosure under the image. No realistic identifiable people. Follow the image tool’s commercial/editorial ToS. Keep `draft: true` for human review
+- **Baseline criteria (locked):** (a) eye-catching title, (b) interesting topic — **only these two**
+- **No image-as-selection:** do **not** pick (or skip) a topic because a 広報 extract photo exists or is missing. Photos are never a selection gate
+- **AI visuals (after selection):** for each chosen pickup, generate from **topic text only** (`docs/ai-generated-images.md`). Save under `public/images/generated/vol-N/`. Short corner watermark (`AI生成`). Alt may say AI生成. No long prose disclosure. No realistic identifiable people. Follow the image tool’s ToS. Keep `draft: true`
 - Body: media 読み物 and ですます. Full citation. **10+ lines** of prose (no 広報写真). Not a PR digest.
 
 #### `## 直近のイベント情報` (locked)
@@ -207,7 +207,7 @@ Heading map (locked):
 - **AI pickup images:** topic text only. No realistic identifiable people. Use ToS-compliant tooling. Short corner watermark (`AI生成`); no long body note. Files under `public/images/generated/vol-N/`. Full rules: `docs/ai-generated-images.md`
 - New issues ship with **`draft: true`**; clear the flag only when intentionally publishing
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
-- Same: 10+ lines of readable prose. Remove selected topics from the other two sections. Embed AI images (not 広報 photos) when a visual is needed
+- Same: select 1–3 by (a) title + (b) topic only — **never** by image availability. 10+ lines of prose. Remove from the other two sections. Add AI images after selection (not 広報 photos)
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; `###` 県北→県央→県南; theme sort then **date descending**
 - Same section: info-note under h2; `####` items; `問い合わせ: …` house style
 - Same section: 3–5 charm lines OK; no pickup duplicates
