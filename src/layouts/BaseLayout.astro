@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import ThreadsEmbedScript from '../components/ThreadsEmbedScript.astro';
 import '../styles/tokens.css';
 
 interface Props {
@@ -56,6 +57,8 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
       <slot />
     </main>
     <Footer />
+    {/* After blockquotes so polarisOnDOMReady always finds .text-post-media */}
+    <ThreadsEmbedScript />
   </body>
 </html>
 

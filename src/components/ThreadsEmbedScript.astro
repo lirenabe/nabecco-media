@@ -1,0 +1,11 @@
+---
+/**
+ * Official Threads embed runtime (once per page, after article HTML).
+ * Pair with oEmbed <blockquote class="text-post-media" …> in MD/HTML.
+ * embed.js replaces those with iframes to threads.com/.../embed/.
+ * @see https://developers.facebook.com/docs/threads/tools-and-resources/embed-a-threads-post/
+ */
+---
+
+{/* is:inline: do not bundle/defer via Vite; load after blockquotes exist in the DOM */}
+<script is:inline async src="https://www.threads.com/embed.js"></script>

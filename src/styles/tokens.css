@@ -225,3 +225,35 @@ p {
 .prose .info-note p {
   margin: 0;
 }
+
+/* Official Threads oEmbed host — do not restyle as 出典 quotes */
+.prose .threads-embed {
+  margin: 1.1rem 0 1.35rem;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Placeholder blockquote only (embed.js moves class onto the iframe) */
+.prose .threads-embed > blockquote.text-post-media {
+  margin: 0 auto;
+  padding: 0;
+  border-left: none;
+  color: inherit;
+  font-size: inherit;
+  max-width: 100%;
+}
+
+/* Once embed.js inserts the iframe, hide the "View on Threads" placeholder */
+.prose .threads-embed:has(iframe) > blockquote {
+  display: none !important;
+}
+
+/* Hydrated card */
+.prose .threads-embed > iframe.text-post-media {
+  display: block;
+  width: 100%;
+  max-width: 658px;
+  margin-inline: auto;
+  border: 0;
+  background: transparent;
+}
