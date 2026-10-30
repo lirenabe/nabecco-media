@@ -228,9 +228,9 @@ Next (operator / any agent — Cursor by current policy):
   1. Read ${PROMPT_REL}, POLICY.md, docs/kuchikomi.md, docs/threads-citation-rules.md
   2. If口コミ dump exists: npm run extract:kuchikomi -- --date ${opts.date}
   3. WAIT if posts.json missing (or operator says skip). Do not fetch threads.com post pages
-  4. Draft from kouhou extracted + kuchikomi posts.json (one post → one short subsection; paraphrase + permalink; optional oEmbed); write ${outRel}
+  4. Draft from kouhou extracted text + kuchikomi posts.json (do NOT copy/embed data/kouhou/extracted/.../images into the article or public/images/kouhou); write ${outRel} with draft: true
   5. npm run prose-review -- --vol ${opts.vol}  (scripts/prose-review-prompt.md — media voice / meta / region h3 / 1-sentence口コミ)
-  6. Human review → npm run check → git commit / push (never auto-publish)
+  6. Human review → clear draft flag only to publish → npm run check → git commit / push (never auto-publish)
 `);
 }
 

@@ -1,35 +1,55 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublishedPosts, sortPostsByDateDesc } from '../lib/posts';
 
-const posts = await getCollection('posts');
-const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sorted = sortPostsByDateDesc(await getPublishedPosts());
 const latest = sorted[0];
 
-if (!latest) {
-  throw new Error('No posts found in content collection "posts".');
+const siteDescription =
+  '秋田県の公式広報と街の声を週ごとに要約する地域メディア、なべっこ。';
+
+let Content = null;
+let dateLabel = '';
+let dateIso = '';
+
+if (latest) {
+  ({ Content } = await render(latest));
+  dateLabel = new Intl.DateTimeFormat('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(latest.data.pubDate);
+  dateIso = latest.data.pubDate.toISOString().slice(0, 10);
 }
-
-const { Content } = await render(latest);
-
-const dateLabel = new Intl.DateTimeFormat('ja-JP', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}).format(latest.data.pubDate);
-
-const dateIso = latest.data.pubDate.toISOString().slice(0, 10);
 ---
 
-<BaseLayout title="なべっこ" description={latest.data.description}>
-  <article class="latest" id="latest" aria-label={`第${latest.data.vol}号`}>
-    <div class="prose">
-      <Content />
-    </div>
-    <p class="issue-date">
-      発行日 <time datetime={dateIso}>{dateLabel}</time>
-    </p>
-  </article>
+<BaseLayout
+  title="なべっこ"
+  description={latest?.data.description ?? siteDescription}
+>
+  {
+    latest && Content ? (
+      <article class="latest" id="latest" aria-label={`第${latest.data.vol}号`}>
+        <div class="prose">
+          <Content />
+        </div>
+        <p class="issue-date">
+          発行日 <time datetime={dateIso}>{dateLabel}</time>
+        </p>
+      </article>
+    ) : (
+      <section class="latest latest--empty" id="latest" aria-label="最新号">
+        <h1 class="latest__empty-title">なべっこ</h1>
+        <p class="latest__empty-lead">
+          現在、公開中の号はありません。確認が終わった号から順に掲載します。
+        </p>
+        <p class="latest__empty-note">
+          バックナンバーは <a href="/issues/">一覧</a> から確認できます。
+        </p>
+      </section>
+    )
+  }
 </BaseLayout>
 
 <style>
@@ -39,6 +59,40 @@ const dateIso = latest.data.pubDate.toISOString().slice(0, 10);
     padding: clamp(1.5rem, 4vw, 2.5rem) var(--page-pad) var(--section-gap);
     overflow-wrap: anywhere;
     min-width: 0;
+  }
+
+  .latest--empty {
+    padding-top: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .latest__empty-title {
+    margin: 0 0 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .latest__empty-lead {
+    margin: 0 0 1rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-sumi);
+  }
+
+  .latest__empty-note {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-sumi-soft);
+  }
+
+  .latest__empty-note a {
+    color: var(--color-kaki-deep);
+    text-decoration: none;
+  }
+
+  .latest__empty-note a:hover {
+    color: var(--color-kaki);
   }
 
   .issue-date {

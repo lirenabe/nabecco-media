@@ -7,7 +7,7 @@ import { AxeBuilder } from '@axe-core/playwright';
 import { startPreview } from './preview.mjs';
 
 const BASE = 'http://127.0.0.1:4323';
-const ROUTES = ['/', '/issues/', '/issues/vol-1/'];
+const ROUTES = ['/', '/issues/'];
 const VIEWPORTS = [
   { name: 'mobile', width: 375, height: 812 },
   { name: 'desktop', width: 1280, height: 800 },

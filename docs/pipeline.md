@@ -40,6 +40,29 @@ npm run prose-review -- --vol N
 - **人間が Markdown を確認してから** `git commit` / `git push` する（自動公開なし）
 - 当面の運用では Step C をエージェントへ依頼することがあるが、**コード上の必須依存ではない**
 
+## 公開ゲート（`draft`）
+
+確認中の号が `main` に載っても、本番サイトに出さないための仕組みです。
+
+1. 新規号の Frontmatter に **`draft: true`** を付ける（雛形どおり）
+2. 本番ビルド（`astro build` / GitHub Pages）では `draft: true` の号を除外する（トップ・バックナンバー・`/issues/[slug]/`）
+3. ローカル `npm run dev` では下書きもプレビューできる
+4. **公開するとき:** `draft: false` にするか `draft` 行を削除 → 人間確認 → merge
+
+公開中の号をいったん下ろす場合は、該当 Markdown を削除するか再び `draft: true` にする。
+
+## 広報画像（抽出は残す・記事には載せない）
+
+Step B はこれまでどおり `data/kouhou/extracted/<id>/images/` に写真を書き出します（gitignore・ローカルのみ）。
+
+Step C と記事では、次のとおり扱います。
+
+- 抽出写真を `public/images/kouhou/` へコピーしない
+- Markdown に `![…](/images/kouhou/…)` を書かない
+- 題材選びの参考にローカル画像を見るのは可。本番・リポジトリには載せない
+
+権利確認が済むまで、この運用を崩さないでください。
+
 ## municipalities.yaml（抜粋）
 
 ```yaml

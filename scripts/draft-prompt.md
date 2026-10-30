@@ -26,7 +26,7 @@ Use this file for **Step C — 記事下書き**. The runtime dependency is **fi
 
 | Role | Path |
 | :--- | :--- |
-| Input — extracted text/images (**primary**) | `data/kouhou/extracted/<id>/` (`text.txt`, `content.md`, `images/`, `meta.json`) |
+| Input — extracted text (**primary**; images stay on disk only) | `data/kouhou/extracted/<id>/` (`text.txt`, `content.md`, `images/`, `meta.json`) — **do not** copy `images/` into the article or `public/` |
 | Input — manifest | `data/kouhou/manifest.json` (url, sha256, paths) |
 | Input — source rules | `sources/municipalities.yaml` |
 | Input — optional口コミ | **`data/kuchikomi/extracted/{pubDate}/posts.json`** (+ `posts.md`) from `npm run extract:kuchikomi`. Raw HTML dump is extract input only. Optional `{pubDate}.txt` URL index |
@@ -45,7 +45,11 @@ npm run draft -- --vol N --date YYYY-MM-DD
 
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
-3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
+3. Skim **extracted** `text.txt` / `content.md` across municipalities.
+   Local `images/` under `data/kouhou/extracted/` may help judge a topic.
+   **Never** embed or copy those images into the article or `public/images/kouhou/`.
+   Choose topics worth a media piece — not every calendar line.
+   Open a raw PDF only to verify an unclear date/name.
 3a. **口コミ（Threads）2 stages — like kouhou extract→draft:**
    - **B′ extract:** operator drops human-exported HTML at `data/kuchikomi/{pubDate}/` or `{pubDate}.threads.html`.
      Run `npm run extract:kuchikomi -- --date {pubDate}` → `data/kuchikomi/extracted/{pubDate}/posts.json` + `posts.md`.
@@ -83,6 +87,7 @@ title: 第N号 YYYY年M月D日
 pubDate: YYYY-MM-DD
 vol: N
 description: （任意・短い要約）
+draft: true
 ---
 
 # {生成したピックアップ題名1}
@@ -104,6 +109,8 @@ description: （任意・短い要約）
 ### {各トピック題名}
 ```
 
+Frontmatter `draft: true` のままでは本番（`astro build` / GitHub Pages）に出ません。公開するときは `draft: false` にするか行を削除し、人間確認のうえ commit / merge します。ローカル `astro dev` では下書きもプレビューできます。詳細は [`docs/pipeline.md`](../docs/pipeline.md) の「公開ゲート」を参照。
+
 Heading map (locked):
 
 | Level | Use |
@@ -121,12 +128,11 @@ Heading map (locked):
 - First selected topic: `# {生成タイトル}` (sole body h1)
 - Further pickups (if any): `## {生成タイトル}`
 - Place **1–3** such blocks **before** `## 直近のイベント情報`
-- **Candidate pool:** topics that would otherwise go in 直近のイベント情報 or 今週のあきた, and that meet **both**:
-  - a usable extract image
-  - content rich enough for **10+ lines** of prose
+- **Candidate pool:** topics that would otherwise go in 直近 or 今週のあきた, with enough content for **10+ lines** of prose
 - **Select 1–3** from candidates; **remove** them from 直近のイベント情報 and 今週のあきた (no duplicate)
-- **Baseline criteria** when choosing among candidates: (a) eye-catching title, (b) eye-catching image, (c) interesting topic
-- Body: media 読み物 and ですます. Full citation. **10+ lines** plus image. Not a PR digest.
+- **Baseline criteria:** (a) eye-catching title, (b) interesting topic
+- Local extract photos may inform selection only — **do not embed**
+- Body: media 読み物 and ですます. Full citation. **10+ lines** of prose (no 広報写真). Not a PR digest.
 
 #### `## 直近のイベント情報` (locked)
 
@@ -140,7 +146,7 @@ Heading map (locked):
 - **Headings:** `### {県北|県央|県南}` then `#### {題名}` for each event
 - **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
-- Extract images may illustrate an item when useful
+- **Do not** embed 広報 extract photos in this section
 - **Info note (required):** immediately under the `##` heading, before any lead or items, insert:
 
 ```html
@@ -167,7 +173,7 @@ Heading map (locked):
 - **Exclude** topics already used as ピックアップ in this issue
 - **広報 item:** `#### {題名}` then about **5–10 phone-screen lines**; full citation; no 短報
 - **口コミ:** under the region `###` — **1 media sentence** + oEmbed; citation per embed. Not embed-only stacks; not long summary articles
-- Extract images when useful (same global voice rules)
+- **Do not** embed 広報 extract photos in this section
 - **No 問い合わせ / contact lines** in this section
 - **口コミ source:** `extracted/.../posts.json` only
 - Never assert rumor as fact; never invent dates/places
@@ -175,10 +181,11 @@ Heading map (locked):
 - Omit posts with no usable permalink / text; no process meta in body
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
-6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
+6. **Do not** copy or embed 広報 extract photos into `public/images/kouhou/` or the article until rights are cleared.
+   Keep extracts under `data/kouhou/extracted/` (gitignore). Body = text + citations only.
 7. **Prose review loop** (not textlint): `npm run prose-review -- --vol N` then `scripts/prose-review-prompt.md`.
    Fix voice / process-meta / region h3 / 口コミ1文 / citations. Re-run until clean.
-8. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
+8. Stop for **human review**. Keep `draft: true` until an operator explicitly clears it for publish.
 
 ## Hard rules
 
@@ -192,9 +199,10 @@ Heading map (locked):
 - No丸写し of 広報 text
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
-- **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
+- **Do not embed 広報 extract photos** until rights are cleared (never link `data/`; do not commit under `public/images/kouhou/`)
+- New issues ship with **`draft: true`**; clear the flag only when intentionally publishing
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
-- Same: image + 10+ lines; remove selected topics from the other two sections
+- Same: 10+ lines of readable prose; remove selected topics from the other two sections（広報写真の埋め込みは権利確認後までしない）
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; `###` 県北→県央→県南; theme sort then **date descending**
 - Same section: info-note under h2; `####` items; `問い合わせ: …` house style
 - Same section: 3–5 charm lines OK; no pickup duplicates

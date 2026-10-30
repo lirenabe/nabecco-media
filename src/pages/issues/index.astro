@@ -1,10 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackIssueList from '../../components/BackIssueList.astro';
+import { getPublishedPosts, sortPostsByDateDesc } from '../../lib/posts';
 
-const posts = await getCollection('posts');
-const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sorted = sortPostsByDateDesc(await getPublishedPosts());
 const latest = sorted[0];
 
 const issues = sorted.map((post) => ({
