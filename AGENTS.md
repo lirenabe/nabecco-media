@@ -1,3 +1,11 @@
+## Pull requests (required language)
+
+<!-- AI: PRのタイトルと本文は必ず日本語。英語禁止。 -->
+
+- **PR title and body must be Japanese** (English titles/bodies are not accepted).
+- Technical terms (GA4, Astro, workflow names, env var names) may stay in English inside Japanese sentences.
+- Prefer the sections in `.github/PULL_REQUEST_TEMPLATE.md`（要約 / 確認）.
+
 ## Development
 
 When starting the dev server, use background mode:
