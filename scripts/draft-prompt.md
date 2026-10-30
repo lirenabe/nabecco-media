@@ -47,7 +47,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
 3b. Optional: skim `data/kuchikomi/*.txt` as street-voice color, not verified fact.
-   Prefer lines with a URL. Skip defamation, doxxing, and promo plugs (POLICY). See `docs/kuchikomi.md`.
+   Each line is a **URL** (optional short note OK). Skip defamation, doxxing, and promo plugs (POLICY). See `docs/kuchikomi.md`.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
    Layout shows trailing gray `発行日 {pubDate}` at the article end.
