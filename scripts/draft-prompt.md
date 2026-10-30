@@ -64,15 +64,14 @@ npm run draft -- --vol N --date YYYY-MM-DD
      A visit scene may stay if the food/place is the point.
    - Prefer dense 交差型 groups; quality over coverage; **place口コミ embeds inside the same groups as related 広報 tips**.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
-   **Shape (grouping + embeds — decided):**
-   - Abstract axes: **地域** (県北／県央／県南; optional 沿岸／内陸) and **テーマ** (フード／イベント／季節／暮らし／…).
-   - **交差型 first** (e.g. `### 県南のフード`). Thin cross → region-only or theme-only fallback.
-   - **Same groups for 広報 +口コミ** in `## 今週のあきた` (and region/theme groups in 直近). No silo stacks.
-   - Within group: 直近 = date **descending**; 今週のあきた = time **ascending**.
-   - 口コミ body: optional **1–2 sentence** lead-in + **official oEmbed column** (embeds carry the post).
-   - Do **not** force summary-article paraphrase of each post.
-   - Ban process-meta / “we summarized Threads” voice.
-   - Grouping detail lives in vault `.cursor` heuristics; **embed markup stays in the repo article**.
+   **Shape (region groups + embeds — decided):**
+   - `###` headings are **地域のみ**: 県北／県央／県南 — always in that order. **No theme in h3.**
+   - **テーマ** (フード／イベント／季節／暮らし／…) has **no heading**; it only sorts items inside a region.
+   - Within the same theme: 直近 = date **descending**; 今週のあきた = time **ascending**.
+   - **Mix 広報 +口コミ** in the same region `###`. No silo stacks.
+   - 広報: `####` tip titles. 口コミ: optional short lead + **oEmbed column** under the region `###`.
+   - Do **not** force summary-article paraphrase of each post. Ban process-meta.
+   - Grouping detail in vault `.cursor`; **embed markup in the repo article**.
    - Citation per embed: `> 出典: 口コミ（Threads）` + `permalink`. Never paste dump HTML / `_files` media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
@@ -111,8 +110,8 @@ Heading map (locked):
 | :--- | :--- |
 | `#` (h1) | **Only** the first pickup title |
 | `##` (h2) | Later pickups (if any); `直近のイベント情報`; `今週のあきた` |
-| `###` (h3) | Region/theme **group** under 直近 / 今週のあきた（交差型推奨） |
-| `####` (h4) | Each 広報 tip/event **inside** a group |
+| `###` (h3) | **地域のみ** under 直近 / 今週のあきた — always **県北 → 県央 → 県南** |
+| `####` (h4) | Each 広報 tip/event inside a region;口コミ may be embeds under `###` with no extra heading |
 
 ### Section roles
 
@@ -133,10 +132,12 @@ Heading map (locked):
 
 - **Future only:** upcoming from the issue `pubDate` (skip ended / undated)
 - **Horizon:** about **3 months** ahead may be included
-- **Grouping:** same region/theme axes as口コミ（交差型推奨; 片軸フォールバック）. **Mix 広報 events into those groups** — do not keep a flat silo of ungrouped `###` tips
-- **Sort within each group:** by event date **descending** (later dates first)
+- **Grouping:** `###` is **地域のみ**（県北／県央／県南）. **Never put theme in the h3.** Theme only orders items inside the region.
+- **Region order:** always **県北 → 県央 → 県南** (skip empty).
+- **Mix** 広報 events into those region groups — no flat ungrouped tip silo.
+- **Sort within each region:** by **theme** (fixed order; no theme heading), then by event date **descending** within the same theme.
 - **Exclude** topics already used as ピックアップ in this issue
-- **Group heading:** `### {地域のテーマ or 片軸}` then items as `#### {題名}`
+- **Headings:** `### {県北|県央|県南}` then `#### {題名}` for each event
 - **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
 - Extract images may illustrate an item when useful
@@ -159,12 +160,13 @@ Heading map (locked):
 
 - **Past only:** what already happened / recent buzz (not the future-events list)
 - **Window:** roughly **within 1 week** before run / issue time
-- **Grouping:** same region/theme axes（交差型推奨; 片軸フォールバック）. **Mix 広報-extracted past tips and口コミ into the same groups** — no separate kouhou-only then口コミ-only silos
-- **Sort within each group:** by time **ascending** (older → newer)
+- **Grouping:** `###` is **地域のみ**（県北／県央／県南）. **Never put theme in the h3.** Theme only orders items inside the region.
+- **Region order:** always **県北 → 県央 → 県南** (skip empty).
+- **Mix** 広報-extracted past tips and口コミ into the **same region** — no kouhou-then-口コミ silos.
+- **Sort within each region:** by **theme** (no theme heading), then by time **ascending** within the same theme.
 - **Exclude** topics already used as ピックアップ in this issue
-- **Group heading:** `### {地域のテーマ or 片軸}`
-- **広報 item inside a group:** `#### {題名}` then about **5–10 phone-screen lines**; full citation; no 短報
-- **口コミ inside a group:** optional 1–2 sentence lead + **oEmbed column** (no forced summary articles); citation per embed
+- **広報 item:** `#### {題名}` then about **5–10 phone-screen lines**; full citation; no 短報
+- **口コミ:** may sit under the region `###` as **oEmbed column** (optional short lead; no forced summary articles); citation per embed
 - Extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section
 - **口コミ source:** `extracted/.../posts.json` only
@@ -191,11 +193,11 @@ Heading map (locked):
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
 - Same: image + 10+ lines; remove selected topics from the other two sections
-- **`## 直近のイベント情報`:** future only; ~3-month horizon; region/theme groups; **sort descending within group**
-- Same section: info-note under h2; `###` group + `####` items; `問い合わせ: …` house style
-- Same section: 3–5 charm lines OK; no pickup duplicates; mix axes with口コミ model
-- **`## 今週のあきた`:** past only; ~1-week window; **mix 広報 +口コミ** in same region/theme groups
-- Same section: `###` group + `####` 広報 tips;口コミ as embeds; **sort ascending within group**
+- **`## 直近のイベント情報`:** future only; ~3-month horizon; `###` 県北→県央→県南; theme sort then **date descending**
+- Same section: info-note under h2; `####` items; `問い合わせ: …` house style
+- Same section: 3–5 charm lines OK; no pickup duplicates
+- **`## 今週のあきた`:** past only; ~1-week window; same region `###` order; **mix 広報 +口コミ**
+- Same section: `####` 広報 tips;口コミ embeds under region; theme sort then **time ascending**
 - Same section: no 問い合わせ; no pickup duplicates
 - **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo; vault grouping heuristics
 - Same: `出典: 口コミ（Threads）` + permalink per embed; no forced summary-article

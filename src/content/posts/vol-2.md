@@ -39,25 +39,58 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 
 連休明けの庭園や食の会場に加え、美術館・アリーナ・新しい遊び場の予定が11月に並びます。
 
-### 県南のフード
+### 県北
 
-#### 秋田まるごと食の祭典2026
+#### 住まいの終活セミナー
 
-〜11月3日 10:00〜16:00、秋田ふるさと村。テーマは「秋田の美酒と日本のうまいもの」。入場無料で、地酒やクラフトビール、地元農産物のドリンクなどが並びます。菊まつりと同じ会場なので、花と食を一日で組み立てやすいのではないでしょうか。  
-問い合わせ: 横手市観光協会（0182-33-7111）
+12月6日 10:00〜11:00、山本公民館。空き家や実家の管理に悩む人向けの無料セミナーです。申し込み方法は町ホームページを確認してください。  
+問い合わせ: 企画政策課 企画係（0185-85-4817）
 
-> 出典: 横手市「市報よこて」2026年10月号 イベントカレンダー  
-> https://www.city.yokote.lg.jp/shisei/1001175/1001439/1013178.html
+> 出典: 三種町「広報みたね」2026年11月号 No.248  
+> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
 
-#### 第25回平鹿りんご味覚まつり
+#### WAKUWAKUおたのしみ市（夜市あり）
 
-11月3日 9:00〜12:00、ときめき交流センターゆっぷる。リンゴや野菜の直売、リンゴ狩り体験など。参加料500円、各回25人（計6回）。短い午前の枠なので、連休最終日の寄り道に向きます。  
-問い合わせ: 平鹿地域課（0182-24-1118）
+11月28日 18:00〜21:30（夜市）、11月29日 10:00〜15:30、八竜公民館（環境改善センター）。フリマやハンドメイド、キッチンカーに加え、バンド演奏やファッションショーもあります。次回は12月19日・20日にイオンタウン能代でのクリスマスマーケットが続きます。  
+問い合わせ: WAKUWAKUおたのしみ市実行委員 佐々木（090-1373-5005）
 
-> 出典: 横手市「市報よこて」2026年10月号  
-> https://www.city.yokote.lg.jp/shisei/1001175/1001439/1013178.html
+> 出典: 三種町「広報みたね」2026年11月号 No.248  
+> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
 
-### 県南のイベント
+#### 第14回 山本公民館まつり
+
+11月22日 9:30〜12:30、山本公民館。展示や発表が並ぶ地域のまつりで、「みんなが元気！心ふれあう公民館」がテーマです。午前のうちに回れる長さなので、週末の前半に差し込みやすい催しです。  
+問い合わせ: 山本公民館（0185-83-2353）
+
+> 出典: 三種町「広報みたね」2026年11月号 No.248  
+> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
+
+#### 八郎湖フォーラム
+
+11月21日 13:00〜17:00、男鹿市民文化会館。「八郎湖のアオコ抑制ー生き物による水質浄化ー」などの話が組まれています。湖のいまを聞く午後として、予定のひとつに置ける催しです。  
+問い合わせ: 美しい八郎湖を未来に残す協議会（090-7072-5680）
+
+> 出典: 三種町「広報みたね」2026年11月号 No.248  
+> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
+
+#### 日本犬保存会展覧会
+
+11月1日 9時開会、秋田自動車道・釈迦内パーキングエリア内。柴犬や秋田犬など日本犬が集まる審査会で、見学は無料です。車移動の合間に立ち寄れる、少し珍しい一日の使い方です。  
+問い合わせ: （公社）日本犬保存会秋田支部（0184-22-8569）
+
+> 出典: 大館市広報  
+> https://www.city.odate.lg.jp/city/handbook/handbook14/page61/kouhou_odate/bucknumber/backnumber2025
+
+### 県央
+
+#### 井川さくら駅イルミネーション
+
+11月1日から令和9年1月末まで、井川さくら駅でイルミネーションの点灯が始まります。号の発行日その日から灯るので、夕方の帰り道や駅前の小休憩の目印になります。
+
+> 出典: 井川町「広報いかわ」2026年11月号 Vol.840（今月のカレンダー）  
+> https://www.town.ikawa.akita.jp/site/koho/4133.html
+
+### 県南
 
 #### SOMPOボールゲームフェスタ in 横手
 
@@ -106,60 +139,25 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 > 出典: 大仙市「だいせん日和」2026年10月号（旧池田氏庭園 秋のガーデンフェスタ）  
 > https://www.city.daisen.lg.jp/archive/p20260929090044
 
-### 県北のイベント
+#### 秋田まるごと食の祭典2026
 
-#### 住まいの終活セミナー
+〜11月3日 10:00〜16:00、秋田ふるさと村。テーマは「秋田の美酒と日本のうまいもの」。入場無料で、地酒やクラフトビール、地元農産物のドリンクなどが並びます。菊まつりと同じ会場なので、花と食を一日で組み立てやすいのではないでしょうか。  
+問い合わせ: 横手市観光協会（0182-33-7111）
 
-12月6日 10:00〜11:00、山本公民館。空き家や実家の管理に悩む人向けの無料セミナーです。申し込み方法は町ホームページを確認してください。  
-問い合わせ: 企画政策課 企画係（0185-85-4817）
+> 出典: 横手市「市報よこて」2026年10月号 イベントカレンダー  
+> https://www.city.yokote.lg.jp/shisei/1001175/1001439/1013178.html
 
-> 出典: 三種町「広報みたね」2026年11月号 No.248  
-> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
+#### 第25回平鹿りんご味覚まつり
 
-#### WAKUWAKUおたのしみ市（夜市あり）
+11月3日 9:00〜12:00、ときめき交流センターゆっぷる。リンゴや野菜の直売、リンゴ狩り体験など。参加料500円、各回25人（計6回）。短い午前の枠なので、連休最終日の寄り道に向きます。  
+問い合わせ: 平鹿地域課（0182-24-1118）
 
-11月28日 18:00〜21:30（夜市）、11月29日 10:00〜15:30、八竜公民館（環境改善センター）。フリマやハンドメイド、キッチンカーに加え、バンド演奏やファッションショーもあります。次回は12月19日・20日にイオンタウン能代でのクリスマスマーケットが続きます。  
-問い合わせ: WAKUWAKUおたのしみ市実行委員 佐々木（090-1373-5005）
-
-> 出典: 三種町「広報みたね」2026年11月号 No.248  
-> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
-
-#### 第14回 山本公民館まつり
-
-11月22日 9:30〜12:30、山本公民館。展示や発表が並ぶ地域のまつりで、「みんなが元気！心ふれあう公民館」がテーマです。午前のうちに回れる長さなので、週末の前半に差し込みやすい催しです。  
-問い合わせ: 山本公民館（0185-83-2353）
-
-> 出典: 三種町「広報みたね」2026年11月号 No.248  
-> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
-
-#### 八郎湖フォーラム
-
-11月21日 13:00〜17:00、男鹿市民文化会館。「八郎湖のアオコ抑制ー生き物による水質浄化ー」などの話が組まれています。湖のいまを聞く午後として、予定のひとつに置ける催しです。  
-問い合わせ: 美しい八郎湖を未来に残す協議会（090-7072-5680）
-
-> 出典: 三種町「広報みたね」2026年11月号 No.248  
-> https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
-
-#### 日本犬保存会展覧会
-
-11月1日 9時開会、秋田自動車道・釈迦内パーキングエリア内。柴犬や秋田犬など日本犬が集まる審査会で、見学は無料です。車移動の合間に立ち寄れる、少し珍しい一日の使い方です。  
-問い合わせ: （公社）日本犬保存会秋田支部（0184-22-8569）
-
-> 出典: 大館市広報  
-> https://www.city.odate.lg.jp/city/handbook/handbook14/page61/kouhou_odate/bucknumber/backnumber2025
-
-### 県央のイベント
-
-#### 井川さくら駅イルミネーション
-
-11月1日から令和9年1月末まで、井川さくら駅でイルミネーションの点灯が始まります。号の発行日その日から灯るので、夕方の帰り道や駅前の小休憩の目印になります。
-
-> 出典: 井川町「広報いかわ」2026年11月号 Vol.840（今月のカレンダー）  
-> https://www.town.ikawa.akita.jp/site/koho/4133.html
+> 出典: 横手市「市報よこて」2026年10月号  
+> https://www.city.yokote.lg.jp/shisei/1001175/1001439/1013178.html
 
 ## 今週のあきた
 
-### 県北のイベント
+### 県北
 
 #### 三種町民祭の余韻 — 20周年の舞台裏
 
@@ -168,8 +166,6 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 > 出典: 三種町「広報みたね」2026年11月号 No.248（三種町町民祭2026）  
 > https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
 
-### 県北の暮らし
-
 #### みたね周遊バス「み・らいど」が走り始めた
 
 三種町では10月から、公共ライドシェア事業としてみたね周遊バス「み・らいど」の実証運行が始まっています。買い物や観光など町内の移動に使えるサービスで、事前予約が必要です。平日は17:30〜22:00、土日祝は8:30〜22:00（最終出発21時）。料金は区間ごとに分かれ、企画政策課が窓口です。利用者の声では「目的地まで送迎してくれて便利だった」といった感想も紹介され、冬に向かう町の足として注目しやすい動きです。
@@ -177,7 +173,52 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 > 出典: 三種町「広報みたね」2026年11月号 No.248（みたね周遊バス「み・らいど」）  
 > https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
 
-### 県南のイベント
+### 県央
+
+#### かずりん、活動報告会で任期を区切る
+
+井川町では10月30日、農村環境改善センターで地域おこし協力隊・橋野一勝さん（愛称かずりん）の活動報告会が開かれました。町民や役場職員ら約60人が参加し、キャンプ場改革を中心にした3年間を振り返る報告とムービー上映がありました。今後は関東で腸活インストラクターとして活動を続けます。町長日記にも、企画の手応えと難しさの両方を糧にしてほしいという言葉が残されています。
+
+> 出典: 井川町「広報いかわ」2026年11月号 Vol.840（かずりん活動報告会）  
+> https://www.town.ikawa.akita.jp/site/koho/4133.html
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfA4ozDE9_j" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@akita_gurumemania/post/DfA4ozDE9_j
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfCNP5vI2tK" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@assari.mochiko/post/DfCNP5vI2tK
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfBjqEWk2le?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfBjqEWk2le" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfBjqEWk2le?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@kurosuke1159/post/DfBjqEWk2le
+
+### 県南
 
 #### わくわく消防広場がアリーナに並んだ日
 
@@ -185,10 +226,6 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 
 > 出典: 横手市「市報よこて」2026年10月号  
 > https://www.city.yokote.lg.jp/shisei/1001175/1001439/1013178.html
-
-### 県南のフード
-
-横手・美郷あたりで、ラーメンやランチの声が続いています。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfB2dZvI5bi?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfB2dZvI5bi" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfB2dZvI5bi?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -225,56 +262,3 @@ description: 湖北小の区切りと井川の収穫を軸に、11月の行き�
 
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@picnic3298/post/DfCSKLxk41q
-
-### 県央のイベント
-
-#### かずりん、活動報告会で任期を区切る
-
-井川町では10月30日、農村環境改善センターで地域おこし協力隊・橋野一勝さん（愛称かずりん）の活動報告会が開かれました。町民や役場職員ら約60人が参加し、キャンプ場改革を中心にした3年間を振り返る報告とムービー上映がありました。今後は関東で腸活インストラクターとして活動を続けます。町長日記にも、企画の手応えと難しさの両方を糧にしてほしいという言葉が残されています。
-
-> 出典: 井川町「広報いかわ」2026年11月号 Vol.840（かずりん活動報告会）  
-> https://www.town.ikawa.akita.jp/site/koho/4133.html
-
-### 県央のフード
-
-秋田市では、山王や手形の一杯の声が残っています。
-
-<div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfA4ozDE9_j" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
-<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
-</div>
-<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
-</div></a>
-</blockquote>
-</div>
-
-> 出典: 口コミ（Threads）  
-> https://www.threads.com/@akita_gurumemania/post/DfA4ozDE9_j
-
-<div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfCNP5vI2tK" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
-<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
-</div>
-<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
-</div></a>
-</blockquote>
-</div>
-
-> 出典: 口コミ（Threads）  
-> https://www.threads.com/@assari.mochiko/post/DfCNP5vI2tK
-
-### 季節
-
-初雪の白い景色が、冬の入り口を伝えています。
-
-<div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfBjqEWk2le?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfBjqEWk2le" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfBjqEWk2le?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
-<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
-</div>
-<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
-</div></a>
-</blockquote>
-</div>
-
-> 出典: 口コミ（Threads）  
-> https://www.threads.com/@kurosuke1159/post/DfBjqEWk2le
