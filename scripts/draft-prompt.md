@@ -62,16 +62,16 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - Also skip: defamation, doxxing, private/non-public, thin weather-only / empty cheer lines.
    - Creator CTAs (「チャンネル登録」) without a real visit scene → skip or cut.
      A visit scene may stay if the food/place is the point.
-   - Cap **about 2–4**口コミ items; quality over coverage; do not crowd out kouhou tips.
+   - Cap **about 2–3 bundles** under `## 今週のあきた`; quality over coverage; do not crowd out kouhou tips.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
-   **Shape (media 読み物 — same bar as early 広報 drafts):**
-   - **1 post → 1 `###`** under `## 今週のあきた`.
-   - Write a **short media article** about the place/scene/food — not a digest of “what the post said”.
-   - Ban summary-voice / process-meta: post-digest framing, stacked 「という投稿がある」, writer-meta, process notes.
-   - Soft attribution once in prose (e.g. 「〜という声」) is fine; do not make the tip a meta-summary.
-   - Keep **concrete nouns from `text`** (shop name, dish, price, gesture). Ban one-line glosses.
-   - Length: about **5–10 phone-screen lines** (no 短報).
-   - Citation: `> 出典: 口コミ（Threads）` + `permalink`. Optional oEmbed. Never paste dump HTML / `_files` media.
+   **Shape (grouping + embeds — decided):**
+   - Abstract axes: **地域** (県北／県央／県南; optional 沿岸／内陸) and **テーマ** (フード／イベント／季節／暮らし／…).
+   - **交差型 first** (e.g. `### 県南のフード`). Thin cross → region-only or theme-only fallback.
+   - Bundle body: optional **1–2 sentence** lead-in + **official oEmbed column** (embeds carry the post).
+   - Do **not** force summary-article paraphrase of each post.
+   - Ban process-meta / “we summarized Threads” voice.
+   - Grouping detail lives in vault `.cursor` heuristics; **embed markup stays in the repo article**.
+   - Citation per embed: `> 出典: 口コミ（Threads）` + `permalink`. Never paste dump HTML / `_files` media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
    Layout shows trailing gray `発行日 {pubDate}` at the article end.
@@ -161,13 +161,12 @@ Heading map (locked):
 - Full citation every topic; extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
 - **口コミ (optional):** from `extracted/.../posts.json` only; seed/color 今週のあきた (past buzz / recent talk)
-- **1 JSON post → 1 `###`**; do not bundle several permalinks into one vague tip
-- Write as **media 読み物** (place/scene/food), not “we summarized Threads”
-- Soft attribution OK; never assert rumor as fact; never invent dates/places
-- Carry concrete detail from `text`; 5–10 line depth; optional Threads oEmbed under the prose
+- **Bundles:** 交差型（地域×テーマ）推奨; 片軸フォールバック; about 2–3 `###` bundles
+- Body: short optional lead-in + **oEmbed column** (no forced summary articles)
+- Never assert rumor as fact; never invent dates/places
 - If a pickup already used the same tip, do not duplicate
-- **口コミ citation:** full every time — `> 出典: 口コミ（Threads）` + `permalink` (no 「同上」)
-- Omit the tip if there is no usable permalink / text; no process meta in body
+- **口コミ citation:** full every embed — `> 出典: 口コミ（Threads）` + `permalink` (no 「同上」)
+- Omit posts with no usable permalink / text; no process meta in body
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
@@ -195,8 +194,8 @@ Heading map (locked):
 - Same section: each topic is `###`; short articles (5–10 lines); **no** 問い合わせ
 - Same section: no pickup duplicates
 - **口コミ:** draft from `posts.json` only
-- Same: selection gates; 1 post→1 `###`; concrete paraphrase (5–10 lines)
-- Same: `出典: 口コミ（Threads）` + permalink; optional oEmbed; media 読み物 (no summary-voice)
+- Same: selection gates; 交差型 bundles first; embed markup in repo; grouping heuristics in vault
+- Same: `出典: 口コミ（Threads）` + permalink per embed; no forced summary-article
 - Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
