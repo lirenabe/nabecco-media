@@ -174,7 +174,7 @@ p {
   padding: 0.85rem 0 0.2rem;
   border-top: 1px solid var(--color-line);
   border-bottom: 0;
-  font-family: 'IBM Plex Serif', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.14em;
