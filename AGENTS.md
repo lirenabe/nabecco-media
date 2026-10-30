@@ -1,8 +1,8 @@
-## Pull requests (required language)
+## Pull requests (language)
 
-<!-- AI: PRのタイトルと本文は必ず日本語。英語禁止。 -->
+<!-- AI: PRのタイトルと本文は日本語で書く。 -->
 
-- **PR title and body must be Japanese** (English titles/bodies are not accepted).
+- Write the **PR title and body in Japanese**.
 - Technical terms (GA4, Astro, workflow names, env var names) may stay in English inside Japanese sentences.
 - Prefer the sections in `.github/PULL_REQUEST_TEMPLATE.md`（要約 / 確認）.
 

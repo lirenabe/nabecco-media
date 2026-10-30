@@ -1,5 +1,5 @@
-<!-- AI: PRのタイトルと本文は必ず日本語。英語禁止。コミットメッセージも可能なら日本語。 -->
-<!-- AI: PR title and body MUST be Japanese. English is not allowed. -->
+<!-- AI: PRのタイトルと本文は日本語で書く。コミットメッセージも可能なら日本語。 -->
+<!-- AI: Write the PR title and body in Japanese. Prefer Japanese commit messages when practical. -->
 
 ## 要約
 
@@ -9,7 +9,7 @@
 
 ## 確認
 
-<!-- AI: 該当するものにチェック。英語の Summary / Test plan 見出しは使わない。 -->
+<!-- AI: 該当するものにチェック。見出しはテンプレどおり（要約 / 確認）。 -->
 
 - [ ] [POLICY.md](../POLICY.md) に反していない
 - [ ] [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md) を確認した
