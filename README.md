@@ -83,4 +83,8 @@ npm run draft -- --vol N --date YYYY-MM-DD   # C) 下書きチェックリスト
 - **コード:** [MIT](./LICENSE)
 - **なべっこが執筆した記事本文:** [CC BY 4.0](./LICENSE-CONTENT.md)（推奨クレジット:「なべっこ（nabecco.media）, CC BY 4.0」）。広報由来の画像・引用、およびロゴ／名称／favicon 等のブランド資産は対象外です（各ファイルの注記を参照）。
 
-質問・報告は [GitHub Issues](https://github.com/lirenabe/nabecco-media/issues) へどうぞ。
+アクセス解析には GA4 を用います。質問・報告は [GitHub Issues](https://github.com/lirenabe/nabecco-media/issues) へどうぞ。
+
+## 環境変数
+
+本番ビルドでは GitHub Actions の repository variable `PUBLIC_GA_MEASUREMENT_ID` を渡します。ローカルで計測を試す場合は `.env`（gitignored）に同じ名前を置きます。雛形は [`.env.example`](./.env.example) です。
