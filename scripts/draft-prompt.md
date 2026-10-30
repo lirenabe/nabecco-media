@@ -62,12 +62,14 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - Also skip: defamation, doxxing, private/non-public, thin weather-only / empty cheer lines.
    - Creator CTAs (「チャンネル登録」) without a real visit scene → skip or cut.
      A visit scene may stay if the food/place is the point.
-   - Cap **about 2–3 bundles** under `## 今週のあきた`; quality over coverage; do not crowd out kouhou tips.
+   - Prefer dense 交差型 groups; quality over coverage; **place口コミ embeds inside the same groups as related 広報 tips**.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
    **Shape (grouping + embeds — decided):**
    - Abstract axes: **地域** (県北／県央／県南; optional 沿岸／内陸) and **テーマ** (フード／イベント／季節／暮らし／…).
    - **交差型 first** (e.g. `### 県南のフード`). Thin cross → region-only or theme-only fallback.
-   - Bundle body: optional **1–2 sentence** lead-in + **official oEmbed column** (embeds carry the post).
+   - **Same groups for 広報 +口コミ** in `## 今週のあきた` (and region/theme groups in 直近). No silo stacks.
+   - Within group: 直近 = date **descending**; 今週のあきた = time **ascending**.
+   - 口コミ body: optional **1–2 sentence** lead-in + **official oEmbed column** (embeds carry the post).
    - Do **not** force summary-article paraphrase of each post.
    - Ban process-meta / “we summarized Threads” voice.
    - Grouping detail lives in vault `.cursor` heuristics; **embed markup stays in the repo article**.
@@ -109,7 +111,8 @@ Heading map (locked):
 | :--- | :--- |
 | `#` (h1) | **Only** the first pickup title |
 | `##` (h2) | Later pickups (if any); `直近のイベント情報`; `今週のあきた` |
-| `###` (h3) | Each event under 直近; each topic under 今週のあきた |
+| `###` (h3) | Region/theme **group** under 直近 / 今週のあきた（交差型推奨） |
+| `####` (h4) | Each 広報 tip/event **inside** a group |
 
 ### Section roles
 
@@ -130,9 +133,11 @@ Heading map (locked):
 
 - **Future only:** upcoming from the issue `pubDate` (skip ended / undated)
 - **Horizon:** about **3 months** ahead may be included
-- **When crowded:** prefer **nearer-term** items inside that window
+- **Grouping:** same region/theme axes as口コミ（交差型推奨; 片軸フォールバック）. **Mix 広報 events into those groups** — do not keep a flat silo of ungrouped `###` tips
+- **Sort within each group:** by event date **descending** (later dates first)
 - **Exclude** topics already used as ピックアップ in this issue
-- **Each item:** `### {題名}` then date, place, what it is, full citation (fee / capacity / signup when clear)
+- **Group heading:** `### {地域のテーマ or 片軸}` then items as `#### {題名}`
+- **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
 - Extract images may illustrate an item when useful
 - **Info note (required):** immediately under the `##` heading, before any lead or items, insert:
@@ -154,18 +159,17 @@ Heading map (locked):
 
 - **Past only:** what already happened / recent buzz (not the future-events list)
 - **Window:** roughly **within 1 week** before run / issue time
-- **No special cap** on how many topics may appear when they qualify
+- **Grouping:** same region/theme axes（交差型推奨; 片軸フォールバック）. **Mix 広報-extracted past tips and口コミ into the same groups** — no separate kouhou-only then口コミ-only silos
+- **Sort within each group:** by time **ascending** (older → newer)
 - **Exclude** topics already used as ピックアップ in this issue
-- **No 短報:** each topic is a **short article**, not a skimpy bullet digest
-- **Each topic:** `### {題名}` then about **5–10 phone-screen lines**
-- Full citation every topic; extract images when useful (same global voice rules)
-- **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
-- **口コミ (optional):** from `extracted/.../posts.json` only; seed/color 今週のあきた (past buzz / recent talk)
-- **Bundles:** 交差型（地域×テーマ）推奨; 片軸フォールバック; about 2–3 `###` bundles
-- Body: short optional lead-in + **oEmbed column** (no forced summary articles)
+- **Group heading:** `### {地域のテーマ or 片軸}`
+- **広報 item inside a group:** `#### {題名}` then about **5–10 phone-screen lines**; full citation; no 短報
+- **口コミ inside a group:** optional 1–2 sentence lead + **oEmbed column** (no forced summary articles); citation per embed
+- Extract images when useful (same global voice rules)
+- **No 問い合わせ / contact lines** in this section
+- **口コミ source:** `extracted/.../posts.json` only
 - Never assert rumor as fact; never invent dates/places
 - If a pickup already used the same tip, do not duplicate
-- **口コミ citation:** full every embed — `> 出典: 口コミ（Threads）` + `permalink` (no 「同上」)
 - Omit posts with no usable permalink / text; no process meta in body
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
@@ -187,14 +191,13 @@ Heading map (locked):
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
 - Same: image + 10+ lines; remove selected topics from the other two sections
-- **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first
-- Same section: info-note under h2; each event is `###`; `問い合わせ: …` house style
-- Same section: 3–5 charm lines OK; no pickup duplicates
-- **`## 今週のあきた`:** past only; ~1-week window; no item-count cap
-- Same section: each topic is `###`; short articles (5–10 lines); **no** 問い合わせ
-- Same section: no pickup duplicates
-- **口コミ:** draft from `posts.json` only
-- Same: selection gates; 交差型 bundles first; embed markup in repo; grouping heuristics in vault
+- **`## 直近のイベント情報`:** future only; ~3-month horizon; region/theme groups; **sort descending within group**
+- Same section: info-note under h2; `###` group + `####` items; `問い合わせ: …` house style
+- Same section: 3–5 charm lines OK; no pickup duplicates; mix axes with口コミ model
+- **`## 今週のあきた`:** past only; ~1-week window; **mix 広報 +口コミ** in same region/theme groups
+- Same section: `###` group + `####` 広報 tips;口コミ as embeds; **sort ascending within group**
+- Same section: no 問い合わせ; no pickup duplicates
+- **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo; vault grouping heuristics
 - Same: `出典: 口コミ（Threads）` + permalink per embed; no forced summary-article
 - Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
 - Do not commit, push, or deploy from the agent unless the operator asks after review
