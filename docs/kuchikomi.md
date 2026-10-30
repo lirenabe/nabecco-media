@@ -2,7 +2,7 @@
 
 広報3ステップに加え、街の声を号へ取り込む運用です。  
 執筆契約: [`scripts/draft-prompt.md`](../scripts/draft-prompt.md)。方針: [POLICY.md](../POLICY.md)。  
-**Threads の取得・掲載制約:** [`threads-citation-rules.md`](./threads-citation-rules.md)（要約。詳細調査はプロジェクト Context 同名文書）。エージェントは `threads.com` を fetch しない（公式 oEmbed は埋め込み表示用のみ可）。
+**Threads の取得・掲載制約:** [`threads-citation-rules.md`](./threads-citation-rules.md)（要約。詳細調査はリポ外の調査メモ・非公開・任意）。エージェントは `threads.com` を fetch しない（公式 oEmbed は埋め込み表示用のみ可）。
 
 ## 設計判断（確定）
 
@@ -21,7 +21,7 @@
 
 ## 週次の手順（drop → extract → draft）
 
-1. （Kenta）Threads 保存リスト等をブラウザで HTML エクスポートし、`data/kuchikomi/{発行日}/` または `{発行日}.threads.html` へ置く  
+1. （人間オペレータ）Threads 保存リスト等をブラウザで HTML エクスポートし、`data/kuchikomi/{発行日}/` または `{発行日}.threads.html` へ置く  
 2. `fetch:kouhou` → `extract:kouhou`  
 3. **`npm run extract:kuchikomi -- --date {発行日}`** → `data/kuchikomi/extracted/{発行日}/posts.json` と `posts.md`  
 4. Step C: エージェントは **抽出済み構造化ファイル**を正として下書き（生 HTML を直接読まない）。無ければ待機  
