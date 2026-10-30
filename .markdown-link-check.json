@@ -6,6 +6,10 @@
   "ignorePatterns": [
     { "pattern": "^https?://localhost(:\\d+)?(/|$)" },
     { "pattern": "^https?://127\\.0\\.0\\.1(:\\d+)?(/|$)" },
-    { "pattern": "^/images/" }
+    { "pattern": "^/images/" },
+    {
+      "pattern": "^https://vill\\.higashinaruse\\.lg\\.jp/",
+      "comment": "CI から Status: 0（接続失敗）が断続。手元では 200。出典 URL 自体は維持し検査のみ除外"
+    }
   ]
 }

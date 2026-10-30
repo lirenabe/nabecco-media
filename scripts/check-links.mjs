@@ -113,6 +113,8 @@ async function checkSite() {
         // Production absolute URLs in canonical / og:*; DNS is operator-side.
         // Presence and shape are asserted in check-seo.mjs; assets are served locally.
         /^https?:\/\/nabecco\.media\//,
+        // Same host as .markdown-link-check.json: CI で Status: 0 が断続する自治体サイト。
+        /^https?:\/\/vill\.higashinaruse\.lg\.jp\//,
       ],
     });
     const broken = result.links.filter((l) => l.state === 'BROKEN');

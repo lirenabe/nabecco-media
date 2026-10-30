@@ -17,7 +17,7 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 | チェック | ツール | 実行場所 | PR/`main` で失敗するか |
 | :--- | :--- | :--- | :---: |
 | 日本語校正 | textlint（ja-technical-writing、緩い設定）。対象は下記「Markdown 対象」 | CI + pre-commit | はい |
-| リンク切れ | markdown-link-check（同 Markdown 対象。`nabecco.media` / `github.io` は無視しない）+ linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
+| リンク切れ | markdown-link-check（同 Markdown 対象。`nabecco.media` / `github.io` は無視しない）+ linkinator（preview 巡回）。東成瀬村公式（`vill.higashinaruse.lg.jp`）は CI から Status: 0 が断続するため検査除外（出典 URL は記事に残す） | CI（md は pre-commit も） | はい |
 | デザイン禁止（カード枠ヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
 | 出典の有無（構造） | `scripts/check-citations.mjs` | CI + pre-commit | はい |
 | a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク。`.threads-embed`（公式 Threads oEmbed）は第三者 UI のため axe 対象外。iframe には `title` を付与 | CI のみ | はい |
