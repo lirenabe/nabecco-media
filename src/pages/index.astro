@@ -44,9 +44,6 @@ if (latest) {
         <p class="latest__empty-lead">
           現在、公開中の号はありません。確認が終わった号から順に掲載します。
         </p>
-        <p class="latest__empty-note">
-          バックナンバーは <a href="/issues/">一覧</a> から確認できます。
-        </p>
       </section>
     )
   }
@@ -74,25 +71,10 @@ if (latest) {
   }
 
   .latest__empty-lead {
-    margin: 0 0 1rem;
+    margin: 0;
     font-size: 1.05rem;
     line-height: 1.75;
     color: var(--color-sumi);
-  }
-
-  .latest__empty-note {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--color-sumi-soft);
-  }
-
-  .latest__empty-note a {
-    color: var(--color-kaki-deep);
-    text-decoration: none;
-  }
-
-  .latest__empty-note a:hover {
-    color: var(--color-kaki);
   }
 
   .issue-date {
