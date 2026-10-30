@@ -1,0 +1,65 @@
+---
+/**
+ * Official Threads embed runtime (once per page, after article HTML).
+ * Pair with oEmbed <blockquote class="text-post-media" …> in MD/HTML.
+ * embed.js replaces those with iframes to threads.com/.../embed/.
+ * @see https://developers.facebook.com/docs/threads/tools-and-resources/embed-a-threads-post/
+ *
+ * After hydration, label each iframe with an accessible name (frame-title).
+ * Third-party iframe guts (contrast / empty links / scroll regions) are out of
+ * our control; a11y CI skips recursing into them (see scripts/check-a11y.mjs).
+ */
+---
+
+{/* is:inline: do not bundle/defer via Vite; load after blockquotes exist in the DOM */}
+<script is:inline async src="https://www.threads.com/embed.js"></script>
+<script is:inline>
+  (function () {
+    function accessibleName(iframe) {
+      const src = iframe.getAttribute('src') || '';
+      const match = src.match(/threads\.com\/(?:t|@[^/]+\/post)\/([^/?#]+)/i);
+      if (match) return 'Threadsの投稿（' + match[1] + '）';
+      const host = iframe.closest('.threads-embed');
+      const permalink =
+        host &&
+        host.querySelector('[data-text-post-permalink]') &&
+        host.querySelector('[data-text-post-permalink]').getAttribute('data-text-post-permalink');
+      if (permalink) {
+        const idMatch = permalink.match(/\/(?:t|post)\/([^/?#]+)/i);
+        if (idMatch) return 'Threadsの投稿（' + idMatch[1] + '）';
+      }
+      return 'Threadsの投稿';
+    }
+
+    function labelIframe(iframe) {
+      if (!(iframe instanceof HTMLIFrameElement)) return;
+      if (!iframe.closest('.threads-embed') && !iframe.classList.contains('text-post-media')) {
+        return;
+      }
+      if (iframe.getAttribute('title') || iframe.getAttribute('aria-label')) return;
+      iframe.setAttribute('title', accessibleName(iframe));
+    }
+
+    function scan(root) {
+      if (!root || root.nodeType !== 1) return;
+      if (root.matches?.('iframe')) labelIframe(root);
+      root.querySelectorAll?.('iframe.text-post-media, .threads-embed iframe').forEach(labelIframe);
+    }
+
+    scan(document);
+    const mo = new MutationObserver(function (mutations) {
+      for (const m of mutations) {
+        for (const node of m.addedNodes) scan(node);
+        if (m.type === 'attributes' && m.target instanceof HTMLIFrameElement) {
+          labelIframe(m.target);
+        }
+      }
+    });
+    mo.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['src', 'class'],
+    });
+  })();
+</script>

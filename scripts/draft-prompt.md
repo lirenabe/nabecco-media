@@ -29,7 +29,7 @@ Use this file for **Step C — 記事下書き**. The runtime dependency is **fi
 | Input — extracted text/images (**primary**) | `data/kouhou/extracted/<id>/` (`text.txt`, `content.md`, `images/`, `meta.json`) |
 | Input — manifest | `data/kouhou/manifest.json` (url, sha256, paths) |
 | Input — source rules | `sources/municipalities.yaml` |
-| Input — optional口コミ | `data/kuchikomi/*.txt` |
+| Input — optional口コミ | **`data/kuchikomi/extracted/{pubDate}/posts.json`** (+ `posts.md`) from `npm run extract:kuchikomi`. Raw HTML dump is extract input only. Optional `{pubDate}.txt` URL index |
 | Input — policy | `POLICY.md` |
 | Input — raw PDFs (**spot-check only**) | `data/kouhou/*.pdf` — do **not** re-extract everything from PDFs by default |
 | Output — article | `src/content/posts/vol-N.md` |
@@ -46,8 +46,35 @@ npm run draft -- --vol N --date YYYY-MM-DD
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
-4. Write `src/content/posts/vol-N.md` as **readable articles** with this heading hierarchy
-   (real ATX levels — not CSS-only). Do **not** put `第N号` as a heading.
+3a. **口コミ（Threads）2 stages — like kouhou extract→draft:**
+   - **B′ extract:** operator drops human-exported HTML at `data/kuchikomi/{pubDate}/` or `{pubDate}.threads.html`.
+     Run `npm run extract:kuchikomi -- --date {pubDate}` → `data/kuchikomi/extracted/{pubDate}/posts.json` + `posts.md`.
+   - **C draft input:** read **those extracted files only** (not the raw HTML). Optional URL index: `{pubDate}.txt`.
+   - See `docs/kuchikomi.md` and `docs/threads-citation-rules.md`.
+   - **Never** HTTP-fetch/scrape Threads post pages. Official **oEmbed** is allowed only to obtain embed markup for a known permalink. Do not invent posts or URLs.
+3b. **WAIT (chat pause):** if extracted posts are missing, tell the drop path / ask for `extract:kuchikomi`, then **stop**.
+   Resume when posts.json exists or operator says skip口コミ. Do not fill gaps via network.
+3c. After resume, draft口コミ **only from** `posts.json` / `posts.md` (street-voice color, not verified fact).
+   **Selection gates:**
+   - Prefer concrete scene / seasonal body / civic feeling / **customer shop visits**.
+   - **Shop tip:** ordinary diner口コミ about a restaurant is **OK and welcome**.
+   - Skip only **本人による宣伝** (business-owner self-promo: 「本日営業」「お待ちしてます」、自店の営業案内、出店のいいね乞い、等).
+   - Also skip: defamation, doxxing, private/non-public, thin weather-only / empty cheer lines.
+   - Creator CTAs (「チャンネル登録」) without a real visit scene → skip or cut.
+     A visit scene may stay if the food/place is the point.
+   - Quality over coverage; **place口コミ in the same region `###` as related 広報 tips**.
+   - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
+   **Shape (region groups + embeds — decided):**
+   - `###` headings are **地域のみ**: 県北／県央／県南 — always in that order. **No theme in h3.**
+   - **テーマ** (フード／イベント／季節／暮らし／…) has **no heading**; it only sorts items inside a region.
+   - Within the same theme: 直近 = date **descending**; 今週のあきた = time **ascending**.
+   - **Mix 広報 +口コミ** in the same region `###`. No silo stacks.
+   - 広報: `####` tip titles. 口コミ under the region `###`: **one media sentence** in article prose + **oEmbed** (embed still OK).
+   - Media voice — concrete place/food/scene. Ban 「要約しました」/「投稿があります」 process-meta.
+   - **Embed markup stays in the repo article** (portable). Finer ranking/tag tips may live in local skill helpers — not required to draft.
+   - Citation per embed: `> 出典: 口コミ（Threads）` + `permalink`. Never paste dump HTML / `_files` media.
+4. Write `src/content/posts/vol-N.md` as readable articles.
+   Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
    Layout shows trailing gray `発行日 {pubDate}` at the article end.
 
 ```markdown
@@ -83,7 +110,8 @@ Heading map (locked):
 | :--- | :--- |
 | `#` (h1) | **Only** the first pickup title |
 | `##` (h2) | Later pickups (if any); `直近のイベント情報`; `今週のあきた` |
-| `###` (h3) | Each event under 直近; each topic under 今週のあきた |
+| `###` (h3) | **地域のみ** under 直近 / 今週のあきた — always **県北 → 県央 → 県南** |
+| `####` (h4) | Each 広報 tip/event inside a region;口コミ may be embeds under `###` with no extra heading |
 
 ### Section roles
 
@@ -104,9 +132,13 @@ Heading map (locked):
 
 - **Future only:** upcoming from the issue `pubDate` (skip ended / undated)
 - **Horizon:** about **3 months** ahead may be included
-- **When crowded:** prefer **nearer-term** items inside that window
+- **Grouping:** `###` is **地域のみ**（県北／県央／県南）. **Never put theme in the h3.** Theme only orders items inside the region.
+- **Region order:** always **県北 → 県央 → 県南** (skip empty).
+- **Mix** 広報 events into those region groups — no flat ungrouped tip silo.
+- **Sort within each region:** by **theme** (fixed order; no theme heading), then by event date **descending** within the same theme.
 - **Exclude** topics already used as ピックアップ in this issue
-- **Each item:** `### {題名}` then date, place, what it is, full citation (fee / capacity / signup when clear)
+- **Headings:** `### {県北|県央|県南}` then `#### {題名}` for each event
+- **Each item:** date, place, what it is, full citation (fee / capacity / signup when clear)
 - **Charm OK:** about **3–5 phone-screen lines** of context per item (not 要項-only; not a long essay)
 - Extract images may illustrate an item when useful
 - **Info note (required):** immediately under the `##` heading, before any lead or items, insert:
@@ -128,16 +160,25 @@ Heading map (locked):
 
 - **Past only:** what already happened / recent buzz (not the future-events list)
 - **Window:** roughly **within 1 week** before run / issue time
-- **No special cap** on how many topics may appear when they qualify
+- **Grouping:** `###` is **地域のみ**（県北／県央／県南）. **Never put theme in the h3.** Theme only orders items inside the region.
+- **Region order:** always **県北 → 県央 → 県南** (skip empty).
+- **Mix** 広報-extracted past tips and口コミ into the **same region** — no kouhou-then-口コミ silos.
+- **Sort within each region:** by **theme** (no theme heading), then by time **ascending** within the same theme.
 - **Exclude** topics already used as ピックアップ in this issue
-- **No 短報:** each topic is a **short article**, not a skimpy bullet digest
-- **Each topic:** `### {題名}` then about **5–10 phone-screen lines**
-- Full citation every topic; extract images when useful (same global voice rules)
-- **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
+- **広報 item:** `#### {題名}` then about **5–10 phone-screen lines**; full citation; no 短報
+- **口コミ:** under the region `###` — **1 media sentence** + oEmbed; citation per embed. Not embed-only stacks; not long summary articles
+- Extract images when useful (same global voice rules)
+- **No 問い合わせ / contact lines** in this section
+- **口コミ source:** `extracted/.../posts.json` only
+- Never assert rumor as fact; never invent dates/places
+- If a pickup already used the same tip, do not duplicate
+- Omit posts with no usable permalink / text; no process meta in body
 
-5. Attach a **full** citation per item (`> 出典: …` + listing URL). Never use 「同上」「同」「前掲」.
+5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
-7. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
+7. **Prose review loop** (not textlint): `npm run prose-review -- --vol N` then `scripts/prose-review-prompt.md`.
+   Fix voice / process-meta / region h3 / 口コミ1文 / citations. Re-run until clean.
+8. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
 
 ## Hard rules
 
@@ -154,12 +195,15 @@ Heading map (locked):
 - **Use extract images when useful** — serve from `public/images/kouhou/vol-N/` (never link `data/`)
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
 - Same: image + 10+ lines; remove selected topics from the other two sections
-- **`## 直近のイベント情報`:** future only; ~3-month horizon; nearer-term first
-- Same section: info-note under h2; each event is `###`; `問い合わせ: …` house style
+- **`## 直近のイベント情報`:** future only; ~3-month horizon; `###` 県北→県央→県南; theme sort then **date descending**
+- Same section: info-note under h2; `####` items; `問い合わせ: …` house style
 - Same section: 3–5 charm lines OK; no pickup duplicates
-- **`## 今週のあきた`:** past only; ~1-week window; no item-count cap
-- Same section: each topic is `###`; short articles (5–10 lines); **no** 問い合わせ
-- Same section: no pickup duplicates
+- **`## 今週のあきた`:** past only; ~1-week window; same region `###` order; **mix 広報 +口コミ**
+- Same section: `####` 広報 tips;口コミ embeds under region; theme sort then **time ascending**
+- Same section: no 問い合わせ; no pickup duplicates
+- **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo
+- Same: 1 media sentence + embed; `出典: 口コミ（Threads）` + permalink; no 「要約しました」 voice
+- Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft

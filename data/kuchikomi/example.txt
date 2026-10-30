@@ -1,5 +1,6 @@
-# 口コミメモ例（このファイルはコミット可。本番入力は data/kuchikomi/*.txt を gitignore）
-# 1行1件で、URL や要約メモを置く。断定・誹謗中傷は載せない。
+# 任意の URL 索引例（コミット可）。本番の号ファイルは gitignore。
+# 主入力は人が保存した data/kuchikomi/YYYY-MM-DD.threads.html（エージェントは fetch しない）
+# 手順: docs/kuchikomi.md ／ 制約: docs/threads-citation-rules.md
 
-# 例:
-# https://example.com/note — 秋田駅前の〇〇が改装休業、再開は未定（要確認）
+# 例（本番は 2026-11-01.txt など、任意）:
+# https://www.threads.com/@user/post/...

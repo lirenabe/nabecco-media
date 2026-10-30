@@ -31,6 +31,7 @@ pnpm-debug.log*
 data/kouhou/
 data/drafts/
 data/reports/
-data/kuchikomi/*.txt
+# Human-exported Threads dumps / URL indexes (never commit)
+data/kuchikomi/**
 !data/kuchikomi/.gitkeep
 !data/kuchikomi/example.txt

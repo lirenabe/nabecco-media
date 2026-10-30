@@ -44,10 +44,11 @@
 - バナー広告・アドネットワーク・トラッキング用コードの追加
 - 広報紙・他メディアの文章の丸写し
 - AI 生成のままの未確認原稿の自動公開を前提とした変更
+- **公開リポジトリに載せるべきでないもの**（個人名・非公開連絡先・ホームパス・生ダンプ／シークレット等。詳細は [docs/quality.md](./docs/quality.md)）
 
 ## 品質・セキュリティ
 
-- ローカルの品質コマンドは [docs/quality.md](./docs/quality.md)
+- ローカルの品質コマンドは [docs/quality.md](./docs/quality.md)（任意: `npm run check:public-content`）
 - 脆弱性の報告は [SECURITY.md](./SECURITY.md)
 
 ## 質問

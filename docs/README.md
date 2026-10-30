@@ -4,8 +4,11 @@
 
 | 文書 | 内容 |
 | :--- | :--- |
-| [quality.md](./quality.md) | 品質チェック（textlint / リンク / デザイン / 出典 / a11y / SEO） |
+| [quality.md](./quality.md) | 品質チェック（textlint / リンク / デザイン / 出典 / a11y / SEO／文章レビュー） |
 | [deploy-dns.md](./deploy-dns.md) | GitHub Pages・DNS / HTTPS |
 | [pipeline.md](./pipeline.md) | 広報取得〜下書きの 3 ステップ補足 |
+| [kuchikomi.md](./kuchikomi.md) | 口コミの半手動取り込み（Phase 7.2） |
+| [threads-citation-rules.md](./threads-citation-rules.md) | Threads 参照・掲載制約（fetch 禁止・言い換え＋permalink） |
 
-記事下書き（Step C）の正本は [`scripts/draft-prompt.md`](../scripts/draft-prompt.md) です。
+記事下書き（Step C）の正本は [`scripts/draft-prompt.md`](../scripts/draft-prompt.md) です。  
+文章の書き方チェック（下書き後）: [`scripts/prose-review-prompt.md`](../scripts/prose-review-prompt.md)／`npm run prose-review`。

@@ -4,24 +4,48 @@
  *
  * Prints paths for *any* agent (Cursor today by operator policy).
  * Prefers data/kouhou/extracted/<id>/ artifacts from Step B.
+ * Lists human-exported Threads HTML dumps (+ optional *.txt URL index).
  *
  * Usage:
  *   npm run draft -- --vol 2 --date 2026-11-01
  *   npm run draft -- --vol 2 --date 2026-11-01 --print-prompt
  */
-import { readdir, readFile, stat } from 'node:fs/promises';
+import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { extractDirRel, loadManifest } from './lib/manifest.mjs';
 import { loadSources } from './lib/sources.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const PROMPT_REL = 'scripts/draft-prompt.md';
+const KUCHIKOMI_DIR = path.join(ROOT, 'data/kuchikomi');
+
+function issueKuchikomiPath(dateStr) {
+  return path.join(KUCHIKOMI_DIR, `${dateStr}.txt`);
+}
+
+async function ensureIssueKuchikomiShell(dateStr) {
+  await mkdir(KUCHIKOMI_DIR, { recursive: true });
+  const abs = issueKuchikomiPath(dateStr);
+  if (await fileExists(abs)) {
+    return { path: abs, created: false };
+  }
+  const body = `# optional URL index for pubDate ${dateStr}
+# Primary input: drop human-exported HTML at
+#   data/kuchikomi/${dateStr}.threads.html
+#   or data/kuchikomi/${dateStr}/*.html  (browser Save Page + optional _files/)
+# This .txt is optional (one URL per line). Do not commit. Agent does not fetch threads.com.
+# Agent waits in chat until HTML is dropped or operator says skip.
+
+`;
+  await writeFile(abs, body, 'utf8');
+  return { path: abs, created: true };
+}
 
 function parseArgs(argv) {
   const opts = {
     vol: null,
     date: null,
-    kuchikomi: path.join(ROOT, 'data/kuchikomi/example.txt'),
+    kuchikomi: null,
     printPrompt: false,
     help: false,
   };
@@ -54,11 +78,54 @@ async function fileExists(p) {
   }
 }
 
+async function listKuchikomiFiles(singlePath) {
+  if (singlePath) {
+    const ok = await fileExists(singlePath);
+    return ok
+      ? [{ path: singlePath, rel: path.relative(ROOT, singlePath) }]
+      : [];
+  }
+  try {
+    const names = await readdir(KUCHIKOMI_DIR);
+    const out = [];
+    for (const name of names.sort()) {
+      if (name.startsWith('.') || name === 'example.txt') continue;
+      const abs = path.join(KUCHIKOMI_DIR, name);
+      const st = await stat(abs);
+      if (st.isFile()) {
+        if (name.endsWith('.txt') || name.endsWith('.html') || name.endsWith('.threads.html')) {
+          out.push({ path: abs, rel: path.relative(ROOT, abs) });
+        }
+        continue;
+      }
+      if (!st.isDirectory()) continue;
+      let children = [];
+      try {
+        children = await readdir(abs);
+      } catch {
+        continue;
+      }
+      for (const child of children.sort()) {
+        if (!child.endsWith('.html') || child.startsWith('.')) continue;
+        const childAbs = path.join(abs, child);
+        const cst = await stat(childAbs);
+        if (cst.isFile()) {
+          out.push({ path: childAbs, rel: path.relative(ROOT, childAbs) });
+        }
+      }
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
   if (opts.help) {
-    console.log(`Usage: node scripts/draft-issue.mjs --vol N --date YYYY-MM-DD [--print-prompt]
-  Step C checklist. Full instructions: ${PROMPT_REL}`);
+    console.log(`Usage: node scripts/draft-issue.mjs --vol N --date YYYY-MM-DD [--kuchikomi path] [--print-prompt]
+  Step C checklist. Full instructions: ${PROMPT_REL}
+  口コミ ops: docs/kuchikomi.md`);
     process.exit(0);
   }
   if (!opts.vol || !opts.date) {
@@ -72,7 +139,11 @@ async function main() {
   const outAbs = path.join(ROOT, outRel);
   const { sources, root } = await loadSources();
   const { doc: manifest } = await loadManifest(root);
-  const kuchikomiOk = await fileExists(opts.kuchikomi);
+  const shell = opts.kuchikomi
+    ? { path: opts.kuchikomi, created: false }
+    : await ensureIssueKuchikomiShell(opts.date);
+  const kuchikomiFiles = await listKuchikomiFiles(opts.kuchikomi || shell.path);
+  const shellRel = path.relative(ROOT, shell.path);
 
   if (opts.printPrompt) {
     process.stdout.write(await readFile(path.join(ROOT, PROMPT_REL), 'utf8'));
@@ -109,11 +180,29 @@ async function main() {
   console.log(`Output       : ${outRel}${await fileExists(outAbs) ? ' (exists — review before overwrite)' : ' (new)'}`);
   console.log(`Instructions : ${PROMPT_REL}`);
   console.log(`Policy       : POLICY.md`);
+  console.log(`口コミ ops   : docs/kuchikomi.md`);
   console.log(`Manifest     : data/kouhou/manifest.json`);
   console.log(`Extracted    : ${extracted.length} dir(s) under data/kouhou/extracted/`);
+  const kuchikomiExtractDir = path.join(KUCHIKOMI_DIR, 'extracted', opts.date);
+  const kuchikomiPostsJson = path.join(kuchikomiExtractDir, 'posts.json');
+  const kuchikomiPostsMd = path.join(kuchikomiExtractDir, 'posts.md');
+  const hasKuchikomiExtract = await fileExists(kuchikomiPostsJson);
+  let kuchikomiPostCount = 0;
+  if (hasKuchikomiExtract) {
+    try {
+      const doc = JSON.parse(await readFile(kuchikomiPostsJson, 'utf8'));
+      kuchikomiPostCount = Array.isArray(doc.posts) ? doc.posts.length : 0;
+    } catch {
+      /* ignore */
+    }
+  }
+
+  console.log(`口コミ index : ${shellRel}${shell.created ? ' (created optional URL index)' : ' (exists)'}`);
+  console.log(`口コミ HTML  : drop at data/kuchikomi/${opts.date}.threads.html or data/kuchikomi/${opts.date}/`);
   console.log(
-    `口コミ        : ${path.relative(ROOT, opts.kuchikomi)}${kuchikomiOk ? '' : ' (missing — optional)'}`,
+    `口コミ extract: ${hasKuchikomiExtract ? path.relative(ROOT, kuchikomiPostsJson) + ` (${kuchikomiPostCount} posts)` : '(missing — run npm run extract:kuchikomi -- --date ' + opts.date + ')'}`,
   );
+  console.log(`口コミ dump  : ${kuchikomiFiles.length} html/txt under data/kuchikomi/`);
 
   if (!extracted.length) {
     console.log(`\n⚠ No extracts found. Run Steps A then B:\n  npm run fetch:kouhou\n  npm run extract:kouhou\n`);
@@ -125,12 +214,23 @@ async function main() {
     }
   }
 
+  if (hasKuchikomiExtract) {
+    console.log('\n口コミ extracted (street voice — draft from these, not raw HTML):');
+    console.log(`  - ${path.relative(ROOT, kuchikomiPostsJson)}`);
+    if (await fileExists(kuchikomiPostsMd)) console.log(`  - ${path.relative(ROOT, kuchikomiPostsMd)}`);
+  } else if (kuchikomiFiles.length) {
+    console.log('\n口コミ dump present but not extracted yet:');
+    for (const f of kuchikomiFiles) console.log(`  - ${f.rel}`);
+  }
+
   console.log(`
 Next (operator / any agent — Cursor by current policy):
-  1. Read ${PROMPT_REL} and POLICY.md
-  2. Skim extracted text/images above (PDF only for spot-check)
-  3. Write ${outRel} with citations; first pickup `#`, later `##`, items `###`
-  4. Human review → npm run check → git commit / push (never auto-publish)
+  1. Read ${PROMPT_REL}, POLICY.md, docs/kuchikomi.md, docs/threads-citation-rules.md
+  2. If口コミ dump exists: npm run extract:kuchikomi -- --date ${opts.date}
+  3. WAIT if posts.json missing (or operator says skip). Do not fetch threads.com post pages
+  4. Draft from kouhou extracted + kuchikomi posts.json (one post → one short subsection; paraphrase + permalink; optional oEmbed); write ${outRel}
+  5. npm run prose-review -- --vol ${opts.vol}  (scripts/prose-review-prompt.md — media voice / meta / region h3 / 1-sentence口コミ)
+  6. Human review → npm run check → git commit / push (never auto-publish)
 `);
 }
 

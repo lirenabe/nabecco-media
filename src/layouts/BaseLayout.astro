@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import ThreadsEmbedScript from '../components/ThreadsEmbedScript.astro';
 import '../styles/tokens.css';
 
 interface Props {
@@ -44,7 +45,7 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600&display=swap"
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
@@ -56,6 +57,8 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
       <slot />
     </main>
     <Footer />
+    {/* After blockquotes so polarisOnDOMReady always finds .text-post-media */}
+    <ThreadsEmbedScript />
   </body>
 </html>
 

@@ -62,7 +62,8 @@ a:hover {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.3;
@@ -88,7 +89,8 @@ p {
 
 .prose h1,
 .prose h2,
-.prose h3 {
+.prose h3,
+.prose h4 {
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -161,12 +163,39 @@ p {
   );
 }
 
-/* Item titles — pre-hierarchy-change sizing (h2 keeps the new band styles) */
+/*
+ * Four clear levels inside .prose (Palette A1; no cards):
+ * h1 pickup → h2 section → h3 region label → h4 tip lead
+ * h3 present via ash + serif + tracking only (no hairline stack).
+ * h4 = tip lead (sumi, readable).
+ */
 .prose h3 {
-  margin: 2.25rem 0 0.55rem;
-  font-size: 1.05rem;
-  font-weight: 600;
+  margin: 2.35rem 0 0.45rem;
+  padding: 0;
+  border: 0;
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.45;
+  color: var(--color-ash);
+}
+
+.prose h4 {
+  margin: 1.55rem 0 0.5rem;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.06rem, 2.6vw, 1.14rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   line-height: 1.35;
+  color: var(--color-sumi);
+}
+
+/* First tip under a region label sits closer */
+.prose h3 + h4 {
+  margin-top: 0.45rem;
 }
 
 .prose p {
@@ -224,4 +253,36 @@ p {
 
 .prose .info-note p {
   margin: 0;
+}
+
+/* Official Threads oEmbed host — do not restyle as 出典 quotes */
+.prose .threads-embed {
+  margin: 1.1rem 0 1.35rem;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Placeholder blockquote only (embed.js moves class onto the iframe) */
+.prose .threads-embed > blockquote.text-post-media {
+  margin: 0 auto;
+  padding: 0;
+  border-left: none;
+  color: inherit;
+  font-size: inherit;
+  max-width: 100%;
+}
+
+/* Once embed.js inserts the iframe, hide the "View on Threads" placeholder */
+.prose .threads-embed:has(iframe) > blockquote {
+  display: none !important;
+}
+
+/* Hydrated card */
+.prose .threads-embed > iframe.text-post-media {
+  display: block;
+  width: 100%;
+  max-width: 658px;
+  margin-inline: auto;
+  border: 0;
+  background: transparent;
 }
