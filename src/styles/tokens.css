@@ -165,23 +165,23 @@ p {
 
 /*
  * Four clear levels inside .prose (Palette A1; no cards):
- * h1 pickup → h2 section band → h3 quiet group label → h4 tip lead (eye-catch, not shout)
- * Outline stays h1>h2>h3>h4; within a group the tip title carries the read.
+ * h1 pickup → h2 section → h3 region band (県北/県央/県南) → h4 tip lead
+ * h3 = quiet-but-present region band (not a shout); h4 carries each tip title.
  */
 .prose h3 {
-  margin: 2.55rem 0 0.35rem;
-  padding: 0;
-  border: 0;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  line-height: 1.4;
-  color: var(--color-ash);
-  text-transform: none;
+  margin: 2.65rem 0 0.7rem;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 0;
+  font-size: clamp(0.95rem, 2.2vw, 1.02rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+  color: var(--color-sumi);
 }
 
 .prose h4 {
-  margin: 1.65rem 0 0.5rem;
+  margin: 1.55rem 0 0.5rem;
   padding: 0;
   border: 0;
   font-size: clamp(1.06rem, 2.6vw, 1.14rem);
@@ -191,9 +191,9 @@ p {
   color: var(--color-sumi);
 }
 
-/* First tip under a quiet group sits closer */
+/* First tip under a region band sits closer */
 .prose h3 + h4 {
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .prose p {
