@@ -2,7 +2,7 @@
 
 広報3ステップに加え、街の声を号の読み物へ取り込む運用です。  
 執筆契約: [`scripts/draft-prompt.md`](../scripts/draft-prompt.md)。方針: [POLICY.md](../POLICY.md)。  
-**Threads の取得・掲載制約:** [`threads-citation-rules.md`](./threads-citation-rules.md)（エージェントは `threads.com` を fetch しない）。
+**Threads の取得・掲載制約:** [`threads-citation-rules.md`](./threads-citation-rules.md)（要約。詳細調査はプロジェクト Context 同名文書）。エージェントは `threads.com` を fetch しない。
 
 ## 設計判断（確定）
 

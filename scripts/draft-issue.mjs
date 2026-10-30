@@ -4,7 +4,7 @@
  *
  * Prints paths for *any* agent (Cursor today by operator policy).
  * Prefers data/kouhou/extracted/<id>/ artifacts from Step B.
- * Lists optional data/kuchikomi/*.txt notes for street-voice color.
+ * Lists human-exported Threads HTML dumps (+ optional *.txt URL index).
  *
  * Usage:
  *   npm run draft -- --vol 2 --date 2026-11-01
@@ -29,9 +29,12 @@ async function ensureIssueKuchikomiShell(dateStr) {
   if (await fileExists(abs)) {
     return { path: abs, created: false };
   }
-  const body = `# kuchikomi shell for pubDate ${dateStr}
-# Add one URL per line (optional note after — ). Do not commit this file.
-# Agent waits in chat until URLs are added or operator says skip.
+  const body = `# optional URL index for pubDate ${dateStr}
+# Primary input: drop human-exported HTML at
+#   data/kuchikomi/${dateStr}.threads.html
+#   or data/kuchikomi/${dateStr}/*.html  (browser Save Page + optional _files/)
+# This .txt is optional (one URL per line). Do not commit. Agent does not fetch threads.com.
+# Agent waits in chat until HTML is dropped or operator says skip.
 
 `;
   await writeFile(abs, body, 'utf8');
@@ -86,11 +89,30 @@ async function listKuchikomiFiles(singlePath) {
     const names = await readdir(KUCHIKOMI_DIR);
     const out = [];
     for (const name of names.sort()) {
-      if (!name.endsWith('.txt') || name.startsWith('.')) continue;
+      if (name.startsWith('.') || name === 'example.txt') continue;
       const abs = path.join(KUCHIKOMI_DIR, name);
       const st = await stat(abs);
-      if (!st.isFile()) continue;
-      out.push({ path: abs, rel: path.relative(ROOT, abs) });
+      if (st.isFile()) {
+        if (name.endsWith('.txt') || name.endsWith('.html') || name.endsWith('.threads.html')) {
+          out.push({ path: abs, rel: path.relative(ROOT, abs) });
+        }
+        continue;
+      }
+      if (!st.isDirectory()) continue;
+      let children = [];
+      try {
+        children = await readdir(abs);
+      } catch {
+        continue;
+      }
+      for (const child of children.sort()) {
+        if (!child.endsWith('.html') || child.startsWith('.')) continue;
+        const childAbs = path.join(abs, child);
+        const cst = await stat(childAbs);
+        if (cst.isFile()) {
+          out.push({ path: childAbs, rel: path.relative(ROOT, childAbs) });
+        }
+      }
     }
     return out;
   } catch {
@@ -161,7 +183,8 @@ async function main() {
   console.log(`口コミ ops   : docs/kuchikomi.md`);
   console.log(`Manifest     : data/kouhou/manifest.json`);
   console.log(`Extracted    : ${extracted.length} dir(s) under data/kouhou/extracted/`);
-  console.log(`口コミ shell : ${shellRel}${shell.created ? ' (created empty shell)' : ' (exists)'}`);
+  console.log(`口コミ index : ${shellRel}${shell.created ? ' (created optional URL index)' : ' (exists)'}`);
+  console.log(`口コミ HTML  : drop at data/kuchikomi/${opts.date}.threads.html or data/kuchikomi/${opts.date}/`);
   console.log(`口コミ files : ${kuchikomiFiles.length} under data/kuchikomi/`);
 
   if (!extracted.length) {
@@ -183,9 +206,9 @@ async function main() {
 
   console.log(`
 Next (operator / any agent — Cursor by current policy):
-  1. Read ${PROMPT_REL}, POLICY.md, and docs/kuchikomi.md
-  2. WAIT: ask operator to add URLs to ${shellRel} (or say skip). Do not write the issue body yet
-  3. After resume: skim extracts + 口コミ URLs; write ${outRel} with citations; first pickup "#", later "##", items "###"
+  1. Read ${PROMPT_REL}, POLICY.md, docs/kuchikomi.md, docs/threads-citation-rules.md
+  2. WAIT: tell operator the HTML drop path (data/kuchikomi/${opts.date}/ or .threads.html); do not fetch threads.com; do not write the issue body yet
+  3. After resume: skim local HTML (+ optional ${shellRel}); paraphrase + permalink only; write ${outRel}; first pickup "#", later "##", items "###"
   4. Human review → npm run check → git commit / push (never auto-publish)
 `);
 }
