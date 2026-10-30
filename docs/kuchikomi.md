@@ -42,8 +42,10 @@ npm run extract:kuchikomi -- --date 2026-11-01 --input path/to/dump.html
 
 ## 記事への書き方（要約）
 
-- 公式と矛盾するときは公式優先。口コミは声として距離を取る  
-- **1投稿1節**を基本（複数 URL を曖昧に束ねない）  
+- **公式優先。** 口コミは声として距離を取る（2–4本程度）  
+- **1投稿1節**（`###`）。複数 permalink を曖昧に束ねない  
+- 言い換えは `text` の具体（数字・場所・仕草・食材）を残す。**5–10行**（短報禁止）  
+- 禁止: 工程メタ、へッジ連打、店舗宣伝偏重、未確認の事実断定  
 - 出典例:
 
 ```markdown
@@ -51,9 +53,7 @@ npm run extract:kuchikomi -- --date 2026-11-01 --input path/to/dump.html
 > https://www.threads.com/@user/post/...
 ```
 
-- 言い換えは `posts.json` の `text` に忠実。未確認を事実断定しない  
-- 工程メタ／「HTML から拾った」等は本文に書かない  
-- 詳細: [`threads-citation-rules.md`](./threads-citation-rules.md)
+- 任意で公式 oEmbed。詳細: [`threads-citation-rules.md`](./threads-citation-rules.md)  
 
 ## チェックリストとの関係
 

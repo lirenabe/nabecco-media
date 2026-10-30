@@ -29,7 +29,7 @@ Use this file for **Step C — 記事下書き**. The runtime dependency is **fi
 | Input — extracted text/images (**primary**) | `data/kouhou/extracted/<id>/` (`text.txt`, `content.md`, `images/`, `meta.json`) |
 | Input — manifest | `data/kouhou/manifest.json` (url, sha256, paths) |
 | Input — source rules | `sources/municipalities.yaml` |
-| Input — optional口コミ | `data/kuchikomi/{pubDate}.threads.html` (human-exported; **no** threads.com fetch) + optional `{pubDate}.txt` URL index |
+| Input — optional口コミ | **`data/kuchikomi/extracted/{pubDate}/posts.json`** (+ `posts.md`) from `npm run extract:kuchikomi`. Raw HTML dump is extract input only. Optional `{pubDate}.txt` URL index |
 | Input — policy | `POLICY.md` |
 | Input — raw PDFs (**spot-check only**) | `data/kouhou/*.pdf` — do **not** re-extract everything from PDFs by default |
 | Output — article | `src/content/posts/vol-N.md` |
@@ -54,9 +54,23 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - **Never** HTTP-fetch/scrape Threads post pages. Official **oEmbed** is allowed only to obtain embed markup for a known permalink. Do not invent posts or URLs.
 3b. **WAIT (chat pause):** if extracted posts are missing, tell the drop path / ask for `extract:kuchikomi`, then **stop**.
    Resume when posts.json exists or operator says skip口コミ. Do not fill gaps via network.
-3c. After resume, draft from `posts.json`/`posts.md` as street-voice color, not verified fact.
-   Prefer **one post → one short subsection** (accurate paraphrase of `text` + permalink; optional official embed blockquote).
-   Skip defamation, doxxing, private/non-public content, and promo plugs (POLICY). Never paste dump HTML or repost media.
+3c. After resume, draft口コミ **only from** `posts.json` / `posts.md` (street-voice color, not verified fact).
+   **Selection gates (skip unless clear):**
+   - Prefer concrete scene / seasonal body / civic feeling.
+   - Skip shop plugs, menu dumps, channel CTAs, thin weather-only lines.
+   - Skip defamation, doxxing, private/non-public, promo-heavy (hours/address/「チャンネル登録」).
+   - Cap **about 2–4**口コミ items per issue; quality over coverage.
+   - Keep official kouhou topics primary;口コミ must not crowd them out.
+   - **Official-first:** if a post contradicts市政広報, keep the official item;口コミ must not override facts.
+   **Shape:** **1 post → 1 `###`** under `## 今週のあきた` (pickup only if image+10-line gates clear).
+   - Paraphrase must keep **concrete nouns from `text`** (place, food, gesture, number).
+   - Ban one-line glosses that drop every detail.
+   - Length: about **5–10 phone-screen lines** like other 今週のあきた tips (no 短報).
+   - Soft distance OK once (「〜という投稿があります」).
+   - Ban stacked hedges and **process meta** (「公式値ではなく〜として置きます」「書きぶりです」「候補から選びました」).
+   - Citation every time: `> 出典: 口コミ（Threads）` + `permalink` from JSON.
+   - Optional official oEmbed blockquote (script once via layout).
+   - Never paste dump HTML or repost `_files`/CDN media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
    Layout shows trailing gray `発行日 {pubDate}` at the article end.
@@ -145,12 +159,13 @@ Heading map (locked):
 - **Each topic:** `### {題名}` then about **5–10 phone-screen lines**
 - Full citation every topic; extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
-- **口コミ (optional):** may seed or color topics here (past buzz / recent talk)
-- Frame as voice (e.g. 「〜という投稿があります」); never assert rumor as fact
+- **口コミ (optional):** from `extracted/.../posts.json` only; seed/color 今週のあきた (past buzz / recent talk)
+- **1 JSON post → 1 `###`**; do not bundle several permalinks into one vague tip
+- Frame as voice once (e.g. 「〜という投稿があります」); never assert rumor as fact; never invent dates/places
+- Carry concrete detail from `text`; match 5–10 line depth of neighboring tips; optional Threads oEmbed under the prose
 - If a pickup already used the same tip, do not duplicate
-- **口コミ citation:** full every time — `> 出典: 口コミ（Web）` + URL (no 「同上」)
-- Prefer URL from the kuchikomi line; omit the tip if there is no usable source
-- Do **not** invent dates/places from口コミ; no process meta in body
+- **口コミ citation:** full every time — `> 出典: 口コミ（Threads）` + `permalink` (no 「同上」)
+- Omit the tip if there is no usable permalink / text; no process meta in body
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
@@ -177,7 +192,10 @@ Heading map (locked):
 - **`## 今週のあきた`:** past only; ~1-week window; no item-count cap
 - Same section: each topic is `###`; short articles (5–10 lines); **no** 問い合わせ
 - Same section: no pickup duplicates
-- **口コミ:** optional color for 今週のあきた (or pickup if gates clear); soft framing; full URL citation; no rumor-as-fact
+- **口コミ:** draft from `posts.json` only
+- Same: selection gates; 1 post→1 `###`; concrete paraphrase (5–10 lines)
+- Same: `出典: 口コミ（Threads）` + permalink; optional oEmbed; soft framing
+- Same: no rumor-as-fact; no process meta
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft
