@@ -17,3 +17,16 @@ export async function getPublishedPosts(): Promise<PostEntry[]> {
 export function sortPostsByDateDesc(posts: PostEntry[]): PostEntry[] {
   return [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
+
+/** Newest published post by pubDate, or undefined when none. */
+export function getLatestPost(posts: PostEntry[]): PostEntry | undefined {
+  return sortPostsByDateDesc(posts)[0];
+}
+
+/**
+ * Permalink for menus / lists.
+ * Latest published issue lives on `/` — its `/issues/vol-N/` URL redirects there.
+ */
+export function issueListHref(postId: string, latestId: string | undefined): string {
+  return latestId && postId === latestId ? '/' : `/issues/${postId}/`;
+}

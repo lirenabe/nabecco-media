@@ -1,23 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BackIssueList from '../../components/BackIssueList.astro';
-import { getPublishedPosts, sortPostsByDateDesc } from '../../lib/posts';
+import {
+  getLatestPost,
+  getPublishedPosts,
+  issueListHref,
+  sortPostsByDateDesc,
+} from '../../lib/posts';
 
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
-const latest = sorted[0];
+const latestId = getLatestPost(sorted)?.id;
 
+// Same set as the header menu: include the latest published issue.
 const issues = sorted.map((post) => ({
   id: post.id,
   title: post.data.title,
   pubDate: post.data.pubDate,
-  href: `/issues/${post.id}/`,
+  href: issueListHref(post.id, latestId),
 }));
 ---
 
-<BaseLayout title="バックナンバー" description="なべっこの過去号一覧">
+<BaseLayout title="バックナンバー" description="なべっこに掲載した号の一覧です。最新号はトップページでも読めます。">
   <div class="issues-page">
     <p class="issues-page__crumb"><a href="/">なべっこ</a> / バックナンバー</p>
-    <BackIssueList issues={issues} excludeId={latest?.id} />
+    <BackIssueList issues={issues} />
   </div>
 </BaseLayout>
 

@@ -1,7 +1,13 @@
 ---
-import { getPublishedPosts, sortPostsByDateDesc } from '../lib/posts';
+import {
+  getLatestPost,
+  getPublishedPosts,
+  issueListHref,
+  sortPostsByDateDesc,
+} from '../lib/posts';
 
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
+const latestId = getLatestPost(sorted)?.id;
 // Include the latest published issue (also on `/`), not past-only.
 const recentIssues = sorted.slice(0, 6);
 // No published issues → no menu (avoids empty-state links to a blank /issues/).
@@ -55,7 +61,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
               {
                 recentIssues.map((post) => (
                   <li>
-                    <a href={`/issues/${post.id}/`}>
+                    <a href={issueListHref(post.id, latestId)}>
                       <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
                         {dateFmt.format(post.data.pubDate)}
                       </time>

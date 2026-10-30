@@ -1,41 +1,57 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getPublishedPosts } from '../../lib/posts';
+import LatestIssueRedirect from '../../components/LatestIssueRedirect.astro';
+import { getLatestPost, getPublishedPosts, type PostEntry } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
+  const latest = getLatestPost(posts);
   return posts.map((post) => ({
     params: { slug: post.id },
-    props: { post },
+    props: { post, isLatest: post.id === latest?.id },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
+interface Props {
+  post: PostEntry;
+  isLatest: boolean;
+}
 
-const dateLabel = new Intl.DateTimeFormat('ja-JP', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}).format(post.data.pubDate);
+const { post, isLatest } = Astro.props;
 
-const dateIso = post.data.pubDate.toISOString().slice(0, 10);
+let Content = null;
+let dateLabel = '';
+let dateIso = '';
+
+if (!isLatest) {
+  ({ Content } = await render(post));
+  dateLabel = new Intl.DateTimeFormat('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(post.data.pubDate);
+  dateIso = post.data.pubDate.toISOString().slice(0, 10);
+}
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="issue" aria-label={`第${post.data.vol}号`}>
-    <p class="issue__crumb">
-      <a href="/">なべっこ</a> / <a href="/issues/">バックナンバー</a>
-    </p>
-    <div class="prose">
-      <Content />
-    </div>
-    <p class="issue-date">
-      発行日 <time datetime={dateIso}>{dateLabel}</time>
-    </p>
-  </article>
-</BaseLayout>
+{
+  isLatest ? (
+    <LatestIssueRedirect />
+  ) : (
+    <BaseLayout title={post.data.title} description={post.data.description}>
+      <article class="issue" aria-label={`第${post.data.vol}号`}>
+        <p class="issue__crumb">
+          <a href="/">なべっこ</a> / <a href="/issues/">バックナンバー</a>
+        </p>
+        <div class="prose">{Content && <Content />}</div>
+        <p class="issue-date">
+          発行日 <time datetime={dateIso}>{dateLabel}</time>
+        </p>
+      </article>
+    </BaseLayout>
+  )
+}
 
 <style>
   .issue {
