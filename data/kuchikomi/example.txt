@@ -1,8 +1,6 @@
-# 口コミ入力例（このファイルはコミット可。本番は data/kuchikomi/YYYY-MM-DD.txt を gitignore）
-# 号ごと: 発行日ファイル名。1行1件 URL 必須・注記任意。
-# Step C: npm run draft がシェル作成 → チャットで待機 → URL 投入後に下書き
-# 手順: docs/kuchikomi.md ／ Step C 契約: scripts/draft-prompt.md
+# 任意の URL 索引例（コミット可）。本番の号ファイルは gitignore。
+# 主入力は人が保存した data/kuchikomi/YYYY-MM-DD.threads.html（エージェントは fetch しない）
+# 手順: docs/kuchikomi.md ／ 制約: docs/threads-citation-rules.md
 
-# 例（本番は 2026-11-01.txt など）:
-# https://example.com/note
-# https://example.com/other — （任意）再開は未定、要確認
+# 例（本番は 2026-11-01.txt など、任意）:
+# https://www.threads.com/@user/post/...

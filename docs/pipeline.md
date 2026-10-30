@@ -16,8 +16,8 @@ npm run fetch:kouhou -- --force   # キャッシュ無視
 #    埋め込み画像は pillow があると取得（python3 -m pip install 'pypdf[image]'）
 npm run extract:kouhou
 
-# （任意）口コミメモを data/kuchikomi/ に置く。手順は docs/kuchikomi.md
-# 例: data/kuchikomi/example.txt
+# （任意）口コミ: 人が Threads HTML を data/kuchikomi/YYYY-MM-DD.threads.html に置く
+# 手順は docs/kuchikomi.md ／ 制約は docs/threads-citation-rules.md
 
 # C) 下書きチェックリスト（抽出成果物＋口コミパスを表示。外部 LLM API は呼ばない）
 npm run draft -- --vol N --date YYYY-MM-DD
@@ -31,7 +31,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
 - キャッシュ: `data/kouhou/manifest.json` に `url` / `sha256` / 任意で `etag`・`last-modified`。HTTP 304 またはハッシュ一致で再ダウンロードしない
 - PDF・抽出物は `data/` 配下（gitignore）。巨大バイナリを commit しない
 - 抽出方針は [POLICY.md](../POLICY.md) どおり（丸写し禁止、イベント等を優先、定例手続きは載せない）
-- **口コミ（半手動）:** [`docs/kuchikomi.md`](./kuchikomi.md) — `data/kuchikomi/*.txt` を Step C で読む。SNS 自動取得はまだしない
+- **口コミ（半手動）:** [`docs/kuchikomi.md`](./kuchikomi.md) — 人手エクスポート HTML（＋任意 URL 索引）。[`threads-citation-rules.md`](./threads-citation-rules.md)。エージェントは Threads を fetch しない
 - **人間が Markdown を確認してから** `git commit` / `git push` する（自動公開なし）
 - 当面の運用では Step C をエージェントへ依頼することがあるが、**コード上の必須依存ではない**
 
