@@ -55,22 +55,23 @@ npm run draft -- --vol N --date YYYY-MM-DD
 3b. **WAIT (chat pause):** if extracted posts are missing, tell the drop path / ask for `extract:kuchikomi`, then **stop**.
    Resume when posts.json exists or operator says skip口コミ. Do not fill gaps via network.
 3c. After resume, draft口コミ **only from** `posts.json` / `posts.md` (street-voice color, not verified fact).
-   **Selection gates (skip unless clear):**
-   - Prefer concrete scene / seasonal body / civic feeling.
-   - Skip shop plugs, menu dumps, channel CTAs, thin weather-only lines.
-   - Skip defamation, doxxing, private/non-public, promo-heavy (hours/address/「チャンネル登録」).
-   - Cap **about 2–4**口コミ items per issue; quality over coverage.
-   - Keep official kouhou topics primary;口コミ must not crowd them out.
-   - **Official-first:** if a post contradicts市政広報, keep the official item;口コミ must not override facts.
-   **Shape:** **1 post → 1 `###`** under `## 今週のあきた` (pickup only if image+10-line gates clear).
-   - Paraphrase must keep **concrete nouns from `text`** (place, food, gesture, number).
-   - Ban one-line glosses that drop every detail.
-   - Length: about **5–10 phone-screen lines** like other 今週のあきた tips (no 短報).
-   - Soft distance OK once (「〜という投稿があります」).
-   - Ban stacked hedges and **process meta** (「公式値ではなく〜として置きます」「書きぶりです」「候補から選びました」).
-   - Citation every time: `> 出典: 口コミ（Threads）` + `permalink` from JSON.
-   - Optional official oEmbed blockquote (script once via layout).
-   - Never paste dump HTML or repost `_files`/CDN media.
+   **Selection gates:**
+   - Prefer concrete scene / seasonal body / civic feeling / **customer shop visits**.
+   - **Shop tip:** ordinary diner口コミ about a restaurant is **OK and welcome**.
+   - Skip only **本人による宣伝** (business-owner self-promo: 「本日営業」「お待ちしてます」、自店の営業案内、出店のいいね乞い、等).
+   - Also skip: defamation, doxxing, private/non-public, thin weather-only / empty cheer lines.
+   - Creator CTAs (「チャンネル登録」) without a real visit scene → skip or cut.
+     A visit scene may stay if the food/place is the point.
+   - Cap **about 2–4**口コミ items; quality over coverage; do not crowd out kouhou tips.
+   - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
+   **Shape (media 読み物 — same bar as early 広報 drafts):**
+   - **1 post → 1 `###`** under `## 今週のあきた`.
+   - Write a **short media article** about the place/scene/food — not a digest of “what the post said”.
+   - Ban summary-voice / process-meta: post-digest framing, stacked 「という投稿がある」, writer-meta, process notes.
+   - Soft attribution once in prose (e.g. 「〜という声」) is fine; do not make the tip a meta-summary.
+   - Keep **concrete nouns from `text`** (shop name, dish, price, gesture). Ban one-line glosses.
+   - Length: about **5–10 phone-screen lines** (no 短報).
+   - Citation: `> 出典: 口コミ（Threads）` + `permalink`. Optional oEmbed. Never paste dump HTML / `_files` media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
    Layout shows trailing gray `発行日 {pubDate}` at the article end.
@@ -161,8 +162,9 @@ Heading map (locked):
 - **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
 - **口コミ (optional):** from `extracted/.../posts.json` only; seed/color 今週のあきた (past buzz / recent talk)
 - **1 JSON post → 1 `###`**; do not bundle several permalinks into one vague tip
-- Frame as voice once (e.g. 「〜という投稿があります」); never assert rumor as fact; never invent dates/places
-- Carry concrete detail from `text`; match 5–10 line depth of neighboring tips; optional Threads oEmbed under the prose
+- Write as **media 読み物** (place/scene/food), not “we summarized Threads”
+- Soft attribution OK; never assert rumor as fact; never invent dates/places
+- Carry concrete detail from `text`; 5–10 line depth; optional Threads oEmbed under the prose
 - If a pickup already used the same tip, do not duplicate
 - **口コミ citation:** full every time — `> 出典: 口コミ（Threads）` + `permalink` (no 「同上」)
 - Omit the tip if there is no usable permalink / text; no process meta in body
@@ -194,8 +196,8 @@ Heading map (locked):
 - Same section: no pickup duplicates
 - **口コミ:** draft from `posts.json` only
 - Same: selection gates; 1 post→1 `###`; concrete paraphrase (5–10 lines)
-- Same: `出典: 口コミ（Threads）` + permalink; optional oEmbed; soft framing
-- Same: no rumor-as-fact; no process meta
+- Same: `出典: 口コミ（Threads）` + permalink; optional oEmbed; media 読み物 (no summary-voice)
+- Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft
