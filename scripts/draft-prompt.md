@@ -46,8 +46,10 @@ npm run draft -- --vol N --date YYYY-MM-DD
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
-4. Write `src/content/posts/vol-N.md` as **readable articles** with this heading hierarchy
-   (real ATX levels — not CSS-only). Do **not** put `第N号` as a heading.
+3b. Optional: skim `data/kuchikomi/*.txt` as street-voice color, not verified fact.
+   Prefer lines with a URL. Skip defamation, doxxing, and promo plugs (POLICY). See `docs/kuchikomi.md`.
+4. Write `src/content/posts/vol-N.md` as readable articles.
+   Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
    Layout shows trailing gray `発行日 {pubDate}` at the article end.
 
 ```markdown
@@ -134,8 +136,11 @@ Heading map (locked):
 - **Each topic:** `### {題名}` then about **5–10 phone-screen lines**
 - Full citation every topic; extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section (past reading; readers are not signing up)
+- **口コミ (optional):** may seed or color topics here (past buzz / recent talk). Frame as voice — e.g. 「〜という投稿があります」— never assert rumor as fact. If a pickup already used the same tip, do not duplicate
+- **口コミ citation:** full every time, e.g. `> 出典: 口コミ（Web）` + the post/page URL (no 「同上」). Prefer URL from the kuchikomi line; omit the tip if there is no usable source
+- Do **not** invent dates/places from口コミ; do not narrate process meta（「口コミファイルから選びました」等）
 
-5. Attach a **full** citation per item (`> 出典: …` + listing URL). Never use 「同上」「同」「前掲」.
+5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
 7. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
 
@@ -160,6 +165,7 @@ Heading map (locked):
 - **`## 今週のあきた`:** past only; ~1-week window; no item-count cap
 - Same section: each topic is `###`; short articles (5–10 lines); **no** 問い合わせ
 - Same section: no pickup duplicates
+- **口コミ:** optional color for 今週のあきた (or pickup if gates clear); soft framing; full URL citation; no rumor-as-fact
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft

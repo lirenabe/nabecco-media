@@ -4,6 +4,7 @@
  *
  * Prints paths for *any* agent (Cursor today by operator policy).
  * Prefers data/kouhou/extracted/<id>/ artifacts from Step B.
+ * Lists optional data/kuchikomi/*.txt notes for street-voice color.
  *
  * Usage:
  *   npm run draft -- --vol 2 --date 2026-11-01
@@ -16,12 +17,13 @@ import { loadSources } from './lib/sources.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const PROMPT_REL = 'scripts/draft-prompt.md';
+const KUCHIKOMI_DIR = path.join(ROOT, 'data/kuchikomi');
 
 function parseArgs(argv) {
   const opts = {
     vol: null,
     date: null,
-    kuchikomi: path.join(ROOT, 'data/kuchikomi/example.txt'),
+    kuchikomi: null,
     printPrompt: false,
     help: false,
   };
@@ -54,11 +56,35 @@ async function fileExists(p) {
   }
 }
 
+async function listKuchikomiFiles(singlePath) {
+  if (singlePath) {
+    const ok = await fileExists(singlePath);
+    return ok
+      ? [{ path: singlePath, rel: path.relative(ROOT, singlePath) }]
+      : [];
+  }
+  try {
+    const names = await readdir(KUCHIKOMI_DIR);
+    const out = [];
+    for (const name of names.sort()) {
+      if (!name.endsWith('.txt') || name.startsWith('.')) continue;
+      const abs = path.join(KUCHIKOMI_DIR, name);
+      const st = await stat(abs);
+      if (!st.isFile()) continue;
+      out.push({ path: abs, rel: path.relative(ROOT, abs) });
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
   if (opts.help) {
-    console.log(`Usage: node scripts/draft-issue.mjs --vol N --date YYYY-MM-DD [--print-prompt]
-  Step C checklist. Full instructions: ${PROMPT_REL}`);
+    console.log(`Usage: node scripts/draft-issue.mjs --vol N --date YYYY-MM-DD [--kuchikomi path] [--print-prompt]
+  Step C checklist. Full instructions: ${PROMPT_REL}
+  口コミ ops: docs/kuchikomi.md`);
     process.exit(0);
   }
   if (!opts.vol || !opts.date) {
@@ -72,7 +98,7 @@ async function main() {
   const outAbs = path.join(ROOT, outRel);
   const { sources, root } = await loadSources();
   const { doc: manifest } = await loadManifest(root);
-  const kuchikomiOk = await fileExists(opts.kuchikomi);
+  const kuchikomiFiles = await listKuchikomiFiles(opts.kuchikomi);
 
   if (opts.printPrompt) {
     process.stdout.write(await readFile(path.join(ROOT, PROMPT_REL), 'utf8'));
@@ -109,11 +135,10 @@ async function main() {
   console.log(`Output       : ${outRel}${await fileExists(outAbs) ? ' (exists — review before overwrite)' : ' (new)'}`);
   console.log(`Instructions : ${PROMPT_REL}`);
   console.log(`Policy       : POLICY.md`);
+  console.log(`口コミ ops   : docs/kuchikomi.md`);
   console.log(`Manifest     : data/kouhou/manifest.json`);
   console.log(`Extracted    : ${extracted.length} dir(s) under data/kouhou/extracted/`);
-  console.log(
-    `口コミ        : ${path.relative(ROOT, opts.kuchikomi)}${kuchikomiOk ? '' : ' (missing — optional)'}`,
-  );
+  console.log(`口コミ files : ${kuchikomiFiles.length} under data/kuchikomi/`);
 
   if (!extracted.length) {
     console.log(`\n⚠ No extracts found. Run Steps A then B:\n  npm run fetch:kouhou\n  npm run extract:kouhou\n`);
@@ -125,11 +150,20 @@ async function main() {
     }
   }
 
+  if (kuchikomiFiles.length) {
+    console.log('\nOptional 口コミ notes (street voice — not verified fact):');
+    for (const f of kuchikomiFiles) {
+      console.log(`  - ${f.rel}`);
+    }
+  } else {
+    console.log('\nOptional 口コミ: none found (OK — drop *.txt in data/kuchikomi/; see docs/kuchikomi.md)');
+  }
+
   console.log(`
 Next (operator / any agent — Cursor by current policy):
-  1. Read ${PROMPT_REL} and POLICY.md
-  2. Skim extracted text/images above (PDF only for spot-check)
-  3. Write ${outRel} with citations; first pickup `#`, later `##`, items `###`
+  1. Read ${PROMPT_REL}, POLICY.md, and docs/kuchikomi.md
+  2. Skim extracted text/images above (PDF only for spot-check); skim 口コミ notes if listed
+  3. Write ${outRel} with citations; first pickup "#", later "##", items "###"
   4. Human review → npm run check → git commit / push (never auto-publish)
 `);
 }

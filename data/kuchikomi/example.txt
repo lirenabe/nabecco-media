@@ -1,5 +1,6 @@
 # 口コミメモ例（このファイルはコミット可。本番入力は data/kuchikomi/*.txt を gitignore）
-# 1行1件で、URL や要約メモを置く。断定・誹謗中傷は載せない。
+# 1行1件: URL — 要約メモ。断定・誹謗中傷・宣伝偏重は載せない。
+# 手順: docs/kuchikomi.md ／ Step C 契約: scripts/draft-prompt.md
 
 # 例:
 # https://example.com/note — 秋田駅前の〇〇が改装休業、再開は未定（要確認）
