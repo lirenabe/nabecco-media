@@ -35,10 +35,11 @@
 ## 画像ルール
 
 - 置き場所: `public/images/`（スポンサーロゴは `public/images/sponsors/`）
+- AI 生成のピックアップ画像: `public/images/generated/vol-N/`（ルールは [docs/ai-generated-images.md](./docs/ai-generated-images.md)）
 - 巨大な元画像はコミットしない。WebP などへ変換・リサイズ・圧縮してから追加
 - 権利が不明な画像や、個人が特定できる写真は置かない
-- **広報誌から抽出した写真**（`public/images/kouhou/`）は権利確認が済むまでコミットしない（gitignore 済み）。記事にも埋め込まない
-- 広報由来の画像の権利は [LICENSE-CONTENT.md](./LICENSE-CONTENT.md) を参照
+- **広報誌から抽出した写真**（`public/images/kouhou/`）はコミットしない（gitignore 済み）。記事にも埋め込まない。AI 生成の入力にも使わない
+- 広報由来・AI 生成画像の権利の切り分けは [LICENSE-CONTENT.md](./LICENSE-CONTENT.md) を参照
 
 ## マージしないもの
 

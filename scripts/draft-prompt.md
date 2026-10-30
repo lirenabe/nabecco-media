@@ -30,10 +30,11 @@ Use this file for **Step C — 記事下書き**. The runtime dependency is **fi
 | Input — manifest | `data/kouhou/manifest.json` (url, sha256, paths) |
 | Input — source rules | `sources/municipalities.yaml` |
 | Input — optional口コミ | **`data/kuchikomi/extracted/{pubDate}/posts.json`** (+ `posts.md`) from `npm run extract:kuchikomi`. Raw HTML dump is extract input only. Optional `{pubDate}.txt` URL index |
-| Input — policy | `POLICY.md` |
+| Input — policy | `POLICY.md` + AI image rules [`docs/ai-generated-images.md`](../docs/ai-generated-images.md) |
 | Input — raw PDFs (**spot-check only**) | `data/kouhou/*.pdf` — do **not** re-extract everything from PDFs by default |
 | Output — article | `src/content/posts/vol-N.md` |
-| Never | auto `git commit` / `git push` / publish |
+| Output — AI images (pickups) | `public/images/generated/vol-N/` — topic-text prompts only; never 広報 PDF images as input |
+| Never | auto `git commit` / `git push` / publish; never embed `data/kouhou/extracted/.../images` |
 
 Checklist helper (no external LLM API):
 
@@ -47,7 +48,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities.
    Local `images/` under `data/kouhou/extracted/` may help judge a topic.
-   **Never** embed or copy those images into the article or `public/images/kouhou/`.
+   **Never** embed or copy those images into the article, `public/images/kouhou/`, or any AI image prompt / reference.
    Choose topics worth a media piece — not every calendar line.
    Open a raw PDF only to verify an unclear date/name.
 3a. **口コミ（Threads）2 stages — like kouhou extract→draft:**
@@ -130,8 +131,9 @@ Heading map (locked):
 - Place **1–3** such blocks **before** `## 直近のイベント情報`
 - **Candidate pool:** topics that would otherwise go in 直近 or 今週のあきた, with enough content for **10+ lines** of prose
 - **Select 1–3** from candidates; **remove** them from 直近のイベント情報 and 今週のあきた (no duplicate)
-- **Baseline criteria:** (a) eye-catching title, (b) interesting topic
-- Local extract photos may inform selection only — **do not embed**
+- **Baseline criteria (locked):** (a) eye-catching title, (b) interesting topic — **only these two**
+- **No image-as-selection:** do **not** pick (or skip) a topic because a 広報 extract photo exists or is missing. Photos are never a selection gate
+- **AI visuals (after selection):** for each chosen pickup, generate from **topic text only** (`docs/ai-generated-images.md`). Save under `public/images/generated/vol-N/`. Short corner watermark (`AI生成`). Alt may say AI生成. No long prose disclosure. No realistic identifiable people. Follow the image tool’s ToS. Keep `draft: true`
 - Body: media 読み物 and ですます. Full citation. **10+ lines** of prose (no 広報写真). Not a PR digest.
 
 #### `## 直近のイベント情報` (locked)
@@ -181,10 +183,12 @@ Heading map (locked):
 - Omit posts with no usable permalink / text; no process meta in body
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
-6. **Do not** copy or embed 広報 extract photos into `public/images/kouhou/` or the article until rights are cleared.
-   Keep extracts under `data/kouhou/extracted/` (gitignore). Body = text + citations only.
+6. **Do not** copy or embed 広報 extract photos into `public/images/kouhou/` or the article.
+   Keep extracts under `data/kouhou/extracted/` (gitignore).
+   Pickup visuals use **AI images** under `public/images/generated/vol-N/` (topic text only; see `docs/ai-generated-images.md`).
+   Never pass 広報 images into the generator.
 7. **Prose review loop** (not textlint): `npm run prose-review -- --vol N` then `scripts/prose-review-prompt.md`.
-   Fix voice / process-meta / region h3 / 口コミ1文 / citations. Re-run until clean.
+   Fix voice / process-meta / region h3 / 口コミ1文 / citations / AI disclosure. Re-run until clean.
 8. Stop for **human review**. Keep `draft: true` until an operator explicitly clears it for publish.
 
 ## Hard rules
@@ -199,10 +203,11 @@ Heading map (locked):
 - No丸写し of 広報 text
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
-- **Do not embed 広報 extract photos** until rights are cleared (never link `data/`; do not commit under `public/images/kouhou/`)
+- **Do not embed 広報 extract photos.** Never link `data/`. Do not commit under `public/images/kouhou/`. Never use them as AI reference input
+- **AI pickup images:** topic text only. No realistic identifiable people. Use ToS-compliant tooling. Short corner watermark (`AI生成`); no long body note. Files under `public/images/generated/vol-N/`. Full rules: `docs/ai-generated-images.md`
 - New issues ship with **`draft: true`**; clear the flag only when intentionally publishing
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
-- Same: 10+ lines of readable prose; remove selected topics from the other two sections（広報写真の埋め込みは権利確認後までしない）
+- Same: select 1–3 by (a) title + (b) topic only — **never** by image availability. 10+ lines of prose. Remove from the other two sections. Add AI images after selection (not 広報 photos)
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; `###` 県北→県央→県南; theme sort then **date descending**
 - Same section: info-note under h2; `####` items; `問い合わせ: …` house style
 - Same section: 3–5 charm lines OK; no pickup duplicates
