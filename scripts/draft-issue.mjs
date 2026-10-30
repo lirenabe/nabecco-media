@@ -183,9 +183,26 @@ async function main() {
   console.log(`口コミ ops   : docs/kuchikomi.md`);
   console.log(`Manifest     : data/kouhou/manifest.json`);
   console.log(`Extracted    : ${extracted.length} dir(s) under data/kouhou/extracted/`);
+  const kuchikomiExtractDir = path.join(KUCHIKOMI_DIR, 'extracted', opts.date);
+  const kuchikomiPostsJson = path.join(kuchikomiExtractDir, 'posts.json');
+  const kuchikomiPostsMd = path.join(kuchikomiExtractDir, 'posts.md');
+  const hasKuchikomiExtract = await fileExists(kuchikomiPostsJson);
+  let kuchikomiPostCount = 0;
+  if (hasKuchikomiExtract) {
+    try {
+      const doc = JSON.parse(await readFile(kuchikomiPostsJson, 'utf8'));
+      kuchikomiPostCount = Array.isArray(doc.posts) ? doc.posts.length : 0;
+    } catch {
+      /* ignore */
+    }
+  }
+
   console.log(`口コミ index : ${shellRel}${shell.created ? ' (created optional URL index)' : ' (exists)'}`);
   console.log(`口コミ HTML  : drop at data/kuchikomi/${opts.date}.threads.html or data/kuchikomi/${opts.date}/`);
-  console.log(`口コミ files : ${kuchikomiFiles.length} under data/kuchikomi/`);
+  console.log(
+    `口コミ extract: ${hasKuchikomiExtract ? path.relative(ROOT, kuchikomiPostsJson) + ` (${kuchikomiPostCount} posts)` : '(missing — run npm run extract:kuchikomi -- --date ' + opts.date + ')'}`,
+  );
+  console.log(`口コミ dump  : ${kuchikomiFiles.length} html/txt under data/kuchikomi/`);
 
   if (!extracted.length) {
     console.log(`\n⚠ No extracts found. Run Steps A then B:\n  npm run fetch:kouhou\n  npm run extract:kouhou\n`);
@@ -197,19 +214,22 @@ async function main() {
     }
   }
 
-  if (kuchikomiFiles.length) {
-    console.log('\n口コミ files (street voice — not verified fact):');
-    for (const f of kuchikomiFiles) {
-      console.log(`  - ${f.rel}`);
-    }
+  if (hasKuchikomiExtract) {
+    console.log('\n口コミ extracted (street voice — draft from these, not raw HTML):');
+    console.log(`  - ${path.relative(ROOT, kuchikomiPostsJson)}`);
+    if (await fileExists(kuchikomiPostsMd)) console.log(`  - ${path.relative(ROOT, kuchikomiPostsMd)}`);
+  } else if (kuchikomiFiles.length) {
+    console.log('\n口コミ dump present but not extracted yet:');
+    for (const f of kuchikomiFiles) console.log(`  - ${f.rel}`);
   }
 
   console.log(`
 Next (operator / any agent — Cursor by current policy):
   1. Read ${PROMPT_REL}, POLICY.md, docs/kuchikomi.md, docs/threads-citation-rules.md
-  2. WAIT: tell operator the HTML drop path (data/kuchikomi/${opts.date}/ or .threads.html); do not fetch threads.com; do not write the issue body yet
-  3. After resume: skim local HTML (+ optional ${shellRel}); paraphrase + permalink only; write ${outRel}; first pickup "#", later "##", items "###"
-  4. Human review → npm run check → git commit / push (never auto-publish)
+  2. If口コミ dump exists: npm run extract:kuchikomi -- --date ${opts.date}
+  3. WAIT if posts.json missing (or operator says skip). Do not fetch threads.com post pages
+  4. Draft from kouhou extracted + kuchikomi posts.json (one post → one short subsection; paraphrase + permalink; optional oEmbed); write ${outRel}
+  5. Human review → npm run check → git commit / push (never auto-publish)
 `);
 }
 

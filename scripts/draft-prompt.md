@@ -46,14 +46,17 @@ npm run draft -- --vol N --date YYYY-MM-DD
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
-3a. **口コミ入力（Threads）:** primary input is a **human-exported** HTML dump for the issue date:
-   `data/kuchikomi/{pubDate}.threads.html` **or** `data/kuchikomi/{pubDate}/*.html` (browser “Save Page” + optional `_files/`).
-   Optional URL index: `data/kuchikomi/{pubDate}.txt`. See `docs/kuchikomi.md` and `docs/threads-citation-rules.md`.
-   **Never** HTTP-fetch or scrape `threads.com` / Meta. Read **local files only**. Do not invent posts or URLs.
-3b. **WAIT (chat pause):** tell the operator the drop path, then **stop** before writing the issue body.
-   Resume when they say the HTML is in place / skip口コミ, or a local dump exists under that pubDate. Do not fill gaps via network.
-3c. After resume, skim the local HTML (and optional txt) as street-voice color, not verified fact.
-   Skip defamation, doxxing, private/non-public content, and promo plugs (POLICY). Publish as **paraphrase + permalink**, never paste dump HTML or repost media.
+3a. **口コミ（Threads）2 stages — like kouhou extract→draft:**
+   - **B′ extract:** operator drops human-exported HTML at `data/kuchikomi/{pubDate}/` or `{pubDate}.threads.html`.
+     Run `npm run extract:kuchikomi -- --date {pubDate}` → `data/kuchikomi/extracted/{pubDate}/posts.json` + `posts.md`.
+   - **C draft input:** read **those extracted files only** (not the raw HTML). Optional URL index: `{pubDate}.txt`.
+   - See `docs/kuchikomi.md` and `docs/threads-citation-rules.md`.
+   - **Never** HTTP-fetch/scrape Threads post pages. Official **oEmbed** is allowed only to obtain embed markup for a known permalink. Do not invent posts or URLs.
+3b. **WAIT (chat pause):** if extracted posts are missing, tell the drop path / ask for `extract:kuchikomi`, then **stop**.
+   Resume when posts.json exists or operator says skip口コミ. Do not fill gaps via network.
+3c. After resume, draft from `posts.json`/`posts.md` as street-voice color, not verified fact.
+   Prefer **one post → one short subsection** (accurate paraphrase of `text` + permalink; optional official embed blockquote).
+   Skip defamation, doxxing, private/non-public content, and promo plugs (POLICY). Never paste dump HTML or repost media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
    Layout shows trailing gray `発行日 {pubDate}` at the article end.

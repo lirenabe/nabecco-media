@@ -24,6 +24,7 @@
     "factcheck": "node scripts/factcheck.mjs",
     "fetch:kouhou": "node scripts/fetch-kouhou.mjs",
     "extract:kouhou": "node scripts/extract-kouhou.mjs",
+    "extract:kuchikomi": "node scripts/extract-kuchikomi.mjs",
     "draft": "node scripts/draft-issue.mjs",
     "prepare": "simple-git-hooks"
   },
