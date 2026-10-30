@@ -2,10 +2,10 @@
 import { getPublishedPosts, sortPostsByDateDesc } from '../lib/posts';
 
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
-// Latest lives on `/` — menu shows recent past issues only.
-const recentPast = sorted.slice(1, 6);
-// No past issues → no menu (avoids empty-state links to a blank /issues/).
-const hasBackIssues = recentPast.length > 0;
+// Include the latest published issue (also on `/`), not past-only.
+const recentIssues = sorted.slice(0, 6);
+// No published issues → no menu (avoids empty-state links to a blank /issues/).
+const hasBackIssues = recentIssues.length > 0;
 
 const dateFmt = new Intl.DateTimeFormat('ja-JP', {
   year: 'numeric',
@@ -50,10 +50,10 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
           hidden
           data-menu-panel
         >
-          <nav aria-label="最近のバックナンバー">
+          <nav aria-label="最近の号">
             <ul class="site-header__list">
               {
-                recentPast.map((post) => (
+                recentIssues.map((post) => (
                   <li>
                     <a href={`/issues/${post.id}/`}>
                       <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
