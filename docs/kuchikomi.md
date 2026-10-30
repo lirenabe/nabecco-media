@@ -26,7 +26,8 @@
 3. **`npm run extract:kuchikomi -- --date {発行日}`** → `data/kuchikomi/extracted/{発行日}/posts.json` と `posts.md`  
 4. Step C: エージェントは **抽出済み構造化ファイル**を正として下書き（生 HTML を直接読まない）。無ければ待機  
 5. 公開形は地域束＋**口コミ1文＋公式 oEmbed**。`embed.js` はレイアウトで 1 回  
-6. 人間がファクトチェック → commit  
+6. **`npm run prose-review -- --vol N`**（[`scripts/prose-review-prompt.md`](../scripts/prose-review-prompt.md)）で声・工程メタ・1文・地域 h3 を直し  
+7. 人間がファクトチェック → commit  
 
 ## 抽出物の形
 
@@ -64,4 +65,5 @@ npm run extract:kuchikomi -- --date 2026-11-01 --input path/to/dump.html
 ## チェックリストとの関係
 
 `npm run draft` は任意の URL 索引シェルを用意しうるが、**下書きの正本は extracted/posts.***。  
-エージェントはネット取得せず、ローカル抽出物と（表示用の）公式 oEmbed だけを使う。
+エージェントはネット取得せず、ローカル抽出物と（表示用の）公式 oEmbed だけを使う。  
+下書き後は **`npm run prose-review`** で文章契約を回す（textlint の代替ではない）。

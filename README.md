@@ -62,9 +62,10 @@ npm run preview  # ビルド結果のプレビュー
 npm run fetch:kouhou      # A) PDF取得
 npm run extract:kouhou    # B) 内容抽出
 npm run draft -- --vol N --date YYYY-MM-DD   # C) 下書きチェックリスト
+npm run prose-review -- --vol N             # C′) 文章の書き方チェック（textlint とは別）
 ```
 
-手順の正本は [`scripts/draft-prompt.md`](./scripts/draft-prompt.md) です。YAML・キャッシュなどの補足は [docs/pipeline.md](./docs/pipeline.md) です。
+手順の正本は [`scripts/draft-prompt.md`](./scripts/draft-prompt.md) です。文章レビューは [`scripts/prose-review-prompt.md`](./scripts/prose-review-prompt.md)。YAML・キャッシュなどの補足は [docs/pipeline.md](./docs/pipeline.md) です。
 **人間が Markdown を確認してから** commit / push します（自動公開なし）。
 
 ## 記事の追加

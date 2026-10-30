@@ -29,19 +29,23 @@ npm run extract:kouhou
 
 # C — 記事下書き checklist (agent reads extracts; see scripts/draft-prompt.md)
 npm run draft -- --vol N --date YYYY-MM-DD
+
+# C′ — 文章の書き方チェック＆修正 (textlint とは別; scripts/prose-review-prompt.md)
+npm run prose-review -- --vol N
 ```
 
-Write `src/content/posts/vol-N.md`, then **stop for human review** (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
+Write `src/content/posts/vol-N.md`, run **prose-review**, then **stop for human review** (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
 
 Step C: weekly **media 読み物** (not a 広報 digest). ですます; full citations (no 「同上」); images via `public/images/kouhou/vol-N/`.
 
 Locked heading map: first pickup `#`, later pickups / 直近 / 今週のあきた `##`,
-items `###`. No umbrella ピックアップ. See `scripts/draft-prompt.md`.
+region labels `###`（県北→県央→県南）. No umbrella ピックアップ. See `scripts/draft-prompt.md`.
 
 ## Project docs (read these)
 
 - Policy: `POLICY.md`
 - Step C contract: `scripts/draft-prompt.md`
+- Prose review (after draft): `scripts/prose-review-prompt.md`
 - Pipeline / YAML / cache: `docs/pipeline.md`
 - Quality checks: `docs/quality.md`
 - Deploy / DNS: `docs/deploy-dns.md`

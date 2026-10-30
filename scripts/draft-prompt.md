@@ -176,7 +176,9 @@ Heading map (locked):
 
 5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
 6. Copy usable extract photos/flyers to `public/images/kouhou/vol-N/`. Embed `/images/kouhou/vol-N/…`. Skip icons and `.bin` dumps.
-7. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
+7. **Prose review loop** (not textlint): `npm run prose-review -- --vol N` then `scripts/prose-review-prompt.md`.
+   Fix voice / process-meta / region h3 / 口コミ1文 / citations. Re-run until clean.
+8. Stop for **human review**. Commit the article and any new `public/images/kouhou/vol-N/` files only after review.
 
 ## Hard rules
 

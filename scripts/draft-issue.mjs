@@ -229,7 +229,8 @@ Next (operator / any agent — Cursor by current policy):
   2. If口コミ dump exists: npm run extract:kuchikomi -- --date ${opts.date}
   3. WAIT if posts.json missing (or operator says skip). Do not fetch threads.com post pages
   4. Draft from kouhou extracted + kuchikomi posts.json (one post → one short subsection; paraphrase + permalink; optional oEmbed); write ${outRel}
-  5. Human review → npm run check → git commit / push (never auto-publish)
+  5. npm run prose-review -- --vol ${opts.vol}  (scripts/prose-review-prompt.md — media voice / meta / region h3 / 1-sentence口コミ)
+  6. Human review → npm run check → git commit / push (never auto-publish)
 `);
 }
 

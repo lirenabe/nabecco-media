@@ -22,6 +22,7 @@
     "check:fast": "npm run check:textlint && npm run check:design && npm run check:citations && npm run check:links:md",
     "check": "npm run build && npm run check:fast && npm run check:links:site && npm run check:a11y && npm run check:seo",
     "factcheck": "node scripts/factcheck.mjs",
+    "prose-review": "node scripts/prose-review.mjs",
     "fetch:kouhou": "node scripts/fetch-kouhou.mjs",
     "extract:kouhou": "node scripts/extract-kouhou.mjs",
     "extract:kuchikomi": "node scripts/extract-kuchikomi.mjs",

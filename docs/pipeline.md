@@ -23,7 +23,11 @@ npm run extract:kuchikomi -- --date YYYY-MM-DD
 # C) 下書きチェックリスト（広報 extracted＋口コミ extracted を表示。外部 LLM API は呼ばない）
 npm run draft -- --vol N --date YYYY-MM-DD
 # エージェントが scripts/draft-prompt.md に従い
-# kouhou extracted ＋ kuchikomi extracted を読んで src/content/posts/vol-N.md を書く → 人間確認 → commit / push
+# kouhou extracted ＋ kuchikomi extracted を読んで src/content/posts/vol-N.md を書く
+
+# C′) 文章の書き方チェック＆修正（textlint とは別。公開前）
+npm run prose-review -- --vol N
+# scripts/prose-review-prompt.md に沿い、声・工程メタ・束ね・口コミ1文などを直す → 人間確認 → commit / push
 ```
 
 ## 補足

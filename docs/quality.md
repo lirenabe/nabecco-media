@@ -23,6 +23,7 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 | a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク | CI のみ | はい |
 | SEO / OGP | `scripts/check-seo.mjs`（title / description / canonical / lang / og:* / twitter:card / robots / sitemap） | CI のみ | はい |
 | ファクトチェック（LLM） | stub（`npm run factcheck`） | 手動 / `workflow_dispatch` のみ | **いいえ** |
+| 文章の書き方（読み物・束ね・口コミ1文） | `npm run prose-review`（チェックリスト＋軽い禁則警告。textlint とは別） | 手動（下書き後・公開前） | **いいえ** |
 
 ## Markdown 対象（textlint / md リンク）
 
@@ -38,6 +39,8 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 ## 補足
 
 **ファクトチェックの限界:** 自動での真偽判定は行いません。実質的なガードは「まとまった本文セクションに URL または `> 出典` があること」と、公開前の人の確認（[POLICY.md](../POLICY.md)）です。プレースホルダ（「ここに書く」）は免除されます。
+
+**文章の書き方チェック:** textlint では拾えないメディア声・工程メタ・地域のみ h3・口コミ1文などを、[`scripts/prose-review-prompt.md`](../scripts/prose-review-prompt.md) に沿って人が（またはエージェントが）直します。`npm run prose-review -- --vol N`。CI の合否には入れません。
 
 **デザインチェックの対象:** 同一 CSS ルール内で `border-radius`（0 / 50% 以外）と箱型 `border` または `box-shadow` が同居するパターンを検出します。`border-top` などの直線のみは許容します。
 
