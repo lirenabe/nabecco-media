@@ -62,7 +62,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - Also skip: defamation, doxxing, private/non-public, thin weather-only / empty cheer lines.
    - Creator CTAs (「チャンネル登録」) without a real visit scene → skip or cut.
      A visit scene may stay if the food/place is the point.
-   - Prefer dense 交差型 groups; quality over coverage; **place口コミ embeds inside the same groups as related 広報 tips**.
+   - Quality over coverage; **place口コミ in the same region `###` as related 広報 tips**.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
    **Shape (region groups + embeds — decided):**
    - `###` headings are **地域のみ**: 県北／県央／県南 — always in that order. **No theme in h3.**
@@ -71,7 +71,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - **Mix 広報 +口コミ** in the same region `###`. No silo stacks.
    - 広報: `####` tip titles. 口コミ under the region `###`: **one media sentence** in article prose + **oEmbed** (embed still OK).
    - Media voice — concrete place/food/scene. Ban 「要約しました」/「投稿があります」 process-meta.
-   - Grouping detail in vault `.cursor`; **embed markup in the repo article**.
+   - **Embed markup stays in the repo article** (portable). Finer ranking/tag tips may live in local skill helpers — not required to draft.
    - Citation per embed: `> 出典: 口コミ（Threads）` + `permalink`. Never paste dump HTML / `_files` media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.
@@ -199,7 +199,7 @@ Heading map (locked):
 - **`## 今週のあきた`:** past only; ~1-week window; same region `###` order; **mix 広報 +口コミ**
 - Same section: `####` 広報 tips;口コミ embeds under region; theme sort then **time ascending**
 - Same section: no 問い合わせ; no pickup duplicates
-- **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo; vault grouping heuristics
+- **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo
 - Same: 1 media sentence + embed; `出典: 口コミ（Threads）` + permalink; no 「要約しました」 voice
 - Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
 - Do not commit, push, or deploy from the agent unless the operator asks after review
