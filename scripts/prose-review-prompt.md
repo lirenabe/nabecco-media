@@ -58,7 +58,8 @@ npm run prose-review -- src/content/posts/vol-N.md
 ### E. 出典・画像
 
 - [ ] 広報項も毎回フル出典（「同上」「同」「前掲」なし）
-- [ ] 画像は `/images/kouhou/vol-N/…`（`data/` 直リンクなし）
+- [ ] 広報抽出写真を埋め込んでいない（権利確認前。`data/` 直リンクもなし）
+- [ ] Frontmatter に確認中なら `draft: true` がある
 
 ### F. 直し方
 

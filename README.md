@@ -71,9 +71,10 @@ npm run prose-review -- --vol N             # C′) 文章の書き方チェッ�
 ## 記事の追加
 
 1. `src/content/posts/vol-N.md` を追加
-2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）
+2. Frontmatter に `title` / `pubDate` / `vol`（任意で `description`）。確認中は **`draft: true`**
 3. 見出し階層は `scripts/draft-prompt.md` に従う（先頭ピックアップのみ `#`）
-4. 出典付き・丸写し禁止。人間確認のうえ commit / push
+4. 出典付き・丸写し禁止。広報抽出写真は権利確認まで埋め込まない
+5. 人間確認のうえ commit。本番公開時だけ `draft` を外す（詳細は [docs/pipeline.md](./docs/pipeline.md)）
 
 ## スポンサー
 

@@ -35,3 +35,7 @@ data/reports/
 data/kuchikomi/**
 !data/kuchikomi/.gitkeep
 !data/kuchikomi/example.txt
+
+# 広報誌から抽出した写真は権利確認が済むまで追跡しない（ディレクトリ自体は .gitkeep で残す）
+public/images/kouhou/**
+!public/images/kouhou/.gitkeep

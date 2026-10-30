@@ -9,6 +9,8 @@ const posts = defineCollection({
     pubDate: z.coerce.date(),
     vol: z.number(),
     description: z.string().optional(),
+    /** true の間は本番ビルド（GitHub Pages）に出さない。公開時は false にするか削除。 */
+    draft: z.boolean().default(false),
   }),
 });
 

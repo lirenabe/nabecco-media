@@ -36,7 +36,9 @@ npm run prose-review -- --vol N
 
 Write `src/content/posts/vol-N.md`, run **prose-review**, then **stop for human review** (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
 
-Step C: weekly **media 読み物** (not a 広報 digest). ですます; full citations (no 「同上」); images via `public/images/kouhou/vol-N/`.
+Step C: weekly **media 読み物** (not a 広報 digest). ですます; full citations (no 「同上」).
+Do **not** copy 広報 extract photos into `public/images/kouhou/` until rights are cleared.
+New issues use `draft: true` until an operator explicitly publishes.
 
 Locked heading map: first pickup `#`, later pickups / 直近 / 今週のあきた `##`,
 region labels `###`（県北→県央→県南）. No umbrella ピックアップ. See `scripts/draft-prompt.md`.

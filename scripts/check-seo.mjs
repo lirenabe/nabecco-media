@@ -13,7 +13,7 @@ import { startPreview } from './preview.mjs';
 const BASE = 'http://127.0.0.1:4324';
 const SITE = 'https://nabecco.media';
 const OG_IMAGE = `${SITE}/og.png`;
-const ROUTES = ['/', '/issues/', '/issues/vol-1/'];
+const ROUTES = ['/', '/issues/'];
 
 function attr(html, name, attrName = 'content') {
   const re = new RegExp(

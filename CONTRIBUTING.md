@@ -23,8 +23,10 @@
 ### Frontmatter（記事）
 
 必須: `title` / `pubDate` / `vol`  
-任意: `description`  
+任意: `description` / `draft`  
 `title` は例: `第1号 2026年10月25日`（`<title>` / OGP 用）。発行日はレイアウトが末尾に表示します。
+
+**公開ゲート:** 確認中の号は `draft: true` を付けます。本番（GitHub Pages）には出ず、ローカル `npm run dev` でのみプレビューできます。公開するときは `draft: false` にするか行を削除し、人間確認のうえ merge します。詳細は [docs/pipeline.md](./docs/pipeline.md)。
 
 ### 本文の骨子
 
@@ -35,6 +37,7 @@
 - 置き場所: `public/images/`（スポンサーロゴは `public/images/sponsors/`）
 - 巨大な元画像はコミットしない。WebP などへ変換・リサイズ・圧縮してから追加
 - 権利が不明な画像や、個人が特定できる写真は置かない
+- **広報誌から抽出した写真**（`public/images/kouhou/`）は権利確認が済むまでコミットしない（gitignore 済み）。記事にも埋め込まない
 - 広報由来の画像の権利は [LICENSE-CONTENT.md](./LICENSE-CONTENT.md) を参照
 
 ## マージしないもの
