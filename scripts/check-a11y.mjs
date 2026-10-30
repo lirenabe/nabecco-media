@@ -47,8 +47,12 @@ try {
         await checkOverflow(page, label);
 
         if (vp.name === 'desktop') {
+          // Exclude .threads-embed: official Threads oEmbed iframes inject
+          // third-party markup we cannot fix (contrast, empty links, scroll
+          // regions). Accessible iframe titles are set in ThreadsEmbedScript.
           const results = await new AxeBuilder({ page })
             .withTags(['wcag2a', 'wcag2aa'])
+            .exclude('.threads-embed')
             .analyze();
           const serious = results.violations.filter((v) =>
             ['critical', 'serious'].includes(v.impact || ''),

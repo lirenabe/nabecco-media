@@ -20,7 +20,7 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 | リンク切れ | markdown-link-check（同 Markdown 対象。`nabecco.media` / `github.io` は無視しない）+ linkinator（preview 巡回） | CI（md は pre-commit も） | はい |
 | デザイン禁止（カード枠ヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
 | 出典の有無（構造） | `scripts/check-citations.mjs` | CI + pre-commit | はい |
-| a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク | CI のみ | はい |
+| a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク。`.threads-embed`（公式 Threads oEmbed）は第三者 UI のため axe 対象外。iframe には `title` を付与 | CI のみ | はい |
 | SEO / OGP | `scripts/check-seo.mjs`（title / description / canonical / lang / og:* / twitter:card / robots / sitemap） | CI のみ | はい |
 | ファクトチェック（LLM） | stub（`npm run factcheck`） | 手動 / `workflow_dispatch` のみ | **いいえ** |
 | 文章の書き方（読み物・束ね・口コミ1文） | `npm run prose-review`（チェックリスト＋軽い禁則警告。textlint とは別） | 手動（下書き後・公開前） | **いいえ** |
