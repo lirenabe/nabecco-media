@@ -166,14 +166,13 @@ p {
 /*
  * Four clear levels inside .prose (Palette A1; no cards):
  * h1 pickup → h2 section → h3 region label → h4 tip lead
- * h3 present via ash + tracking + hairline — not size/weight race with h4.
+ * h3 present via ash + serif + tracking only (no hairline stack).
  * h4 = tip lead (sumi, readable).
  */
 .prose h3 {
-  margin: 2.65rem 0 0.55rem;
-  padding: 0.85rem 0 0.2rem;
-  border-top: 1px solid var(--color-line);
-  border-bottom: 0;
+  margin: 2.35rem 0 0.45rem;
+  padding: 0;
+  border: 0;
   font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   font-size: 0.82rem;
   font-weight: 500;
