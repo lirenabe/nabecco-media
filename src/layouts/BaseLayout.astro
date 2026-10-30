@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
 import '../styles/tokens.css';
 
 interface Props {
@@ -47,6 +48,7 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
+    <Analytics />
   </head>
   <body>
     <Header />

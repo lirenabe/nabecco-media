@@ -1,0 +1,51 @@
+---
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID?.trim();
+const enabled = Boolean(measurementId);
+---
+
+{
+  enabled && (
+    <>
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+      />
+      <script is:inline define:vars={{ measurementId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', measurementId, { anonymize_ip: true });
+
+        // Outbound link clicks (complements GA4 Enhanced Measurement if enabled in Admin)
+        document.addEventListener(
+          'click',
+          (event) => {
+            const target = event.target;
+            if (!(target instanceof Element)) return;
+            const anchor = target.closest('a');
+            if (!anchor || !anchor.href) return;
+            let url;
+            try {
+              url = new URL(anchor.href, location.href);
+            } catch {
+              return;
+            }
+            if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+            if (url.hostname === location.hostname) return;
+            gtag('event', 'click', {
+              event_category: 'outbound',
+              event_label: url.href,
+              link_url: url.href,
+              link_domain: url.hostname,
+              outbound: true,
+              transport_type: 'beacon',
+            });
+          },
+          { capture: true },
+        );
+      </script>
+    </>
+  )
+}

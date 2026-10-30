@@ -12,10 +12,13 @@
 
 ## PR の進め方
 
+<!-- AI: PRのタイトルと本文は日本語で書く。 -->
+
 1. ブランチを切って変更する
 2. 記事は `src/content/posts/` の Markdown（Frontmatter 付き）を編集
 3. 可能なら `npm run build` が通ることを確認
-4. PR 本文に「何を・なぜ」直したかを短く書く
+4. PR のタイトルと本文は日本語で書く（「何を・なぜ」を短く）
+5. 雛形は [`.github/PULL_REQUEST_TEMPLATE.md`](./.github/PULL_REQUEST_TEMPLATE.md) に従う
 
 ### Frontmatter（記事）
 
