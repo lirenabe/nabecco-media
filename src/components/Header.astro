@@ -4,6 +4,8 @@ import { getPublishedPosts, sortPostsByDateDesc } from '../lib/posts';
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
 // Latest lives on `/` — menu shows recent past issues only.
 const recentPast = sorted.slice(1, 6);
+// No past issues → no menu (avoids empty-state links to a blank /issues/).
+const hasBackIssues = recentPast.length > 0;
 
 const dateFmt = new Intl.DateTimeFormat('ja-JP', {
   year: 'numeric',
@@ -24,53 +26,53 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     />
   </a>
 
-  <div class="site-header__menu" data-menu>
-    <button
-      type="button"
-      class="site-header__toggle"
-      id="menu-toggle"
-      aria-controls="site-menu"
-      aria-expanded="false"
-      aria-haspopup="true"
-      data-menu-toggle
-    >
-      <span class="site-header__toggle-bars" aria-hidden="true"></span>
-      <span class="visually-hidden">メニュー</span>
-    </button>
+  {
+    hasBackIssues && (
+      <div class="site-header__menu" data-menu>
+        <button
+          type="button"
+          class="site-header__toggle"
+          id="menu-toggle"
+          aria-controls="site-menu"
+          aria-expanded="false"
+          aria-haspopup="true"
+          data-menu-toggle
+        >
+          <span class="site-header__toggle-bars" aria-hidden="true"></span>
+          <span class="visually-hidden">メニュー</span>
+        </button>
 
-    <div
-      class="site-header__panel"
-      id="site-menu"
-      role="region"
-      aria-label="バックナンバー"
-      hidden
-      data-menu-panel
-    >
-      <nav aria-label="最近のバックナンバー">
-        {
-          recentPast.length === 0 ? (
-            <p class="site-header__empty">過去号はまだありません。</p>
-          ) : (
+        <div
+          class="site-header__panel"
+          id="site-menu"
+          role="region"
+          aria-label="バックナンバー"
+          hidden
+          data-menu-panel
+        >
+          <nav aria-label="最近のバックナンバー">
             <ul class="site-header__list">
-              {recentPast.map((post) => (
-                <li>
-                  <a href={`/issues/${post.id}/`}>
-                    <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
-                      {dateFmt.format(post.data.pubDate)}
-                    </time>
-                    <span>{post.data.title}</span>
-                  </a>
-                </li>
-              ))}
+              {
+                recentPast.map((post) => (
+                  <li>
+                    <a href={`/issues/${post.id}/`}>
+                      <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
+                        {dateFmt.format(post.data.pubDate)}
+                      </time>
+                      <span>{post.data.title}</span>
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
-          )
-        }
-        <p class="site-header__all">
-          <a href="/issues/">バックナンバー一覧</a>
-        </p>
-      </nav>
-    </div>
-  </div>
+            <p class="site-header__all">
+              <a href="/issues/">バックナンバー一覧</a>
+            </p>
+          </nav>
+        </div>
+      </div>
+    )
+  }
 </header>
 
 <style>
@@ -203,12 +205,6 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
 
   .site-header__list time {
     font-variant-numeric: tabular-nums;
-    color: var(--color-sumi-soft);
-  }
-
-  .site-header__empty {
-    margin: 0 0 1rem;
-    font-size: 0.92rem;
     color: var(--color-sumi-soft);
   }
 
