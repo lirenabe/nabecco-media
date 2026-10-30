@@ -46,7 +46,11 @@ npm run draft -- --vol N --date YYYY-MM-DD
 1. Confirm Step A + B ran: PDFs in `data/kouhou/` and extracts under `data/kouhou/extracted/`. If extracts are missing, stop and tell the operator to run `npm run extract:kouhou`.
 2. Read `POLICY.md` (no verbatim copy; prioritize events / new facilities / workshops; skip routine admin procedures).
 3. Skim **extracted** `text.txt` / `content.md` across municipalities (and glance at `images/` when useful). Choose topics worth a media piece — not every calendar line. Open a raw PDF only to verify an unclear date/name.
-3b. Optional: skim `data/kuchikomi/*.txt` as street-voice color, not verified fact.
+3a. **口コミシェル:** ensure `data/kuchikomi/{pubDate}.txt` exists (発行日 = `--date` / frontmatter `pubDate`).
+   Prefer `npm run draft -- --vol N --date YYYY-MM-DD` (creates a comment-only shell if missing). Do not invent URLs.
+3b. **WAIT (chat pause):** tell the operator the shell path, then **stop** before writing the issue body.
+   Resume only when they say URLs are in / skip口コミ, or the file has one or more `http` lines. Empty/comment-only = not ready (unless they said skip).
+3c. After resume, skim that file as street-voice color, not verified fact.
    Each line is a **URL** (optional short note OK). Skip defamation, doxxing, and promo plugs (POLICY). See `docs/kuchikomi.md`.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.

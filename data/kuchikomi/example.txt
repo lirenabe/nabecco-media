@@ -1,7 +1,8 @@
-# 口コミ入力例（このファイルはコミット可。本番は data/kuchikomi/*.txt を gitignore）
-# 1行1件: URL 必須。注記は任意。断定・誹謗中傷・宣伝偏重は載せない。
+# 口コミ入力例（このファイルはコミット可。本番は data/kuchikomi/YYYY-MM-DD.txt を gitignore）
+# 号ごと: 発行日ファイル名。1行1件 URL 必須・注記任意。
+# Step C: npm run draft がシェル作成 → チャットで待機 → URL 投入後に下書き
 # 手順: docs/kuchikomi.md ／ Step C 契約: scripts/draft-prompt.md
 
-# 例:
+# 例（本番は 2026-11-01.txt など）:
 # https://example.com/note
 # https://example.com/other — （任意）再開は未定、要確認

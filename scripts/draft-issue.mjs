@@ -10,7 +10,7 @@
  *   npm run draft -- --vol 2 --date 2026-11-01
  *   npm run draft -- --vol 2 --date 2026-11-01 --print-prompt
  */
-import { readdir, readFile, stat } from 'node:fs/promises';
+import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { extractDirRel, loadManifest } from './lib/manifest.mjs';
 import { loadSources } from './lib/sources.mjs';
@@ -18,6 +18,25 @@ import { loadSources } from './lib/sources.mjs';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const PROMPT_REL = 'scripts/draft-prompt.md';
 const KUCHIKOMI_DIR = path.join(ROOT, 'data/kuchikomi');
+
+function issueKuchikomiPath(dateStr) {
+  return path.join(KUCHIKOMI_DIR, `${dateStr}.txt`);
+}
+
+async function ensureIssueKuchikomiShell(dateStr) {
+  await mkdir(KUCHIKOMI_DIR, { recursive: true });
+  const abs = issueKuchikomiPath(dateStr);
+  if (await fileExists(abs)) {
+    return { path: abs, created: false };
+  }
+  const body = `# kuchikomi shell for pubDate ${dateStr}
+# Add one URL per line (optional note after — ). Do not commit this file.
+# Agent waits in chat until URLs are added or operator says skip.
+
+`;
+  await writeFile(abs, body, 'utf8');
+  return { path: abs, created: true };
+}
 
 function parseArgs(argv) {
   const opts = {
@@ -98,7 +117,11 @@ async function main() {
   const outAbs = path.join(ROOT, outRel);
   const { sources, root } = await loadSources();
   const { doc: manifest } = await loadManifest(root);
-  const kuchikomiFiles = await listKuchikomiFiles(opts.kuchikomi);
+  const shell = opts.kuchikomi
+    ? { path: opts.kuchikomi, created: false }
+    : await ensureIssueKuchikomiShell(opts.date);
+  const kuchikomiFiles = await listKuchikomiFiles(opts.kuchikomi || shell.path);
+  const shellRel = path.relative(ROOT, shell.path);
 
   if (opts.printPrompt) {
     process.stdout.write(await readFile(path.join(ROOT, PROMPT_REL), 'utf8'));
@@ -138,6 +161,7 @@ async function main() {
   console.log(`口コミ ops   : docs/kuchikomi.md`);
   console.log(`Manifest     : data/kouhou/manifest.json`);
   console.log(`Extracted    : ${extracted.length} dir(s) under data/kouhou/extracted/`);
+  console.log(`口コミ shell : ${shellRel}${shell.created ? ' (created empty shell)' : ' (exists)'}`);
   console.log(`口コミ files : ${kuchikomiFiles.length} under data/kuchikomi/`);
 
   if (!extracted.length) {
@@ -151,19 +175,17 @@ async function main() {
   }
 
   if (kuchikomiFiles.length) {
-    console.log('\nOptional 口コミ notes (street voice — not verified fact):');
+    console.log('\n口コミ files (street voice — not verified fact):');
     for (const f of kuchikomiFiles) {
       console.log(`  - ${f.rel}`);
     }
-  } else {
-    console.log('\nOptional 口コミ: none found (OK — drop *.txt in data/kuchikomi/; see docs/kuchikomi.md)');
   }
 
   console.log(`
 Next (operator / any agent — Cursor by current policy):
   1. Read ${PROMPT_REL}, POLICY.md, and docs/kuchikomi.md
-  2. Skim extracted text/images above (PDF only for spot-check); skim 口コミ notes if listed
-  3. Write ${outRel} with citations; first pickup "#", later "##", items "###"
+  2. WAIT: ask operator to add URLs to ${shellRel} (or say skip). Do not write the issue body yet
+  3. After resume: skim extracts + 口コミ URLs; write ${outRel} with citations; first pickup "#", later "##", items "###"
   4. Human review → npm run check → git commit / push (never auto-publish)
 `);
 }
