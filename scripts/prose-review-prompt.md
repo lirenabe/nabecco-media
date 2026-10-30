@@ -60,6 +60,8 @@ npm run prose-review -- src/content/posts/vol-N.md
 - [ ] 広報項も毎回フル出典（「同上」「同」「前掲」なし）
 - [ ] 広報抽出写真を埋め込んでいない（権利確認前。`data/` 直リンクもなし）
 - [ ] Frontmatter に確認中なら `draft: true` がある
+- [ ] 広報抽出写真（`/images/kouhou/`）を埋め込んでいない
+- [ ] AI 生成画像なら `public/images/generated/` 配下で、必要なら生成開示がある（実在人物の写実がない）
 
 ### F. 直し方
 

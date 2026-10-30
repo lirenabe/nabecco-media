@@ -7,6 +7,7 @@
 | [quality.md](./quality.md) | 品質チェック（textlint / リンク / デザイン / 出典 / a11y / SEO／文章レビュー） |
 | [deploy-dns.md](./deploy-dns.md) | GitHub Pages・DNS / HTTPS |
 | [pipeline.md](./pipeline.md) | 広報取得〜下書きの 3 ステップ補足・公開ゲート（`draft`）・広報画像の扱い |
+| [ai-generated-images.md](./ai-generated-images.md) | AI 生成画像の運用ルール（トピック文のみ・人物写実回避・開示・人間確認） |
 | [kuchikomi.md](./kuchikomi.md) | 口コミの半手動取り込み（Phase 7.2） |
 | [threads-citation-rules.md](./threads-citation-rules.md) | Threads 参照・掲載制約（fetch 禁止・言い換え＋permalink） |
 

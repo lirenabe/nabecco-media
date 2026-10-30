@@ -65,7 +65,7 @@ npm run draft -- --vol N --date YYYY-MM-DD   # C) 下書きチェックリスト
 npm run prose-review -- --vol N             # C′) 文章の書き方チェック（textlint とは別）
 ```
 
-手順の正本は [`scripts/draft-prompt.md`](./scripts/draft-prompt.md) です。文章レビューは [`scripts/prose-review-prompt.md`](./scripts/prose-review-prompt.md)。YAML・キャッシュなどの補足は [docs/pipeline.md](./docs/pipeline.md) です。
+手順の正本は [`scripts/draft-prompt.md`](./scripts/draft-prompt.md) です。文章レビューは [`scripts/prose-review-prompt.md`](./scripts/prose-review-prompt.md)。YAML・キャッシュなどの補足は [docs/pipeline.md](./docs/pipeline.md) です。ピックアップの AI 生成画像ルールは [docs/ai-generated-images.md](./docs/ai-generated-images.md) です。
 **人間が Markdown を確認してから** commit / push します（自動公開なし）。
 
 ## 記事の追加
@@ -83,7 +83,7 @@ npm run prose-review -- --vol N             # C′) 文章の書き方チェッ�
 ## ライセンス
 
 - **コード:** [MIT](./LICENSE)
-- **なべっこが執筆した記事本文:** [CC BY 4.0](./LICENSE-CONTENT.md)（推奨クレジット:「なべっこ（nabecco.media）, CC BY 4.0」）。広報由来の画像・引用、およびロゴ／名称／favicon 等のブランド資産は対象外です（各ファイルの注記を参照）。
+- **なべっこが執筆した記事本文:** [CC BY 4.0](./LICENSE-CONTENT.md)（推奨クレジット:「なべっこ（nabecco.media）, CC BY 4.0」）。広報由来の画像・引用、AI 生成画像、およびロゴ／名称／favicon 等のブランド資産は対象外です（各ファイルの注記を参照）。
 
 アクセス解析には GA4 を用います。質問・報告は [GitHub Issues](https://github.com/lirenabe/nabecco-media/issues) へどうぞ。
 
