@@ -19,6 +19,7 @@
     "check:links": "node scripts/check-links.mjs all",
     "check:a11y": "node scripts/check-a11y.mjs",
     "check:seo": "node scripts/check-seo.mjs",
+    "check:public-content": "node scripts/check-public-content.mjs",
     "check:fast": "npm run check:textlint && npm run check:design && npm run check:citations && npm run check:links:md",
     "check": "npm run build && npm run check:fast && npm run check:links:site && npm run check:a11y && npm run check:seo",
     "factcheck": "node scripts/factcheck.mjs",
