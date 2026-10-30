@@ -133,7 +133,7 @@ Heading map (locked):
 - **Select 1–3** from candidates; **remove** them from 直近のイベント情報 and 今週のあきた (no duplicate)
 - **Baseline criteria:** (a) eye-catching title, (b) interesting topic
 - Local extract photos may inform selection only — **do not embed** and **do not** feed them to image generators
-- **AI visuals (locked):** for each pickup, generate an image from **topic text only** per [`docs/ai-generated-images.md`](../docs/ai-generated-images.md). Save under `public/images/generated/vol-N/`. Embed with alt that marks AI generation; add a short disclosure line when readers might mistake it for a news photo. No realistic identifiable people (blur / silhouette / still-life / place). Follow the image tool’s commercial/editorial ToS. Keep `draft: true` for human review
+- **AI visuals (locked):** for each pickup, generate an image from **topic text only** per [`docs/ai-generated-images.md`](../docs/ai-generated-images.md). Save under `public/images/generated/vol-N/`. Burn a short corner watermark (`AI生成`, bottom-right or bottom-left). Alt may say AI生成. Do **not** add a long prose disclosure under the image. No realistic identifiable people. Follow the image tool’s commercial/editorial ToS. Keep `draft: true` for human review
 - Body: media 読み物 and ですます. Full citation. **10+ lines** of prose (no 広報写真). Not a PR digest.
 
 #### `## 直近のイベント情報` (locked)
@@ -204,7 +204,7 @@ Heading map (locked):
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
 - **Do not embed 広報 extract photos.** Never link `data/`. Do not commit under `public/images/kouhou/`. Never use them as AI reference input
-- **AI pickup images:** topic text only. No realistic identifiable people. Use ToS-compliant tooling. Disclose generation in-article when needed. Files go under `public/images/generated/vol-N/`. Full rules: `docs/ai-generated-images.md`
+- **AI pickup images:** topic text only. No realistic identifiable people. Use ToS-compliant tooling. Short corner watermark (`AI生成`); no long body note. Files under `public/images/generated/vol-N/`. Full rules: `docs/ai-generated-images.md`
 - New issues ship with **`draft: true`**; clear the flag only when intentionally publishing
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
 - Same: 10+ lines of readable prose. Remove selected topics from the other two sections. Embed AI images (not 広報 photos) when a visual is needed

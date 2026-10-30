@@ -16,8 +16,6 @@ draft: true
 
 ![秋の体育館ステージと太鼓（AI生成）](/images/generated/vol-1/mitane-kohoku-stage.jpg)
 
-*この画像はトピック文をもとに AI が生成したイラストです（実在の人物・場面の写真ではありません）。*
-
 > 出典: 三種町「広報みたね」2026年11月号 No.248（湖北小学校 学習発表会）  
 > https://www.town.mitane.akita.jp/soshikikarasagasu/kikakuseisakuka/2/1/2074.html
 
@@ -30,8 +28,6 @@ draft: true
 義務教育学校の稲刈り体験では、5月に植えた稲を刈り取り、12月の収穫感謝祭でだまこ鍋にする予定です。食卓に届くまでの道のりが、子どもたちの手元から見える季節です。土から顔を出した芋は、そんな井川の秋を象徴する光景です。
 
 ![秋のサツマイモ収穫（AI生成）](/images/generated/vol-1/ikawa-imo-harvest.jpg)
-
-*この画像はトピック文をもとに AI が生成したイラストです（実在の人物・場面の写真ではありません）。*
 
 > 出典: 井川町「広報いかわ」2026年11月号 Vol.840（表紙・収穫感謝祭）  
 > https://www.town.ikawa.akita.jp/site/koho/4133.html

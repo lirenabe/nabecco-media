@@ -68,7 +68,7 @@ Step C と記事では、次のとおり扱います。
 
 - 正本: [`docs/ai-generated-images.md`](./ai-generated-images.md)
 - 出力先: `public/images/generated/vol-N/`
-- 入力はトピック文のみ／実在人物の写実を避ける／モデル規約に従う／必要なら記事で生成開示／`draft: true` のまま人間確認
+- 入力はトピック文のみ／実在人物の写実を避ける／モデル規約に従う／画像内の短い透かし（`AI生成`）で開示／`draft: true` のまま人間確認
 - 外部画像 API のキーが無い環境では、手元で使える生成手段（例: Cursor の画像生成）に留める。秘密は捏造しない
 
 ## municipalities.yaml（抜粋）
