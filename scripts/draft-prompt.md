@@ -69,8 +69,8 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - **テーマ** (フード／イベント／季節／暮らし／…) has **no heading**; it only sorts items inside a region.
    - Within the same theme: 直近 = date **descending**; 今週のあきた = time **ascending**.
    - **Mix 広報 +口コミ** in the same region `###`. No silo stacks.
-   - 広報: `####` tip titles. 口コミ: optional short lead + **oEmbed column** under the region `###`.
-   - Do **not** force summary-article paraphrase of each post. Ban process-meta.
+   - 広報: `####` tip titles. 口コミ under the region `###`: **one media sentence** in article prose + **oEmbed** (embed still OK).
+   - Media voice — concrete place/food/scene. Ban 「要約しました」/「投稿があります」 process-meta.
    - Grouping detail in vault `.cursor`; **embed markup in the repo article**.
    - Citation per embed: `> 出典: 口コミ（Threads）` + `permalink`. Never paste dump HTML / `_files` media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
@@ -166,7 +166,7 @@ Heading map (locked):
 - **Sort within each region:** by **theme** (no theme heading), then by time **ascending** within the same theme.
 - **Exclude** topics already used as ピックアップ in this issue
 - **広報 item:** `#### {題名}` then about **5–10 phone-screen lines**; full citation; no 短報
-- **口コミ:** may sit under the region `###` as **oEmbed column** (optional short lead; no forced summary articles); citation per embed
+- **口コミ:** under the region `###` — **1 media sentence** + oEmbed; citation per embed. Not embed-only stacks; not long summary articles
 - Extract images when useful (same global voice rules)
 - **No 問い合わせ / contact lines** in this section
 - **口コミ source:** `extracted/.../posts.json` only
@@ -200,7 +200,7 @@ Heading map (locked):
 - Same section: `####` 広報 tips;口コミ embeds under region; theme sort then **time ascending**
 - Same section: no 問い合わせ; no pickup duplicates
 - **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo; vault grouping heuristics
-- Same: `出典: 口コミ（Threads）` + permalink per embed; no forced summary-article
+- Same: 1 media sentence + embed; `出典: 口コミ（Threads）` + permalink; no 「要約しました」 voice
 - Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
