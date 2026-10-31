@@ -22,7 +22,7 @@
 
 ## オフィシャルサポーター（店舗・企業・団体）
 
-地域店舗・個人事業・団体を含みます。プランは次の 2 つです。申込は GitHub の [Issues](https://github.com/lirenabe/nabecco-media/issues) から問い合わせてください。内容に合意したあと、決済方法を個別に案内します。
+地域店舗・個人事業・団体を含みます。プランは次の 2 つです。申込は GitHub の [申し込みフォーム](https://github.com/lirenabe/nabecco-media/issues/new?template=official-supporter.yml)（Issue）から問い合わせてください。内容に合意したあと、決済方法を個別に案内します。
 
 ### スポット（単発）
 
@@ -58,3 +58,5 @@
 ## お問い合わせ
 
 支援・掲出に関する相談と申告は、GitHub の [Issues](https://github.com/lirenabe/nabecco-media/issues) で受け付けます。
+店舗・企業・団体の申し込みと相談は、[オフィシャルサポーター申し込みフォーム](https://github.com/lirenabe/nabecco-media/issues/new?template=official-supporter.yml)を使ってください。
+Issue は誰でも閲覧できます。非公開にしたい連絡先は書かず、連絡方法は Issue 上で決めます。
