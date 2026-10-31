@@ -34,7 +34,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
 npm run prose-review -- --vol N
 ```
 
-Write `src/content/posts/vol-N.md`, run **prose-review**, then **stop for human review** (no auto-push). Step B needs Python 3 + `pypdf` (optional `pypdf[image]` / pillow for embedded images).
+Write `src/content/posts/vol-N.md`, run **prose-review**, then **stop for human review** (no auto-push). Step B needs Python 3 + `pymupdf` (see `scripts/requirements-kouhou.txt`; `pypdf` is fallback only). Image-only PDFs need `tesseract` + `tesseract-lang` (`brew install tesseract tesseract-lang`).
 
 Step C: weekly **media 読み物** (not a 広報 digest). ですます; full citations (no 「同上」).
 Do **not** copy 広報 extract photos into `public/images/kouhou/` until rights are cleared.

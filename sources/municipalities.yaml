@@ -50,8 +50,9 @@ sources:
       pick: last
       issueHrefPattern: "/city/koho/noshiro/back/reiwa08_2026/\\d+"
       pdfHrefPattern: "\\.pdf($|\\?)"
-      pdfPick: first
-    notes: 令和8年バックナンバー。末尾が最新号。号ページは分割 PDF（先頭ページから取得）。
+      preferTextPattern: "一括"
+      preferHrefPattern: "new_\\d+\\.pdf"
+    notes: 令和8年バックナンバー。末尾が最新号。一括 PDF（new_*.pdf／「一括ページ」）を優先。
 
   - id: city-yokote
     name: 横手市
@@ -190,8 +191,9 @@ sources:
       pick: first
       issueHrefPattern: "/government/kouhou/2026/\\d+/"
       pdfHrefPattern: "\\.pdf($|\\?)"
-      preferHrefPattern: "_0144\\.pdf|_01-\\d+\\.pdf|all"
-    notes: 2026年バックナンバー。先頭月が最新。一体 PDF（*_0144.pdf 等）を優先。
+      preferTextPattern: "1[～〜].*ページ|一括|全ページ"
+      preferHrefPattern: "_01(?:[2-9]\\d|\\d{3})\\.pdf|_01-\\d+\\.pdf|all"
+    notes: 2026年バックナンバー。先頭月が最新。一体 PDF（例 koho2611_0140.pdf／「1～40ページ」）を優先。
 
   - id: town-kosaka
     name: 小坂町
