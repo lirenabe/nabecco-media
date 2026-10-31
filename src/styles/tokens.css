@@ -13,7 +13,7 @@
   --font-display: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
   --font-body: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
 
-  --measure: 40rem;
+  --measure: 44rem;
   --page-pad: clamp(1.25rem, 4vw, 2.5rem);
   --section-gap: clamp(3rem, 8vw, 5rem);
 }
