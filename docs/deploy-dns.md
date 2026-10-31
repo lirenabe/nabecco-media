@@ -15,6 +15,4 @@
 `nabecco.media` の DNS はリポジトリ外で設定します。
 現時点では A レコードは Pages に向いていますが、カスタムドメインの HTTPS 証明書が未整備なことがあります。
 公開確認は [GitHub Pages URL](https://lirenabe.github.io/nabecco-media/) を使ってください。
-証明書が有効になったら、README のサイトリンクを `https://nabecco.media/` に戻します。
-
-README の入口からは、証明書が通るまで `nabecco.media` を直接リンクしない方針です。
+README のサイトリンクは GitHub Pages URL です。

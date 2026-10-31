@@ -5,7 +5,7 @@
 - **サイト（確認用）:** [GitHub Pages](https://lirenabe.github.io/nabecco-media/)
 - **カスタムドメイン:** `nabecco.media`（DNS は Pages 向け。HTTPS の状態は [docs/deploy-dns.md](./docs/deploy-dns.md)）
 - **リポジトリ:** [lirenabe/nabecco-media](https://github.com/lirenabe/nabecco-media)
-- **方針:** バナー広告なし。個人の寄付と店舗・企業のサポートで支える（[SPONSORS.md](./SPONSORS.md)）
+- **方針:** バナー広告なし。個人の寄付と店舗・企業・団体のサポートで支える（[SPONSORS.md](./SPONSORS.md)）
 
 ## ドキュメント
 
@@ -34,7 +34,7 @@ Node.js **22.23.4 以上**が必要です（`.node-version` あり）。
 | `/issues/` | バックナンバー一覧（最新号を除く過去号を日付・タイトル降順） |
 | `/issues/[slug]/` | 各号の詳細 |
 
-ヘッダーはブランド＋メニュー。サイトについて・サポーター・ポリシー等はフッター側です。
+ヘッダーはブランド＋メニュー。サイトについて・支援について・サポーター・ポリシー等はフッター側です。
 
 ## ローカル起動
 
@@ -76,9 +76,9 @@ npm run prose-review -- --vol N             # C′) 文章の書き方チェッ�
 4. 出典付き・丸写し禁止。広報抽出写真は権利確認まで埋め込まない
 5. 人間確認のうえ commit。本番公開時だけ `draft` を外す（詳細は [docs/pipeline.md](./docs/pipeline.md)）
 
-## スポンサー
+## 支援・サポーター
 
-掲出枠の説明は [SPONSORS.md](./SPONSORS.md) です。サイト上のサポーター表示は準備中です。
+個人・店舗・企業・団体の支援プランは、サイトのフッター「支援について」と [SPONSORS.md](./SPONSORS.md) に記載しています。サポーター枠の掲載は準備中です。
 
 ## ライセンス
 
@@ -89,4 +89,4 @@ npm run prose-review -- --vol N             # C′) 文章の書き方チェッ�
 
 ## 環境変数
 
-本番ビルドでは GitHub Actions の repository variable `PUBLIC_GA_MEASUREMENT_ID` を渡します。ローカルで計測を試す場合は `.env`（gitignored）に同じ名前を置きます。雛形は [`.env.example`](./.env.example) です。フッターの寄付リンクは `PUBLIC_DONATION_ONCE_URL`（単発）と `PUBLIC_DONATION_MONTHLY_URL`（月額）で指定し、未設定の場合は「寄付の受付は準備中です。」と表示します。
+本番ビルドでは GitHub Actions の repository variable `PUBLIC_GA_MEASUREMENT_ID` を渡します。ローカルで計測を試す場合は `.env`（gitignored）に同じ名前を置きます。雛形は [`.env.example`](./.env.example) です。フッター「支援について」の寄付ボタンのリンク先は `PUBLIC_DONATION_ONCE_URL`（個人・1 回）と `PUBLIC_DONATION_MONTHLY_URL`（個人・毎月）で指定します。未設定の場合はボタンの代わりに「受付準備中」と表示します。
