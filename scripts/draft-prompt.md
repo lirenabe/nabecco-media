@@ -163,6 +163,10 @@ Heading map (locked):
 - Example: `問い合わせ: 文化財課（0187-63-8972）`
 - Name only: `問い合わせ: {部署・団体}`. Ban `問:` / mixed labels
 - Omit the contact line when the source has no contact
+- **Privacy (locked):** never put **私人の氏名**（住民・実行委員の個人名・園児名など）in the article. Prefer 部署・団体名 only
+- **Privacy (locked):** never put **携帯電話番号**（070 / 080 / 090）in the article. Landline / 市役所等の公開固定電話のみ可。携帯しか無いときは電話を省略する
+- Public-official quotes with title（例: 市長）from 広報 are OK; private individuals are not
+- Guard: `npm run check:posts-privacy` fails on mobile numbers in `src/content/posts/`
 
 #### `## 今週のあきた` (locked)
 
@@ -206,6 +210,7 @@ Heading map (locked):
 - **Do not embed 広報 extract photos.** Never link `data/`. Do not commit under `public/images/kouhou/`. Never use them as AI reference input
 - **AI pickup images:** topic text only. No realistic identifiable people. Use ToS-compliant tooling. Short corner watermark (`AI生成`); no long body note. Files under `public/images/generated/vol-N/`. Full rules: `docs/ai-generated-images.md`
 - New issues ship with **`draft: true`**; clear the flag only when intentionally publishing
+- **Privacy:** no 私人の氏名; no 070/080/090 mobiles in article body（問い合わせは部署・団体＋固定電話のみ）
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
 - Same: select 1–3 by (a) title + (b) topic only — **never** by image availability. 10+ lines of prose. Remove from the other two sections. Add AI images after selection (not 広報 photos)
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; `###` 県北→県央→県南; theme sort then **date descending**

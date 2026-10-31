@@ -62,7 +62,8 @@ The portable contract is the tracked files above (do not require untracked local
 - 個人名・非公開の連絡先・ホームパス・勤務先の非公開情報は追跡しない
 - ローカル専用の補助設定や私的ヒューリスティック、生ダンプ／抽出 JSON、シークレットも追跡しない
 - 私的運用を匂わせる参照や工程メタも書かない
-- 記事の広報電話・公開 Threads embed・Actions vars 経由の GA など、意図した公開コンテンツは可
+- 記事の広報**固定電話**・公開 Threads embed・Actions vars 経由の GA など、意図した公開コンテンツは可
+- 記事に私人の氏名や携帯電話（070/080/090）は載せない（`scripts/draft-prompt.md` / `npm run check:posts-privacy`）
 - コミット／PR 前は差分を点検し、迷ったら載せない
 - 手順と任意チェックは `docs/quality.md`（`npm run check:public-content`）
 
