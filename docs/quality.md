@@ -18,7 +18,7 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 | :--- | :--- | :--- | :---: |
 | 日本語校正 | textlint（ja-technical-writing、緩い設定）。対象は下記「Markdown 対象」 | CI + pre-commit | はい |
 | リンク切れ | markdown-link-check（同 Markdown 対象。`nabecco.media` / `github.io` は無視しない）+ linkinator（preview 巡回）。東成瀬村公式（`vill.higashinaruse.lg.jp`）は CI から Status: 0 が断続するため検査除外（出典 URL は記事に残す） | CI（md は pre-commit も） | はい |
-| デザイン禁止（カード枠ヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
+| デザイン禁止（装飾シャドウのヒューリスティクス） | `scripts/check-design.mjs` | CI + pre-commit | はい |
 | 出典の有無（構造） | `scripts/check-citations.mjs` | CI + pre-commit | はい |
 | a11y | Playwright + axe（WCAG A/AA）＋ 375 / 1280 の横溢れスモーク。`.threads-embed`（公式 Threads oEmbed）は第三者 UI のため axe 対象外。iframe には `title` を付与 | CI のみ | はい |
 | SEO / OGP | `scripts/check-seo.mjs`（title / description / canonical / lang / og:* / twitter:card / robots / sitemap） | CI のみ | はい |
@@ -61,7 +61,7 @@ npm run check:public-content
 
 **文章の書き方チェック:** textlint では拾えないメディア声・工程メタ・地域のみ h3・口コミ1文などを、[`scripts/prose-review-prompt.md`](../scripts/prose-review-prompt.md) に沿って人が（またはエージェントが）直します。`npm run prose-review -- --vol N`。CI の合否には入れません。
 
-**デザインチェックの対象:** 同一 CSS ルール内で `border-radius`（0 / 50% 以外）と箱型 `border` または `box-shadow` が同居するパターンを検出します。`border-top` などの直線のみは許容します。
+**デザインチェックの対象:** テンプレート出力に見える装飾として、`box-shadow`（`none` 以外）を設定する CSS ルールを検出します。角丸と細い罫線は許容します。
 
 **SEO / OGP の対象:** `/`・`/issues/` です（公開号があるときは各 `/issues/[slug]/` もビルド対象）。
 `lang`、title、description、絶対 URL の canonical、`robots.txt`、`sitemap-index.xml` を見ます。

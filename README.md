@@ -89,4 +89,4 @@ npm run prose-review -- --vol N             # C′) 文章の書き方チェッ�
 
 ## 環境変数
 
-本番ビルドでは GitHub Actions の repository variable `PUBLIC_GA_MEASUREMENT_ID` を渡します。ローカルで計測を試す場合は `.env`（gitignored）に同じ名前を置きます。雛形は [`.env.example`](./.env.example) です。
+本番ビルドでは GitHub Actions の repository variable `PUBLIC_GA_MEASUREMENT_ID` を渡します。ローカルで計測を試す場合は `.env`（gitignored）に同じ名前を置きます。雛形は [`.env.example`](./.env.example) です。フッターの寄付リンクは `PUBLIC_DONATION_ONCE_URL`（単発）と `PUBLIC_DONATION_MONTHLY_URL`（月額）で指定し、未設定の場合は「寄付の受付は準備中です。」と表示します。

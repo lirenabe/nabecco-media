@@ -1,0 +1,136 @@
+---
+// Payment URLs come from repository variables (deploy.yml) → import.meta.env.
+// Empty string counts as unset (same as Analytics.astro).
+const onceUrl = import.meta.env.PUBLIC_DONATION_ONCE_URL?.trim();
+const monthlyUrl = import.meta.env.PUBLIC_DONATION_MONTHLY_URL?.trim();
+const sponsorsUrl = 'https://github.com/lirenabe/nabecco-media/blob/main/SPONSORS.md';
+
+const plans = [
+  {
+    title: '個人（1回）',
+    amount: '500〜10,000円',
+    note: '金額は自由に選べます。',
+    label: '応援する',
+    href: onceUrl,
+  },
+  {
+    title: '個人（毎月）',
+    amount: '月500〜1,000円',
+    note: '希望する方は、サイトのサポーター枠に名前を掲載します。',
+    label: '毎月応援する',
+    href: monthlyUrl,
+  },
+  {
+    title: '店舗・企業・団体',
+    amount: '5万円〜',
+    note: '名前・ロゴの掲出や紹介記事の掲載があります。申し込みは GitHub から受け付けます。',
+    label: 'ご案内を見る',
+    href: sponsorsUrl,
+  },
+];
+---
+
+<section class="support" id="support" aria-labelledby="support-heading">
+  <h2 id="support-heading">支援について</h2>
+  <div class="support__plans">
+    {
+      plans.map((plan) => (
+        <article class="plan">
+          <h3 class="plan__title">{plan.title}</h3>
+          <p class="plan__amount">{plan.amount}</p>
+          <p class="plan__note">{plan.note}</p>
+          {plan.href ? (
+            <a class="plan__button" href={plan.href} target="_blank" rel="noopener">
+              {plan.label}
+            </a>
+          ) : (
+            <p class="plan__pending">受付準備中</p>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .support h2 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .support__plans {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .support__plans {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .plan {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    padding: 1.25rem 1.1rem;
+  }
+
+  .plan__title {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+  }
+
+  .plan__amount {
+    margin: 0 0 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-sumi);
+  }
+
+  .plan__note {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-sumi-soft);
+  }
+
+  .plan__button,
+  .plan__pending {
+    margin-top: auto;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .plan__button {
+    background: var(--color-kaki-deep);
+    color: var(--color-paper-raised);
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  .plan__button:hover {
+    color: var(--color-paper-raised);
+    background: color-mix(in srgb, var(--color-kaki-deep) 85%, var(--color-sumi));
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .plan__pending {
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: flex-start;
+    font-weight: 400;
+    color: var(--color-sumi-soft);
+  }
+</style>
