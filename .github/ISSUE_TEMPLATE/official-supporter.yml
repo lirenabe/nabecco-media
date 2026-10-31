@@ -1,0 +1,64 @@
+name: オフィシャルサポーター申し込み・問い合わせ
+description: 店舗・企業・団体によるサポートの申し込みと相談
+title: "[サポーター申し込み] "
+labels: ["sponsor"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        GitHub の Issue は誰でも閲覧できます。メールアドレスや電話番号など、非公開にしたい連絡先はここに書かないでください。
+        連絡方法は、この Issue 上で GitHub アカウントへのメンションを通じてやり取りして決めます。
+        プランと掲載内容は [SPONSORS.md](https://github.com/lirenabe/nabecco-media/blob/main/SPONSORS.md) に記載しています。
+  - type: input
+    id: organization
+    attributes:
+      label: 店舗・企業・団体名
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Web サイトや SNS の URL（任意）
+      placeholder: https://
+    validations:
+      required: false
+  - type: dropdown
+    id: plan
+    attributes:
+      label: プラン
+      options:
+        - スポット（5 万円）
+        - サブスク（月 5 万円）
+        - 相談したい
+    validations:
+      required: true
+  - type: checkboxes
+    id: display
+    attributes:
+      label: 掲出の希望
+      description: 当てはまるものを選んでください。名前・ロゴの掲出はサブスクのみです
+      options:
+        - label: 名前の掲出
+        - label: ロゴの掲出
+        - label: 紹介記事の掲載を希望
+        - label: 掲出は希望しない
+  - type: textarea
+    id: article
+    attributes:
+      label: 紹介記事で紹介したい内容（任意）
+      description: 店舗・サービス・取り組みなど、記事で取り上げてほしい内容
+    validations:
+      required: false
+  - type: textarea
+    id: other
+    attributes:
+      label: その他・質問（任意）
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 確認
+      options:
+        - label: SPONSORS.md を読みました（紹介記事には PR／提供であることを明示する、支援は記事の採否・書きぶりに影響しない、など）
+          required: true

@@ -5,7 +5,6 @@
 なべっこ（nabecco.media）のセキュリティ上の問題は、GitHub の [Issues](https://github.com/lirenabe/nabecco-media/issues) で報告してください。
 
 Issue は公開されることがあります。機微な情報や悪用可能な詳細は最初からすべて書かず、再現に必要な最小限にとどめ、運営からの案内に従ってください。
-（トレードオフ: 当面は Private vulnerability reporting を使わず Issues に統一しています。必要になったら本ファイルを更新します。）
 
 ## 対象の例
 
