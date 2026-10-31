@@ -5,7 +5,7 @@
 - **サイト（確認用）:** [GitHub Pages](https://lirenabe.github.io/nabecco-media/)
 - **カスタムドメイン:** `nabecco.media`（DNS は Pages 向け。HTTPS の状態は [docs/deploy-dns.md](./docs/deploy-dns.md)）
 - **リポジトリ:** [lirenabe/nabecco-media](https://github.com/lirenabe/nabecco-media)
-- **方針:** バナー広告なし。協賛ロゴとクレジットで支える（[SPONSORS.md](./SPONSORS.md) は草案）
+- **方針:** バナー広告なし。個人の寄付と店舗・企業のサポートで支える（[SPONSORS.md](./SPONSORS.md)）
 
 ## ドキュメント
 
@@ -13,7 +13,7 @@
 - [貢献ガイド（CONTRIBUTING.md）](./CONTRIBUTING.md)
 - [行動規範（CODE_OF_CONDUCT.md）](./CODE_OF_CONDUCT.md)
 - [セキュリティ（SECURITY.md）](./SECURITY.md)
-- [オフィシャルサポーター草案（SPONSORS.md）](./SPONSORS.md)
+- [支援・サポーター（SPONSORS.md）](./SPONSORS.md)
 - [エージェント向け契約（AGENTS.md）](./AGENTS.md)
 - [詳細 docs/](./docs/README.md)（品質チェック・デプロイ / DNS・パイプライン）
 - [記事下書き契約（scripts/draft-prompt.md）](./scripts/draft-prompt.md)
@@ -78,7 +78,7 @@ npm run prose-review -- --vol N             # C′) 文章の書き方チェッ�
 
 ## スポンサー
 
-掲出枠の説明は [SPONSORS.md](./SPONSORS.md)（**草案・検討中**）です。サイト上のサポーター表示は準備中です。
+掲出枠の説明は [SPONSORS.md](./SPONSORS.md) です。サイト上のサポーター表示は準備中です。
 
 ## ライセンス
 
