@@ -3,7 +3,7 @@ title: 第1号 2026年10月31日
 pubDate: 2026-10-31
 vol: 1
 description: 潟上市と都城市の協定、湖北小の区切り、秋の行き先を追う週刊号
-draft: true
+draft: false
 ---
 
 # 石川翁が結んだ絆 — 潟上市と都城市が包括連携
