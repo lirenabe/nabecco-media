@@ -3,7 +3,7 @@
  * Step B — 内容抽出: from cached PDFs → text (+ embedded images) under
  * data/kouhou/extracted/<id>/, keyed by PDF sha256 (skip if unchanged).
  *
- * Requires Python 3 + pypdf (used for pragmatic PDF text/image extract).
+ * Requires Python 3 + pymupdf (preferred) or pypdf. See scripts/requirements-kouhou.txt.
  *
  * Usage:
  *   npm run extract:kouhou
@@ -147,7 +147,9 @@ async function main() {
         contentFile: 'content.md',
         images: py.images || [],
         imageCount: py.imageCount || 0,
-        tool: py.tool || 'pypdf',
+        tool: py.tool || 'pymupdf',
+        ocr: Boolean(py.ocr),
+        ocrNote: py.ocrNote || '',
       };
       await writeFile(metaPath, `${JSON.stringify(meta, null, 2)}\n`, 'utf8');
 

@@ -242,9 +242,10 @@ Next (operator / any agent — Cursor by current policy):
   2. If口コミ dump exists: npm run extract:kuchikomi -- --date ${opts.date}
   3. WAIT if posts.json missing (or operator says skip). Do not fetch threads.com post pages
   4. Draft from kouhou extracted text + kuchikomi posts.json (do NOT copy/embed data/kouhou/extracted/.../images into the article or public/images/kouhou; do NOT use them as AI image inputs)
-  5. For pickups: generate AI images from topic text only → ${generatedDirRel}/ ; disclose in article when needed; write ${outRel} with draft: true
-  6. npm run prose-review -- --vol ${opts.vol}  (scripts/prose-review-prompt.md — media voice / meta / region h3 / 1-sentence口コミ / AI disclosure)
-  7. Human review → clear draft flag only to publish → npm run check → git commit / push (never auto-publish)
+  5. Privacy: omit 私人の氏名 and 070/080/090 mobiles; 問い合わせ is 部署・団体 + landline only
+  6. For pickups: generate AI images from topic text only → ${generatedDirRel}/ ; disclose in article when needed; write ${outRel} with draft: true
+  7. npm run prose-review -- --vol ${opts.vol}  then npm run check:posts-privacy
+  8. Human review → clear draft flag only to publish → npm run check → git commit / push (never auto-publish)
 `);
 }
 

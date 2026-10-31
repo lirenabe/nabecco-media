@@ -9,6 +9,7 @@
 import { readFile, access } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import { findMobileNumbers } from './lib/privacy-redact.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const PROMPT_REL = 'scripts/prose-review-prompt.md';
@@ -73,6 +74,10 @@ function scanBody(text) {
   while ((m = THEME_H3.exec(text)) !== null) {
     const line = text.slice(0, m.index).split('\n').length;
     hits.push({ line, note: 'テーマが h3（地域のみのはず）', match: m[0].trim() });
+  }
+  for (const { match, index } of findMobileNumbers(text)) {
+    const line = text.slice(0, index).split('\n').length;
+    hits.push({ line, note: '携帯電話番号（記事禁止）', match });
   }
   return hits;
 }

@@ -12,8 +12,10 @@ npm run fetch:kouhou -- --only pref-akita,city-yokote
 npm run fetch:kouhou -- --force   # キャッシュ無視
 
 # B) 内容抽出 → data/kouhou/extracted/<id>/{text.txt,content.md,images/}
-#    PDF の sha256 が同じなら再抽出スキップ。要 Python3 + pypdf
-#    埋め込み画像は pillow があると取得（python3 -m pip install 'pypdf[image]'）
+#    PDF の sha256 が同じなら再抽出スキップ。要 Python3 + pymupdf（推奨）
+#    python3 -m pip install -r scripts/requirements-kouhou.txt
+#    （pymupdf 無しのとき pypdf にフォールバック。ToUnicode 欠落の日本語 CID は文字化けし得る）
+#    画像のみ PDF は tesseract OCR にフォールバック（brew install tesseract tesseract-lang）
 npm run extract:kouhou
 
 # （任意）口コミ B′: 人手 HTML → 構造化 posts.json / posts.md（threads.com 非接触）

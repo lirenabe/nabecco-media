@@ -1,0 +1,10 @@
+# Step B (extract:kouhou) — Python deps
+#   python3 -m pip install -r scripts/requirements-kouhou.txt
+#
+# pymupdf: preferred text extract (Adobe-Japan1 CID without /ToUnicode)
+# pypdf[image]: fallback text + embedded images when pymupdf is unavailable
+#
+# System (image-only PDF OCR via pymupdf.get_textpage_ocr):
+#   brew install tesseract tesseract-lang
+pymupdf>=1.24.0
+pypdf[image]>=4.0.0
