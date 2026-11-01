@@ -43,7 +43,9 @@ try {
       });
       const page = await context.newPage();
       try {
-        await page.goto(`${BASE}${route}`, { waitUntil: 'networkidle' });
+        // Prefer 'load' over 'networkidle': Threads oEmbed / embed.js keep
+        // long-lived connections that make networkidle flake in CI.
+        await page.goto(`${BASE}${route}`, { waitUntil: 'load' });
         await checkOverflow(page, label);
 
         if (vp.name === 'desktop') {
