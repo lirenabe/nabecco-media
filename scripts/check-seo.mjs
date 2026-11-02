@@ -6,6 +6,7 @@
  * - canonical absolute URL on nabecco.media
  * - Open Graph: title, description, type, url, image, locale, site_name
  * - Twitter card basics
+ * - RSS alternate link + /rss.xml (public issues only)
  * - robots.txt + sitemap-index.xml exist and reference each other
  */
 import { startPreview } from './preview.mjs';
@@ -13,6 +14,7 @@ import { startPreview } from './preview.mjs';
 const BASE = 'http://127.0.0.1:4324';
 const SITE = 'https://nabecco.media';
 const OG_IMAGE_DEFAULT = `${SITE}/og.png`;
+const RSS_HREF = `${SITE}/rss.xml`;
 const ROUTES = ['/', '/issues/'];
 
 function isAbsoluteSiteImage(url) {
@@ -74,6 +76,35 @@ try {
     }
   }
 
+  const rssRes = await fetch(`${BASE}/rss.xml`);
+  if (!rssRes.ok) {
+    failures.push(`rss.xml: HTTP ${rssRes.status}`);
+  } else {
+    const rssBody = await rssRes.text();
+    const type = rssRes.headers.get('content-type') || '';
+    if (!/xml|rss|text\/xml/i.test(type) && !rssBody.includes('<rss')) {
+      failures.push('rss.xml: missing RSS content-type/body');
+    }
+    if (!/<rss[\s>]/i.test(rssBody) || !/<channel>/i.test(rssBody)) {
+      failures.push('rss.xml: missing <rss>/<channel>');
+    }
+    if (!rssBody.includes('<language>ja</language>')) {
+      failures.push('rss.xml: missing language ja');
+    }
+    if (!rssBody.includes(RSS_HREF) && !rssBody.includes('/rss.xml')) {
+      failures.push('rss.xml: missing self link');
+    }
+    // Draft issues must not appear (vol-2 is typically draft when present).
+    if (/\/issues\/vol-\d+\//.test(rssBody) === false && /<item>/i.test(rssBody)) {
+      // has items with unexpected link shape
+      failures.push('rss.xml: item links should be /issues/vol-N/');
+    }
+    if (rssBody.includes('draft: true') || /試験下書き/.test(rssBody)) {
+      failures.push('rss.xml: looks like draft content leaked');
+    }
+    console.log('ok /rss.xml');
+  }
+
   for (const route of ROUTES) {
     const res = await fetch(`${BASE}${route}`);
     if (!res.ok) {
@@ -87,6 +118,7 @@ try {
       ['title', title(html).length >= 2],
       ['meta description', attr(html, 'description').length >= 10],
       ['canonical', linkHref(html, 'canonical') === expectedCanon],
+      ['rss alternate', linkHref(html, 'alternate') === RSS_HREF],
       ['og:title', attr(html, 'og:title').length >= 2],
       ['og:description', attr(html, 'og:description').length >= 10],
       ['og:url', attr(html, 'og:url') === expectedCanon],

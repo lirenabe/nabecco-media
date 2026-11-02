@@ -32,6 +32,12 @@ const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="なべっこ"
+      href={new URL('/rss.xml', Astro.site).href}
+    />
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:site_name" content="なべっこ" />
