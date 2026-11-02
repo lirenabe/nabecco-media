@@ -1,7 +1,12 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getPublishedPosts, sortPostsByDateDesc } from '../lib/posts';
+import {
+  getPublishedPosts,
+  issueShareTitle,
+  resolveIssueOgImage,
+  sortPostsByDateDesc,
+} from '../lib/posts';
 
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
 const latest = sorted[0];
@@ -22,12 +27,13 @@ if (latest) {
   }).format(latest.data.pubDate);
   dateIso = latest.data.pubDate.toISOString().slice(0, 10);
 }
+
+const pageTitle = latest ? issueShareTitle(latest.data) : 'なべっこ';
+const pageDescription = latest?.data.description ?? siteDescription;
+const pageImage = latest ? resolveIssueOgImage(latest.data, latest.body) : '/og.png';
 ---
 
-<BaseLayout
-  title="なべっこ"
-  description={latest?.data.description ?? siteDescription}
->
+<BaseLayout title={pageTitle} description={pageDescription} image={pageImage}>
   {
     latest && Content ? (
       <article class="latest" id="latest" aria-label={`第${latest.data.vol}号`}>
