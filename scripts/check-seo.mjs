@@ -13,9 +13,14 @@ import { startPreview } from './preview.mjs';
 
 const BASE = 'http://127.0.0.1:4324';
 const SITE = 'https://nabecco.media';
-const OG_IMAGE = `${SITE}/og.png`;
+const OG_IMAGE_DEFAULT = `${SITE}/og.png`;
 const RSS_HREF = `${SITE}/rss.xml`;
 const ROUTES = ['/', '/issues/'];
+
+function isAbsoluteSiteImage(url) {
+  if (!url.startsWith(`${SITE}/`)) return false;
+  return /\.(png|jpe?g|webp|gif|svg)(\?.*)?$/i.test(url) || url === OG_IMAGE_DEFAULT;
+}
 
 function attr(html, name, attrName = 'content') {
   const re = new RegExp(
@@ -120,7 +125,7 @@ try {
       ['og:type', ['website', 'article'].includes(attr(html, 'og:type'))],
       ['og:locale', attr(html, 'og:locale') === 'ja_JP'],
       ['og:site_name', attr(html, 'og:site_name') === 'なべっこ'],
-      ['og:image', attr(html, 'og:image') === OG_IMAGE],
+      ['og:image', isAbsoluteSiteImage(attr(html, 'og:image'))],
       ['twitter:card', ['summary', 'summary_large_image'].includes(attr(html, 'twitter:card'))],
     ];
     for (const [name, ok] of checks) {
@@ -129,6 +134,13 @@ try {
     if (route === '/') {
       if (attr(html, 'og:type') !== 'website') {
         failures.push(`${route}: og:type should be website`);
+      }
+    } else if (route === '/issues/') {
+      if (attr(html, 'og:image') !== OG_IMAGE_DEFAULT) {
+        failures.push(`${route}: og:image should be default ${OG_IMAGE_DEFAULT}`);
+      }
+      if (attr(html, 'og:type') !== 'article') {
+        failures.push(`${route}: og:type should be article`);
       }
     } else if (attr(html, 'og:type') !== 'article') {
       failures.push(`${route}: og:type should be article`);

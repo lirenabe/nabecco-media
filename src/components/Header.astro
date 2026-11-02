@@ -3,6 +3,7 @@ import {
   getLatestPost,
   getPublishedPosts,
   issueListHref,
+  issueListLabel,
   sortPostsByDateDesc,
 } from '../lib/posts';
 
@@ -65,7 +66,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
                       <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
                         {dateFmt.format(post.data.pubDate)}
                       </time>
-                      <span>{post.data.title}</span>
+                      <span>{issueListLabel(post.data)}</span>
                     </a>
                   </li>
                 ))

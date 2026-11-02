@@ -69,4 +69,4 @@ npm run check:posts-privacy
 **SEO / OGP の対象:** `/`・`/issues/` です（公開号があるときは各 `/issues/[slug]/` もビルド対象）。
 `lang`、title、description、絶対 URL の canonical、`robots.txt`、`sitemap-index.xml` を見ます。
 OGP は `og:title` / `og:description` / `og:type` / `og:url` / `og:image` / `og:locale` と `twitter:card` です。
-共有画像は `public/og.png`（1200×630）。加えて `rel=alternate` の RSS と `/rss.xml`（公開号のみ）を検証します。Lighthouse は使わず、ビルド後 HTML を直接検証します。
+共有画像の既定は `public/og.png`（1200×630）。号ページは frontmatter `image` → 本文先頭画像 → 既定の順で `og:image` を選びます。加えて `rel=alternate` の RSS と `/rss.xml`（公開号のみ）を検証します。Lighthouse は使わず、ビルド後 HTML を直接検証します。

@@ -76,6 +76,8 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - **Mix 広報 +口コミ** in the same region `###`. No silo stacks.
    - 広報: `####` tip titles. 口コミ under the region `###`: **one media sentence** in article prose + **oEmbed** (embed still OK).
    - Media voice — concrete place/food/scene. Ban 「要約しました」/「投稿があります」 process-meta.
+   - **Place names:** shop / facility / school / venue names need the **municipality**（市町村名）.
+     Examples: 「横手市十文字のマルタマ食堂」「秋田市手形のちゅんちゅん」. District-only（手形・雄物川）is not enough.
    - **Embed markup stays in the repo article** (portable). Finer ranking/tag tips may live in local skill helpers — not required to draft.
    - Citation per embed: `> 出典: 口コミ（Threads）` + `permalink`. Never paste dump HTML / `_files` media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
@@ -87,7 +89,8 @@ npm run draft -- --vol N --date YYYY-MM-DD
 title: 第N号 YYYY年M月D日
 pubDate: YYYY-MM-DD
 vol: N
-description: （任意・短い要約）
+description: （必須・トピック要約。共有・OG・一覧の主役。例: 潟上市と都城市の協定、湖北小の区切り、秋の行き先）
+image: （任意・共有画像のサイト相対パス。未指定なら本文先頭のピックアップ画像 → /og.png）
 draft: true
 ---
 
@@ -109,6 +112,11 @@ draft: true
 
 ### {各トピック題名}
 ```
+
+Frontmatter roles:
+- `title` — archival formal name（第N号 + 日付）. Do **not** put this as a body heading.
+- `description` — **required** topic line for `<title>` / OG / back-issue labels（layout renders `{description} — 第N号 | なべっこ`）. One short sentence or comma-joined topics; no「第N号」inside description.
+- `image` — optional OG image path. If omitted, layout uses the first Markdown image in the body, else `/og.png`.
 
 Frontmatter `draft: true` のままでは本番（`astro build` / GitHub Pages）に出ません。公開するときは `draft: false` にするか行を削除し、人間確認のうえ commit / merge します。ローカル `astro dev` では下書きもプレビューできます。詳細は [`docs/pipeline.md`](../docs/pipeline.md) の「公開ゲート」を参照。
 
@@ -201,6 +209,7 @@ Heading map (locked):
 - Ban 広報まとめ口調 and bullet-dumps of PR text; use connective prose and clear framing
 - Japanese Markdown only for the article body
 - Body h1 is **only** the first pickup title (never `第N号`)
+- Frontmatter `description` is **required** (topic share line); do not leave it empty or copy `title` into it
 - Layout owns trailing `発行日` label + `pubDate` (do not invent a body date line)
 - Do not append 試験下書き / 要確認 footer disclaimers in the article body
 - **ですます調** for body prose (です・ます). Do not use だ・である as the default article voice
@@ -212,7 +221,7 @@ Heading map (locked):
 - New issues ship with **`draft: true`**; clear the flag only when intentionally publishing
 - **Privacy:** no 私人の氏名; no 070/080/090 mobiles in article body（問い合わせは部署・団体＋固定電話のみ）
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
-- Same: select 1–3 by (a) title + (b) topic only — **never** by image availability. 10+ lines of prose. Remove from the other two sections. Add AI images after selection (not 広報 photos)
+- Same: select 1–3 by (a) title + (b) topic only — **never** by image availability. 10+ lines of prose that stand alone if images are later dropped. Remove from the other two sections. Add AI images after selection (not 広報 photos)
 - **`## 直近のイベント情報`:** future only; ~3-month horizon; `###` 県北→県央→県南; theme sort then **date descending**
 - Same section: info-note under h2; `####` items; `問い合わせ: …` house style
 - Same section: 3–5 charm lines OK; no pickup duplicates
@@ -222,6 +231,7 @@ Heading map (locked):
 - **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo
 - Same: 1 media sentence + embed; `出典: 口コミ（Threads）` + permalink; no 「要約しました」 voice
 - Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
+- Same: shop / facility / school / venue names include **市町村名**（not district-only）
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added
 - Prefer extracted artifacts over re-parsing PDFs every draft

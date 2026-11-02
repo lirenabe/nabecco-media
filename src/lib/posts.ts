@@ -49,3 +49,43 @@ export function getLatestPost(posts: PostEntry[]): PostEntry | undefined {
 export function issueListHref(postId: string, latestId: string | undefined): string {
   return latestId && postId === latestId ? '/' : `/issues/${postId}/`;
 }
+
+/**
+ * Browser / OG title for an issue: topic (`description`) first, 第N号 as suffix.
+ * Formal frontmatter `title` (第N号 + date) stays for archival labeling.
+ */
+export function issueShareTitle(data: { description: string; vol: number }): string {
+  return `${data.description} — 第${data.vol}号`;
+}
+
+/** List / menu label: topic text, with formal title as fallback. */
+export function issueListLabel(data: { title: string; description?: string }): string {
+  const topic = data.description?.trim();
+  return topic || data.title;
+}
+
+/** First `![alt](src)` in Markdown body, if any. */
+export function firstMarkdownImageSrc(body: string): string | undefined {
+  const match = body.match(/!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/);
+  const src = match?.[1]?.trim();
+  return src || undefined;
+}
+
+/**
+ * Site-relative OG image path for an issue.
+ * Prefer frontmatter `image`, else first body image (pickup), else `/og.png`.
+ */
+export function resolveIssueOgImage(
+  data: { image?: string },
+  body: string,
+): string {
+  const explicit = data.image?.trim();
+  if (explicit) {
+    return explicit.startsWith('/') ? explicit : `/${explicit}`;
+  }
+  const fromBody = firstMarkdownImageSrc(body);
+  if (fromBody) {
+    return fromBody.startsWith('/') ? fromBody : `/${fromBody}`;
+  }
+  return '/og.png';
+}
