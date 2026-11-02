@@ -5,6 +5,7 @@ import {
   getLatestPost,
   getPublishedPosts,
   issueListHref,
+  issueListLabel,
   sortPostsByDateDesc,
 } from '../../lib/posts';
 
@@ -14,7 +15,7 @@ const latestId = getLatestPost(sorted)?.id;
 // Same set as the header menu: include the latest published issue.
 const issues = sorted.map((post) => ({
   id: post.id,
-  title: post.data.title,
+  title: issueListLabel(post.data),
   pubDate: post.data.pubDate,
   href: issueListHref(post.id, latestId),
 }));

@@ -2,7 +2,13 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import LatestIssueRedirect from '../../components/LatestIssueRedirect.astro';
-import { getLatestPost, getPublishedPosts, type PostEntry } from '../../lib/posts';
+import {
+  getLatestPost,
+  getPublishedPosts,
+  issueShareTitle,
+  resolveIssueOgImage,
+  type PostEntry,
+} from '../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -39,7 +45,11 @@ if (!isLatest) {
   isLatest ? (
     <LatestIssueRedirect />
   ) : (
-    <BaseLayout title={post.data.title} description={post.data.description}>
+    <BaseLayout
+      title={issueShareTitle(post.data)}
+      description={post.data.description}
+      image={resolveIssueOgImage(post.data, post.body)}
+    >
       <article class="issue" aria-label={`第${post.data.vol}号`}>
         <p class="issue__crumb">
           <a href="/">なべっこ</a> / <a href="/issues/">バックナンバー</a>

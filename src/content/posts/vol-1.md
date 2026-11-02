@@ -203,7 +203,7 @@ draft: false
 > 出典: 井川町「広報いかわ」2026年11月号 Vol.840（かずりん活動報告会）  
 > https://www.town.ikawa.akita.jp/site/koho/4133.html
 
-手形に今月オープンした「ちゅんちゅん」では、酒田系に近いワンタンラーメンと、炭火の香りのチャーシューが並びます。
+秋田市手形に今月オープンした「ちゅんちゅん」では、酒田系に近いワンタンラーメンと、炭火の香りのチャーシューが並びます。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfA4ozDE9_j" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfA4ozDE9_j?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -217,7 +217,7 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@akita_gurumemania/post/DfA4ozDE9_j
 
-山王の陸王では、大盛り・豚増しの豚らーめんが、乳化スープで出てきます。
+秋田市山王の陸王では、大盛り・豚増しの豚らーめんが、乳化スープで出てきます。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfCNP5vI2tK" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfCNP5vI2tK?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -261,7 +261,7 @@ draft: false
 > 出典: 美郷町広報（みずもーる利用者1万人突破）  
 > https://www.town.misato.akita.jp/genre/chousei/kouhou/kouhoushi
 
-雄物川の味の店高昭では、大盛り1000円のスタミナ焼肉ラーメンが、二度目の訪問でも支持を集めています。
+横手市雄物川の味の店高昭では、大盛り1000円のスタミナ焼肉ラーメンが、二度目の訪問でも支持を集めています。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfB2dZvI5bi?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfB2dZvI5bi" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfB2dZvI5bi?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -275,7 +275,7 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@sutoraiku0704/post/DfB2dZvI5bi
 
-十文字のマルタマ食堂では、中華そば特盛が700円という声が残っています。
+横手市十文字のマルタマ食堂では、中華そば特盛が700円という声が残っています。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfCJD_QiYzV?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfCJD_QiYzV" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfCJD_QiYzV?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
