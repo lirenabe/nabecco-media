@@ -14,6 +14,25 @@ export async function getPublishedPosts(): Promise<PostEntry[]> {
   return getCollection('posts', isPublishedPost);
 }
 
+/** Public feed / SEO: never include drafts, even under `astro dev`. */
+export function isPublicPost(entry: PostEntry): boolean {
+  return entry.data.draft !== true;
+}
+
+export async function getPublicPosts(): Promise<PostEntry[]> {
+  return getCollection('posts', isPublicPost);
+}
+
+/** RSS / share line: topic (`description`) first when present. */
+export function issueFeedTitle(data: {
+  title: string;
+  description?: string;
+  vol: number;
+}): string {
+  const topic = data.description?.trim();
+  return topic ? `${topic} — 第${data.vol}号` : data.title;
+}
+
 export function sortPostsByDateDesc(posts: PostEntry[]): PostEntry[] {
   return [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
