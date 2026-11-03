@@ -8,10 +8,11 @@
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+// process.cwd() — not import.meta.url. When Vite bundles this for SSR prerender,
+// import.meta.url points under dist/ and municipalities.yaml is missing (ENOENT).
+const ROOT = process.cwd();
 const KOUHOU_DIR = path.join(ROOT, 'src/content/kouhou');
 const MUNI_YAML = path.join(ROOT, 'sources/municipalities.yaml');
 const SUMMARY_LABEL = '要約';
