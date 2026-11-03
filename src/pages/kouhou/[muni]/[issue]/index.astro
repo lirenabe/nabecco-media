@@ -4,7 +4,7 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import {
   getKouhouIssues,
   municipalityHref,
-  postsMentioningMunicipality,
+  postsCitingKouhouIssue,
   type KouhouEntry,
 } from '../../../../lib/kouhou';
 import { getLatestPost, getPublishedPosts, issueListHref } from '../../../../lib/posts';
@@ -23,7 +23,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const relatedPosts = await postsMentioningMunicipality(entry.data.muniName);
+const relatedPosts = await postsCitingKouhouIssue(entry);
 const published = await getPublishedPosts();
 const latestId = getLatestPost(published)?.id;
 ---
@@ -44,7 +44,7 @@ const latestId = getLatestPost(published)?.id;
     {
       relatedPosts.length > 0 && (
         <section class="kouhou-issue__related" aria-labelledby="related-posts">
-          <h2 id="related-posts">この号から なべっこが書いた記事</h2>
+          <h2 id="related-posts">この号が登場する記事</h2>
           <ul>
             {relatedPosts.map((post) => (
               <li>

@@ -1,15 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import {
-  collectEvents,
   getKouhouIssues,
   kouhouIssueHref,
   kouhouIssuesForMuni,
   loadMunicipalitySources,
-  postsMentioningMunicipality,
   type KouhouEntry,
 } from '../../../lib/kouhou';
-import { issueListHref, getLatestPost, getPublishedPosts } from '../../../lib/posts';
 
 export async function getStaticPaths() {
   const sources = await loadMunicipalitySources();
@@ -29,15 +26,11 @@ interface Props {
 }
 
 const { source, issues } = Astro.props;
-const upcoming = collectEvents(issues).filter((e) => e.muniId === source.id).slice(0, 8);
-const relatedPosts = await postsMentioningMunicipality(source.name);
-const published = await getPublishedPosts();
-const latestId = getLatestPost(published)?.id;
 ---
 
 <BaseLayout
   title={`${source.name}の広報`}
-  description={`${source.name}の公式広報要約と、これからの催しの案内です。確定情報は原本で確認してください。`}
+  description={`${source.name}の公式広報要約です。確定情報は原本で確認してください。`}
 >
   <div class="muni">
     <p class="muni__crumb">
@@ -58,25 +51,6 @@ const latestId = getLatestPost(published)?.id;
       }
     </p>
 
-    {
-      upcoming.length > 0 && (
-        <section class="muni__section" aria-labelledby="muni-events">
-          <h2 id="muni-events">これからの催し</h2>
-          <ul class="muni__events">
-            {upcoming.map((ev) => (
-              <li>
-                <span class="muni__when">{ev.when}</span>
-                <a href={ev.issueHref}>{ev.what}</a>
-              </li>
-            ))}
-          </ul>
-          <p class="muni__more">
-            <a href="/events/">イベント一覧へ</a>
-          </p>
-        </section>
-      )
-    }
-
     <section class="muni__section" aria-labelledby="muni-issues">
       <h2 id="muni-issues">広報の号</h2>
       {
@@ -95,21 +69,6 @@ const latestId = getLatestPost(published)?.id;
         )
       }
     </section>
-
-    {
-      relatedPosts.length > 0 && (
-        <section class="muni__section" aria-labelledby="muni-posts">
-          <h2 id="muni-posts">なべっこが書いた記事</h2>
-          <ul class="muni__issues">
-            {relatedPosts.map((post) => (
-              <li>
-                <a href={issueListHref(post.id, latestId)}>{post.data.description || post.data.title}</a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
   </div>
 </BaseLayout>
 
@@ -158,44 +117,27 @@ const latestId = getLatestPost(published)?.id;
     color: var(--color-sumi-soft);
   }
 
-  .muni__issues,
-  .muni__events {
+  .muni__issues {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .muni__issues li,
-  .muni__events li {
+  .muni__issues li {
     border-top: 1px solid var(--color-ash);
     padding: 0.75rem 0;
   }
 
-  .muni__issues li:last-child,
-  .muni__events li:last-child {
+  .muni__issues li:last-child {
     border-bottom: 1px solid var(--color-ash);
   }
 
-  .muni__issues a,
-  .muni__events a {
+  .muni__issues a {
     color: var(--color-sumi);
     text-decoration: none;
   }
 
-  .muni__issues a:hover,
-  .muni__events a:hover {
+  .muni__issues a:hover {
     color: var(--color-kaki);
-  }
-
-  .muni__when {
-    display: block;
-    margin-bottom: 0.2rem;
-    color: var(--color-sumi-soft);
-    font-size: 0.9rem;
-  }
-
-  .muni__more {
-    margin: 0.75rem 0 0;
-    font-size: 0.92rem;
   }
 </style>

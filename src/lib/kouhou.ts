@@ -41,13 +41,27 @@ export function municipalityHref(muniId: string): string {
   return `/kouhou/${muniId}/`;
 }
 
-/** Reading-layer posts that mention this municipality (simple name match). */
-export async function postsMentioningMunicipality(muniName: string): Promise<PostEntry[]> {
+/** `2026-11` → `2026年11月` (no zero-pad on month; matches 出典 lines). */
+export function yearMonthToJa(yearMonth: string): string | undefined {
+  const m = /^(\d{4})-(\d{2})$/.exec(yearMonth);
+  if (!m) return undefined;
+  return `${m[1]}年${Number(m[2])}月`;
+}
+
+/**
+ * Reading-layer posts whose 出典 cites this 広報 issue (muni name + 年月).
+ * Skips posts that only name the municipality without the issue month.
+ */
+export async function postsCitingKouhouIssue(entry: KouhouEntry): Promise<PostEntry[]> {
+  const ymJa = yearMonthToJa(entry.data.yearMonth);
+  if (!ymJa) return [];
+  const muniName = entry.data.muniName;
   const posts = await getPublishedPosts();
-  const needle = muniName.replace(/(市|町|村|県)$/u, '');
   return posts.filter((p) => {
-    const blob = `${p.data.title}\n${p.data.description}\n${p.body}`;
-    return blob.includes(muniName) || (needle.length >= 2 && blob.includes(needle));
+    const blob = `${p.data.description ?? ''}\n${p.body}`;
+    const citeLines = blob.split('\n').filter((line) => line.includes('出典'));
+    const haystacks = citeLines.length > 0 ? citeLines : [blob];
+    return haystacks.some((h) => h.includes(muniName) && h.includes(ymJa));
   });
 }
 
