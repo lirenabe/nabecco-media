@@ -24,16 +24,20 @@ function run(cmd, args, opts = {}) {
   });
 }
 
-/** True when an http(s) URL contains non-ASCII after percent-decoding (e.g. glued「（」). */
+/**
+ * True when an http(s) URL looks mangled (e.g. bare autolink swallowed「（」).
+ * Properly percent-encoded Japanese pathnames (県広報 PDF など) are allowed.
+ */
 function isMangledHttpUrl(url) {
   if (!/^https?:\/\//i.test(url)) return false;
-  let decoded = url;
+  // Raw non-ASCII in the href → usually glued Japanese punctuation, not %XX encoding.
+  if (/[^\x00-\x7F]/.test(url)) return true;
   try {
-    decoded = decodeURIComponent(url);
+    decodeURIComponent(url);
   } catch {
     return true;
   }
-  return /[^\x21-\x7E]/.test(decoded);
+  return false;
 }
 
 /** Catch bare URLs that swallowed trailing Japanese punctuation into the href. */
