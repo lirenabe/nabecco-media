@@ -2,6 +2,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parse as parseYaml } from 'yaml';
+import { eventSortKey, isEventUpcoming, parseEventWhen } from './event-when';
 import { getPublishedPosts, type PostEntry } from './posts';
 
 export type KouhouEntry = CollectionEntry<'kouhou'>;
@@ -75,6 +76,9 @@ export type KouhouEvent = {
   issueHref: string;
   yearMonth: string;
   sourceUrl: string;
+  /** Best-effort ISO day from `when` (for sort / JSON-LD). */
+  startDate?: string;
+  endDate?: string;
 };
 
 export function collectEvents(entries: KouhouEntry[], today = new Date()): KouhouEvent[] {
@@ -82,6 +86,8 @@ export function collectEvents(entries: KouhouEntry[], today = new Date()): Kouho
   const out: KouhouEvent[] = [];
   for (const entry of entries) {
     for (const ev of entry.data.events ?? []) {
+      const parsed = parseEventWhen(ev.when, entry.data.yearMonth);
+      if (!isEventUpcoming(ev.when, parsed, entry.data.yearMonth, todayKey)) continue;
       out.push({
         when: ev.when,
         what: ev.what,
@@ -92,11 +98,21 @@ export function collectEvents(entries: KouhouEntry[], today = new Date()): Kouho
         issueHref: kouhouIssueHref(entry),
         yearMonth: entry.data.yearMonth,
         sourceUrl: entry.data.sourceUrl,
+        startDate: parsed.startDate,
+        endDate: parsed.endDate,
       });
     }
   }
-  // Prefer sorting by yearMonth then when string; drop clearly past issue months.
-  return out
-    .filter((e) => e.yearMonth >= todayKey.slice(0, 7))
-    .sort((a, b) => a.yearMonth.localeCompare(b.yearMonth) || a.when.localeCompare(b.when));
+  return out.sort(
+    (a, b) =>
+      eventSortKey(
+        { startDate: a.startDate, endDate: a.endDate },
+        a.yearMonth,
+        a.when,
+      ).localeCompare(
+        eventSortKey({ startDate: b.startDate, endDate: b.endDate }, b.yearMonth, b.when),
+      ) ||
+      a.muniName.localeCompare(b.muniName, 'ja') ||
+      a.what.localeCompare(b.what, 'ja'),
+  );
 }

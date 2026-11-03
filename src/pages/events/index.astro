@@ -3,6 +3,34 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { collectEvents, getKouhouIssues, municipalityHref } from '../../lib/kouhou';
 
 const events = collectEvents(await getKouhouIssues());
+const site = Astro.site;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: events
+    .filter((ev) => ev.startDate)
+    .slice(0, 50)
+    .map((ev, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Event',
+        name: ev.what,
+        startDate: ev.startDate,
+        ...(ev.endDate && ev.endDate !== ev.startDate ? { endDate: ev.endDate } : {}),
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        eventStatus: 'https://schema.org/EventScheduled',
+        location: {
+          '@type': 'Place',
+          name: ev.where || ev.muniName,
+          address: ev.muniName,
+        },
+        organizer: { '@type': 'Organization', name: ev.muniName },
+        url: site ? new URL(ev.issueHref, site).href : ev.issueHref,
+      },
+    })),
+};
 ---
 
 <BaseLayout
@@ -13,7 +41,7 @@ const events = collectEvents(await getKouhouIssues());
     <p class="events__crumb"><a href="/">なべっこ</a> / イベント</p>
     <h1>イベント</h1>
     <p class="events__lead">
-      広報要約に載った催しを日付順に並べています。終了した号の月より前のものは載せません。日時・場所・料金は必ず原本で確認してください。
+      広報要約に載った催しを、読み取れた日程の早い順に並べています。終了日が過ぎたものは載せていません。日時・場所・料金は必ず原本で確認してください。
     </p>
 
     {
@@ -29,6 +57,7 @@ const events = collectEvents(await getKouhouIssues());
               </p>
               <p class="events__meta">
                 <a href={municipalityHref(ev.muniId)}>{ev.muniName}</a>
+                {ev.where ? ` · ${ev.where}` : ''}
                 {' · '}
                 <a href={ev.sourceUrl} target="_blank" rel="noopener noreferrer">
                   原本
@@ -40,6 +69,12 @@ const events = collectEvents(await getKouhouIssues());
       )
     }
   </div>
+
+  {
+    jsonLd.itemListElement.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )
+  }
 </BaseLayout>
 
 <style>
