@@ -1,7 +1,13 @@
 ---
-import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import LatestIssueRedirect from '../../components/LatestIssueRedirect.astro';
+import NewKouhouIssues from '../../components/NewKouhouIssues.astro';
+import {
+  getKouhouIssues,
+  listNewKouhouIssues,
+  previousIssuePubDate,
+  type KouhouEntry,
+} from '../../lib/kouhou';
 import {
   getLatestPost,
   getPublishedPosts,
@@ -9,29 +15,41 @@ import {
   resolveIssueOgImage,
   type PostEntry,
 } from '../../lib/posts';
+import { renderPostMarkdown, splitPostBodyAroundEvents } from '../../lib/render-post-markdown';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
   const latest = getLatestPost(posts);
+  const kouhou = await getKouhouIssues();
   return posts.map((post) => ({
     params: { slug: post.id },
-    props: { post, isLatest: post.id === latest?.id },
+    props: {
+      post,
+      isLatest: post.id === latest?.id,
+      newKouhou: listNewKouhouIssues(kouhou, previousIssuePubDate(posts, post.data.pubDate)),
+    },
   }));
 }
 
 interface Props {
   post: PostEntry;
   isLatest: boolean;
+  newKouhou: KouhouEntry[];
 }
 
-const { post, isLatest } = Astro.props;
+const { post, isLatest, newKouhou } = Astro.props;
 
-let Content = null;
+let htmlBefore = '';
+let htmlAfter = '';
+let hasEventsHeading = false;
 let dateLabel = '';
 let dateIso = '';
 
 if (!isLatest) {
-  ({ Content } = await render(post));
+  const parts = splitPostBodyAroundEvents(post.body);
+  hasEventsHeading = parts.hasEventsHeading;
+  htmlBefore = await renderPostMarkdown(parts.before);
+  htmlAfter = parts.hasEventsHeading ? await renderPostMarkdown(parts.after) : '';
   dateLabel = new Intl.DateTimeFormat('ja-JP', {
     year: 'numeric',
     month: 'long',
@@ -54,7 +72,10 @@ if (!isLatest) {
         <p class="issue__crumb">
           <a href="/">トップ</a> / <a href="/issues/">バックナンバー</a>
         </p>
-        <div class="prose">{Content && <Content />}</div>
+        <div class="prose" set:html={htmlBefore} />
+        {hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
+        {hasEventsHeading ? <div class="prose" set:html={htmlAfter} /> : null}
+        {!hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
         <p class="issue-date">
           発行日 <time datetime={dateIso}>{dateLabel}</time>
         </p>

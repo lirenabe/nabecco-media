@@ -81,12 +81,27 @@ function yearMonthLabel(yearMonth) {
   return `${y}年${Number(m)}月号`;
 }
 
-function buildShell({ source, meta, yearMonth, issueNo, listingUrl, sourceUrl, eventsYaml }) {
+function readDiscoveredAt(raw) {
+  const m = /^discoveredAt:\s*"([^"]+)"/m.exec(raw);
+  return m?.[1]?.trim() || '';
+}
+
+function buildShell({
+  source,
+  meta,
+  yearMonth,
+  issueNo,
+  listingUrl,
+  sourceUrl,
+  eventsYaml,
+  discoveredAt,
+}) {
   const label = yearMonthLabel(yearMonth);
   const title = issueNo
     ? `${source.name} 広報 ${label}（No.${issueNo}）`
     : `${source.name} 広報 ${label}`;
   const description = `${source.name}の公式広報 ${label}の要約です。`;
+  const discoveredLine = discoveredAt ? `discoveredAt: "${yamlEscape(discoveredAt)}"\n` : '';
 
   return `---
 title: "${yamlEscape(title)}"
@@ -99,7 +114,7 @@ listingUrl: "${yamlEscape(listingUrl)}"
 sourceUrl: "${yamlEscape(sourceUrl)}"
 sha256: "${yamlEscape(meta.sha256 || '')}"
 generatedAt: "${new Date().toISOString()}"
-${eventsYaml}---
+${discoveredLine}${eventsYaml}---
 
 <aside class="info-note" role="note">
   <p>このページは公式広報 PDF の要約です。日程・期限・料金など確定情報は、必ず原本（公式 PDF／自治体サイト）で確認してください。</p>
@@ -170,17 +185,24 @@ async function main() {
     const rel = path.relative(ROOT, outPath);
 
     const exists = await fileExists(outPath);
-    if (exists && !forceBody) {
-      // Refresh metadata fields lightly by rewriting shell only when body missing summary headings.
-      const raw = await readFile(outPath, 'utf8');
-      const hasSummary =
-        /^## 内容の要約\s*$/m.test(raw) || /^## この号の案内\s*$/m.test(raw);
-      if (hasSummary) {
-        console.log(`keep ${rel} (summary present; use --force-body to reset)`);
-        written += 1;
-        continue;
+    let existingRaw = '';
+    if (exists) {
+      existingRaw = await readFile(outPath, 'utf8');
+      if (!forceBody) {
+        const hasSummary =
+          /^## 内容の要約\s*$/m.test(existingRaw) || /^## この号の案内\s*$/m.test(existingRaw);
+        if (hasSummary) {
+          console.log(`keep ${rel} (summary present; use --force-body to reset)`);
+          written += 1;
+          continue;
+        }
       }
     }
+
+    // Brand-new yearMonth file only — marks “新着の広報” for the next weekly issue.
+    // Existing pages keep prior discoveredAt; never invent one on force-body rebuilds.
+    const priorDiscovered = exists ? readDiscoveredAt(existingRaw) : '';
+    const discoveredAt = exists ? priorDiscovered : new Date().toISOString();
 
     const shell = buildShell({
       source,
@@ -190,11 +212,12 @@ async function main() {
       listingUrl,
       sourceUrl,
       eventsYaml: 'events: []\n',
+      discoveredAt,
     });
     await writeFile(outPath, shell, 'utf8');
     needSummary.push(rel);
     written += 1;
-    console.log(`scaffold ${rel}`);
+    console.log(`scaffold ${rel}${discoveredAt && !priorDiscovered ? ' (new edition)' : ''}`);
   }
 
   console.log(`\ndone: touched ${written}, skipped ${skipped}`);

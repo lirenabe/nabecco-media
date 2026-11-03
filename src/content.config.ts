@@ -39,6 +39,12 @@ const kouhou = defineCollection({
     sourceUrl: z.string(),
     sha256: z.string().default(''),
     generatedAt: z.string().optional(),
+    /**
+     * First time this muni+yearMonth page was scaffolded (new 広報 edition).
+     * Used to list “新着の広報” on weekly issues after the previous vol’s pubDate.
+     * Omitted on pages that existed before this field — those are not treated as new.
+     */
+    discoveredAt: z.string().optional(),
     events: z.array(kouhouEvent).default([]),
   }),
 });

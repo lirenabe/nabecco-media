@@ -50,6 +50,41 @@ export function yearMonthToJa(yearMonth: string): string | undefined {
 }
 
 /**
+ * Previous weekly issue’s pubDate (most recent strictly older than `pubDate`).
+ * Undefined for the first issue — “新着の広報” stays empty until 次号.
+ */
+export function previousIssuePubDate(posts: PostEntry[], pubDate: Date): Date | undefined {
+  const older = posts
+    .filter((p) => p.data.pubDate.valueOf() < pubDate.valueOf())
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return older[0]?.data.pubDate;
+}
+
+/**
+ * 広報の「新版」号ページ: `discoveredAt` が前回号の発行日より後のもの。
+ * 既存ページに `discoveredAt` が無いものは新着扱いにしない（次号から効く）。
+ */
+export function listNewKouhouIssues(
+  issues: KouhouEntry[],
+  previousPubDate: Date | undefined,
+): KouhouEntry[] {
+  if (!previousPubDate) return [];
+  const since = previousPubDate.valueOf();
+  return issues
+    .filter((e) => {
+      const raw = e.data.discoveredAt;
+      if (!raw) return false;
+      const t = Date.parse(raw);
+      return !Number.isNaN(t) && t > since;
+    })
+    .sort(
+      (a, b) =>
+        a.data.muniName.localeCompare(b.data.muniName, 'ja') ||
+        a.data.yearMonth.localeCompare(b.data.yearMonth),
+    );
+}
+
+/**
  * Reading-layer posts whose 出典 cites this 広報 issue (muni name + 年月).
  * Skips posts that only name the municipality without the issue month.
  */

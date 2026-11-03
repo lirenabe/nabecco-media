@@ -49,6 +49,7 @@ jobs:
       - run: npm run check:citations
       - run: npm run check:cite-links
       - run: npm run check:event-when
+      - run: npm run check:new-kouhou
 
   links:
     name: Links
