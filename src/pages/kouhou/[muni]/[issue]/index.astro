@@ -7,6 +7,7 @@ import {
   kouhouIssueMetaDescription,
   municipalityHref,
   postsCitingKouhouIssue,
+  yearMonthToJaIssue,
   type KouhouEntry,
 } from '../../../../lib/kouhou';
 import { getLatestPost, getPublishedPosts, issueListHref } from '../../../../lib/posts';
@@ -30,6 +31,7 @@ const published = await getPublishedPosts();
 const latestId = getLatestPost(published)?.id;
 const description = kouhouIssueMetaDescription(entry);
 const jsonLd = kouhouIssueJsonLd(entry, { site: Astro.site, description });
+const issueLabel = yearMonthToJaIssue(entry.data.yearMonth) ?? entry.data.yearMonth;
 ---
 
 <BaseLayout title={entry.data.title} description={description}>
@@ -38,7 +40,7 @@ const jsonLd = kouhouIssueJsonLd(entry, { site: Astro.site, description });
       <a href="/">トップ</a> /
       <a href="/kouhou/">自治体の広報</a> /
       <a href={municipalityHref(entry.data.muniId)}>{entry.data.muniName}</a> /
-      {entry.data.yearMonth}
+      {issueLabel}
     </p>
     <h1 class="kouhou-issue__title">{entry.data.title}</h1>
     <div class="prose">

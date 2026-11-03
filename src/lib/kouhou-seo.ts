@@ -17,7 +17,8 @@ export type KouhouSeoIssue = {
 
 const META_DESCRIPTION_MAX = 155;
 
-function yearMonthToJaIssue(yearMonth: string): string | undefined {
+/** `2026-10` → `2026年10月号` */
+export function yearMonthToJaIssue(yearMonth: string): string | undefined {
   const m = /^(\d{4})-(\d{2})$/.exec(yearMonth);
   if (!m) return undefined;
   return `${m[1]}年${Number(m[2])}月号`;
@@ -89,11 +90,12 @@ export function kouhouIssueJsonLd(
   const issuePath = issueHref(entry);
   const muniPath = muniHref(entry.data.muniId);
   const pageUrl = absoluteUrl(issuePath, opts.site);
+  const issueLabel = yearMonthToJaIssue(entry.data.yearMonth) ?? entry.data.yearMonth;
   const crumbs = [
     { name: 'トップ', path: '/' },
     { name: '自治体の広報', path: '/kouhou/' },
     { name: entry.data.muniName, path: muniPath },
-    { name: entry.data.yearMonth, path: issuePath },
+    { name: issueLabel, path: issuePath },
   ];
   return {
     '@context': 'https://schema.org',
