@@ -15,8 +15,7 @@ export default defineConfig({
   site: 'https://nabecco.media',
 
   markdown: {
-    // unified: remark cite links (Sätteri default has no remarkPlugins).
-    // After changing remark-cite-links.mjs, clear `node_modules/.astro` if HTML looks stale.
+    // unified: needed for remark plugins (Sätteri default has none).
     processor: unified({
       remarkPlugins: [remarkKouhouCiteLinks, remarkExternalNewTab],
     }),

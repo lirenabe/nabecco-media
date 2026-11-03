@@ -1,8 +1,10 @@
 /**
- * Remark (posts only): rewrite 広報 出典 blockquotes to
- *   [出典: …号…](公式URL) [要約](/kouhou/…)
- * Official URL stays the cite-label target; 要約 is added only when that issue page exists.
- * 口コミなど要約ページが無い出典は [出典…](URL) のみ。
+ * Remark: rewrite reading-layer 出典 blockquotes to
+ *   [出典: …](公式URL) / [要約](/kouhou/…)
+ *
+ * Matches on content shape (`blockquote` + 「出典」+ http URL), not file path —
+ * so local `astro dev` and GitHub Actions `astro build` behave the same.
+ * 広報要約 Markdown uses list 出典, not these blockquotes, so it is untouched.
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -53,11 +55,6 @@ function walk(node, visit) {
   visit(node);
   if (!node.children) return;
   for (const child of node.children) walk(child, visit);
-}
-
-function isPostsFile(file) {
-  const p = String(file.path ?? file.history?.[0] ?? '').replace(/\\/g, '/');
-  return p.includes('/content/posts/') || p.includes('/src/content/posts/');
 }
 
 function findHttpUrl(node) {
@@ -120,8 +117,7 @@ function linkNode(url, label, { newTab = false } = {}) {
 
 export function remarkKouhouCiteLinks() {
   const index = loadIndex();
-  return (tree, file) => {
-    if (!isPostsFile(file)) return;
+  return (tree) => {
     walk(tree, (node) => {
       if (node.type !== 'blockquote') return;
       if (alreadyRewritten(node)) return;

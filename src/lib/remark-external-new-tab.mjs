@@ -1,6 +1,7 @@
 /**
  * Remark: open absolute http(s) links in a new tab.
- * Used for 広報要約 pages (公式案内・PDF). Internal paths are unchanged.
+ * Applies to all Markdown (content shape only — no file-path gating),
+ * so local and GitHub Actions builds match. Site-relative links are unchanged.
  */
 function walk(node, visit) {
   visit(node);
@@ -8,14 +9,8 @@ function walk(node, visit) {
   for (const child of node.children) walk(child, visit);
 }
 
-function isKouhouFile(file) {
-  const p = String(file.path ?? file.history?.[0] ?? '').replace(/\\/g, '/');
-  return p.includes('/content/kouhou/') || p.includes('/src/content/kouhou/');
-}
-
 export function remarkExternalNewTab() {
-  return (tree, file) => {
-    if (!isKouhouFile(file)) return;
+  return (tree) => {
     walk(tree, (node) => {
       if (node.type !== 'link') return;
       if (!/^https?:\/\//i.test(node.url ?? '')) return;
