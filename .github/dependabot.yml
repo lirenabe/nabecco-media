@@ -1,0 +1,15 @@
+# Keep SHA-pinned GitHub Actions current (Dependabot updates the SHA and the `# vN` comment).
+# npm version updates are intentionally not enabled here to avoid weekly PR noise;
+# npm security alerts remain active via the repository's Dependabot alerts.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "chore(actions)"
