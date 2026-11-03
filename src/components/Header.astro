@@ -10,9 +10,7 @@ import {
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
 const latestId = getLatestPost(sorted)?.id;
 // Include the latest published issue (also on `/`), not past-only.
-const recentIssues = sorted.slice(0, 6);
-// No published issues → no menu (avoids empty-state links to a blank /issues/).
-const hasBackIssues = recentIssues.length > 0;
+const recentIssues = sorted.slice(0, 4);
 
 const dateFmt = new Intl.DateTimeFormat('ja-JP', {
   year: 'numeric',
@@ -33,34 +31,35 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     />
   </a>
 
-  {
-    hasBackIssues && (
-      <div class="site-header__menu" data-menu>
-        <button
-          type="button"
-          class="site-header__toggle"
-          id="menu-toggle"
-          aria-controls="site-menu"
-          aria-expanded="false"
-          aria-haspopup="true"
-          data-menu-toggle
-        >
-          <span class="site-header__toggle-bars" aria-hidden="true"></span>
-          <span class="visually-hidden">メニュー</span>
-        </button>
+  <div class="site-header__menu" data-menu>
+    <button
+      type="button"
+      class="site-header__toggle"
+      id="menu-toggle"
+      aria-controls="site-menu"
+      aria-expanded="false"
+      aria-haspopup="true"
+      data-menu-toggle
+    >
+      <span class="site-header__toggle-bars" aria-hidden="true"></span>
+      <span class="visually-hidden">メニュー</span>
+    </button>
 
-        <div
-          class="site-header__panel"
-          id="site-menu"
-          role="region"
-          aria-label="バックナンバー"
-          hidden
-          data-menu-panel
-        >
-          <nav aria-label="最近の号">
-            <ul class="site-header__list">
-              {
-                recentIssues.map((post) => (
+    <div
+      class="site-header__panel"
+      id="site-menu"
+      role="region"
+      aria-label="サイトメニュー"
+      hidden
+      data-menu-panel
+    >
+      <nav class="site-header__nav" aria-label="サイトメニュー">
+        <section class="site-header__section" aria-labelledby="menu-reading">
+          <h2 id="menu-reading" class="site-header__heading">読み物</h2>
+          {
+            recentIssues.length > 0 ? (
+              <ul class="site-header__list">
+                {recentIssues.map((post) => (
                   <li>
                     <a href={issueListHref(post.id, latestId)}>
                       <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
@@ -69,22 +68,25 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
                       <span>{issueListLabel(post.data)}</span>
                     </a>
                   </li>
-                ))
-              }
-            </ul>
-            <p class="site-header__all">
-              <a href="/issues/">バックナンバー一覧</a>
-            </p>
-            <p class="site-header__all">
-              <a href="/kouhou/">自治体の広報要約</a>
-              {' · '}
-              <a href="/events/">イベント</a>
-            </p>
-          </nav>
-        </div>
-      </div>
-    )
-  }
+                ))}
+              </ul>
+            ) : null
+          }
+          <p class="site-header__more">
+            <a href="/issues/">バックナンバー一覧</a>
+          </p>
+        </section>
+
+        <section class="site-header__section">
+          <a class="site-header__section-link" href="/kouhou/">自治体の広報</a>
+        </section>
+
+        <section class="site-header__section">
+          <a class="site-header__section-link" href="/events/">イベント</a>
+        </section>
+      </nav>
+    </div>
+  </div>
 </header>
 
 <style>
@@ -189,6 +191,37 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     z-index: 20;
   }
 
+  .site-header__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+  }
+
+  .site-header__section + .site-header__section {
+    padding-top: 1.35rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .site-header__heading {
+    margin: 0 0 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-sumi-soft);
+  }
+
+  .site-header__section-link {
+    display: block;
+    color: var(--color-sumi);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .site-header__section-link:hover {
+    color: var(--color-kaki);
+  }
+
   .site-header__list {
     list-style: none;
     margin: 0;
@@ -199,7 +232,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     display: grid;
     grid-template-columns: 6.5rem 1fr;
     gap: 0.75rem 1rem;
-    padding: 1rem 0;
+    padding: 0.85rem 0;
     border-top: 1px solid var(--color-line);
     color: var(--color-sumi);
     text-decoration: none;
@@ -208,7 +241,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
 
   .site-header__list li:first-child a {
     border-top: 0;
-    padding-top: 0.25rem;
+    padding-top: 0.15rem;
   }
 
   .site-header__list a:hover span {
@@ -220,19 +253,23 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     color: var(--color-sumi-soft);
   }
 
-  .site-header__all {
-    margin: 1.15rem 0 0;
-    padding-top: 1.15rem;
-    border-top: 1px solid var(--color-line);
+  .site-header__more {
+    margin: 0.65rem 0 0;
     font-size: 0.92rem;
   }
 
-  .site-header__all a {
+  .site-header__list + .site-header__more {
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .site-header__more a {
     color: var(--color-kaki-deep);
     text-decoration: none;
   }
 
-  .site-header__all a:hover {
+  .site-header__more a:hover {
     color: var(--color-kaki);
   }
 
