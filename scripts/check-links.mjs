@@ -106,8 +106,6 @@ async function checkSite() {
       recurse: true,
       concurrency: 8,
       timeout: 15000,
-      // 一部自治体サイトは node 既定 UA を 403 にする（例: 北秋田市）。
-      userAgent: 'Mozilla/5.0 (compatible; nabecco-media-link-check/1.0; +https://nabecco.media)',
       linksToSkip: [
         /^https?:\/\/github\.com\//,
         /^https?:\/\/fonts\.googleapis\.com\//,
@@ -115,8 +113,9 @@ async function checkSite() {
         // Production absolute URLs in canonical / og:*; DNS is operator-side.
         // Presence and shape are asserted in check-seo.mjs; assets are served locally.
         /^https?:\/\/nabecco\.media\//,
-        // Same host as .markdown-link-check.json: CI で Status: 0 が断続する自治体サイト。
+        // Same hosts as .markdown-link-check.json: CI から届かない自治体サイト。
         /^https?:\/\/vill\.higashinaruse\.lg\.jp\//,
+        /^https?:\/\/www\.city\.kitaakita\.akita\.jp\//,
       ],
     });
     const broken = result.links.filter((l) => l.state === 'BROKEN');

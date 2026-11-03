@@ -3,15 +3,6 @@
   "retryOn429": true,
   "retryCount": 2,
   "aliveStatusCodes": [200, 206, 301, 302, 303, 307, 308],
-  "httpHeaders": [
-    {
-      "urls": ["https://www.city.kitaakita.akita.jp/"],
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (compatible; nabecco-media-link-check/1.0; +https://nabecco.media)"
-      },
-      "comment": "北秋田市は node / markdown-link-check 既定 UA だと 403。ブラウザ相当 UA なら 200"
-    }
-  ],
   "ignorePatterns": [
     { "pattern": "^https?://localhost(:\\d+)?(/|$)" },
     { "pattern": "^https?://127\\.0\\.0\\.1(:\\d+)?(/|$)" },
@@ -19,6 +10,10 @@
     {
       "pattern": "^https://vill\\.higashinaruse\\.lg\\.jp/",
       "comment": "CI から Status: 0（接続失敗）が断続。手元では 200。出典 URL 自体は維持し検査のみ除外"
+    },
+    {
+      "pattern": "^https://www\\.city\\.kitaakita\\.akita\\.jp/",
+      "comment": "CI（GitHub Actions）から 403。手元では 200。出典 URL 自体は維持し検査のみ除外"
     }
   ]
 }
