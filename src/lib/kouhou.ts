@@ -49,6 +49,14 @@ export function yearMonthToJa(yearMonth: string): string | undefined {
   return `${m[1]}年${Number(m[2])}月`;
 }
 
+export {
+  absoluteUrl,
+  guideItemsFromBody,
+  kouhouIssueJsonLd,
+  kouhouIssueMetaDescription,
+  municipalityJsonLd,
+} from './kouhou-seo';
+
 /**
  * Previous weekly issue’s pubDate (most recent strictly older than `pubDate`).
  * Undefined for the first issue — “新着の広報” stays empty until 次号.

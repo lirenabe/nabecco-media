@@ -100,7 +100,10 @@ function buildShell({
   const title = issueNo
     ? `${source.name} 広報 ${label}（No.${issueNo}）`
     : `${source.name} 広報 ${label}`;
-  const description = `${source.name}の公式広報 ${label}の要約です。`;
+  // Scaffold fallback only. After 案内 is written, meta description is derived at
+  // build time from those bullets (see kouhouIssueMetaDescription); agents should
+  // also refresh frontmatter description per kouhou-summary-prompt.md.
+  const description = `${source.name}の広報${label}の要約。`;
   const discoveredLine = discoveredAt ? `discoveredAt: "${yamlEscape(discoveredAt)}"\n` : '';
 
   return `---

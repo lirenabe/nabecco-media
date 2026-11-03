@@ -5,6 +5,7 @@ import {
   kouhouIssueHref,
   kouhouIssuesForMuni,
   loadMunicipalitySources,
+  municipalityJsonLd,
   type KouhouEntry,
 } from '../../../lib/kouhou';
 
@@ -26,19 +27,25 @@ interface Props {
 }
 
 const { source, issues } = Astro.props;
+const pageTitle = `${source.name} 広報`;
+const description = `${source.name}の公式広報の号別要約です。催し・募集・手続きなどの案内を、原本リンク付きで掲載しています。確定情報は原本で確認してください。`;
+const jsonLd = municipalityJsonLd({
+  site: Astro.site,
+  muniId: source.id,
+  muniName: source.name,
+  description,
+  issues,
+});
 ---
 
-<BaseLayout
-  title={`${source.name}の広報`}
-  description={`${source.name}の公式広報要約です。確定情報は原本で確認してください。`}
->
+<BaseLayout title={pageTitle} description={description}>
   <div class="muni">
     <p class="muni__crumb">
       <a href="/">トップ</a> / <a href="/kouhou/">自治体の広報</a> / {source.name}
     </p>
-    <h1>{source.name}の広報</h1>
+    <h1>{pageTitle}</h1>
     <p class="muni__lead">
-      公式広報の要約です。確定情報は原本で確認してください。
+      公式広報の号別要約です。催し・募集・手続きなどの案内を、原本リンク付きで掲載しています。確定情報は原本で確認してください。
       {
         source.listingUrl && (
           <>
@@ -70,6 +77,8 @@ const { source, issues } = Astro.props;
       }
     </section>
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </BaseLayout>
 
 <style>

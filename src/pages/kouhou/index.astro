@@ -1,14 +1,47 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { loadMunicipalitySources, municipalityHref } from '../../lib/kouhou';
+import { absoluteUrl, loadMunicipalitySources, municipalityHref } from '../../lib/kouhou';
 
 const sources = await loadMunicipalitySources();
+const description =
+  '秋田県と全市町村の公式広報を、自治体別に要約して案内します。確定情報は原本で確認してください。';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'トップ',
+          item: absoluteUrl('/', Astro.site),
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: '自治体の広報',
+          item: absoluteUrl('/kouhou/', Astro.site),
+        },
+      ],
+    },
+    {
+      '@type': 'CollectionPage',
+      name: '自治体の広報要約',
+      description,
+      url: absoluteUrl('/kouhou/', Astro.site),
+      inLanguage: 'ja',
+      hasPart: sources.map((s) => ({
+        '@type': 'CollectionPage',
+        name: `${s.name} 広報`,
+        url: absoluteUrl(municipalityHref(s.id), Astro.site),
+      })),
+    },
+  ],
+};
 ---
 
-<BaseLayout
-  title="自治体の広報要約"
-  description="秋田県と全市町村の公式広報を、自治体別に要約して案内します。確定情報は原本で確認してください。"
->
+<BaseLayout title="自治体の広報要約" description={description}>
   <div class="kouhou-index">
     <p class="kouhou-index__crumb"><a href="/">トップ</a> / 自治体の広報</p>
     <h1>自治体の広報要約</h1>
@@ -20,13 +53,15 @@ const sources = await loadMunicipalitySources();
         sources.map((s) => (
           <li>
             <a href={municipalityHref(s.id)}>
-              <span>{s.name}</span>
+              <span>{s.name} 広報</span>
             </a>
           </li>
         ))
       }
     </ul>
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </BaseLayout>
 
 <style>
