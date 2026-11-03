@@ -106,6 +106,8 @@ async function checkSite() {
       recurse: true,
       concurrency: 8,
       timeout: 15000,
+      // 一部自治体サイトは node 既定 UA を 403 にする（例: 北秋田市）。
+      userAgent: 'Mozilla/5.0 (compatible; nabecco-media-link-check/1.0; +https://nabecco.media)',
       linksToSkip: [
         /^https?:\/\/github\.com\//,
         /^https?:\/\/fonts\.googleapis\.com\//,
