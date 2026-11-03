@@ -1,49 +1,37 @@
 #!/usr/bin/env node
 /**
- * Reference-layer generator: Step B extracts → tracked Markdown under src/content/kouhou/.
- * Mechanical outline only (no vendor LLM). Run locally after extract:kouhou; commit outputs.
+ * Reference-layer scaffold — no vendor LLM API.
+ * Writes / refreshes frontmatter + 出典シェル under src/content/kouhou/.
+ * Body summaries are written by an agent following scripts/kouhou-summary-prompt.md
+ * (same operator model as Step C / draft-prompt.md).
  *
  *   npm run generate:kouhou-pages
  *   npm run generate:kouhou-pages -- --only city-katagami
+ *   npm run generate:kouhou-pages -- --force-body   # overwrite body with empty shell
  */
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, access } from 'node:fs/promises';
 import path from 'node:path';
 import { loadSources } from './lib/sources.mjs';
-import { redactMobileNumbers } from './lib/privacy-redact.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const EXTRACT_ROOT = path.join(ROOT, 'data/kouhou/extracted');
 const OUT_DIR = path.join(ROOT, 'src/content/kouhou');
-
-const SKIP_SECTION_RE =
-  /叙勲|褒章|おくやみ|お悔やみ|戸籍の窓|戸籍|出生届|結婚届|離婚届|死亡届|ご逝去|ご冥福/u;
-
-const TOC_LINE_RE = /^(.+?)[.…･・\s]{2,}(\d{1,3})\s*$/u;
+const PROMPT_REL = 'scripts/kouhou-summary-prompt.md';
 
 function parseArgs(argv) {
   const only = new Set();
+  let forceBody = false;
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === '--only' && argv[i + 1]) {
       for (const id of argv[++i].split(',')) {
         const t = id.trim();
         if (t) only.add(t);
       }
+    } else if (argv[i] === '--force-body') {
+      forceBody = true;
     }
   }
-  return { only };
-}
-
-function splitPages(text) {
-  const parts = text.split(/^---\s*page\s+(\d+)\s*---\s*$/imu);
-  /** @type {{ page: number, text: string }[]} */
-  const pages = [];
-  for (let i = 1; i < parts.length; i += 2) {
-    pages.push({ page: Number(parts[i]), text: (parts[i + 1] || '').trim() });
-  }
-  if (!pages.length && text.trim()) {
-    pages.push({ page: 1, text: text.trim() });
-  }
-  return pages;
+  return { only, forceBody };
 }
 
 function zenkakuDigitsToAscii(s) {
@@ -81,134 +69,24 @@ function detectYearMonth(fullText, fetchedAt) {
 function detectIssueNo(fullText) {
   const m = fullText.match(/No\.?\s*([0-9０-９]{1,4})/u);
   if (!m) return '';
-  return m[1].replace(/[０-９]/g, (c) => String('０１２３４５６７８９'.indexOf(c)));
-}
-
-function extractToc(pages) {
-  /** @type {{ title: string, page: number }[]} */
-  const items = [];
-  const early = pages.filter((p) => p.page <= 3).map((p) => p.text).join('\n');
-  for (const line of early.split(/\n/)) {
-    const t = line.replace(/\s+/g, ' ').trim();
-    if (t.length < 4 || t.length > 80) continue;
-    const m = t.match(TOC_LINE_RE);
-    if (!m) continue;
-    const title = m[1].replace(/\s+/g, ' ').trim();
-    const page = Number(m[2]);
-    if (!title || !page || SKIP_SECTION_RE.test(title)) continue;
-    if (items.some((x) => x.title === title && x.page === page)) continue;
-    items.push({ title, page });
-  }
-  return items.slice(0, 40);
-}
-
-function pageExcerpt(pageText, maxLen = 180) {
-  const cleaned = pageText
-    .replace(/\u3000/g, ' ')
-    .split(/\n/)
-    .map((l) => l.trim())
-    .filter((l) => l.length > 8 && !/^---/.test(l))
-    .join('');
-  const one = cleaned.replace(/\s+/g, ' ').trim();
-  if (one.length <= maxLen) return one;
-  return `${one.slice(0, maxLen)}…`;
-}
-
-function shouldSkipPage(text) {
-  const head = text.slice(0, 400);
-  return SKIP_SECTION_RE.test(head);
-}
-
-/**
- * Lightweight event candidates for the calendar (best-effort).
- * @param {string} fullText
- * @param {string} yearMonth
- */
-function extractEvents(fullText, yearMonth) {
-  const [yStr, mStr] = yearMonth.split('-');
-  const year = Number(yStr);
-  const monthHint = Number(mStr);
-  /** @type {{ when: string, what: string, where: string, contact: string }[]} */
-  const out = [];
-  const lines = fullText.split(/\n/).map((l) => l.replace(/\s+/g, ' ').trim()).filter(Boolean);
-  const dateRe =
-    /((?:令和\s*[０-９0-9]+年)?\s*[０-９0-9]{1,2}\s*月\s*[０-９0-9]{1,2}\s*日|(?:[０-９0-9]{4}\s*年)?\s*[０-９0-9]{1,2}\s*月\s*[０-９0-9]{1,2}\s*日)/u;
-
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (line.length < 8 || line.length > 120) continue;
-    if (SKIP_SECTION_RE.test(line)) continue;
-    const m = line.match(dateRe);
-    if (!m) continue;
-    const when = m[1].replace(/\s+/g, '');
-    // Prefer lines that look like announcements, not body prose mid-sentence.
-    if (!/[開催|受付|募集|申込|オープン|まつり|祭|講座|教室|相談]/u.test(line) && i + 1 < lines.length) {
-      const next = lines[i + 1];
-      if (!/[開催|受付|募集|申込]/u.test(next) && next.length > 40) continue;
-    }
-    const what = line.slice(0, 90);
-    out.push({ when, what, where: '', contact: '' });
-    if (out.length >= 30) break;
-  }
-
-  // Dedupe by when+what
-  const seen = new Set();
-  return out.filter((e) => {
-    const k = `${e.when}|${e.what}`;
-    if (seen.has(k)) return false;
-    seen.add(k);
-    // Rough filter: keep dates in issue month ±1 when parseable as M月D日
-    const md = e.when.match(/([0-9０-９]{1,2})月([0-9０-９]{1,2})日/);
-    if (md && monthHint) {
-      const mo = Number(String(md[1]).replace(/[０-９]/g, (c) => '０１２３４５６７８９'.indexOf(c)));
-      if (Math.abs(mo - monthHint) > 2 && mo !== 1 && monthHint !== 12) return false;
-    }
-    void year;
-    return true;
-  });
+  return zenkakuDigitsToAscii(m[1]);
 }
 
 function yamlEscape(s) {
   return String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 }
 
-function buildMarkdown({
-  source,
-  meta,
-  yearMonth,
-  issueNo,
-  toc,
-  sections,
-  events,
-  listingUrl,
-  sourceUrl,
-}) {
+function yearMonthLabel(yearMonth) {
+  const [y, m] = yearMonth.split('-');
+  return `${y}年${Number(m)}月号`;
+}
+
+function buildShell({ source, meta, yearMonth, issueNo, listingUrl, sourceUrl, eventsYaml }) {
+  const label = yearMonthLabel(yearMonth);
   const title = issueNo
-    ? `${source.name} 広報 ${yearMonth.replace('-', '年')}月号（No.${issueNo}）`
-    : `${source.name} 広報 ${yearMonth.replace('-', '年')}月号`;
-  const description = `${source.name}の公式広報 ${yearMonth.replace('-', '年')}月号の要約です。`;
-
-  const eventYaml =
-    events.length === 0
-      ? 'events: []\n'
-      : `events:\n${events
-          .map(
-            (e) =>
-              `  - when: "${yamlEscape(e.when)}"\n    what: "${yamlEscape(e.what)}"\n    where: "${yamlEscape(e.where)}"\n    contact: "${yamlEscape(e.contact)}"`,
-          )
-          .join('\n')}\n`;
-
-  const tocBlock =
-    toc.length === 0
-      ? '（目次を機械抽出できませんでした。原本の目次をご確認ください。）\n'
-      : toc.map((t) => `- ${t.title}（p.${t.page}）`).join('\n') + '\n';
-
-  const sectionBlock =
-    sections.length === 0
-      ? '（ページ要約を機械抽出できませんでした。）\n'
-      : sections
-          .map((s) => `### ${s.title}\n\n${s.excerpt}\n`)
-          .join('\n');
+    ? `${source.name} 広報 ${label}（No.${issueNo}）`
+    : `${source.name} 広報 ${label}`;
+  const description = `${source.name}の公式広報 ${label}の要約です。`;
 
   return `---
 title: "${yamlEscape(title)}"
@@ -221,23 +99,27 @@ listingUrl: "${yamlEscape(listingUrl)}"
 sourceUrl: "${yamlEscape(sourceUrl)}"
 sha256: "${yamlEscape(meta.sha256 || '')}"
 generatedAt: "${new Date().toISOString()}"
-${eventYaml}---
+${eventsYaml}---
 
 <aside class="info-note" role="note">
-  <p>このページは公式広報 PDF の<strong>機械的な要約</strong>です。日程・期限・料金など確定情報は、必ず原本（公式 PDF／自治体サイト）で確認してください。</p>
+  <p>このページは公式広報 PDF の要約です。日程・期限・料金など確定情報は、必ず原本（公式 PDF／自治体サイト）で確認してください。</p>
 </aside>
 
-## この号の案内
-
-${tocBlock}
-## 内容の要約
-
-${sectionBlock}
 ## 出典
 
 - 公式の広報案内: [${source.name} 広報](${listingUrl})
 - PDF: [原本を開く](${sourceUrl})
 `;
+}
+
+function splitFrontmatter(raw) {
+  if (!raw.startsWith('---\n')) return null;
+  const end = raw.indexOf('\n---\n', 4);
+  if (end < 0) return null;
+  return {
+    fm: raw.slice(0, end + 5),
+    body: raw.slice(end + 5),
+  };
 }
 
 async function loadMeta(extractDir) {
@@ -248,11 +130,21 @@ async function loadMeta(extractDir) {
   }
 }
 
+async function fileExists(p) {
+  try {
+    await access(p);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function main() {
-  const { only } = parseArgs(process.argv.slice(2));
+  const { only, forceBody } = parseArgs(process.argv.slice(2));
   const { sources } = await loadSources();
   await mkdir(OUT_DIR, { recursive: true });
 
+  const needSummary = [];
   let written = 0;
   let skipped = 0;
 
@@ -269,59 +161,50 @@ async function main() {
     }
 
     const meta = await loadMeta(extractDir);
-    text = redactMobileNumbers(text, '');
-    const pages = splitPages(text).filter((p) => !shouldSkipPage(p.text));
-    const yearMonth = detectYearMonth(text, meta.extractedAt || meta.fetchedAt);
+    const yearMonth = detectYearMonth(text, meta.extractedAt);
     const issueNo = detectIssueNo(text);
-    const toc = extractToc(splitPages(text));
-    const byPage = new Map(pages.map((p) => [p.page, p.text]));
+    const listingUrl = source.listingUrl || meta.url || '';
+    const sourceUrl = meta.url || listingUrl;
+    const fileName = `${source.id}__${yearMonth}.md`;
+    const outPath = path.join(OUT_DIR, fileName);
+    const rel = path.relative(ROOT, outPath);
 
-    /** @type {{ title: string, excerpt: string }[]} */
-    const sections = [];
-    if (toc.length) {
-      for (const item of toc.slice(0, 25)) {
-        const pageText = byPage.get(item.page) || '';
-        const excerpt = pageExcerpt(pageText || item.title);
-        if (!excerpt) continue;
-        sections.push({ title: item.title, excerpt });
-      }
-    } else {
-      for (const p of pages.slice(0, 12)) {
-        const excerpt = pageExcerpt(p.text);
-        if (!excerpt) continue;
-        sections.push({ title: `${source.name} 広報 p.${p.page}`, excerpt });
+    const exists = await fileExists(outPath);
+    if (exists && !forceBody) {
+      // Refresh metadata fields lightly by rewriting shell only when body missing summary headings.
+      const raw = await readFile(outPath, 'utf8');
+      const hasSummary =
+        /^## 内容の要約\s*$/m.test(raw) || /^## この号の案内\s*$/m.test(raw);
+      if (hasSummary) {
+        console.log(`keep ${rel} (summary present; use --force-body to reset)`);
+        written += 1;
+        continue;
       }
     }
 
-    const events = extractEvents(text, yearMonth);
-    const listingUrl = source.listingUrl || meta.url || '';
-    const sourceUrl = meta.url || listingUrl;
-    const body = buildMarkdown({
+    const shell = buildShell({
       source,
       meta,
       yearMonth,
       issueNo,
-      toc,
-      sections,
-      events,
       listingUrl,
       sourceUrl,
+      eventsYaml: 'events: []\n',
     });
-
-    const fileName = `${source.id}__${yearMonth}.md`;
-    const outPath = path.join(OUT_DIR, fileName);
-    await writeFile(outPath, body, 'utf8');
+    await writeFile(outPath, shell, 'utf8');
+    needSummary.push(rel);
     written += 1;
-    console.log(`wrote ${path.relative(ROOT, outPath)} (events≈${events.length})`);
+    console.log(`scaffold ${rel}`);
   }
 
-  // Touch .gitkeep if empty
-  const files = await readdir(OUT_DIR).catch(() => []);
-  if (!files.length) {
-    await writeFile(path.join(OUT_DIR, '.gitkeep'), '', 'utf8');
+  console.log(`\ndone: touched ${written}, skipped ${skipped}`);
+  console.log(`prompt: ${PROMPT_REL}`);
+  if (needSummary.length) {
+    console.log('needs LLM summary (agent):');
+    for (const p of needSummary) console.log(`  - ${p}`);
+  } else {
+    console.log('no empty scaffolds; nothing queued for summary');
   }
-
-  console.log(`\ndone: wrote ${written}, skipped ${skipped}`);
 }
 
 main().catch((err) => {

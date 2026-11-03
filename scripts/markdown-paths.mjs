@@ -44,10 +44,7 @@ export async function listMarkdownPaths() {
     .sort();
 
   const docs = (await walkMarkdown(path.join(ROOT, 'docs'), 'docs')).sort();
-  // Machine-generated reference-layer pages are excluded from prose lint / md link sets.
-  const content = (await walkMarkdown(path.join(ROOT, 'src/content'), 'src/content'))
-    .filter((rel) => !rel.startsWith(`src/content/kouhou${path.sep}`) && !rel.startsWith('src/content/kouhou/'))
-    .sort();
+  const content = (await walkMarkdown(path.join(ROOT, 'src/content'), 'src/content')).sort();
 
   return [...rootFiles, ...docs, ...content];
 }

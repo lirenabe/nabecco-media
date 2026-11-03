@@ -1,14 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import {
-  getKouhouIssues,
-  kouhouIssuesForMuni,
-  loadMunicipalitySources,
-  municipalityHref,
-} from '../../lib/kouhou';
+import { loadMunicipalitySources, municipalityHref } from '../../lib/kouhou';
 
 const sources = await loadMunicipalitySources();
-const issues = await getKouhouIssues();
 ---
 
 <BaseLayout
@@ -19,21 +13,17 @@ const issues = await getKouhouIssues();
     <p class="kouhou-index__crumb"><a href="/">なべっこ</a> / 自治体の広報</p>
     <h1>自治体の広報要約</h1>
     <p class="kouhou-index__lead">
-      公式広報 PDF の機械的な要約です。日程や手続きの確定情報は、必ず各自治体の原本で確認してください。
+      公式広報の要約です。日程や手続きの確定情報は、必ず各自治体の原本で確認してください。
     </p>
     <ul class="kouhou-index__list">
       {
-        sources.map((s) => {
-          const count = kouhouIssuesForMuni(issues, s.id).length;
-          return (
-            <li>
-              <a href={municipalityHref(s.id)}>
-                <span>{s.name}</span>
-                <span class="kouhou-index__meta">{count ? `${count}号` : '準備中'}</span>
-              </a>
-            </li>
-          );
-        })
+        sources.map((s) => (
+          <li>
+            <a href={municipalityHref(s.id)}>
+              <span>{s.name}</span>
+            </a>
+          </li>
+        ))
       }
     </ul>
   </div>
@@ -87,9 +77,7 @@ const issues = await getKouhouIssues();
   }
 
   .kouhou-index__list a {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    display: block;
     padding: 0.85rem 0;
     color: var(--color-sumi);
     text-decoration: none;
@@ -97,10 +85,5 @@ const issues = await getKouhouIssues();
 
   .kouhou-index__list a:hover {
     color: var(--color-kaki);
-  }
-
-  .kouhou-index__meta {
-    color: var(--color-sumi-soft);
-    font-size: 0.92rem;
   }
 </style>

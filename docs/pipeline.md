@@ -18,8 +18,8 @@ npm run fetch:kouhou -- --force   # キャッシュ無視
 #    画像のみ PDF は tesseract OCR にフォールバック（brew install tesseract tesseract-lang）
 npm run extract:kouhou
 
-# B→参照層: 抽出物から自治体広報の要約 Markdown を生成（追跡: src/content/kouhou/）
-# 外部 LLM は呼ばない。生成結果を commit してサイトに載せる
+# B→参照層シェル: frontmatter・出典のみ用意（追跡: src/content/kouhou/）
+# 本文要約はエージェントが scripts/kouhou-summary-prompt.md に従い書く（スクリプトから LLM API は呼ばない）
 npm run generate:kouhou-pages
 npm run generate:kouhou-pages -- --only city-katagami
 
