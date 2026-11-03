@@ -41,7 +41,7 @@ Do **not** copy 広報 extract photos into `public/images/kouhou/` until rights 
 New issues use `draft: true` until an operator explicitly publishes.
 
 Locked heading map: first pickup `#`, later pickups / 直近 / 今週のあきた `##`,
-region labels `###`（県北→県央→県南）. No umbrella ピックアップ. See `scripts/draft-prompt.md`.
+region labels `###`（県北→県央→県南）. No umbrella ピックアップ. Do **not** hand-write `## 新着の広報`（layout が新号の `discoveredAt` から自動表示）. See `scripts/draft-prompt.md`.
 
 ## Project docs (read these)
 

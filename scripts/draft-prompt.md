@@ -129,6 +129,11 @@ Heading map (locked):
 | `###` (h3) | **地域のみ** under 直近 / 今週のあきた — always **県北 → 県央 → 県南** |
 | `####` (h4) | Each 広報 tip/event inside a region;口コミ may be embeds under `###` with no extra heading |
 
+**Do not** write `## 新着の広報` in the Markdown body.
+The layout inserts it **immediately before** `## 直近のイベント情報`.
+It appears when 広報号 pages have `discoveredAt` after the previous vol’s `pubDate`.
+Hand-written duplicates are forbidden.
+
 ### Section roles
 
 #### ピックアップ（題名つき記事・locked）

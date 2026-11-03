@@ -1,25 +1,40 @@
 ---
-import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NewKouhouIssues from '../components/NewKouhouIssues.astro';
+import {
+  getKouhouIssues,
+  listNewKouhouIssues,
+  previousIssuePubDate,
+} from '../lib/kouhou';
 import {
   getPublishedPosts,
   issueShareTitle,
   resolveIssueOgImage,
   sortPostsByDateDesc,
 } from '../lib/posts';
+import { renderPostMarkdown, splitPostBodyAroundEvents } from '../lib/render-post-markdown';
 
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
 const latest = sorted[0];
+const allKouhou = await getKouhouIssues();
+const newKouhou = latest
+  ? listNewKouhouIssues(allKouhou, previousIssuePubDate(sorted, latest.data.pubDate))
+  : [];
 
 const siteDescription =
   '秋田県の公式広報と街の声を週ごとに要約する地域メディア、なべっこ。';
 
-let Content = null;
+let htmlBefore = '';
+let htmlAfter = '';
+let hasEventsHeading = false;
 let dateLabel = '';
 let dateIso = '';
 
 if (latest) {
-  ({ Content } = await render(latest));
+  const parts = splitPostBodyAroundEvents(latest.body);
+  hasEventsHeading = parts.hasEventsHeading;
+  htmlBefore = await renderPostMarkdown(parts.before);
+  htmlAfter = parts.hasEventsHeading ? await renderPostMarkdown(parts.after) : '';
   dateLabel = new Intl.DateTimeFormat('ja-JP', {
     year: 'numeric',
     month: 'long',
@@ -35,11 +50,12 @@ const pageImage = latest ? resolveIssueOgImage(latest.data, latest.body) : '/og.
 
 <BaseLayout title={pageTitle} description={pageDescription} image={pageImage}>
   {
-    latest && Content ? (
+    latest ? (
       <article class="latest" id="latest" aria-label={`第${latest.data.vol}号`}>
-        <div class="prose">
-          <Content />
-        </div>
+        <div class="prose" set:html={htmlBefore} />
+        {hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
+        {hasEventsHeading ? <div class="prose" set:html={htmlAfter} /> : null}
+        {!hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
         <p class="issue-date">
           発行日 <time datetime={dateIso}>{dateLabel}</time>
         </p>

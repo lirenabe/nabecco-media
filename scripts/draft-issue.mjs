@@ -236,16 +236,70 @@ async function main() {
   }
   console.log(`AI images   : ${generatedDirRel}/ (${generatedCount} file(s); topic-text only — docs/ai-generated-images.md)`);
 
+  // Preview which 広報号 pages the layout will list under「新着の広報」(discoveredAt > previous pubDate).
+  const postsDir = path.join(ROOT, 'src/content/posts');
+  let previousPub = null;
+  try {
+    const names = await readdir(postsDir);
+    const pubs = [];
+    for (const name of names) {
+      if (!name.endsWith('.md')) continue;
+      const raw = await readFile(path.join(postsDir, name), 'utf8');
+      if (/^draft:\s*true\s*$/m.test(raw)) continue;
+      const dm = /^pubDate:\s*(\d{4}-\d{2}-\d{2})/m.exec(raw);
+      if (dm) pubs.push(dm[1]);
+    }
+    pubs.sort();
+    const older = pubs.filter((d) => d < opts.date);
+    previousPub = older.length ? older[older.length - 1] : null;
+  } catch {
+    previousPub = null;
+  }
+
+  const kouhouDir = path.join(ROOT, 'src/content/kouhou');
+  const newIssues = [];
+  try {
+    const names = await readdir(kouhouDir);
+    for (const name of names) {
+      if (!name.endsWith('.md')) continue;
+      const raw = await readFile(path.join(kouhouDir, name), 'utf8');
+      const disc = /^discoveredAt:\s*"([^"]+)"/m.exec(raw)?.[1];
+      const title = /^title:\s*"([^"]+)"/m.exec(raw)?.[1];
+      const muniId = /^muniId:\s*(\S+)/m.exec(raw)?.[1];
+      const yearMonth = /^yearMonth:\s*"([^"]+)"/m.exec(raw)?.[1];
+      if (!disc || !title || !muniId || !yearMonth) continue;
+      if (!previousPub) continue;
+      if (Date.parse(disc) > Date.parse(`${previousPub}T00:00:00.000Z`)) {
+        newIssues.push({ title, href: `/kouhou/${muniId}/${yearMonth}/` });
+      }
+    }
+    newIssues.sort((a, b) => a.title.localeCompare(b.title, 'ja'));
+  } catch {
+    /* ignore */
+  }
+
+  console.log(
+    `\n新着の広報 (layout auto): previous pubDate=${previousPub || '(none — list stays empty)'}`,
+  );
+  if (!previousPub) {
+    console.log('  (創刊号など前回号が無いときは表示しない。次号から効く)');
+  } else if (!newIssues.length) {
+    console.log('  (discoveredAt が前回号より後の号ページは今のところ無い)');
+  } else {
+    for (const n of newIssues) console.log(`  - [${n.title}](${n.href})`);
+  }
+
   console.log(`
 Next (operator / any agent — Cursor by current policy):
   1. Read ${PROMPT_REL}, POLICY.md, docs/ai-generated-images.md, docs/kuchikomi.md, docs/threads-citation-rules.md
   2. If口コミ dump exists: npm run extract:kuchikomi -- --date ${opts.date}
   3. WAIT if posts.json missing (or operator says skip). Do not fetch threads.com post pages
   4. Draft from kouhou extracted text + kuchikomi posts.json (do NOT copy/embed data/kouhou/extracted/.../images into the article or public/images/kouhou; do NOT use them as AI image inputs)
-  5. Privacy: omit 私人の氏名 and 070/080/090 mobiles; 問い合わせ is 部署・団体 + landline only
-  6. For pickups: generate AI images from topic text only → ${generatedDirRel}/ ; disclose in article when needed; write ${outRel} with draft: true
-  7. npm run prose-review -- --vol ${opts.vol}  then npm run check:posts-privacy
-  8. Human review → clear draft flag only to publish → npm run check → git commit / push (never auto-publish)
+  5. Do NOT write ## 新着の広報 in the body — layout lists new kouhou pages via discoveredAt
+  6. Privacy: omit 私人の氏名 and 070/080/090 mobiles; 問い合わせ is 部署・団体 + landline only
+  7. For pickups: generate AI images from topic text only → ${generatedDirRel}/ ; disclose in article when needed; write ${outRel} with draft: true
+  8. npm run prose-review -- --vol ${opts.vol}  then npm run check:posts-privacy
+  9. Human review → clear draft flag only to publish → npm run check → git commit / push (never auto-publish)
 `);
 }
 

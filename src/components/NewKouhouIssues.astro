@@ -1,0 +1,54 @@
+---
+import { kouhouIssueHref, type KouhouEntry } from '../lib/kouhou';
+
+interface Props {
+  issues: KouhouEntry[];
+}
+
+const { issues } = Astro.props;
+---
+
+{
+  issues.length > 0 && (
+    <section class="new-kouhou" aria-labelledby="new-kouhou-heading">
+      <h2 id="new-kouhou-heading">新着の広報</h2>
+      <ul class="new-kouhou__list">
+        {
+          issues.map((entry) => (
+            <li>
+              <a href={kouhouIssueHref(entry)}>{entry.data.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  )
+}
+
+<style>
+  .new-kouhou {
+    margin: 2.25rem 0;
+  }
+
+  .new-kouhou h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .new-kouhou__list {
+    margin: 0.75rem 0 0;
+    padding: 0 0 0 1.2rem;
+  }
+
+  .new-kouhou__list li {
+    margin: 0.35rem 0;
+    line-height: 1.6;
+  }
+
+  .new-kouhou__list a {
+    color: var(--color-kaki-deep);
+  }
+</style>
