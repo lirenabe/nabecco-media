@@ -8,6 +8,7 @@ import {
   previousIssuePubDate,
   type KouhouEntry,
 } from '../../lib/kouhou';
+import { issueArticleJsonLd } from '../../lib/issue-seo';
 import {
   getLatestPost,
   getPublishedPosts,
@@ -44,6 +45,9 @@ let htmlAfter = '';
 let hasEventsHeading = false;
 let dateLabel = '';
 let dateIso = '';
+let pageTitle = '';
+let pageImage = '/og.png';
+let jsonLd: Record<string, unknown> | undefined;
 
 if (!isLatest) {
   const parts = splitPostBodyAroundEvents(post.body);
@@ -56,6 +60,20 @@ if (!isLatest) {
     day: 'numeric',
   }).format(post.data.pubDate);
   dateIso = post.data.pubDate.toISOString().slice(0, 10);
+  pageTitle = issueShareTitle(post.data);
+  pageImage = resolveIssueOgImage(post.data, post.body);
+  jsonLd = issueArticleJsonLd(
+    {
+      id: post.id,
+      title: pageTitle,
+      description: post.data.description,
+      pubDate: post.data.pubDate,
+      imagePath: pageImage,
+      pathname: `/issues/${post.id}/`,
+      includeBackIssuesCrumb: true,
+    },
+    Astro.site,
+  );
 }
 ---
 
@@ -63,11 +81,7 @@ if (!isLatest) {
   isLatest ? (
     <LatestIssueRedirect />
   ) : (
-    <BaseLayout
-      title={issueShareTitle(post.data)}
-      description={post.data.description}
-      image={resolveIssueOgImage(post.data, post.body)}
-    >
+    <BaseLayout title={pageTitle} description={post.data.description} image={pageImage}>
       <article class="issue" aria-label={`第${post.data.vol}号`}>
         <p class="issue__crumb">
           <a href="/">トップ</a> / <a href="/issues/">バックナンバー</a>
@@ -80,6 +94,8 @@ if (!isLatest) {
           発行日 <time datetime={dateIso}>{dateLabel}</time>
         </p>
       </article>
+
+      {jsonLd ? <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} /> : null}
     </BaseLayout>
   )
 }

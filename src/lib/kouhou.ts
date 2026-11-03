@@ -55,6 +55,7 @@ export {
   kouhouIssueJsonLd,
   kouhouIssueMetaDescription,
   municipalityJsonLd,
+  yearMonthToJaIssue,
 } from './kouhou-seo';
 
 /**

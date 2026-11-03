@@ -6,6 +6,7 @@ import {
   listNewKouhouIssues,
   previousIssuePubDate,
 } from '../lib/kouhou';
+import { issueArticleJsonLd } from '../lib/issue-seo';
 import {
   getPublishedPosts,
   issueShareTitle,
@@ -46,6 +47,19 @@ if (latest) {
 const pageTitle = latest ? issueShareTitle(latest.data) : 'なべっこ';
 const pageDescription = latest?.data.description ?? siteDescription;
 const pageImage = latest ? resolveIssueOgImage(latest.data, latest.body) : '/og.png';
+const jsonLd =
+  latest &&
+  issueArticleJsonLd(
+    {
+      id: latest.id,
+      title: pageTitle,
+      description: pageDescription,
+      pubDate: latest.data.pubDate,
+      imagePath: pageImage,
+      pathname: '/',
+    },
+    Astro.site,
+  );
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} image={pageImage}>
@@ -69,6 +83,8 @@ const pageImage = latest ? resolveIssueOgImage(latest.data, latest.body) : '/og.
       </section>
     )
   }
+
+  {jsonLd ? <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} /> : null}
 </BaseLayout>
 
 <style>
