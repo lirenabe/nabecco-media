@@ -23,14 +23,30 @@ export async function getPublicPosts(): Promise<PostEntry[]> {
   return getCollection('posts', isPublicPost);
 }
 
-/** RSS / share line: topic (`description`) first when present. */
+/** List / menu / page `<title>` / OG: topic text, with formal title as fallback. */
+export function issueListLabel(data: { title: string; description?: string }): string {
+  const topic = data.description?.trim();
+  return topic || data.title;
+}
+
+/** Browser / OG title for an issue (same string as list / menu). */
+export function issueShareTitle(data: { title: string; description?: string }): string {
+  return issueListLabel(data);
+}
+
+/** RSS item title: topic plus pub date (for feeds / Threads where date is not shown separately). */
 export function issueFeedTitle(data: {
   title: string;
   description?: string;
-  vol: number;
+  pubDate: Date;
 }): string {
-  const topic = data.description?.trim();
-  return topic ? `${topic} — 第${data.vol}号` : data.title;
+  const topic = issueListLabel(data);
+  const date = new Intl.DateTimeFormat('ja-JP', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(data.pubDate);
+  return `${topic} — ${date}`;
 }
 
 export function sortPostsByDateDesc(posts: PostEntry[]): PostEntry[] {
@@ -48,20 +64,6 @@ export function getLatestPost(posts: PostEntry[]): PostEntry | undefined {
  */
 export function issueListHref(postId: string, latestId: string | undefined): string {
   return latestId && postId === latestId ? '/' : `/issues/${postId}/`;
-}
-
-/**
- * Browser / OG title for an issue: topic (`description`) first, 第N号 as suffix.
- * Formal frontmatter `title` (第N号 + date) stays for archival labeling.
- */
-export function issueShareTitle(data: { description: string; vol: number }): string {
-  return `${data.description} — 第${data.vol}号`;
-}
-
-/** List / menu label: topic text, with formal title as fallback. */
-export function issueListLabel(data: { title: string; description?: string }): string {
-  const topic = data.description?.trim();
-  return topic || data.title;
 }
 
 /** First `![alt](src)` in Markdown body, if any. */

@@ -115,7 +115,7 @@ draft: true
 
 Frontmatter roles:
 - `title` — archival formal name（第N号 + 日付）. Do **not** put this as a body heading.
-- `description` — **required** topic line for `<title>` / OG / back-issue labels（layout renders `{description} — 第N号 | なべっこ`）. One short sentence or comma-joined topics; no「第N号」inside description.
+- `description` — **required** topic line for `<title>` / OG / メニュー・一覧（layout renders `{description} | なべっこ`）。RSS だけ末尾に発行日を添える。One short sentence or comma-joined topics; no「第N号」inside description.
 - `image` — optional OG image path. If omitted, layout uses the first Markdown image in the body, else `/og.png`.
 
 Frontmatter `draft: true` のままでは本番（`astro build` / GitHub Pages）に出ません。公開するときは `draft: false` にするか行を削除し、人間確認のうえ commit / merge します。ローカル `astro dev` では下書きもプレビューできます。詳細は [`docs/pipeline.md`](../docs/pipeline.md) の「公開ゲート」を参照。

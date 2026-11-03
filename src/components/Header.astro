@@ -55,17 +55,17 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     >
       <nav class="site-header__nav" aria-label="サイトメニュー">
         <section class="site-header__section" aria-labelledby="menu-reading">
-          <h2 id="menu-reading" class="site-header__heading">読み物</h2>
+          <h2 id="menu-reading" class="site-header__heading">記事</h2>
           {
             recentIssues.length > 0 ? (
               <ul class="site-header__list">
                 {recentIssues.map((post) => (
                   <li>
                     <a href={issueListHref(post.id, latestId)}>
+                      <span class="site-header__issue-title">{issueListLabel(post.data)}</span>
                       <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
                         {dateFmt.format(post.data.pubDate)}
                       </time>
-                      <span>{issueListLabel(post.data)}</span>
                     </a>
                   </li>
                 ))}
@@ -73,7 +73,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
             ) : null
           }
           <p class="site-header__more">
-            <a href="/issues/">バックナンバー一覧</a>
+            <a href="/issues/">バックナンバー</a>
           </p>
         </section>
 
@@ -229,14 +229,15 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
   }
 
   .site-header__list a {
-    display: grid;
-    grid-template-columns: 6.5rem 1fr;
-    gap: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    min-width: 0;
     padding: 0.85rem 0;
     border-top: 1px solid var(--color-line);
     color: var(--color-sumi);
     text-decoration: none;
-    font-size: 0.92rem;
   }
 
   .site-header__list li:first-child a {
@@ -244,28 +245,37 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     padding-top: 0.15rem;
   }
 
-  .site-header__list a:hover span {
+  .site-header__issue-title {
+    display: block;
+    width: 100%;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .site-header__list a:hover .site-header__issue-title {
     color: var(--color-kaki);
   }
 
   .site-header__list time {
+    font-size: 0.75rem;
+    line-height: 1.3;
     font-variant-numeric: tabular-nums;
     color: var(--color-sumi-soft);
   }
 
   .site-header__more {
-    margin: 0.65rem 0 0;
+    margin: 0.35rem 0 0;
     font-size: 0.92rem;
   }
 
   .site-header__list + .site-header__more {
-    margin-top: 0.85rem;
-    padding-top: 0.85rem;
-    border-top: 1px solid var(--color-line);
+    margin-top: 0.45rem;
   }
 
   .site-header__more a {
-    color: var(--color-kaki-deep);
+    color: var(--color-sumi);
     text-decoration: none;
   }
 
@@ -273,12 +283,6 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
     color: var(--color-kaki);
   }
 
-  @media (max-width: 520px) {
-    .site-header__list a {
-      grid-template-columns: 1fr;
-      gap: 0.15rem;
-    }
-  }
 </style>
 
 <script>
