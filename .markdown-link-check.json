@@ -10,6 +10,10 @@
     {
       "pattern": "^https://vill\\.higashinaruse\\.lg\\.jp/",
       "comment": "CI から Status: 0（接続失敗）が断続。手元では 200。出典 URL 自体は維持し検査のみ除外"
+    },
+    {
+      "pattern": "^https://www\\.city\\.kitaakita\\.akita\\.jp/",
+      "comment": "CI（GitHub Actions）から 403。手元では 200。出典 URL 自体は維持し検査のみ除外"
     }
   ]
 }

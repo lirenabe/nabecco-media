@@ -47,6 +47,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check:citations
+      - run: npm run check:cite-links
+      - run: npm run check:event-when
 
   links:
     name: Links

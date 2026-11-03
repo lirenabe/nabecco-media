@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { collectEvents, getKouhouIssues, municipalityHref } from '../../lib/kouhou';
+
+const events = collectEvents(await getKouhouIssues());
+const site = Astro.site;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: events
+    .filter((ev) => ev.startDate)
+    .slice(0, 50)
+    .map((ev, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Event',
+        name: ev.what,
+        startDate: ev.startDate,
+        ...(ev.endDate && ev.endDate !== ev.startDate ? { endDate: ev.endDate } : {}),
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        eventStatus: 'https://schema.org/EventScheduled',
+        location: {
+          '@type': 'Place',
+          name: ev.where || ev.muniName,
+          address: ev.muniName,
+        },
+        organizer: { '@type': 'Organization', name: ev.muniName },
+        url: site ? new URL(ev.issueHref, site).href : ev.issueHref,
+      },
+    })),
+};
+---
+
+<BaseLayout
+  title="イベント"
+  description="秋田県内のこれからの催しを、公式広報の要約から日付順に並べています。確定情報は原本で確認してください。"
+>
+  <div class="events">
+    <p class="events__crumb"><a href="/">なべっこ</a> / イベント</p>
+    <h1>イベント</h1>
+    <p class="events__lead">
+      広報要約に載った催しを、読み取れた日程の早い順に並べています。終了日が過ぎたものは載せていません。日時・場所・料金は必ず原本で確認してください。
+    </p>
+
+    {
+      events.length === 0 ? (
+        <p class="events__empty">現在、掲載中の催しはありません。</p>
+      ) : (
+        <ul class="events__list">
+          {events.map((ev) => (
+            <li>
+              <p class="events__when">{ev.when}</p>
+              <p class="events__what">
+                <a href={ev.issueHref}>{ev.what}</a>
+              </p>
+              <p class="events__meta">
+                <a href={municipalityHref(ev.muniId)}>{ev.muniName}</a>
+                {ev.where ? ` · ${ev.where}` : ''}
+                {' · '}
+                <a href={ev.sourceUrl} target="_blank" rel="noopener noreferrer">
+                  原本
+                </a>
+              </p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+
+  {
+    jsonLd.itemListElement.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )
+  }
+</BaseLayout>
+
+<style>
+  .events {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 2.75rem) var(--page-pad) var(--section-gap);
+  }
+
+  .events__crumb {
+    margin: 0 0 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-sumi-soft);
+  }
+
+  .events__crumb a {
+    color: var(--color-sumi-soft);
+    text-decoration: none;
+  }
+
+  .events__crumb a:hover {
+    color: var(--color-kaki);
+  }
+
+  .events h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.45rem, 4vw, 1.85rem);
+  }
+
+  .events__lead {
+    margin: 0 0 1.75rem;
+    line-height: 1.75;
+  }
+
+  .events__empty {
+    color: var(--color-sumi-soft);
+  }
+
+  .events__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .events__list li {
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-ash);
+  }
+
+  .events__list li:last-child {
+    border-bottom: 1px solid var(--color-ash);
+  }
+
+  .events__when {
+    margin: 0 0 0.25rem;
+    color: var(--color-sumi-soft);
+    font-size: 0.92rem;
+  }
+
+  .events__what {
+    margin: 0 0 0.35rem;
+  }
+
+  .events__what a {
+    color: var(--color-sumi);
+    text-decoration: none;
+  }
+
+  .events__what a:hover {
+    color: var(--color-kaki);
+  }
+
+  .events__meta {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--color-sumi-soft);
+  }
+
+  .events__meta a {
+    color: var(--color-sumi-soft);
+  }
+</style>

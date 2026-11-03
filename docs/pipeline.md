@@ -18,6 +18,11 @@ npm run fetch:kouhou -- --force   # キャッシュ無視
 #    画像のみ PDF は tesseract OCR にフォールバック（brew install tesseract tesseract-lang）
 npm run extract:kouhou
 
+# B→参照層シェル: frontmatter・出典のみ用意（追跡: src/content/kouhou/）
+# 本文要約はエージェントが scripts/kouhou-summary-prompt.md に従い書く（スクリプトから LLM API は呼ばない）
+npm run generate:kouhou-pages
+npm run generate:kouhou-pages -- --only city-katagami
+
 # （任意）口コミ B′: 人手 HTML → 構造化 posts.json / posts.md（threads.com 非接触）
 npm run extract:kuchikomi -- --date YYYY-MM-DD
 # 手順は docs/kuchikomi.md ／ 制約は docs/threads-citation-rules.md
@@ -37,7 +42,7 @@ npm run prose-review -- --vol N
 - 自治体ごとの取得ルール: [`sources/municipalities.yaml`](../sources/municipalities.yaml)（秋田県＋全市町村。`status: active` のみ自動取得）
 - キャッシュ: `data/kouhou/manifest.json` に `url` / `sha256` / 任意で `etag`・`last-modified`。HTTP 304 またはハッシュ一致で再ダウンロードしない
 - PDF・抽出物は `data/` 配下（gitignore）。巨大バイナリを commit しない
-- 抽出方針は [POLICY.md](../POLICY.md) どおり（丸写し禁止、イベント等を優先、定例手続きは載せない）
+- 抽出方針は [POLICY.md](../POLICY.md) どおり（丸写し禁止。読み物層はイベント等を優先し定例手続きの詳細は載せない。参照層の網羅方針は POLICY §2.2）
 - **口コミ（半手動・2段）:** [`docs/kuchikomi.md`](./kuchikomi.md) — HTML ドロップ → `extract:kuchikomi` → 構造化ファイルから下書き。[`threads-citation-rules.md`](./threads-citation-rules.md)。投稿ページの fetch はしない（表示用 oEmbed のみ可）
 - **人間が Markdown を確認してから** `git commit` / `git push` する（自動公開なし）
 - 当面の運用では Step C をエージェントへ依頼することがあるが、**コード上の必須依存ではない**

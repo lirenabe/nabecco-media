@@ -18,4 +18,29 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const kouhouEvent = z.object({
+  when: z.string(),
+  what: z.string(),
+  where: z.string().default(''),
+  contact: z.string().default(''),
+});
+
+/** Reference layer: mechanical summaries from Step B extracts (tracked outputs). */
+const kouhou = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/kouhou' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    muniId: z.string(),
+    muniName: z.string(),
+    yearMonth: z.string(),
+    issueNo: z.string().default(''),
+    listingUrl: z.string(),
+    sourceUrl: z.string(),
+    sha256: z.string().default(''),
+    generatedAt: z.string().optional(),
+    events: z.array(kouhouEvent).default([]),
+  }),
+});
+
+export const collections = { posts, kouhou };

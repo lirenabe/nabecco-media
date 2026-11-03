@@ -24,7 +24,7 @@
 
 必須: `title` / `pubDate` / `vol` / `description`  
 任意: `image` / `draft`  
-`title` は正式名（例: `第1号 2026年10月25日`）。`description` はトピック要約で、`<title>` / OGP / 一覧ラベルの主役（表示は `{description} — 第N号 | なべっこ`）。`image` 未指定時は本文先頭画像、それもなければ `/og.png`。発行日はレイアウトが末尾に表示します。
+`title` は正式名（例: `第1号 2026年10月25日`）。`description` はトピック要約で、`<title>` / OGP / メニュー・一覧の主役（表示は `{description} | なべっこ`）。RSS の item タイトルだけ `{description} — {発行日}`。`image` 未指定時は本文先頭画像、それもなければ `/og.png`。発行日はレイアウトが末尾に表示します。
 
 **公開ゲート:** 確認中の号は `draft: true` を付けます。本番（GitHub Pages）には出ず、ローカル `npm run dev` でのみプレビューできます。公開するときは `draft: false` にするか行を削除し、人間確認のうえ merge します。詳細は [docs/pipeline.md](./docs/pipeline.md)。
 

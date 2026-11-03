@@ -115,7 +115,7 @@ draft: true
 
 Frontmatter roles:
 - `title` — archival formal name（第N号 + 日付）. Do **not** put this as a body heading.
-- `description` — **required** topic line for `<title>` / OG / back-issue labels（layout renders `{description} — 第N号 | なべっこ`）. One short sentence or comma-joined topics; no「第N号」inside description.
+- `description` — **required** topic line for `<title>` / OG / メニュー・一覧（layout renders `{description} | なべっこ`）。RSS だけ末尾に発行日を添える。One short sentence or comma-joined topics; no「第N号」inside description.
 - `image` — optional OG image path. If omitted, layout uses the first Markdown image in the body, else `/og.png`.
 
 Frontmatter `draft: true` のままでは本番（`astro build` / GitHub Pages）に出ません。公開するときは `draft: false` にするか行を削除し、人間確認のうえ commit / merge します。ローカル `astro dev` では下書きもプレビューできます。詳細は [`docs/pipeline.md`](../docs/pipeline.md) の「公開ゲート」を参照。
@@ -194,7 +194,10 @@ Heading map (locked):
 - If a pickup already used the same tip, do not duplicate
 - Omit posts with no usable permalink / text; no process meta in body
 
-5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」.
+5. Attach a **full** citation per item (`> 出典: …` + listing URL or口コミ URL). Never use 「同上」「同」「前掲」。
+   The build rewrites the blockquote to `[出典: …](公式URL)`.
+   When a matching `/kouhou/…` page exists, it also adds `[要約](/kouhou/…)`.
+   Do **not** hand-write those links.
 6. **Do not** copy or embed 広報 extract photos into `public/images/kouhou/` or the article.
    Keep extracts under `data/kouhou/extracted/` (gitignore).
    Pickup visuals use **AI images** under `public/images/generated/vol-N/` (topic text only; see `docs/ai-generated-images.md`).

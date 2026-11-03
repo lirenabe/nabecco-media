@@ -14,6 +14,8 @@
     "check:textlint": "node scripts/check-textlint.mjs",
     "check:design": "node scripts/check-design.mjs",
     "check:citations": "node scripts/check-citations.mjs",
+    "check:cite-links": "node scripts/check-cite-links.mjs",
+    "check:event-when": "node --experimental-strip-types scripts/check-event-when.mjs",
     "check:links:md": "node scripts/check-links.mjs md",
     "check:links:site": "node scripts/check-links.mjs site",
     "check:links": "node scripts/check-links.mjs all",
@@ -21,12 +23,13 @@
     "check:seo": "node scripts/check-seo.mjs",
     "check:public-content": "node scripts/check-public-content.mjs",
     "check:posts-privacy": "node scripts/check-posts-privacy.mjs",
-    "check:fast": "npm run check:textlint && npm run check:design && npm run check:citations && npm run check:posts-privacy && npm run check:links:md",
+    "check:fast": "npm run check:textlint && npm run check:design && npm run check:citations && npm run check:cite-links && npm run check:event-when && npm run check:posts-privacy && npm run check:links:md",
     "check": "npm run build && npm run check:fast && npm run check:links:site && npm run check:a11y && npm run check:seo",
     "factcheck": "node scripts/factcheck.mjs",
     "prose-review": "node scripts/prose-review.mjs",
     "fetch:kouhou": "node scripts/fetch-kouhou.mjs",
     "extract:kouhou": "node scripts/extract-kouhou.mjs",
+    "generate:kouhou-pages": "node scripts/generate-kouhou-pages.mjs",
     "extract:kuchikomi": "node scripts/extract-kuchikomi.mjs",
     "draft": "node scripts/draft-issue.mjs",
     "prepare": "simple-git-hooks"
@@ -47,6 +50,7 @@
     ]
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.5",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.4.2",

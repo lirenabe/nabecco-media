@@ -34,10 +34,10 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
         {listed.map((issue) => (
           <li>
             <a href={issue.href}>
+              <span class="back-issues__title">{issue.title}</span>
               <time datetime={issue.pubDate.toISOString().slice(0, 10)}>
                 {formatter.format(issue.pubDate)}
               </time>
-              <span>{issue.title}</span>
             </a>
           </li>
         ))}
@@ -79,28 +79,32 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
   }
 
   .back-issues__list a {
-    display: grid;
-    grid-template-columns: 7.5rem 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    min-width: 0;
     padding: 0.85rem 0;
     color: var(--color-sumi);
     text-decoration: none;
   }
 
-  .back-issues__list a:hover span {
+  .back-issues__title {
+    display: block;
+    width: 100%;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .back-issues__list a:hover .back-issues__title {
     color: var(--color-kaki);
   }
 
   .back-issues__list time {
+    font-size: 0.75rem;
+    line-height: 1.3;
     font-variant-numeric: tabular-nums;
     color: var(--color-sumi-soft);
-    font-size: 0.92rem;
-  }
-
-  @media (max-width: 520px) {
-    .back-issues__list a {
-      grid-template-columns: 1fr;
-      gap: 0.2rem;
-    }
   }
 </style>
