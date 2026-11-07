@@ -81,6 +81,17 @@ export function extractHrefs(html, baseUrl) {
  * Pick a URL from href strings or {href,text} anchors.
  * Text filters (issueTextPattern / preferTextPattern) need anchors.
  */
+/** Decode percent-encoding for pattern matching (e.g. 20261105(%E7…%E9%99%A4).pdf). */
+function hrefMatchHaystack(href) {
+  let decoded = href;
+  try {
+    decoded = decodeURIComponent(href);
+  } catch {
+    // keep raw href
+  }
+  return `${href}\n${decoded}`;
+}
+
 export function pickHref(
   hrefsOrAnchors,
   {
@@ -98,7 +109,7 @@ export function pickHref(
   );
   if (pattern) {
     const re = new RegExp(pattern, 'i');
-    list = list.filter((a) => re.test(a.href));
+    list = list.filter((a) => re.test(hrefMatchHaystack(a.href)));
   }
   if (textPattern) {
     const re = new RegExp(textPattern, 'i');
@@ -106,7 +117,7 @@ export function pickHref(
   }
   if (excludePattern) {
     const re = new RegExp(excludePattern, 'i');
-    list = list.filter((a) => !re.test(a.href));
+    list = list.filter((a) => !re.test(hrefMatchHaystack(a.href)));
   }
   if (excludeTextPattern) {
     const re = new RegExp(excludeTextPattern, 'i');
@@ -115,7 +126,7 @@ export function pickHref(
   if (!list.length) return '';
   if (preferPattern) {
     const re = new RegExp(preferPattern, 'i');
-    const preferred = list.filter((a) => re.test(a.href));
+    const preferred = list.filter((a) => re.test(hrefMatchHaystack(a.href)));
     if (preferred.length) list = preferred;
   }
   if (preferTextPattern) {

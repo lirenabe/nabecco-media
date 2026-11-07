@@ -63,18 +63,32 @@ npm run draft -- --vol N --date YYYY-MM-DD
    **Selection gates:**
    - Prefer concrete scene / seasonal body / civic feeling / **customer shop visits**.
    - **Shop tip:** ordinary diner口コミ about a restaurant is **OK and welcome**.
-   - Skip only **本人による宣伝** (business-owner self-promo: 「本日営業」「お待ちしてます」、自店の営業案内、出店のいいね乞い、等).
+   - **本人投稿（店アカウント等）:** skip when the **main point** is promo（本日営業・お待ちしてます・自店案内・いいね乞いのみ、等）.
+     If a visit / season / place scene is the axis and a promo line is incidental → **OK**. Cap shop-account posts at **1–2 per issue**; inside a buzz cluster, **≤1** shop-account post.
    - Also skip: defamation, doxxing, private/non-public, thin weather-only / empty cheer lines.
    - Creator CTAs (「チャンネル登録」) without a real visit scene → skip or cut.
      A visit scene may stay if the food/place is the point.
+   - **Priority — 広報連動:** prefer口コミ that clearly match this issue’s 広報 tips / pickups（催し名・会場・日付帯）. Do not invent a link or pad when none exist.
+   - **Same-topic counts:** default **1** per shop / festival / venue.
+     **Exception (広報連動 clusters):** when posts share one 広報-linked topic, allow **up to 3** so the buzz reads（客同士の反応を優先）. One cluster must not exceed **half** of the issue’s口コミ. Keep region `###` order; do not invent posts for empty regions.
+   - **Genre mix (no theme headings):** coarse themes only（フード／イベント／季節／暮らし）.
+     Apply **anti-skew inside each region `###`**（県北／県央／県南 separately）— not only issue-wide.
+     Prefer anti-skew over equal quotas; avoid a food-only stack **within that region** when other solid posts exist.
    - Quality over coverage; **place口コミ in the same region `###` as related 広報 tips**.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
    **Shape (region groups + embeds — decided):**
    - `###` headings are **地域のみ**: 県北／県央／県南 — always in that order. **No theme in h3.**
    - **テーマ** (フード／イベント／季節／暮らし／…) has **no heading**; it only sorts items inside a region.
    - Within the same theme: 直近 = date **descending**; 今週のあきた = time **ascending**.
-   - **Mix 広報 +口コミ** in the same region `###`. No silo stacks.
-   - 広報: `####` tip titles. 口コミ under the region `###`: **one media sentence** in article prose + **oEmbed** (embed still OK).
+   - **Mix 広報 +口コミ** in the same region `###`. No region-level silo (all口コミ only after all regions).
+   - **口コミ placement:**
+     - **ピックアップ連動**（matches a pickup in this issue）→ **inside that pickup**.
+       Prefer a paragraph break after a framing media sentence; end-of-pickup OK if mid-prose feels forced.
+       **1 per pickup（max 2）**. Do **not** also list the same permalink in `## 今週のあきた`.
+     - **広報連動**（matching a `####` tip in 今週のあきた by 催し名・会場・日付帯）→ immediately under that tip’s `####`.
+     - **それ以外** → after all 広報 `####` in that region, under a fixed **`#### 街の声`**（only when such口コミ exist; never empty）.
+     - Label is **exact** `#### 街の声` — no shop / festival / theme words in that h4.
+   - 広報 tips: `#### {題名}`. 口コミ: **one media sentence** + **oEmbed** (no embed-only stacks).
    - Media voice — concrete place/food/scene. Ban 「要約しました」/「投稿があります」 process-meta.
    - **Place names:** shop / facility / school / venue names need the **municipality**（市町村名）.
      Examples: 「横手市十文字のマルタマ食堂」「秋田市手形のちゅんちゅん」. District-only（手形・雄物川）is not enough.
@@ -127,7 +141,7 @@ Heading map (locked):
 | `#` (h1) | **Only** the first pickup title |
 | `##` (h2) | Later pickups (if any); `直近のイベント情報`; `今週のあきた` |
 | `###` (h3) | **地域のみ** under 直近 / 今週のあきた — always **県北 → 県央 → 県南** |
-| `####` (h4) | Each 広報 tip/event inside a region;口コミ may be embeds under `###` with no extra heading |
+| `####` (h4) | Each 広報 tip/event inside a region; plus fixed **`街の声`** for non-linked口コミ in `## 今週のあきた` only |
 
 **Do not** write `## 新着の広報` in the Markdown body.
 The layout inserts it **immediately before** `## 直近のイベント情報`.
@@ -148,6 +162,10 @@ Hand-written duplicates are forbidden.
 - **No image-as-selection:** do **not** pick (or skip) a topic because a 広報 extract photo exists or is missing. Photos are never a selection gate
 - **AI visuals (after selection):** for each chosen pickup, generate from **topic text only** (`docs/ai-generated-images.md`). Save under `public/images/generated/vol-N/`. Short corner watermark (`AI生成`). Alt may say AI生成. No long prose disclosure. No realistic identifiable people. Follow the image tool’s ToS. Keep `draft: true`
 - Body: media 読み物 and ですます. Full citation. **10+ lines** of prose (no 広報写真). Not a PR digest.
+- **口コミ (optional):** when `posts.json` has a clear match, weave **1（max 2）** into the pickup.
+- Same: paragraph break + 1 media sentence + oEmbed + citation.
+- Same: prefer mid-article after a scene/claim; end-of-pickup before the AI image / 広報出典 is OK.
+- Same: official dates/fees stay authoritative. Dedupe vs `## 今週のあきた` (same permalink).
 
 #### `## 直近のイベント情報` (locked)
 
@@ -180,6 +198,7 @@ Hand-written duplicates are forbidden.
 - **Privacy (locked):** never put **携帯電話番号**（070 / 080 / 090）in the article. Landline / 市役所等の公開固定電話のみ可。携帯しか無いときは電話を省略する
 - Public-official quotes with title（例: 市長）from 広報 are OK; private individuals are not
 - Guard: `npm run check:posts-privacy` fails on mobile numbers in `src/content/posts/`
+- Guard: `npm run check:threads-embeds` fails on truncated / unbalanced `.threads-embed` stubs
 
 #### `## 今週のあきた` (locked)
 
@@ -187,11 +206,13 @@ Hand-written duplicates are forbidden.
 - **Window:** roughly **within 1 week** before run / issue time
 - **Grouping:** `###` is **地域のみ**（県北／県央／県南）. **Never put theme in the h3.** Theme only orders items inside the region.
 - **Region order:** always **県北 → 県央 → 県南** (skip empty).
-- **Mix** 広報-extracted past tips and口コミ into the **same region** — no kouhou-then-口コミ silos.
-- **Sort within each region:** by **theme** (no theme heading), then by time **ascending** within the same theme.
+- **Mix** 広報-extracted past tips and口コミ into the **same region** — not a separate口コミ-only chapter
+- **Sort within each region:** 広報 tips by **theme** (no theme heading), then time **ascending**; then optional `#### 街の声`
 - **Exclude** topics already used as ピックアップ in this issue
 - **広報 item:** `#### {題名}` then about **5–10 phone-screen lines**; full citation; no 短報
-- **口コミ:** under the region `###` — **1 media sentence** + oEmbed; citation per embed. Not embed-only stacks; not long summary articles
+- **口コミ (pickup-linked):** already in the pickup — **do not repeat** here
+- **口コミ (tip-linked):** under the matching 広報 `####` — **1 media sentence** + oEmbed; citation per embed
+- **口コミ (other):** under **`#### 街の声`** at the end of that region（fixed label only; omit if none）
 - **Do not** embed 広報 extract photos in this section
 - **No 問い合わせ / contact lines** in this section
 - **口コミ source:** `extracted/.../posts.json` only
@@ -234,11 +255,15 @@ Hand-written duplicates are forbidden.
 - Same section: info-note under h2; `####` items; `問い合わせ: …` house style
 - Same section: 3–5 charm lines OK; no pickup duplicates
 - **`## 今週のあきた`:** past only; ~1-week window; same region `###` order; **mix 広報 +口コミ**
-- Same section: `####` 広報 tips;口コミ embeds under region; theme sort then **time ascending**
+- Same section: `####` 広報 tips; tip-linked口コミ under that tip; other口コミ under `#### 街の声`
+- Same: no pickup-linked duplicates; theme sort then **time ascending**
 - Same section: no 問い合わせ; no pickup duplicates
 - **口コミ:** draft from `posts.json` only; selection gates; embed markup in repo
+- Same: pickup-linked口コミ may live **inside pickups** (1–2; mid or end)
 - Same: 1 media sentence + embed; `出典: 口コミ（Threads）` + permalink; no 「要約しました」 voice
-- Same: shop tips OK unless 本人宣伝; no rumor-as-fact; no process meta
+- Same: shop tips OK; skip 本人投稿 only when promo is the main point; 広報連動優先
+- Same: same-topic ≤1 unless 広報連動 cluster (≤3); genre anti-skew **per region `###`**
+- Same: `#### 街の声` for non-linked; no rumor-as-fact; no process meta
 - Same: shop / facility / school / venue names include **市町村名**（not district-only）
 - Do not commit, push, or deploy from the agent unless the operator asks after review
 - Do not call vendor LLM APIs from repo scripts unless a future adapter is explicitly added

@@ -49,6 +49,34 @@ def _body_from_chunks(chunks: list[str]) -> str:
     return re.sub(r"--- page \d+ ---\n?", "", "\n".join(chunks))
 
 
+def _page_body(chunk: str) -> str:
+    return re.sub(r"--- page \d+ ---\n?", "", chunk)
+
+
+def _should_try_ocr(chunks: list[str]) -> tuple[bool, str]:
+    """Decide whether native extract is too thin / page-sparse for OCR fallback.
+
+    Some 広報 PDFs (CID fonts + scanned pages) yield a little mojibake CJK on
+    one page and empty pages elsewhere. Total CJK can exceed OCR_CJK_THRESHOLD
+    while almost every page is still unusable — also try OCR in that case.
+    """
+    body = _body_from_chunks(chunks)
+    cjk = _cjk_count(body)
+    if cjk < OCR_CJK_THRESHOLD:
+        return True, f"sparse native text (CJK<{OCR_CJK_THRESHOLD})"
+    limit = len(chunks)
+    if limit < 3:
+        return False, ""
+    substantial = sum(1 for ch in chunks if _cjk_count(_page_body(ch)) >= 40)
+    # At most ~20% of pages have readable native text → treat as image-heavy
+    if substantial <= max(1, limit // 5):
+        return (
+            True,
+            f"page-sparse native text ({substantial}/{limit} pages with CJK>=40)",
+        )
+    return False, ""
+
+
 def _write_outputs(
     out_dir: Path,
     pdf_name: str,
@@ -175,9 +203,10 @@ def _extract_pymupdf(pdf_path: Path, out_dir: Path, max_pages: int, max_images: 
         tool = "pymupdf"
         ocr = False
         ocr_note = ""
-        if _cjk_count(_body_from_chunks(chunks)) < OCR_CJK_THRESHOLD:
+        try_ocr, ocr_reason = _should_try_ocr(chunks)
+        if try_ocr:
             print(
-                f"sparse native text (CJK<{OCR_CJK_THRESHOLD}); trying OCR lang={OCR_LANG} dpi={OCR_DPI}",
+                f"{ocr_reason}; trying OCR lang={OCR_LANG} dpi={OCR_DPI}",
                 file=sys.stderr,
             )
             ocr_chunks, ocr_note = _ocr_pages_pymupdf(doc, limit)

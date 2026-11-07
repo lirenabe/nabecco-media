@@ -26,6 +26,7 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 | 文章の書き方（読み物・束ね・口コミ1文） | `npm run prose-review`（チェックリスト＋軽い禁則警告。textlint とは別） | 手動（下書き後・公開前） | **いいえ** |
 | 公開不適合のざっくり検出 | `npm run check:public-content`（個人名・ホームパス等のヒューリスティック） | 手動（コミット／PR 前） | **いいえ** |
 | 記事の私人連絡先 | `npm run check:posts-privacy`（`src/content/posts` 内の 070/080/090） | CI + pre-commit（posts） | はい |
+| Threads 埋め込み | `npm run check:threads-embeds`（`.threads-embed` の途中切れ・div/blockquote 開閉・permalink 整合） | CI + pre-commit（posts） | はい |
 
 ## 公開リポジトリに載せないもの
 
@@ -43,6 +44,7 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 ```bash
 npm run check:public-content
 npm run check:posts-privacy
+npm run check:threads-embeds
 ```
 
 `scripts/check-public-content.mjs` が `git ls-files` 対象をざっと見る。`.gitignore` の無視行や `package-lock.json` など既知の偽陽性は除外する。
