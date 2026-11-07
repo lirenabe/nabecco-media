@@ -3,7 +3,7 @@ title: 第2号 2026年11月7日
 pubDate: 2026-11-07
 vol: 2
 description: 湯沢Yuinas開館、大森山の閉園前、大潟のたき火と流れ星
-draft: true
+draft: false
 ---
 
 # 駅前に灯がつく日 — 湯沢「Yuinas」が11月22日正午オープン
