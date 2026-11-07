@@ -53,6 +53,8 @@ jobs:
       - run: npm run check:cite-links
       - run: npm run check:event-when
       - run: npm run check:new-kouhou
+      - run: npm run check:posts-privacy
+      - run: npm run check:threads-embeds
 
   links:
     name: Links

@@ -21,6 +21,12 @@ repos:
         language: system
         pass_filenames: false
         files: '^src/content/'
+      - id: threads-embeds
+        name: Threads embed markup
+        entry: npm run check:threads-embeds
+        language: system
+        pass_filenames: false
+        files: '^src/content/posts/'
       - id: markdown-links
         name: markdown links (content + docs)
         entry: npm run check:links:md

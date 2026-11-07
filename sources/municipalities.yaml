@@ -76,8 +76,10 @@ sources:
       pick: last
       issueHrefPattern: "backnumber2025/p\\d+"
       pdfHrefPattern: "\\.pdf($|\\?)"
-      preferHrefPattern: "202[5-9]\\d+\\.pdf"
-    notes: 2025年以降バックナンバー。末尾の号ページ＋ファイル名の新しい年を優先。
+      # 号ページに旧号PDFが混在。YYYYMMDD… の年が 2025–29 のものだけ優先（「番号削除」等の接尾辞付きURLにも効くよう \\.pdf 直前一致にしない）
+      preferHrefPattern: "202[5-9]\\d{4}"
+      excludeHrefPattern: "202[0-4]\\d{4}"
+    notes: 2025年以降バックナンバー。末尾の号ページ＋ファイル名の新しい年を優先。旧年ファイル名は除外。
 
   - id: city-oga
     name: 男鹿市
@@ -345,5 +347,6 @@ sources:
       strategy: listing-pdf
       pick: last
       pdfHrefPattern: "\\.pdf($|\\?)"
-      preferHrefPattern: "/uploads/2026/(0[4-9]|1[0-2])/"
-    notes: 公式は vill.higashinaruse.lg.jp。年度内（4–12月）アップロードの末尾＝最新月 PDF。
+      # ハッシュ名の再アップが uploads/YYYY/MM に混ざるため、明示名 kouhou_YYYYMM.pdf だけを候補にする
+      preferHrefPattern: "kouhou_\\d{6}\\.pdf"
+    notes: 公式は vill.higashinaruse.lg.jp。kouhou_YYYYMM.pdf の末尾＝最新月（ハッシュ再アップは使わない）。
