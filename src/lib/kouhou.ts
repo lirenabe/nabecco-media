@@ -69,8 +69,22 @@ export function previousIssuePubDate(posts: PostEntry[], pubDate: Date): Date | 
   return older[0]?.data.pubDate;
 }
 
+/** YYYY-MM-DD in Asia/Tokyo (site locale). */
+export function calendarDayJst(input: Date | string): string | undefined {
+  const d = typeof input === 'string' ? new Date(input) : input;
+  if (Number.isNaN(d.valueOf())) return undefined;
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(d);
+}
+
 /**
- * 広報の「新版」号ページ: `discoveredAt` が前回号の発行日より後のもの。
+ * 広報の「新版」号ページ: `discoveredAt` の暦日（JST）が前回号の `pubDate` より後のもの。
+ * 前回号当日に scaffold したものは既出扱い（タイムスタンプ比較だと UTC 0 時の pubDate より
+ * 数分後の discoveredAt が食い込んでしまう）。
  * 既存ページに `discoveredAt` が無いものは新着扱いにしない（次号から効く）。
  */
 export function listNewKouhouIssues(
@@ -78,13 +92,14 @@ export function listNewKouhouIssues(
   previousPubDate: Date | undefined,
 ): KouhouEntry[] {
   if (!previousPubDate) return [];
-  const since = previousPubDate.valueOf();
+  const sinceDay = calendarDayJst(previousPubDate);
+  if (!sinceDay) return [];
   return issues
     .filter((e) => {
       const raw = e.data.discoveredAt;
       if (!raw) return false;
-      const t = Date.parse(raw);
-      return !Number.isNaN(t) && t > since;
+      const day = calendarDayJst(raw);
+      return Boolean(day && day > sinceDay);
     })
     .sort(
       (a, b) =>

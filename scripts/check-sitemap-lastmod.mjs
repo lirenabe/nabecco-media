@@ -15,13 +15,13 @@ const map = buildSitemapLastmodMap();
 assert(map.has('https://nabecco.media/'), 'missing /');
 assert(map.has('https://nabecco.media/kouhou/'), 'missing /kouhou/');
 assert(
-  map.has('https://nabecco.media/kouhou/city-akita/2026-10/'),
-  'missing city-akita 2026-10',
+  map.has('https://nabecco.media/kouhou/city-akita/2026-11/'),
+  'missing city-akita 2026-11',
 );
 assert(
   map.get('https://nabecco.media/kouhou/city-akita/') ===
-    map.get('https://nabecco.media/kouhou/city-akita/2026-10/'),
-  'muni top lastmod should match its issue when only one',
+    map.get('https://nabecco.media/kouhou/city-akita/2026-11/'),
+  'muni top lastmod should match its newest issue',
 );
 
 const rootDay = map.get('https://nabecco.media/');

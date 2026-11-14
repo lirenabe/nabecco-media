@@ -20,7 +20,8 @@ npm run extract:kouhou
 
 # B→参照層シェル: frontmatter・出典のみ用意（追跡: src/content/kouhou/）
 # 本文要約はエージェントが scripts/kouhou-summary-prompt.md に従い書く（スクリプトから LLM API は呼ばない）
-# 新規の号ファイルには discoveredAt が付き、次の週刊号本文末尾に「新着の広報」リンク一覧が自動表示される
+# 新規の号ファイルには discoveredAt が付き、週刊号に「新着の広報」リンク一覧が自動表示される
+# （前回号の pubDate より後の暦日・Asia/Tokyo。前回号当日の scaffold は含めない）
 npm run generate:kouhou-pages
 npm run generate:kouhou-pages -- --only city-katagami
 
