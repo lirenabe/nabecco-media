@@ -71,13 +71,13 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - **Priority — 広報連動:** prefer口コミ that clearly match this issue’s 広報 tips / pickups（催し名・会場・日付帯）. Do not invent a link or pad when none exist.
    - **Same-topic counts:** default **1** per shop / festival / venue.
      **Exception (広報連動 clusters):** when posts share one 広報-linked topic, allow **up to 3** so the buzz reads（客同士の反応を優先）. One cluster must not exceed **half** of the issue’s口コミ. Keep region `###` order; do not invent posts for empty regions.
-   - **Genre mix (no theme headings):** coarse themes only（イベント／フード／暮らし／季節／文化／旅・来訪）.
+   - **Genre mix (no theme headings):** coarse themes only（イベント／フード／暮らし／季節／文化／旅・来訪）as sort keys.
      Apply **anti-skew inside each region `###`**（県北／県央／県南 separately）— not only issue-wide.
      Prefer anti-skew over equal quotas; avoid a food-only stack **within that region** when other solid posts exist.
-     Do **not** use hard per-theme count caps at draft time. After the draft, review口コミ for missing themes and same-mood stacks, then swap or trim.
    - Quality over coverage; **place口コミ in the same region `###` as related 広報 tips**.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
-   - **Atmosphere prose (optional):** posts not chosen for embed may feed a short 伝聞 paragraph per region (bridge / intro). No permalink or citation block in that prose; do not assert fees/dates; no process meta.
+   - **Atmosphere prose (optional):** a short 伝聞 paragraph per region as bridge / intro is allowed.
+     No permalink or citation block; do not assert fees/dates; no process meta.
    **Shape (region groups + embeds — decided):**
    - `###` headings are **地域のみ**: 県北／県央／県南 — always in that order. **No theme in h3.**
    - **テーマ** (フード／イベント／季節／暮らし／…) has **no heading**; it only sorts items inside a region.
@@ -94,7 +94,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - Media voice — concrete place/food/scene. Ban 「要約しました」/「投稿があります」 process-meta.
    - **Place names:** shop / facility / school / venue names need the **municipality**（市町村名）.
      Examples: 「横手市十文字のマルタマ食堂」「秋田市手形のちゅんちゅん」. District-only（手形・雄物川）is not enough.
-   - **Embed markup stays in the repo article** (portable). Finer ranking/tag tips may live in local skill helpers — not required to draft.
+   - **Embed markup stays in the repo article** (portable). Finer ranking/tag tips may live in private ops notes — not required to draft.
    - Citation per embed: `> 出典: 口コミ（Threads）` + `permalink`. Never paste dump HTML / `_files` media.
 4. Write `src/content/posts/vol-N.md` as readable articles.
    Use real ATX heading levels (not CSS-only). Do **not** put `第N号` as a heading.

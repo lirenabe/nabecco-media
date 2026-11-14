@@ -138,7 +138,7 @@ async function main() {
   4. npm run prose-review -- --vol … を再実行
   5. 人間レビュー → npm run check:fast → commit（自動公開しない）
 
-任意: ローカル skill がある場合は語尾・へッジの細かい見本も重ねてよい（なくても完走可）。
+任意: 非公開の運用メモがある場合は語尾・へッジの細かい見本も重ねてよい（なくても完走可）。
 `);
 }
 
