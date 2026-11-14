@@ -59,8 +59,9 @@ export function getLatestPost(posts: PostEntry[]): PostEntry | undefined {
 }
 
 /**
- * Permalink for menus / lists.
- * Latest published issue lives on `/` — its `/issues/vol-N/` URL redirects there.
+ * In-site link for menus / lists.
+ * Latest issue stays on `/` for navigation; `/issues/vol-N/` is the permanent
+ * canonical (full page, no redirect).
  */
 export function issueListHref(postId: string, latestId: string | undefined): string {
   return latestId && postId === latestId ? '/' : `/issues/${postId}/`;

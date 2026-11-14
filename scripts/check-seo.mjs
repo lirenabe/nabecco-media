@@ -9,6 +9,7 @@
  * - RSS alternate link + /rss.xml (public issues only)
  * - robots.txt + sitemap-index.xml exist and reference each other
  */
+import { latestPublishedPostId } from './lib/latest-published.mjs';
 import { startPreview } from './preview.mjs';
 
 const BASE = 'http://127.0.0.1:4324';
@@ -16,6 +17,9 @@ const SITE = 'https://nabecco.media';
 const OG_IMAGE_DEFAULT = `${SITE}/og.png`;
 const RSS_HREF = `${SITE}/rss.xml`;
 const ROUTES = ['/', '/issues/'];
+const latestId = latestPublishedPostId();
+/** `/` mirrors the latest issue; canonical / og:url point at the permanent permalink. */
+const homeCanonical = latestId ? `${SITE}/issues/${latestId}/` : `${SITE}/`;
 
 function isAbsoluteSiteImage(url) {
   if (!url.startsWith(`${SITE}/`)) return false;
@@ -112,7 +116,7 @@ try {
       continue;
     }
     const html = await res.text();
-    const expectedCanon = new URL(route, SITE).href;
+    const expectedCanon = route === '/' ? homeCanonical : new URL(route, SITE).href;
     const checks = [
       ['lang=ja', lang(html) === 'ja'],
       ['title', title(html).length >= 2],
@@ -134,6 +138,27 @@ try {
     if (route === '/') {
       if (attr(html, 'og:type') !== 'website') {
         failures.push(`${route}: og:type should be website`);
+      }
+      if (latestId) {
+        const issueRes = await fetch(`${BASE}/issues/${latestId}/`);
+        if (!issueRes.ok) {
+          failures.push(`/issues/${latestId}/: HTTP ${issueRes.status}`);
+        } else {
+          const issueHtml = await issueRes.text();
+          if (linkHref(issueHtml, 'canonical') !== homeCanonical) {
+            failures.push(`/issues/${latestId}/: canonical should be ${homeCanonical}`);
+          }
+          if (attr(issueHtml, 'og:url') !== homeCanonical) {
+            failures.push(`/issues/${latestId}/: og:url should be ${homeCanonical}`);
+          }
+          if (!isAbsoluteSiteImage(attr(issueHtml, 'og:image'))) {
+            failures.push(`/issues/${latestId}/: missing/invalid og:image`);
+          }
+          if (/http-equiv=["']refresh["']/i.test(issueHtml) || /location\.replace\s*\(/i.test(issueHtml)) {
+            failures.push(`/issues/${latestId}/: should not redirect to /`);
+          }
+          console.log(`ok /issues/${latestId}/`);
+        }
       }
     } else if (route === '/issues/') {
       if (attr(html, 'og:image') !== OG_IMAGE_DEFAULT) {

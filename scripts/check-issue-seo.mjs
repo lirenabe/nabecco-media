@@ -12,23 +12,27 @@ function assert(cond, msg) {
 }
 
 const site = new URL('https://nabecco.media/');
-const latest = issueArticleJsonLd(
+const mirrored = issueArticleJsonLd(
   {
     id: 'vol-1',
     title: '潟上市と都城市の協定',
     description: 'desc',
     pubDate: new Date('2026-10-31T00:00:00Z'),
     imagePath: '/images/pickup.png',
-    pathname: '/',
+    pathname: '/issues/vol-1/',
   },
   site,
 );
 
-assert(latest['@graph']?.length === 1, 'latest should be Article only');
-assert(latest['@graph'][0]['@type'] === 'Article', 'missing Article');
-assert(latest['@graph'][0].datePublished === '2026-10-31', 'bad datePublished');
+assert(mirrored['@graph']?.length === 1, 'homepage mirror should be Article only');
+assert(mirrored['@graph'][0]['@type'] === 'Article', 'missing Article');
+assert(mirrored['@graph'][0].datePublished === '2026-10-31', 'bad datePublished');
 assert(
-  latest['@graph'][0].image[0] === 'https://nabecco.media/images/pickup.png',
+  mirrored['@graph'][0].url === 'https://nabecco.media/issues/vol-1/',
+  'bad article url',
+);
+assert(
+  mirrored['@graph'][0].image[0] === 'https://nabecco.media/images/pickup.png',
   'bad image url',
 );
 

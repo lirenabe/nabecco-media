@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import LatestIssueRedirect from '../../components/LatestIssueRedirect.astro';
 import NewKouhouIssues from '../../components/NewKouhouIssues.astro';
 import {
   getKouhouIssues,
@@ -10,7 +9,6 @@ import {
 } from '../../lib/kouhou';
 import { issueArticleJsonLd } from '../../lib/issue-seo';
 import {
-  getLatestPost,
   getPublishedPosts,
   issueShareTitle,
   resolveIssueOgImage,
@@ -20,13 +18,11 @@ import { renderPostMarkdown, splitPostBodyAroundEvents } from '../../lib/render-
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
-  const latest = getLatestPost(posts);
   const kouhou = await getKouhouIssues();
   return posts.map((post) => ({
     params: { slug: post.id },
     props: {
       post,
-      isLatest: post.id === latest?.id,
       newKouhou: listNewKouhouIssues(kouhou, previousIssuePubDate(posts, post.data.pubDate)),
     },
   }));
@@ -34,71 +30,54 @@ export async function getStaticPaths() {
 
 interface Props {
   post: PostEntry;
-  isLatest: boolean;
   newKouhou: KouhouEntry[];
 }
 
-const { post, isLatest, newKouhou } = Astro.props;
+const { post, newKouhou } = Astro.props;
 
-let htmlBefore = '';
-let htmlAfter = '';
-let hasEventsHeading = false;
-let dateLabel = '';
-let dateIso = '';
-let pageTitle = '';
-let pageImage = '/og.png';
-let jsonLd: Record<string, unknown> | undefined;
-
-if (!isLatest) {
-  const parts = splitPostBodyAroundEvents(post.body);
-  hasEventsHeading = parts.hasEventsHeading;
-  htmlBefore = await renderPostMarkdown(parts.before);
-  htmlAfter = parts.hasEventsHeading ? await renderPostMarkdown(parts.after) : '';
-  dateLabel = new Intl.DateTimeFormat('ja-JP', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(post.data.pubDate);
-  dateIso = post.data.pubDate.toISOString().slice(0, 10);
-  pageTitle = issueShareTitle(post.data);
-  pageImage = resolveIssueOgImage(post.data, post.body);
-  jsonLd = issueArticleJsonLd(
-    {
-      id: post.id,
-      title: pageTitle,
-      description: post.data.description,
-      pubDate: post.data.pubDate,
-      imagePath: pageImage,
-      pathname: `/issues/${post.id}/`,
-      includeBackIssuesCrumb: true,
-    },
-    Astro.site,
-  );
-}
+const parts = splitPostBodyAroundEvents(post.body);
+const hasEventsHeading = parts.hasEventsHeading;
+const htmlBefore = await renderPostMarkdown(parts.before);
+const htmlAfter = parts.hasEventsHeading ? await renderPostMarkdown(parts.after) : '';
+const dateLabel = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(post.data.pubDate);
+const dateIso = post.data.pubDate.toISOString().slice(0, 10);
+const pageTitle = issueShareTitle(post.data);
+const pageImage = resolveIssueOgImage(post.data, post.body);
+const pathname = `/issues/${post.id}/`;
+const jsonLd = issueArticleJsonLd(
+  {
+    id: post.id,
+    title: pageTitle,
+    description: post.data.description,
+    pubDate: post.data.pubDate,
+    imagePath: pageImage,
+    pathname,
+    includeBackIssuesCrumb: true,
+  },
+  Astro.site,
+);
 ---
 
-{
-  isLatest ? (
-    <LatestIssueRedirect />
-  ) : (
-    <BaseLayout title={pageTitle} description={post.data.description} image={pageImage}>
-      <article class="issue" aria-label={`第${post.data.vol}号`}>
-        <p class="issue__crumb">
-          <a href="/">トップ</a> / <a href="/issues/">バックナンバー</a>
-        </p>
-        <div class="prose" set:html={htmlBefore} />
-        {hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
-        {hasEventsHeading ? <div class="prose" set:html={htmlAfter} /> : null}
-        {!hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
-        <p class="issue-date">
-          発行日 <time datetime={dateIso}>{dateLabel}</time>
-        </p>
-      </article>
+<BaseLayout title={pageTitle} description={post.data.description} image={pageImage}>
+  <article class="issue" aria-label={`第${post.data.vol}号`}>
+    <p class="issue__crumb">
+      <a href="/">トップ</a> / <a href="/issues/">バックナンバー</a>
+    </p>
+    <div class="prose" set:html={htmlBefore} />
+    {hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
+    {hasEventsHeading ? <div class="prose" set:html={htmlAfter} /> : null}
+    {!hasEventsHeading ? <NewKouhouIssues issues={newKouhou} /> : null}
+    <p class="issue-date">
+      発行日 <time datetime={dateIso}>{dateLabel}</time>
+    </p>
+  </article>
 
-      {jsonLd ? <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} /> : null}
-    </BaseLayout>
-  )
-}
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</BaseLayout>
 
 <style>
   .issue {

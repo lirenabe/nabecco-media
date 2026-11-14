@@ -10,16 +10,22 @@ interface Props {
   description?: string;
   /** Site-relative path or absolute URL for og:image. Defaults to `/og.png`. */
   image?: string;
+  /**
+   * Optional site-relative canonical path (e.g. `/issues/vol-3/`).
+   * Defaults to the current page path. Used when `/` mirrors the latest issue.
+   */
+  canonicalPath?: string;
 }
 
 const {
   title,
   description = '秋田県の公式広報と街の声を週ごとに要約する地域メディア、なべっこ。',
   image = '/og.png',
+  canonicalPath,
 } = Astro.props;
 
 const pageTitle = title === 'なべっこ' ? title : `${title} | なべっこ`;
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const canonical = new URL(canonicalPath ?? Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(image, Astro.site).href;
 const ogType = Astro.url.pathname === '/' ? 'website' : 'article';
 ---

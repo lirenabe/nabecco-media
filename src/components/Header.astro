@@ -9,7 +9,7 @@ import {
 
 const sorted = sortPostsByDateDesc(await getPublishedPosts());
 const latestId = getLatestPost(sorted)?.id;
-// Include the latest published issue (also on `/`), not past-only.
+// Include the latest published issue (menu link stays `/`), not past-only.
 const recentIssues = sorted.slice(0, 4);
 
 const dateFmt = new Intl.DateTimeFormat('ja-JP', {

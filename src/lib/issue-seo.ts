@@ -8,7 +8,7 @@ export type IssueSeoInput = {
   description: string;
   pubDate: Date;
   imagePath: string;
-  /** Canonical path for this issue (`/` for latest, `/issues/vol-N/` otherwise). */
+  /** Canonical path for this issue (`/issues/vol-N/`). */
   pathname: string;
   /** When true, include バックナンバー breadcrumb (past issues only). */
   includeBackIssuesCrumb?: boolean;
