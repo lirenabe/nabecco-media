@@ -163,7 +163,10 @@ Hand-written duplicates are forbidden.
 - **Select 1–3** from candidates; **remove** them from 直近のイベント情報 and 今週のあきた (no duplicate)
 - **Baseline criteria (locked):** (a) eye-catching title, (b) interesting topic — **only these two**
 - **No image-as-selection:** do **not** pick (or skip) a topic because a 広報 extract photo exists or is missing. Photos are never a selection gate
-- **AI visuals (after selection):** for each chosen pickup, generate from **topic text only** (`docs/ai-generated-images.md`). Save under `public/images/generated/vol-N/`. Short corner watermark (`AI生成`). Alt may say AI生成. No long prose disclosure. No realistic identifiable people. Follow the image tool’s ToS. Keep `draft: true`
+- **AI visuals (after selection):** for each chosen pickup, generate from **topic text** (`docs/ai-generated-images.md`).
+  Optional: one free-stock image as light/composition reference only (never 広報 photos; never embed stock).
+  Save under `public/images/generated/vol-N/`. Short corner watermark (`AI生成`). Alt may say AI生成.
+  No long prose disclosure. No realistic identifiable people. Follow the image tool’s ToS. Keep `draft: true`
 - Body: media 読み物 and ですます. Full citation. **10+ lines** of prose (no 広報写真). Not a PR digest.
 - **口コミ (optional):** when `posts.json` has a clear match, weave **1（max 2）** into the pickup.
 - Same: paragraph break + 1 media sentence + oEmbed + citation.
@@ -249,7 +252,9 @@ Hand-written duplicates are forbidden.
 - Do not invent dates, places, or fees — omit if unclear
 - **出典は省略しない** — full citation every time; no 「同上」「同」「前掲」
 - **Do not embed 広報 extract photos.** Never link `data/`. Do not commit under `public/images/kouhou/`. Never use them as AI reference input
-- **AI pickup images:** topic text only. No realistic identifiable people. Use ToS-compliant tooling. Short corner watermark (`AI生成`); no long body note. Files under `public/images/generated/vol-N/`. Full rules: `docs/ai-generated-images.md`
+- **AI pickup images:** topic text primary; optional free-stock for light/composition only (not 広報 photos; no embed).
+  No realistic identifiable people. ToS-compliant tooling. Short watermark (`AI生成`); no long body note.
+  Files under `public/images/generated/vol-N/`. Rules: `docs/ai-generated-images.md`
 - New issues ship with **`draft: true`**; clear the flag only when intentionally publishing
 - **Privacy:** no 私人の氏名; no 070/080/090 mobiles in article body（問い合わせは部署・団体＋固定電話のみ）
 - **ピックアップ:** first `#`, later `##`; no umbrella ピックアップ heading
