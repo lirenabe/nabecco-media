@@ -139,7 +139,7 @@ draft: false
 
 11月22日の14時から15時には作品解説があり、申し込みはいりません。
 
-美大の作り手たちの仕事は別の会場でも見られていて、秋田市文化創造館の教員展「湧水地点」を11月12日に訪れた人からは、マルムステン家具研究所の先生方も加わった、国境を越えたものづくりに触れられたという声が届いています。
+美大の作り手たちの仕事は別の会場でも見られていて、秋田市文化創造館の教員展「湧水地点」を11月12日に訪れた人からは、マルムステン家具研究所の先生方も加わった、国境を越えたものづくりに触れられた、という話が届いています。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfpQ7uhCeqE?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfpQ7uhCeqE" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfpQ7uhCeqE?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -328,7 +328,7 @@ draft: false
 
 ## 今週のあきた
 
-紅葉の名残りと、週末の市やフェスのにぎわい。過ぎた1週間の秋田を、地域ごとにたどります。
+紅葉の名残りと、週末の市やフェスのにぎわい。店先や帰り道のささやかな話も拾いながら、過ぎた1週間の秋田を地域ごとに見ていきます。
 
 ### 県北
 
@@ -340,7 +340,7 @@ draft: false
 
 ひと月にわたった秋の名所のまつりも、この週末でひと区切りです。
 
-11日には、雨に濡れた紅葉を眺めながら、公園内のカフェで買った味噌つけたんぽを味わったという声がありました。
+11日には、雨に濡れた紅葉を眺めながら、公園内のカフェで買った味噌つけたんぽを味わったそうです。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfoB83Ekrly?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfoB83Ekrly" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfoB83Ekrly?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -374,6 +374,52 @@ draft: false
 > 出典: 上小阿仁村広報 2026年11月号 No.814（産業文化祭）  
 > https://www.vill.kamikoani.akita.jp/Info/885
 
+産業文化祭のあとも、県北では外を歩く話が続いていました。雨にぬれた坂の紅葉や、山や滝へ足を運んだ声が届いています。
+
+#### 街の声
+
+能代市のマルヒコビルヂングでは、東京藝術大学のラウンドテーブル「つくることが生きること」に、東京から足を運んで参加した人もいました。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DflRgSVnwrD?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DflRgSVnwrD" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DflRgSVnwrD?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@mikera1973/post/DflRgSVnwrD
+
+北秋田市の森吉山では、ゴンドラで山頂付近まで上がり、鳥海山や岩手山まで見渡せたそうです。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfeslqZGU-V?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfeslqZGU-V" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfeslqZGU-V?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@toshichansama/post/DfeslqZGU-V
+
+同じ北秋田市の安の滝では、道路規制が解けたあとに遊歩道を歩いて紅葉を眺め、滝に虹がかかった瞬間に出会えた、という話もあります。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfewcK9GYhm?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfewcK9GYhm" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfewcK9GYhm?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@toshichansama/post/DfewcK9GYhm
+
 ### 県央
 
 #### 道の駅てんのうの天グリマルシェ
@@ -384,7 +430,7 @@ draft: false
 
 地元の店と遠くの産地が、同じ道の駅に顔をそろえる組み合わせです。
 
-天気のよい午後、潟上市天王の天王グリーンランド周辺を散歩して紅葉を眺め、マルシェでお目当てのルーシーカンパニーのパンを買ったという声が届いています。
+天気のよい午後、潟上市天王の天王グリーンランド周辺を散歩して紅葉を眺め、マルシェでお目当てのルーシーカンパニーのパンを買った、という話が届いています。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfedAQQj70F?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfedAQQj70F" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfedAQQj70F?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -401,9 +447,11 @@ draft: false
 > 出典: 潟上市「広報かたがみ」2026年11月号 No.283（天グリマルシェ・温州みかん出張販売）  
 > https://www.city.katagami.lg.jp/soshiki/somu/kikakuseisaku/kohotokei/kohokatagami/1115.html
 
+フェスやマルシェのあとも、秋田市の街なかではランチや甘いものの話が続いていました。本に囲まれたカフェでウィンナーコーヒーを頼んだり、ホテルのラウンジでりんごと洋梨のパフェを食べたり。土崎のフェリーターミナルから海を眺めながらの朝食や、セリオンのカフェで景色とケーキを楽しんだ、といった場面も聞こえてきます。県立美術館では「ごんぎつね」の絵本原画展に足を運んだ人もいて、秋田駅では朝におにぎりが配られる光景もあったそうです。男鹿では、ジェラートのあとに定食を、という一日や、夜のにぎわいを伝える声もありました。寒さのなかでも外に出る気配がある週でした。由利本荘では、貸切り列車の車内クイズに秋田市の和菓子が景品になった、という話も届いています。
+
 #### 街の声
 
-秋田市の秋田駅前で開かれたコーヒーフェスでは、いろいろなコーヒーを飲み比べられて楽しい反面、寒さが身にしみたという感想です。
+秋田市の秋田駅前で開かれたコーヒーフェスでは、いろいろなコーヒーを飲み比べられて楽しかった一方で、寒さが身にしみた、という話もあります。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/Dfbl6xjoBk9?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-Dfbl6xjoBk9" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/Dfbl6xjoBk9?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -417,10 +465,10 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@hiromintrip/post/Dfbl6xjoBk9
 
-秋田市のカレーフェスタでは、いろいろなカレーを少しずつ食べ、最後にコーヒーの「ゲイシャ」まで味わって大満足だったと伝えられています。
+秋田市アルヴェの「秋田県花の祭典」では、来年の国際園芸博覧会をPRする大型のフラワーモニュメントづくりに関わった人もいました。
 
 <div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfdsxpBgUU2?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfdsxpBgUU2" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfdsxpBgUU2?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfbIPIYmDKy?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfbIPIYmDKy" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfbIPIYmDKy?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
 <div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
 </div>
 <div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
@@ -429,9 +477,9 @@ draft: false
 </div>
 
 > 出典: 口コミ（Threads）  
-> https://www.threads.com/@nozomushibuya/post/DfdsxpBgUU2
+> https://www.threads.com/@mami_makino/post/DfbIPIYmDKy
 
-潟上市昭和大久保の「かふぇうたせ」からは、千田佐市商店のくるみのグラッセを添えた「うたせのモンブランワッフル」と、ホットゆずレモンティーの組み合わせが紹介されています。
+潟上市昭和大久保の「かふぇうたせ」では、千田佐市商店のくるみのグラッセを添えた「うたせのモンブランワッフル」と、ホットゆずレモンティーの組み合わせが印象に残ったそうです。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfgRsywFFIu?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfgRsywFFIu" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfgRsywFFIu?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -445,10 +493,10 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@image.cis.moll/post/DfgRsywFFIu
 
-秋田市の秋田駅では朝ご飯キャンペーンがあり、サキホコレの新米おにぎりを受け取った人もいます。
+秋田市の「チャイナタウン」では、熱々の味噌あんかけと極太麺の「みそチャンポン」に半チャーハンを添えて食べた、という話があります。
 
 <div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfiYpk-EiDd?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfiYpk-EiDd" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfiYpk-EiDd?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfqnTEzmMK2?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfqnTEzmMK2" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfqnTEzmMK2?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
 <div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
 </div>
 <div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
@@ -457,7 +505,21 @@ draft: false
 </div>
 
 > 出典: 口コミ（Threads）  
-> https://www.threads.com/@ujan_asep_solihin/post/DfiYpk-EiDd
+> https://www.threads.com/@gonchan5030/post/DfqnTEzmMK2
+
+秋田市では、寒さのなか自転車でヨガの教室へ通う日常を、ちゃんと気分が上がったと伝える人もいました。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DflsRYxk0pu?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DflsRYxk0pu" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DflsRYxk0pu?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@sa_aya.yoga/post/DflsRYxk0pu
 
 きりたんぽの日の11月11日、秋田市の新屋浜では光芒が差し、最後にオレンジの夕陽が隙間から顔を出して、だるまの形で沈んでいったといいます。
 
@@ -473,7 +535,21 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@kuribokkri/post/DfmVr_jAeHE
 
-男鹿市の真山神社では、杉木立に囲まれた参道や仁王像、樹齢300年の秋田杉をくり抜いた丸木舟に、神仏習合の歴史が色濃く残る空気を感じたという声があります。
+秋田市の秋田港では、11月12日の夕暮れに、日の入りが早くなった季節の変わり目を実感した人もいます。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/Dfoma-kmCse?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-Dfoma-kmCse" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/Dfoma-kmCse?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@falcon102839/post/Dfoma-kmCse
+
+男鹿市の真山神社では、杉木立の参道や仁王像、樹齢300年の秋田杉をくり抜いた丸木舟に、神仏習合の名残をちゃんと感じたそうです。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfgHBsVGbGs?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfgHBsVGbGs" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfgHBsVGbGs?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -487,10 +563,10 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@myama79/post/DfgHBsVGbGs
 
-秋田市の秋田県立美術館で開かれている「ごんぎつね 40周年記念展 黒井 健 絵本原画の世界」では、作品の余韻とともに、ころわんのぬいぐるみとカレンダーを持ち帰った人がいました。
+大潟村の「地球の十字路」では、北緯40度と東経140度の交点を示す記念塔と、実際の交点のずれを確かめた人もいました。
 
 <div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/Dfjme0RG9_M?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-Dfjme0RG9_M" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/Dfjme0RG9_M?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfhA9rgn3F8?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfhA9rgn3F8" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfhA9rgn3F8?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
 <div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
 </div>
 <div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
@@ -499,7 +575,7 @@ draft: false
 </div>
 
 > 出典: 口コミ（Threads）  
-> https://www.threads.com/@akipon_world/post/Dfjme0RG9_M
+> https://www.threads.com/@tatsuruakehira/post/DfhA9rgn3F8
 
 ### 県南
 
@@ -524,6 +600,8 @@ draft: false
 > 出典: 横手市「市報よこて」2026年11月号 No.429（わくわくモーターパーク in Yokote 2026）  
 > https://www.city.yokote.lg.jp/shisei/1001175/1001439/1013178.html
 
+県南でも、催しの外側に秋の日常がにじんでいます。角館では、武家屋敷通りの紅葉を小雨のなか歩いたり、路地の店で甘酒を飲んだり、地元の食材が入ったパンを買ったり。大仙では手打ちそばの天丼の話に加えて、鉱山跡の沢で石を拾ったあとに温泉へ入った、という旅の一日も聞こえてきます。横手では銀杏並木の近くで一息ついた人がいて、湯沢の小安峡では湯気と紅葉が同時に感じられた、といった場面も残っています。寒さが増すなか、きりたんぽ鍋や「ぬぐだまる」といった冬の言葉も、ちらほら聞こえてきました。
+
 #### 街の声
 
 大仙市の国指定名勝・旧池田氏払田分家庭園では11月8日に「晩秋のファンタジーナイト」があり、イルミネーションと紅葉を楽しんだうえ、入口で無料で配られたおしるこで冷えた体が温まったそうです。
@@ -540,7 +618,21 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@rainbow__irl.723/post/DfhpBsBH_N-
 
-美郷町の「パンケーキ カフェ グリーム」では、フルーツがたっぷりのった季節のパンケーキと、店内のドライフラワーが印象に残ったという声がありました。
+大仙市刈和野の斎藤精肉店は創業昭和4年の老舗で、人気の肉コロッケを持ち帰って食べたら、やはりおいしかったそうです。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfnoaLqE6jm?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfnoaLqE6jm" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfnoaLqE6jm?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@picnic3298/post/DfnoaLqE6jm
+
+美郷町の「パンケーキ カフェ グリーム」では、フルーツがたっぷりのった季節のパンケーキと、店内のドライフラワーが印象に残った、という話が届いています。
 
 <div class="threads-embed">
 <blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/Dfbzd3rE-GM?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-Dfbzd3rE-GM" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/Dfbzd3rE-GM?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
@@ -554,10 +646,10 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@5ayakt2/post/Dfbzd3rE-GM
 
-大仙市刈和野の斎藤精肉店は創業昭和4年の老舗で、人気の肉コロッケを持ち帰って食べたら、とてもおいしかったと伝えられています。
+大仙市の農業科学館では、悪天候のなかでも柿の葉茶と干し柿づくりのワークショップに参加した人たちがいて、秋の手仕事の一日になったそうです。
 
 <div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfnoaLqE6jm?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfnoaLqE6jm" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfnoaLqE6jm?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfcNsSDEX0o?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfcNsSDEX0o" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfcNsSDEX0o?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
 <div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
 </div>
 <div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
@@ -566,7 +658,21 @@ draft: false
 </div>
 
 > 出典: 口コミ（Threads）  
-> https://www.threads.com/@picnic3298/post/DfnoaLqE6jm
+> https://www.threads.com/@kakin0ki/post/DfcNsSDEX0o
+
+仙北市角館の武家屋敷通りでは、晴れても風の冷たい日に、ウメモドキや小野崎家（公民館）のイチョウ、平福美術館近くのイチョウの色づきに、なんとか間に合った人もいました。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfjWfKfj8ra?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfjWfKfj8ra" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfjWfKfj8ra?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@utatane717/post/DfjWfKfj8ra
 
 羽後町のみはらし荘からは、朝日に照らされた雲海が見られ、その景色を一生忘れないと感じた人もいます。
 
@@ -582,10 +688,10 @@ draft: false
 > 出典: 口コミ（Threads）  
 > https://www.threads.com/@mt_310_2236/post/Dfhh23zDyGq
 
-仙北市角館の武家屋敷通りでは、晴れても風の冷たい日に、ウメモドキや小野崎家（公民館）のイチョウ、平福美術館近くのイチョウの色づきに、なんとか間に合ったそうです。
+大仙市協和境の唐松神社は、静かな境内の空気が印象に残ったそうです。
 
 <div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfjWfKfj8ra?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfjWfKfj8ra" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfjWfKfj8ra?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfrbGDlFI7o?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfrbGDlFI7o" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfrbGDlFI7o?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
 <div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
 </div>
 <div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
@@ -594,12 +700,12 @@ draft: false
 </div>
 
 > 出典: 口コミ（Threads）  
-> https://www.threads.com/@utatane717/post/DfjWfKfj8ra
+> https://www.threads.com/@haluka_gram/post/DfrbGDlFI7o
 
-湯沢市の小安峡では、曇り空の下でも紅葉がきれいで、勢いよく噴き出す温泉の湯気が暖かかったと伝えられています。
+湯沢市の小安峡大噴湯では、遊歩道から熱湯と蒸気が勢いよく噴き出す光景を、間近で見られたそうです。
 
 <div class="threads-embed">
-<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/Dfo3l4BEvP9?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-Dfo3l4BEvP9" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/Dfo3l4BEvP9?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/DfjkJ4jlDwT?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-DfjkJ4jlDwT" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/DfjkJ4jlDwT?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
 <div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
 </div>
 <div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
@@ -608,4 +714,18 @@ draft: false
 </div>
 
 > 出典: 口コミ（Threads）  
-> https://www.threads.com/@m_m1p_p1c_c/post/Dfo3l4BEvP9
+> https://www.threads.com/@spark_tabi/post/DfjkJ4jlDwT
+
+仙北市の角館武家屋敷を巡った旅の途中では、みそたんぽを食べて東北の秋を味わった、という話もあります。
+
+<div class="threads-embed">
+<blockquote class="text-post-media" data-text-post-permalink="https://www.threads.com/t/Dfg01fPINWH?utm_source=th_embed&amp;utm_campaign=threads_api" data-text-post-version="0" id="ig-tp-Dfg01fPINWH" style=" background:#FFF; border-width: 1px; border-style: solid; border-color: #00000026; border-radius: 16px; max-width:658px; margin: 1px; min-width:270px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);" data-theme="light"> <a href="https://www.threads.com/t/Dfg01fPINWH?utm_source=th_embed&amp;utm_campaign=threads_api" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%; font-family: -apple-system, BlinkMacSystemFont, sans-serif;" target="_blank"> <div style=" padding: 40px; display: flex; flex-direction: column; align-items: center;">
+<div style=" display:block; height:32px; width:32px; padding-bottom:16px;"> <svg aria-label="Threads" height="32px" role="img" viewbox="0 0 192 192" width="32px" xmlns="http://www.w3.org/2000/svg"> <path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"></path></svg>
+</div>
+<div style=" font-size: 15px; line-height: 21px; color: #000000; font-weight: 600; "> View on Threads</div>
+</div></a>
+</blockquote>
+</div>
+
+> 出典: 口コミ（Threads）  
+> https://www.threads.com/@our_2_journey/post/Dfg01fPINWH
