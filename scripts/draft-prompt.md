@@ -71,9 +71,10 @@ npm run draft -- --vol N --date YYYY-MM-DD
    - **Priority — 広報連動:** prefer口コミ that clearly match this issue’s 広報 tips / pickups（催し名・会場・日付帯）. Do not invent a link or pad when none exist.
    - **Same-topic counts:** default **1** per shop / festival / venue.
      **Exception (広報連動 clusters):** when posts share one 広報-linked topic, allow **up to 3** so the buzz reads（客同士の反応を優先）. One cluster must not exceed **half** of the issue’s口コミ. Keep region `###` order; do not invent posts for empty regions.
-   - **Genre mix (no theme headings):** coarse themes only（フード／イベント／季節／暮らし）.
+   - **Genre mix (no theme headings):** coarse themes only（イベント／フード／暮らし／季節／文化／旅・来訪）.
      Apply **anti-skew inside each region `###`**（県北／県央／県南 separately）— not only issue-wide.
      Prefer anti-skew over equal quotas; avoid a food-only stack **within that region** when other solid posts exist.
+     Do **not** use hard per-theme count caps at draft time. After the draft, review口コミ for missing themes and same-mood stacks, then swap or trim.
    - Quality over coverage; **place口コミ in the same region `###` as related 広報 tips**.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
    **Shape (region groups + embeds — decided):**
