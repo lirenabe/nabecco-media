@@ -77,6 +77,7 @@ npm run draft -- --vol N --date YYYY-MM-DD
      Do **not** use hard per-theme count caps at draft time. After the draft, review口コミ for missing themes and same-mood stacks, then swap or trim.
    - Quality over coverage; **place口コミ in the same region `###` as related 広報 tips**.
    - **Official-first:**市政広報 wins on conflict;口コミ must not override dates/fees.
+   - **Atmosphere prose (optional):** posts not chosen for embed may feed a short 伝聞 paragraph per region (bridge / intro). No permalink or citation block in that prose; do not assert fees/dates; no process meta.
    **Shape (region groups + embeds — decided):**
    - `###` headings are **地域のみ**: 県北／県央／県南 — always in that order. **No theme in h3.**
    - **テーマ** (フード／イベント／季節／暮らし／…) has **no heading**; it only sorts items inside a region.
