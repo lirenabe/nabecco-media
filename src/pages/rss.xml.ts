@@ -22,7 +22,7 @@ export async function GET(context: { site?: URL }) {
       title: issueFeedTitle(post.data),
       description: post.data.description?.trim() || post.data.title,
       pubDate: post.data.pubDate,
-      // Stable permalink; latest issue still redirects `/issues/vol-N/` → `/`.
+      // Permanent permalink (canonical). In-site menus still send latest to `/`.
       link: `/issues/${post.id}/`,
     })),
   });

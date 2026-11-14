@@ -47,22 +47,30 @@ if (latest) {
 const pageTitle = latest ? issueShareTitle(latest.data) : 'なべっこ';
 const pageDescription = latest?.data.description ?? siteDescription;
 const pageImage = latest ? resolveIssueOgImage(latest.data, latest.body) : '/og.png';
+/** Permanent URL for the mirrored latest issue (menus still link to `/`). */
+const latestCanonicalPath = latest ? `/issues/${latest.id}/` : undefined;
 const jsonLd =
-  latest &&
-  issueArticleJsonLd(
-    {
-      id: latest.id,
-      title: pageTitle,
-      description: pageDescription,
-      pubDate: latest.data.pubDate,
-      imagePath: pageImage,
-      pathname: '/',
-    },
-    Astro.site,
-  );
+  latest && latestCanonicalPath
+    ? issueArticleJsonLd(
+        {
+          id: latest.id,
+          title: pageTitle,
+          description: pageDescription,
+          pubDate: latest.data.pubDate,
+          imagePath: pageImage,
+          pathname: latestCanonicalPath,
+        },
+        Astro.site,
+      )
+    : undefined;
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image={pageImage}>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={pageImage}
+  canonicalPath={latestCanonicalPath}
+>
   {
     latest ? (
       <article class="latest" id="latest" aria-label={`第${latest.data.vol}号`}>

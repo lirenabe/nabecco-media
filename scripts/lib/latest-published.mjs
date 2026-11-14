@@ -1,6 +1,6 @@
 /**
  * Resolve the latest published post id from src/content/posts/*.md
- * (draft !== true, newest pubDate). Used by astro.config sitemap filter.
+ * (draft !== true, newest pubDate). Used by SEO checks.
  */
 import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
