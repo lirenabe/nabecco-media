@@ -236,9 +236,11 @@ async function main() {
   }
   console.log(`AI images   : ${generatedDirRel}/ (${generatedCount} file(s); topic-text only — docs/ai-generated-images.md)`);
 
-  // Preview which 広報号 pages the layout will list under「新着の広報」(discoveredAt > previous pubDate).
+  // Preview which 広報号 pages the layout will list under「新着の広報」
+  // (previousPubDate < discoveredDay <= currentPubDate, Asia/Tokyo calendar days).
   const postsDir = path.join(ROOT, 'src/content/posts');
   let previousPub = null;
+  const currentPub = opts.date;
   try {
     const names = await readdir(postsDir);
     const pubs = [];
@@ -268,8 +270,14 @@ async function main() {
       const muniId = /^muniId:\s*(\S+)/m.exec(raw)?.[1];
       const yearMonth = /^yearMonth:\s*"([^"]+)"/m.exec(raw)?.[1];
       if (!disc || !title || !muniId || !yearMonth) continue;
-      if (!previousPub) continue;
-      if (Date.parse(disc) > Date.parse(`${previousPub}T00:00:00.000Z`)) {
+      if (!previousPub || !currentPub) continue;
+      const day = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Tokyo',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).format(new Date(disc));
+      if (day > previousPub && day <= currentPub) {
         newIssues.push({ title, href: `/kouhou/${muniId}/${yearMonth}/` });
       }
     }
@@ -279,12 +287,12 @@ async function main() {
   }
 
   console.log(
-    `\n新着の広報 (layout auto): previous pubDate=${previousPub || '(none — list stays empty)'}`,
+    `\n新着の広報 (layout auto): window (${previousPub || 'none'}, ${currentPub}]`,
   );
   if (!previousPub) {
     console.log('  (創刊号など前回号が無いときは表示しない。次号から効く)');
   } else if (!newIssues.length) {
-    console.log('  (discoveredAt が前回号より後の号ページは今のところ無い)');
+    console.log('  (この号の窓に入る discoveredAt の号ページは無い)');
   } else {
     for (const n of newIssues) console.log(`  - [${n.title}](${n.href})`);
   }

@@ -82,24 +82,26 @@ export function calendarDayJst(input: Date | string): string | undefined {
 }
 
 /**
- * 広報の「新版」号ページ: `discoveredAt` の暦日（JST）が前回号の `pubDate` より後のもの。
- * 前回号当日に scaffold したものは既出扱い（タイムスタンプ比較だと UTC 0 時の pubDate より
- * 数分後の discoveredAt が食い込んでしまう）。
- * 既存ページに `discoveredAt` が無いものは新着扱いにしない（次号から効く）。
+ * 広報の「新版」号ページ（号ごとの差分）:
+ * `discoveredAt` の暦日（JST）が 前回号 `pubDate` より後 かつ 当号 `pubDate` 以下。
+ * 開区間だと後から scaffold した号が過去号の「新着」にも載るため、必ず当号で閉じる。
+ * 前回号当日の scaffold は既出扱い。`discoveredAt` が無いページは新着にしない。
  */
 export function listNewKouhouIssues(
   issues: KouhouEntry[],
   previousPubDate: Date | undefined,
+  currentPubDate: Date | undefined,
 ): KouhouEntry[] {
-  if (!previousPubDate) return [];
+  if (!previousPubDate || !currentPubDate) return [];
   const sinceDay = calendarDayJst(previousPubDate);
-  if (!sinceDay) return [];
+  const untilDay = calendarDayJst(currentPubDate);
+  if (!sinceDay || !untilDay) return [];
   return issues
     .filter((e) => {
       const raw = e.data.discoveredAt;
       if (!raw) return false;
       const day = calendarDayJst(raw);
-      return Boolean(day && day > sinceDay);
+      return Boolean(day && day > sinceDay && day <= untilDay);
     })
     .sort(
       (a, b) =>

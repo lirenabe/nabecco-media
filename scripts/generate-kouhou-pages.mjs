@@ -9,7 +9,7 @@
  *   npm run generate:kouhou-pages -- --only city-katagami
  *   npm run generate:kouhou-pages -- --force-body   # overwrite body with empty shell
  */
-import { mkdir, readFile, writeFile, access } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, access, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { loadSources } from './lib/sources.mjs';
 
@@ -17,6 +17,24 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const EXTRACT_ROOT = path.join(ROOT, 'data/kouhou/extracted');
 const OUT_DIR = path.join(ROOT, 'src/content/kouhou');
 const PROMPT_REL = 'scripts/kouhou-summary-prompt.md';
+
+/** Newest YYYY-MM already on disk for this muni ('' if none). */
+async function newestExistingYearMonth(muniId) {
+  let files = [];
+  try {
+    files = await readdir(OUT_DIR);
+  } catch {
+    return '';
+  }
+  const prefix = `${muniId}__`;
+  let max = '';
+  for (const f of files) {
+    if (!f.startsWith(prefix) || !f.endsWith('.md')) continue;
+    const ym = f.slice(prefix.length, -3);
+    if (/^\d{4}-\d{2}$/.test(ym) && ym > max) max = ym;
+  }
+  return max;
+}
 
 function parseArgs(argv) {
   const only = new Set();
@@ -39,19 +57,22 @@ function zenkakuDigitsToAscii(s) {
 }
 
 function detectYearMonth(fullText, fetchedAt) {
-  const head = fullText.slice(0, 2500);
+  // OCR 劣化 PDF でも拾えるよう、日付パターンは先頭〜中盤を広く見る。
+  // 取得日フォールバックは最終手段（誤った「新着」号ページを量産しやすい）。
+  const head = zenkakuDigitsToAscii(fullText.slice(0, 12000));
   const patterns = [
     /(\d{4})\s*年\s*(\d{1,2})\s*月号/,
     /(\d{4})\s*年[）)]\s*(\d{1,2})\s*月号/s,
     /(\d{4})\s*年[\s\S]{0,40}?(\d{1,2})\s*月号/,
-    /(\d{4})\.(\d{1,2})/,
-    /No\.\s*[0-9０-９]+【\s*(\d{4})\s*年[^】]{0,20}?([0-9０-９]{1,2})\s*月号/,
+    /No\.\s*\d{1,4}【\s*(\d{4})\s*年[^】]{0,20}?(\d{1,2})\s*月号/,
+    // 柱・ノンブルの 2026.10 / NOSHIRO\n2026.10 など
+    /(?:^|[^\d])(\d{4})\.(\d{1,2})(?!\d)/m,
   ];
   for (const re of patterns) {
     const m = head.match(re);
     if (!m) continue;
-    const y = Number(zenkakuDigitsToAscii(m[1]));
-    const mo = Number(zenkakuDigitsToAscii(m[2]));
+    const y = Number(m[1]);
+    const mo = Number(m[2]);
     if (y >= 2000 && mo >= 1 && mo <= 12) {
       return `${y}-${String(mo).padStart(2, '0')}`;
     }
@@ -64,6 +85,31 @@ function detectYearMonth(fullText, fetchedAt) {
   }
   const now = new Date();
   return `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}`;
+}
+
+/** If this PDF sha already has a 号 page, reuse that yearMonth (avoids OCR/date misfires). */
+async function yearMonthForExistingSha(muniId, sha256) {
+  if (!sha256) return '';
+  let files = [];
+  try {
+    files = await readdir(OUT_DIR);
+  } catch {
+    return '';
+  }
+  const prefix = `${muniId}__`;
+  for (const f of files) {
+    if (!f.startsWith(prefix) || !f.endsWith('.md')) continue;
+    const ym = f.slice(prefix.length, -3);
+    if (!/^\d{4}-\d{2}$/.test(ym)) continue;
+    try {
+      const raw = await readFile(path.join(OUT_DIR, f), 'utf8');
+      const m = /^sha256:\s*"([^"]+)"/m.exec(raw);
+      if (m?.[1] === sha256) return ym;
+    } catch {
+      /* ignore */
+    }
+  }
+  return '';
 }
 
 function detectIssueNo(fullText) {
@@ -179,7 +225,11 @@ async function main() {
     }
 
     const meta = await loadMeta(extractDir);
-    const yearMonth = detectYearMonth(text, meta.extractedAt);
+    const shaYm = await yearMonthForExistingSha(source.id, meta.sha256);
+    const yearMonth = shaYm || detectYearMonth(text, meta.extractedAt);
+    if (shaYm) {
+      console.log(`sha match ${source.id}: reuse yearMonth ${shaYm}`);
+    }
     const issueNo = detectIssueNo(text);
     const listingUrl = source.listingUrl || meta.url || '';
     const sourceUrl = meta.url || listingUrl;
@@ -199,6 +249,19 @@ async function main() {
           written += 1;
           continue;
         }
+      }
+    }
+
+    // Stale extract guard: if a newer 号 page already exists for this muni, do not
+    // scaffold an older yearMonth (would wrongly light up「新着の広報」).
+    if (!exists) {
+      const newest = await newestExistingYearMonth(source.id);
+      if (newest && yearMonth < newest) {
+        console.log(
+          `skip scaffold ${rel}: extract ${yearMonth} older than existing ${source.id}__${newest}.md (fix fetch pick)`,
+        );
+        skipped += 1;
+        continue;
       }
     }
 

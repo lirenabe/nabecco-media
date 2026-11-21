@@ -147,8 +147,9 @@ Heading map (locked):
 
 **Do not** write `## 新着の広報` in the Markdown body.
 The layout inserts it **immediately before** `## 直近のイベント情報`.
-It appears when 広報号 pages have `discoveredAt` on a **later calendar day (Asia/Tokyo)** than the previous vol’s `pubDate`.
+Window (Asia/Tokyo calendar day): **after** the previous vol’s `pubDate`, and **on or before** this vol’s `pubDate`.
 Same-day discoveries from the previous weekly run are excluded.
+Discoveries after this vol’s day belong to a later issue.
 Hand-written duplicates are forbidden.
 
 ### Section roles

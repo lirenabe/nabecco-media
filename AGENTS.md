@@ -40,6 +40,12 @@ Step C: weekly **media 読み物** (not a 広報 digest). ですます; full cit
 Do **not** copy 広報 extract photos into `public/images/kouhou/` until rights are cleared.
 New issues use `draft: true` until an operator explicitly publishes.
 
+**Do not edit published posts** without the operator’s **explicit permission in that turn**.
+Published means `draft: false`, or `draft` omitted (schema default is published).
+“Continue” / pipeline follow-ups / fixing 新着 display do **not** authorize those edits.
+Drafts (`draft: true`) may be edited as usual for the weekly run.
+Path: `src/content/posts/`.
+
 Locked heading map: first pickup `#`, later pickups / 直近 / 今週のあきた `##`,
 region labels `###`（県北→県央→県南）. No umbrella ピックアップ. Do **not** hand-write `## 新着の広報`（layout が新号の `discoveredAt` から自動表示）. See `scripts/draft-prompt.md`.
 

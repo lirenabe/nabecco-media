@@ -23,7 +23,11 @@ export async function getStaticPaths() {
     params: { slug: post.id },
     props: {
       post,
-      newKouhou: listNewKouhouIssues(kouhou, previousIssuePubDate(posts, post.data.pubDate)),
+      newKouhou: listNewKouhouIssues(
+        kouhou,
+        previousIssuePubDate(posts, post.data.pubDate),
+        post.data.pubDate,
+      ),
     },
   }));
 }
