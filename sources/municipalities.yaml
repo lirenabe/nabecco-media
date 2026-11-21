@@ -47,12 +47,12 @@ sources:
     listingUrl: https://www.city.noshiro.lg.jp/city/koho/noshiro/back/reiwa08_2026/
     fetch:
       strategy: issue-then-pdf
-      pick: last
+      pick: first
       issueHrefPattern: "/city/koho/noshiro/back/reiwa08_2026/\\d+"
       pdfHrefPattern: "\\.pdf($|\\?)"
       preferTextPattern: "一括"
       preferHrefPattern: "new_\\d+\\.pdf"
-    notes: 令和8年バックナンバー。末尾が最新号。一括 PDF（new_*.pdf／「一括ページ」）を優先。
+    notes: 令和8年バックナンバー。先頭が最新号（新しい月が上）。一括 PDF（new_*.pdf／「一括ページ」）を優先。
 
   - id: city-yokote
     name: 横手市

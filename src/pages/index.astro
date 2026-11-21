@@ -19,7 +19,11 @@ const sorted = sortPostsByDateDesc(await getPublishedPosts());
 const latest = sorted[0];
 const allKouhou = await getKouhouIssues();
 const newKouhou = latest
-  ? listNewKouhouIssues(allKouhou, previousIssuePubDate(sorted, latest.data.pubDate))
+  ? listNewKouhouIssues(
+      allKouhou,
+      previousIssuePubDate(sorted, latest.data.pubDate),
+      latest.data.pubDate,
+    )
   : [];
 
 const siteDescription =
