@@ -3,7 +3,7 @@ title: 第4号 2026年11月21日
 pubDate: 2026-11-21
 vol: 4
 description: 湯沢駅前にYuinasが開く週末、潟上のYOSAKOI、阿仁のAIデマンドタクシー
-draft: true
+draft: false
 ---
 
 # 湯沢駅前、22日正午に Yuinas — 学びと憩いの場が開く
