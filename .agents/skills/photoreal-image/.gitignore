@@ -1,0 +1,21 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Generated media / scratch output (never commit renders or API responses)
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mov
+*.gif
+*.webp
+*.prompt.txt
+frames-*/
+out/
+tmp/
+
+# Secrets — API keys live in the shell environment, never in the repo
+.env
+.env.*
+*.key

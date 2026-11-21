@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "skills": {
+    "critical-thinking": {
+      "source": "coji/natural-japanese",
+      "commit": "840bd400cbcb64c8b64d492a144da54fc05776c5",
+      "sourceType": "github",
+      "skillPath": "skills/critical-thinking/SKILL.md",
+      "computedHash": "67c6ab8bc9f51935d412a438a35a7384bd1d310b73e60be2459d28e00e1f0f59"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "83485963700bcf11d5bf78118facb301676b69d918fee2e45a95e7f1a2840f6c"
+    },
+    "natural-japanese": {
+      "source": "coji/natural-japanese",
+      "commit": "840bd400cbcb64c8b64d492a144da54fc05776c5",
+      "sourceType": "github",
+      "skillPath": "skills/natural-japanese/SKILL.md",
+      "computedHash": "40683c3c92259a33ba7e52cd5c65311de55103a4c9275ab832408704a6b6e81b"
+    },
+    "photoreal-image": {
+      "source": "olegspiridonovdev-spec/photoreal-image-skill",
+      "commit": "69b61b715205dffcfc0cd5dbf23c1cc269944a32",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "b6a2e1ae2e55be9b04be18fb795767e9c9909325866f4786f4a822cab5d287d6"
+    }
+  }
+}

@@ -44,7 +44,7 @@
   },
   "lint-staged": {
     "**/*.{md,mdx}": [
-      "textlint"
+      "textlint --ignore-path .textlintignore"
     ],
     "src/content/posts/*.md": [
       "node scripts/check-citations.mjs",
