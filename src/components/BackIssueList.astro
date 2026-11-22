@@ -54,9 +54,13 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
   }
 
   .back-issues h2 {
-    margin: 0 0 1rem;
-    font-size: 1.25rem;
-    letter-spacing: -0.015em;
+    margin: 0 0 1.15rem;
+    padding-left: 0.85rem;
+    border-left: var(--spine) solid var(--color-kaki);
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 
   .back-issues__empty {
@@ -71,11 +75,11 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
   }
 
   .back-issues__list li {
-    border-top: 1px solid var(--color-ash);
+    border-top: 1px solid var(--color-line);
   }
 
   .back-issues__list li:last-child {
-    border-bottom: 1px solid var(--color-ash);
+    border-bottom: 1px solid var(--color-line);
   }
 
   .back-issues__list a {
@@ -84,7 +88,7 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
     align-items: flex-start;
     gap: 0.2rem;
     min-width: 0;
-    padding: 0.85rem 0;
+    padding: 0.95rem 0;
     color: var(--color-sumi);
     text-decoration: none;
   }
@@ -92,7 +96,10 @@ const formatter = new Intl.DateTimeFormat('ja-JP', {
   .back-issues__title {
     display: block;
     width: 100%;
-    line-height: 1.45;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
     overflow-wrap: anywhere;
     word-break: break-word;
   }

@@ -87,14 +87,15 @@ const jsonLd = issueArticleJsonLd(
   .issue {
     max-width: var(--measure);
     margin: 0 auto;
-    padding: clamp(1.5rem, 4vw, 2.5rem) var(--page-pad) var(--section-gap);
+    padding: clamp(1.85rem, 5vw, 3rem) var(--page-pad) var(--section-gap);
     overflow-wrap: anywhere;
     min-width: 0;
   }
 
   .issue__crumb {
-    margin: 0 0 1.25rem;
-    font-size: 0.9rem;
+    margin: 0 0 1.35rem;
+    font-size: 0.84rem;
+    letter-spacing: 0.02em;
     color: var(--color-sumi-soft);
   }
 
@@ -108,9 +109,13 @@ const jsonLd = issueArticleJsonLd(
   }
 
   .issue-date {
-    margin: 2.5rem 0 0;
+    margin: 2.85rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
     text-align: right;
-    font-size: 0.88rem;
+    font-family: var(--font-display);
+    font-size: 0.84rem;
+    letter-spacing: 0.02em;
     color: var(--color-sumi-soft);
   }
 

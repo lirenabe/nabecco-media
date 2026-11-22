@@ -1,5 +1,5 @@
 :root {
-  /* Palette A1 — paper / sumi / ash / fire (kaki) / seri */
+  /* Palette A1 — locked (paper / sumi / ash / fire kaki / seri) */
   --color-sumi: #1a1814;
   --color-sumi-soft: #6b6560;
   --color-paper: #f7f6f4;
@@ -9,13 +9,23 @@
   --color-kaki: #d97706;
   --color-kaki-deep: #b45309;
   --color-seri: #3f6b4a;
+  /*
+   * Spine / accent roles (keep kaki scarce):
+   *   kaki  — content hero (first pickup h1), page titles, chrome / CTA / links
+   *   seri  — fixed weekly shells (直近 / 今週のあきた / 新着の広報)
+   *   line  — quiet meta (出典 blockquotes, info-note)
+   */
 
-  --font-display: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
-  --font-body: 'IBM Plex Sans JP', 'Noto Sans JP', sans-serif;
+  /* Type: one gothic family — hierarchy via size / weight / space (readable, flat) */
+  --font-body: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  --font-display: var(--font-body);
 
-  --measure: 44rem;
-  --page-pad: clamp(1.25rem, 4vw, 2.5rem);
-  --section-gap: clamp(3rem, 8vw, 5rem);
+  --measure: 40rem;
+  --page-pad: clamp(1.25rem, 4vw, 2.75rem);
+  --section-gap: clamp(3.25rem, 9vw, 5.5rem);
+  --header-max: 70rem;
+  --spine: 3px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 *,
@@ -30,6 +40,12 @@ html {
   overflow-x: clip;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -37,11 +53,16 @@ body {
   overflow-x: clip;
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
   color: var(--color-sumi);
   background-color: var(--color-paper);
-  background-image: linear-gradient(180deg, var(--color-paper-raised) 0%, var(--color-paper) 14rem);
+  /* Quiet paper field: soft lift + faint grain (no decorative shadow) */
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% -10%, var(--color-paper-raised) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-attachment: local;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -53,7 +74,9 @@ img {
 
 a {
   color: var(--color-kaki-deep);
-  text-underline-offset: 0.15em;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color 0.18s var(--ease-out);
 }
 
 a:hover {
@@ -66,8 +89,8 @@ h3,
 h4 {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
   color: var(--color-sumi);
 }
 
@@ -78,6 +101,32 @@ p {
 :focus-visible {
   outline: 2px solid var(--color-kaki);
   outline-offset: 3px;
+}
+
+/* Shared page column */
+.page-shell {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(1.75rem, 5vw, 3rem) var(--page-pad) var(--section-gap);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.page-crumb {
+  margin: 0 0 1.35rem;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
+  color: var(--color-sumi-soft);
+}
+
+.page-crumb a {
+  color: var(--color-sumi-soft);
+  text-decoration: none;
+}
+
+.page-crumb a:hover {
+  color: var(--color-kaki);
 }
 
 .prose {
@@ -96,121 +145,135 @@ p {
   word-break: break-word;
 }
 
-/* First pickup only — Markdown `#` → page 大見出し */
+/* First pickup — content hero */
 .prose > h1:first-of-type {
-  margin: 0 0 0.75rem;
-  font-size: clamp(1.55rem, 5.2vw, 2rem);
+  margin: 0 0 1.1rem;
+  padding: 0 0 0 0.95rem;
+  border-left: var(--spine) solid var(--color-kaki);
+  font-size: clamp(1.55rem, 4.8vw, 2rem);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.28;
+  letter-spacing: 0.01em;
+  line-height: 1.45;
   color: var(--color-sumi);
+  animation: nabecco-rise 0.7s var(--ease-out) both;
 }
 
-/* Later pickup ## — clean article titles (lighter band, no chrome marker) */
+@media (prefers-reduced-motion: reduce) {
+  .prose > h1:first-of-type {
+    animation: none;
+  }
+}
+
+@keyframes nabecco-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Later pickup / section titles */
 .prose h2 {
-  margin: 2.5rem 0 0.75rem;
-  padding-top: 1.15rem;
+  margin: 2.85rem 0 0.85rem;
+  padding: 1.25rem 0 0;
   border-top: 1px solid var(--color-line);
-  font-size: clamp(1.18rem, 3.5vw, 1.35rem);
+  font-size: clamp(1.22rem, 3.2vw, 1.4rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   color: var(--color-sumi);
 }
 
-/*
- * Fixed section shells (exact Markdown titles → heading ids).
- * Stronger band + decorative marker; visible text stays the label.
- */
+/* Fixed weekly shells — seri spine (secondary landmark; kaki reserved for hero) */
 .prose h2[id='直近のイベント情報'],
 .prose h2[id='今週のあきた'] {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin: 2.75rem 0 0.9rem;
-  padding-top: 1.4rem;
-  border-top: 1px solid var(--color-line);
-  font-size: clamp(1.22rem, 3.8vw, 1.42rem);
-  letter-spacing: -0.015em;
+  display: block;
+  margin: 3.1rem 0 1rem;
+  padding: 0 0 0 0.95rem;
+  border-top: 0;
+  border-left: var(--spine) solid var(--color-seri);
+  font-size: clamp(1.25rem, 3.4vw, 1.45rem);
+  letter-spacing: 0.01em;
 }
 
 .prose h2[id='直近のイベント情報']::before,
 .prose h2[id='今週のあきた']::before {
-  content: '';
-  flex: 0 0 auto;
-  box-sizing: border-box;
+  content: none;
 }
 
-/* Calendar-ish mark for upcoming events — fire accent */
-.prose h2[id='直近のイベント情報']::before {
-  width: 0.78rem;
-  height: 0.78rem;
-  border: 1.5px solid var(--color-sumi-soft);
-  background:
-    linear-gradient(var(--color-kaki), var(--color-kaki)) 0 0 / 100% 2px no-repeat,
-    var(--color-paper-raised);
-}
-
-/* Dot-in-square mark for weekly recap — seri secondary (no radius) */
-.prose h2[id='今週のあきた']::before {
-  width: 0.72rem;
-  height: 0.72rem;
-  border: 1.5px solid var(--color-sumi-soft);
-  background: radial-gradient(
-    circle at center,
-    var(--color-seri) 0 0.12rem,
-    transparent 0.14rem
-  );
-}
-
-/*
- * Four clear levels inside .prose (Palette A1; no cards):
- * h1 pickup → h2 section → h3 region label → h4 tip lead
- * h3 present via ash + serif + tracking only (no hairline stack).
- * h4 = tip lead (sumi, readable).
- */
+/* Region: section grouping under weekly shells (seri spine; kaki reserved for h4) */
 .prose h3 {
-  margin: 2.35rem 0 0.45rem;
-  padding: 0;
+  margin: 2.65rem 0 0.65rem;
+  padding: 0 0 0 0.85rem;
   border: 0;
-  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  line-height: 1.45;
-  color: var(--color-ash);
-}
-
-.prose h4 {
-  margin: 1.55rem 0 0.5rem;
-  padding: 0;
-  border: 0;
+  border-left: var(--spine) solid var(--color-seri);
   font-family: var(--font-display);
-  font-size: clamp(1.06rem, 2.6vw, 1.14rem);
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: -0.015em;
-  line-height: 1.35;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
   color: var(--color-sumi);
 }
 
-/* First tip under a region label sits closer */
+.prose h4 {
+  margin: 1.65rem 0 0.55rem;
+  padding: 0 0 0.35rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-kaki);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 2.5vw, 1.12rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: var(--color-sumi);
+}
+
 .prose h3 + h4 {
-  margin-top: 0.45rem;
+  margin-top: 0.4rem;
+}
+
+/* 広報要約: topic ### is the item title (weekly h4 role) — match h4 look, keep outline */
+.kouhou-issue .prose h3 {
+  margin: 1.65rem 0 0.55rem;
+  padding: 0 0 0.35rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-kaki);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 2.5vw, 1.12rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: var(--color-sumi);
 }
 
 .prose p {
-  margin: 0 0 1.05em;
+  margin: 0 0 1.15em;
 }
 
 .prose blockquote {
-  margin: 1rem 0;
-  padding: 0 0 0 0.85rem;
-  border-left: 2px solid var(--color-kaki);
+  margin: 1.1rem 0;
+  padding: 0.15rem 0 0.15rem 0.95rem;
+  border-left: 2px solid var(--color-line);
   color: var(--color-sumi-soft);
   font-size: 0.92rem;
+  line-height: 1.7;
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+/* 出典など: meta links stay quiet until hover (like menu items) */
+.prose blockquote a {
+  color: inherit;
+  text-decoration-color: var(--color-line);
+}
+
+.prose blockquote a:hover {
+  color: var(--color-kaki);
+  text-decoration-color: var(--color-kaki);
 }
 
 .prose a {
@@ -222,6 +285,7 @@ p {
 .prose img {
   max-width: 100%;
   height: auto;
+  margin: 1.35rem 0 0.35rem;
 }
 
 .prose pre,
@@ -239,14 +303,13 @@ p {
   overflow-x: auto;
 }
 
-/* Section info notice (直近のイベント情報) — not a card; distinct from 出典 quotes */
 .prose .info-note {
-  margin: 0.15rem 0 1.25rem;
-  padding: 0.55rem 0 0.55rem 0.9rem;
+  margin: 0.25rem 0 1.4rem;
+  padding: 0.65rem 0 0.65rem 0.95rem;
   border-left: 2px solid var(--color-line);
   color: var(--color-sumi-soft);
   font-size: 0.9rem;
-  line-height: 1.55;
+  line-height: 1.65;
   max-width: 100%;
   overflow-wrap: anywhere;
 }
@@ -255,14 +318,12 @@ p {
   margin: 0;
 }
 
-/* Official Threads oEmbed host — do not restyle as 出典 quotes */
 .prose .threads-embed {
-  margin: 1.1rem 0 1.35rem;
+  margin: 1.2rem 0 1.45rem;
   max-width: 100%;
   min-width: 0;
 }
 
-/* Placeholder blockquote only (embed.js moves class onto the iframe) */
 .prose .threads-embed > blockquote.text-post-media {
   margin: 0 auto;
   padding: 0;
@@ -272,12 +333,10 @@ p {
   max-width: 100%;
 }
 
-/* Once embed.js inserts the iframe, hide the "View on Threads" placeholder */
 .prose .threads-embed:has(iframe) > blockquote {
   display: none !important;
 }
 
-/* Hydrated card */
 .prose .threads-embed > iframe.text-post-media {
   display: block;
   width: 100%;

@@ -103,34 +103,40 @@ const jsonLd =
   .latest {
     max-width: var(--measure);
     margin: 0 auto;
-    padding: clamp(1.5rem, 4vw, 2.5rem) var(--page-pad) var(--section-gap);
+    padding: clamp(1.85rem, 5vw, 3rem) var(--page-pad) var(--section-gap);
     overflow-wrap: anywhere;
     min-width: 0;
   }
 
   .latest--empty {
-    padding-top: clamp(2.5rem, 8vw, 4rem);
+    padding-top: clamp(2.75rem, 8vw, 4.25rem);
   }
 
   .latest__empty-title {
     margin: 0 0 1rem;
+    padding-left: 0.9rem;
+    border-left: var(--spine) solid var(--color-kaki);
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4vw, 2.25rem);
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 
   .latest__empty-lead {
     margin: 0;
     font-size: 1.05rem;
-    line-height: 1.75;
+    line-height: 1.85;
     color: var(--color-sumi);
   }
 
   .issue-date {
-    margin: 2.5rem 0 0;
+    margin: 2.85rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
     text-align: right;
-    font-size: 0.88rem;
+    font-family: var(--font-display);
+    font-size: 0.84rem;
+    letter-spacing: 0.02em;
     color: var(--color-sumi-soft);
   }
 
