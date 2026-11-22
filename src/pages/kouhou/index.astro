@@ -42,8 +42,8 @@ const jsonLd = {
 ---
 
 <BaseLayout title="自治体の広報要約" description={description}>
-  <div class="kouhou-index">
-    <p class="kouhou-index__crumb"><a href="/">トップ</a> / 自治体の広報</p>
+  <div class="kouhou-index page-shell">
+    <p class="page-crumb"><a href="/">トップ</a> / 自治体の広報</p>
     <h1>自治体の広報要約</h1>
     <p class="kouhou-index__lead">
       公式広報の要約です。日程や手続きの確定情報は、必ず各自治体の原本で確認してください。
@@ -65,36 +65,18 @@ const jsonLd = {
 </BaseLayout>
 
 <style>
-  .kouhou-index {
-    max-width: var(--measure);
-    margin: 0 auto;
-    padding: clamp(2rem, 5vw, 2.75rem) var(--page-pad) var(--section-gap);
-  }
-
-  .kouhou-index__crumb {
-    margin: 0 0 1.25rem;
-    font-size: 0.9rem;
-    color: var(--color-sumi-soft);
-  }
-
-  .kouhou-index__crumb a {
-    color: var(--color-sumi-soft);
-    text-decoration: none;
-  }
-
-  .kouhou-index__crumb a:hover {
-    color: var(--color-kaki);
-  }
-
   .kouhou-index h1 {
     margin: 0 0 0.75rem;
-    font-size: clamp(1.45rem, 4vw, 1.85rem);
+    padding-left: 0.9rem;
+    border-left: var(--spine) solid var(--color-kaki);
+    font-size: clamp(1.55rem, 4.5vw, 1.95rem);
+    letter-spacing: 0.01em;
   }
 
   .kouhou-index__lead {
-    margin: 0 0 1.75rem;
+    margin: 0 0 1.85rem;
     color: var(--color-sumi);
-    line-height: 1.75;
+    line-height: 1.85;
   }
 
   .kouhou-index__list {
@@ -104,18 +86,21 @@ const jsonLd = {
   }
 
   .kouhou-index__list li {
-    border-top: 1px solid var(--color-ash);
+    border-top: 1px solid var(--color-line);
   }
 
   .kouhou-index__list li:last-child {
-    border-bottom: 1px solid var(--color-ash);
+    border-bottom: 1px solid var(--color-line);
   }
 
   .kouhou-index__list a {
     display: block;
-    padding: 0.85rem 0;
+    padding: 0.95rem 0;
     color: var(--color-sumi);
     text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 
   .kouhou-index__list a:hover {
