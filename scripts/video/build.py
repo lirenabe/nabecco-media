@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Weekly / kouhou news video: Google TTS + still slides + burned-in captions (no gcloud CLI)."""
+"""Weekly / kouhou news video: Google TTS + still slides + burned-in captions."""
 
 from __future__ import annotations
 

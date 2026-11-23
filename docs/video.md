@@ -10,7 +10,7 @@
 | 広報（kouhou） | **2026年12月号から** | `提供：なべっこ（自治体広報をもとに要約）` |
 
 - 映像は**完全静止**（ズーム・パンなし）
-- 音声は Google Cloud Text-to-Speech（**`gcloud` CLI は使わない**。Console で発行した API キー）
+- 音声は Google Cloud Text-to-Speech（Cloud Console で発行した API キー）
 - 字幕は焼き込み
 - はめ込み写真は `data/video/stills/`（ローカル。gitignore）
 
@@ -37,7 +37,7 @@ python3 -m pip install -r scripts/requirements-video.txt
 GOOGLE_TTS_API_KEY=…
 ```
 
-キーは [Cloud Console](https://console.cloud.google.com/apis/library/texttospeech.googleapis.com) で Text-to-Speech API を有効化し、認証情報から API キーを作成する（なべっこ用プロジェクト推奨。sharevillage の `gcloud` 設定には触れない）。
+キーは [Cloud Console](https://console.cloud.google.com/apis/library/texttospeech.googleapis.com) で Text-to-Speech API を有効化し、認証情報から API キーを作成します。
 
 ## 使い方
 
