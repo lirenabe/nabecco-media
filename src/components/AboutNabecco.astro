@@ -1,4 +1,5 @@
 ---
+const youtubeUrl = 'https://www.youtube.com/channel/UCEyO5Apn2fnvF3HYVX3VH8A';
 ---
 
 <section class="about" id="about" aria-labelledby="about-heading">
@@ -8,6 +9,29 @@
   </p>
   <p>
     記事の内容はオープンソースの考え方に基づきすべて公開され、誰でも記事内容の変更を提案できます。また、公開情報をもとに成り立っているメディアであるため、バナーなどの一般的なWeb広告は掲載しません。運営費は、考え方に共感いただける読者の寄付と、店舗・企業・団体のサポートで成り立っています。
+  </p>
+  <p class="about__social">
+    <a
+      class="about__social-link"
+      href={youtubeUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg
+        class="about__social-icon"
+        width="22"
+        height="16"
+        viewBox="0 0 22 16"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          fill="currentColor"
+          d="M21.6 2.5A2.75 2.75 0 0 0 19.7.6C18 .15 11 .15 11 .15s-7 0-8.7.45A2.75 2.75 0 0 0 .4 2.5 28.9 28.9 0 0 0 0 8a28.9 28.9 0 0 0 .4 5.5 2.75 2.75 0 0 0 1.9 1.9c1.7.45 8.7.45 8.7.45s7 0 8.7-.45a2.75 2.75 0 0 0 1.9-1.9A28.9 28.9 0 0 0 22 8a28.9 28.9 0 0 0-.4-5.5zM8.8 11.4V4.6L14.5 8l-5.7 3.4z"
+        ></path>
+      </svg>
+      <span>記事の読み上げ動画も、YouTubeで配信しています</span>
+    </a>
   </p>
 </section>
 
@@ -28,7 +52,26 @@
     line-height: 1.8;
   }
 
-  .about p:last-child {
-    margin-bottom: 0;
+  .about__social {
+    margin: 1rem 0 0;
+  }
+
+  .about__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 44px;
+    color: var(--color-sumi);
+    font-size: 0.94rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .about__social-link:hover {
+    color: var(--color-kaki-deep);
+  }
+
+  .about__social-icon {
+    flex-shrink: 0;
   }
 </style>
