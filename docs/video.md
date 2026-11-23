@@ -41,9 +41,11 @@ YOUTUBE_CLIENT_SECRETS=secrets/youtube/client_secret.json
 YOUTUBE_TOKEN=secrets/youtube/token.json
 ```
 
-TTS キーは [Cloud Console](https://console.cloud.google.com/apis/library/texttospeech.googleapis.com) で Text-to-Speech API を有効化し、認証情報から API キーを作成します。
+TTS キーは Cloud Console で Text-to-Speech API を有効化し、認証情報から API キーを作成します（手順: [Text-to-Speech の準備](https://cloud.google.com/text-to-speech/docs/before-you-begin)）。
 
-YouTube 投稿は OAuth が必要です。[YouTube Data API v3](https://console.cloud.google.com/apis/library/youtube.googleapis.com) を有効化し、デスクトップ用 OAuth クライアント JSON を `secrets/youtube/client_secret.json` に置きます（`secrets/` は gitignore）。
+YouTube 投稿は OAuth が必要です。Cloud Console で YouTube Data API v3 を有効化してください。
+デスクトップ用 OAuth クライアント JSON は `secrets/youtube/client_secret.json` に置きます（`secrets/` は gitignore）。
+手順は [YouTube Data API の概要](https://developers.google.com/youtube/v3/getting-started) を参照してください。
 
 ## 使い方
 
