@@ -39,6 +39,8 @@ python3 -m pip install -r scripts/requirements-video.txt
 GOOGLE_TTS_API_KEY=…
 YOUTUBE_CLIENT_SECRETS=secrets/youtube/client_secret.json
 YOUTUBE_TOKEN=secrets/youtube/token.json
+# 任意。日本語フォントのパス（未設定時は OS ごとの候補を探索）
+# NABECCO_VIDEO_FONT=/path/to/font.ttf
 ```
 
 TTS キーは Cloud Console で Text-to-Speech API を有効化し、認証情報から API キーを作成します（手順: [Text-to-Speech の準備](https://cloud.google.com/text-to-speech/docs/before-you-begin)）。

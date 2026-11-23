@@ -36,7 +36,57 @@ VOICE_NAME = "ja-JP-Neural2-B"
 VOICE_LANG = "ja-JP"
 FPS = 25
 GAP_SEC = 0.85  # pause between sections
-FONT = "/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc"
+
+# Japanese-capable fonts (first existing wins). Override with NABECCO_VIDEO_FONT.
+_FONT_CANDIDATES = (
+    # macOS
+    "/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc",
+    "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    "/Library/Fonts/Arial Unicode.ttf",
+    # Linux (Noto / IPAex — package names vary by distro)
+    "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf",
+    "/usr/share/fonts/truetype/fonts-japanese-gothic.ttf",
+    # Windows
+    "C:/Windows/Fonts/msgothic.ttc",
+    "C:/Windows/Fonts/meiryo.ttc",
+    "C:/Windows/Fonts/YuGothM.ttc",
+)
+
+
+def _env_value(key: str) -> str | None:
+    if not ENV_PATH.is_file():
+        return None
+    for line in ENV_PATH.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        if k.strip() == key:
+            val = v.strip().strip('"').strip("'")
+            return val or None
+    return None
+
+
+def resolve_font() -> str:
+    override = _env_value("NABECCO_VIDEO_FONT")
+    if override:
+        p = Path(override)
+        if not p.is_file():
+            raise SystemExit(f"NABECCO_VIDEO_FONT not found: {override}")
+        return str(p)
+    for cand in _FONT_CANDIDATES:
+        if Path(cand).is_file():
+            return cand
+    raise SystemExit(
+        "No Japanese font found. Install a CJK font or set NABECCO_VIDEO_FONT "
+        "in .env to a .ttf/.ttc/.otf path."
+    )
+
+
+FONT = resolve_font()
 
 
 @dataclass
