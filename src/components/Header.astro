@@ -32,6 +32,21 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
       />
     </a>
 
+    <div class="site-header__actions">
+      <a
+        class="site-header__social"
+        href="https://www.youtube.com/channel/UCEyO5Apn2fnvF3HYVX3VH8A"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube（新しいタブで開く）"
+      >
+        <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" focusable="false">
+          <path
+            fill="currentColor"
+            d="M21.6 2.5A2.75 2.75 0 0 0 19.7.6C18 .15 11 .15 11 .15s-7 0-8.7.45A2.75 2.75 0 0 0 .4 2.5 28.9 28.9 0 0 0 0 8a28.9 28.9 0 0 0 .4 5.5 2.75 2.75 0 0 0 1.9 1.9c1.7.45 8.7.45 8.7.45s7 0 8.7-.45a2.75 2.75 0 0 0 1.9-1.9A28.9 28.9 0 0 0 22 8a28.9 28.9 0 0 0-.4-5.5zM8.8 11.4V4.6L14.5 8l-5.7 3.4z"
+          ></path>
+        </svg>
+      </a>
     <div class="site-header__menu" data-menu>
       <button
         type="button"
@@ -112,6 +127,7 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
         </nav>
       </div>
     </div>
+    </div>
   </div>
 </header>
 
@@ -159,6 +175,27 @@ const dateFmt = new Intl.DateTimeFormat('ja-JP', {
 
   .site-header__home:hover {
     opacity: 0.9;
+  }
+
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .site-header__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--color-sumi-soft);
+    text-decoration: none;
+  }
+
+  .site-header__social:hover {
+    color: var(--color-kaki-deep);
   }
 
   .site-header__toggle {
