@@ -18,6 +18,9 @@ pnpm-debug.log*
 .env.production
 .env.local
 
+# local experiments (video PoC, etc.)
+tmp/
+
 # macOS-specific files
 .DS_Store
 
@@ -31,6 +34,10 @@ pnpm-debug.log*
 data/kouhou/
 data/drafts/
 data/reports/
+# News video intermediates / MP4 / stills / narration scripts (local only)
+data/video/**
+!data/video/.gitkeep
+
 # Human-exported Threads dumps / URL indexes (never commit)
 data/kuchikomi/**
 !data/kuchikomi/.gitkeep

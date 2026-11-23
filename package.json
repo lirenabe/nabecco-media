@@ -37,6 +37,7 @@
     "generate:kouhou-pages": "node scripts/generate-kouhou-pages.mjs",
     "extract:kuchikomi": "node scripts/extract-kuchikomi.mjs",
     "draft": "node scripts/draft-issue.mjs",
+    "video": "python3 scripts/video/build.py",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
