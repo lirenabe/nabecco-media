@@ -18,6 +18,9 @@ pnpm-debug.log*
 .env.production
 .env.local
 
+# OAuth client / token JSON (YouTube upload etc.)
+secrets/
+
 # local experiments (video PoC, etc.)
 tmp/
 

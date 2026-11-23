@@ -19,10 +19,12 @@
 | パス | 内容 | Git |
 | :--- | :--- | :--- |
 | `scripts/video/build.py` | 生成スクリプト | 追跡 |
+| `scripts/video/upload.py` | YouTube アップロード（予約公開可） | 追跡 |
 | `data/video/scripts/` | 読み上げ原稿（`weekly-volN.txt` など） | 非追跡 |
 | `data/video/stills/` | 右パネル用写真 | 非追跡 |
 | `data/video/out/` | 完成 MP4 | 非追跡 |
 | `data/video/work/` ほか | 中間生成物 | 非追跡 |
+| `secrets/youtube/` | OAuth クライアント／トークン | 非追跡 |
 
 ## 前提
 
@@ -35,9 +37,13 @@ python3 -m pip install -r scripts/requirements-video.txt
 
 ```bash
 GOOGLE_TTS_API_KEY=…
+YOUTUBE_CLIENT_SECRETS=secrets/youtube/client_secret.json
+YOUTUBE_TOKEN=secrets/youtube/token.json
 ```
 
-キーは [Cloud Console](https://console.cloud.google.com/apis/library/texttospeech.googleapis.com) で Text-to-Speech API を有効化し、認証情報から API キーを作成します。
+TTS キーは [Cloud Console](https://console.cloud.google.com/apis/library/texttospeech.googleapis.com) で Text-to-Speech API を有効化し、認証情報から API キーを作成します。
+
+YouTube 投稿は OAuth が必要です。[YouTube Data API v3](https://console.cloud.google.com/apis/library/youtube.googleapis.com) を有効化し、デスクトップ用 OAuth クライアント JSON を `secrets/youtube/client_secret.json` に置きます（`secrets/` は gitignore）。
 
 ## 使い方
 
@@ -78,3 +84,25 @@ npm run video -- --kind kouhou --script kouhou-….txt --eyebrow "○○市　20
 ```
 
 セクション境界で短い無音を入れます。
+
+## YouTube アップロード
+
+```bash
+python3 -m pip install -r scripts/requirements-video.txt
+
+# 初回だけブラウザで同意 → secrets/youtube/token.json を保存
+npm run video:auth
+
+# 予約公開（JST で指定可。内部で UTC に変換）
+npm run video:upload -- \
+  --kind weekly --vol 4 \
+  --publish-at "2026-12-01T18:00:00+09:00"
+
+# 送信内容の確認のみ
+npm run video:upload -- --kind weekly --vol 4 --publish-at "2026-12-01T18:00:00+09:00" --dry-run
+```
+
+- `--publish-at` あり → `privacy=private` 必須。指定時刻に公開
+- デフォルト題名: `なべっこニュース 第N号`／概要にサイトと号 URL
+- デフォルトで `containsSyntheticMedia` を立てる（TTS・AI ビジュアル想定）。不要なら `--no-synthetic`
+- サムネは `--thumbnail path.jpg`（チャンネルの電話認証が必要な場合あり）

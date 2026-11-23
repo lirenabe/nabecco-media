@@ -38,6 +38,8 @@
     "extract:kuchikomi": "node scripts/extract-kuchikomi.mjs",
     "draft": "node scripts/draft-issue.mjs",
     "video": "python3 scripts/video/build.py",
+    "video:upload": "python3 scripts/video/upload.py",
+    "video:auth": "python3 scripts/video/upload.py --auth-only",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
