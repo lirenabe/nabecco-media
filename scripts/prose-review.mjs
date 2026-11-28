@@ -15,7 +15,7 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const PROMPT_REL = 'scripts/prose-review-prompt.md';
 const PROMPT_ABS = path.join(ROOT, PROMPT_REL);
 
-/** 機械で拾える禁則っぽい断片（網羅しない。本チェックの主役はプロンプト） */
+/** 機械で拾える禁則っぽい断片（網羅しない。誤検知あり。警告は目視し、主役は prose-review-prompt） */
 const BAN_SNIPPETS = [
   { re: /近いものから拾/g, note: '工程メタ' },
   { re: /優先して選びました/g, note: '工程メタ' },
@@ -26,6 +26,18 @@ const BAN_SNIPPETS = [
   { re: /要確認/g, note: '免責フッター' },
   { re: /同上/g, note: '出典省略' },
   { re: /前掲/g, note: '出典省略' },
+  { re: /形です/g, note: '飾り締め' },
+  { re: /なりそうです/g, note: '飾り締め' },
+  { re: /輪郭/g, note: '意味の薄い比喩' },
+  { re: /寄り道になり/g, note: '飾り締め' },
+  { re: /入り口です/g, note: '飾り締め' },
+  { re: /地図が/g, note: '無理な比喩' },
+  { re: /残る一日/g, note: '意味不明の締め' },
+  { re: /の午前です/g, note: '飾り締め' },
+  { re: /の午後です/g, note: '飾り締め' },
+  { re: /短い旅の理由/g, note: '飾り締め' },
+  { re: /空気が伝わり/g, note: '飾り締め' },
+  { re: /予定が詰まっ/g, note: '不自然なコロケーション' },
 ];
 
 const THEME_H3 = /^###\s*(フード|イベント|季節|暮らし|グルメ|観光)\b/gm;
