@@ -1,16 +1,13 @@
 #!/usr/bin/env node
 /**
  * pre-commit（lint-staged）相当の静的チェックを、指定ファイルに対して実行する。
- * LLM は呼ばない。editorial self-review / ローカル確認用。
  *
- *   npm run check:precommit-content -- src/content/posts/vol-5.md
- *   npm run check:precommit-content -- --vol 5
- *   npm run check:precommit-content -- --vol 5 src/content/kouhou/town-happou__2026-12.md
+ *   npm run check:precommit-content -- src/content/posts/vol-N.md
+ *   npm run check:precommit-content -- --vol N
+ *   npm run check:precommit-content -- --vol N path/to/kouhou.md
  *
- * package.json lint-staged と同じコマンド群:
- *   - md/mdx → textlint
- *   - src/content/posts/*.md → check-citations / check-posts-privacy / check-threads-embeds
- * （css/astro の check:design は本スクリプトの対象外）
+ * lint-staged と同じく: md/mdx は textlint、posts は citations / privacy / embeds。
+ * css/astro の check:design は対象外。
  */
 import { spawn } from 'node:child_process';
 import { access } from 'node:fs/promises';
@@ -102,7 +99,6 @@ async function main() {
 
   const posts = absList.filter((x) => isPost(x.rel)).map((x) => x.rel);
   if (posts.length) {
-    // lint-staged と同じ: citations は全 posts 走査（argv なし）
     console.log('\n→ check-citations.mjs');
     {
       const code = await run(process.execPath, [
