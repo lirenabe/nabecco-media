@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 /**
  * pre-commit（lint-staged）相当の静的チェックを、指定ファイルに対して実行する。
+ * LLM は呼ばない。
  *
  *   npm run check:precommit-content -- src/content/posts/vol-N.md
  *   npm run check:precommit-content -- --vol N
  *   npm run check:precommit-content -- --vol N path/to/kouhou.md
  *
  * lint-staged と同じく: md/mdx は textlint、posts は citations / privacy / embeds。
+ * posts があるとき check-citations は全 posts 走査（当該スクリプトが argv を取らないため）。
  * css/astro の check:design は対象外。
  */
 import { spawn } from 'node:child_process';

@@ -15,7 +15,7 @@ const ROOT = path.resolve(import.meta.dirname, '..');
 const PROMPT_REL = 'scripts/prose-review-prompt.md';
 const PROMPT_ABS = path.join(ROOT, PROMPT_REL);
 
-/** 機械で拾える禁則っぽい断片（網羅しない。本チェックの主役はプロンプト） */
+/** 機械で拾える禁則っぽい断片（網羅しない。誤検知あり。警告は目視し、主役は prose-review-prompt） */
 const BAN_SNIPPETS = [
   { re: /近いものから拾/g, note: '工程メタ' },
   { re: /優先して選びました/g, note: '工程メタ' },
