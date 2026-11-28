@@ -4,6 +4,7 @@
 
 ```bash
 npm run check:fast   # textlint / design / citations / md links
+npm run check:precommit-content -- --vol N [kouhou.md...]  # lint-staged（記事 md）相当を指定ファイルへ
 npm run build && npm run check:links:site && npm run check:a11y && npm run check:seo
 npm run check        # 上記の一括（要 Playwright Chromium）
 ```
@@ -24,6 +25,7 @@ Git hook: `simple-git-hooks` + `lint-staged`（`npm install` で有効化）。�
 | SEO / OGP | `scripts/check-seo.mjs`（title / description / canonical / lang / og:* / twitter:card / RSS alternate・`/rss.xml` / robots / sitemap） | CI のみ | はい |
 | ファクトチェック（LLM） | stub（`npm run factcheck`） | 手動 / `workflow_dispatch` のみ | **いいえ** |
 | 文章の書き方（読み物・束ね・口コミ1文） | `npm run prose-review`（チェックリスト＋軽い禁則警告。textlint とは別） | 手動（下書き後・公開前） | **いいえ** |
+| pre-commit 相当（指定ファイル） | `npm run check:precommit-content`（textlint + posts の citations/privacy/embeds。hook と同じ系統） | 手動（下書き後・セルフレビュー） | **いいえ** |
 | 公開不適合のざっくり検出 | `npm run check:public-content`（個人名・ホームパス等のヒューリスティック） | 手動（コミット／PR 前） | **いいえ** |
 | 記事の私人連絡先 | `npm run check:posts-privacy`（`src/content/posts` 内の 070/080/090） | CI + pre-commit（posts） | はい |
 | Threads 埋め込み | `npm run check:threads-embeds`（`.threads-embed` の途中切れ・div/blockquote 開閉・permalink 整合） | CI + pre-commit（posts） | はい |
