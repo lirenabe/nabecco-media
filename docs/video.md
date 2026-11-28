@@ -13,6 +13,7 @@
 - 音声は Google Cloud Text-to-Speech（Cloud Console で発行した API キー）
 - 字幕は焼き込み
 - はめ込み写真は `data/video/stills/`（ローカル。gitignore）
+- 自治体名の読みは [`dict/tts-akita-municipalities.yml`](../dict/tts-akita-municipalities.yml) を SSML `<sub alias>` で適用（例: 藤里町 → ふじさとまち）。字幕・画面の漢字表記はそのまま
 
 ## 配置
 
@@ -20,6 +21,7 @@
 | :--- | :--- | :--- |
 | `scripts/video/build.py` | 生成スクリプト | 追跡 |
 | `scripts/video/upload.py` | YouTube アップロード（予約公開可） | 追跡 |
+| `dict/tts-akita-municipalities.yml` | 自治体の正しい読み（TTS 用。字幕は漢字のまま） | 追跡 |
 | `data/video/scripts/` | 読み上げ原稿（`weekly-volN.txt` など） | 非追跡 |
 | `data/video/stills/` | 右パネル用写真 | 非追跡 |
 | `data/video/out/` | 完成 MP4 | 非追跡 |
