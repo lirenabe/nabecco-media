@@ -62,6 +62,8 @@ npm run check:threads-embeds
 
 箇条書きは例外とする。リスト項目は textlint の `no-mix-dearu-desumasu` に合わせ、**である調／体言止め**（「〜する／しない」など）でよい。散文と箇条の語尾を無理に揃えなくてよい。
 
+サービス名などの固有表記は [`dict/prh-nabecco.yml`](../dict/prh-nabecco.yml)（`textlint-rule-prh`）。読み上げ・地の文では **なべっこメディア**（「なべっこの」と「メディア」を繋いだ形は不可）。画面フッタの `提供：なべっこ` など短いブランド表記は別契約。ニュース動画の自治体名の読みは [`dict/tts-akita-municipalities.yml`](../dict/tts-akita-municipalities.yml)（TTS 専用。字幕は漢字のまま）。
+
 ## 補足
 
 **ファクトチェックの限界:** 自動での真偽判定は行いません。実質的なガードは「まとまった本文セクションに URL または `> 出典` があること」と、公開前の人の確認（[POLICY.md](../POLICY.md)）です。プレースホルダ（「ここに書く」）は免除されます。

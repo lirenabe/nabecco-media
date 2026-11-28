@@ -21,6 +21,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO = SCRIPT_DIR.parents[1]
 DATA = REPO / "data" / "video"
 ENV_PATH = REPO / ".env"
+TTS_READINGS_PATH = REPO / "dict" / "tts-akita-municipalities.yml"
 
 def _require_bin(name: str) -> str:
     path = shutil.which(name)
@@ -134,14 +135,71 @@ def parse_script(path: Path) -> list[Section]:
     return sections
 
 
-def synthesize(text: str, api_key: str, out_mp3: Path) -> None:
+def load_tts_readings(path: Path = TTS_READINGS_PATH) -> dict[str, str]:
+    """Load surface→yomi map from dict/tts-akita-municipalities.yml (minimal YAML)."""
+    if not path.is_file():
+        return {}
+    readings: dict[str, str] = {}
+    in_readings = False
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        if line.rstrip() == "readings:":
+            in_readings = True
+            continue
+        if not in_readings:
+            continue
+        if line[0] not in " \t":
+            break
+        raw = line.strip()
+        if ":" not in raw:
+            continue
+        surface, yomi = raw.split(":", 1)
+        surface = surface.strip().strip("\"'")
+        yomi = yomi.strip().strip("\"'")
+        if surface and yomi:
+            readings[surface] = yomi
+    return readings
+
+
+def ssml_escape_with_readings(text: str, readings: dict[str, str]) -> str:
+    """Escape text for SSML; wrap known municipality names in <sub alias=\"yomi\">."""
+    if not readings:
+        return xml.sax.saxutils.escape(text)
+    surfaces = sorted(readings.keys(), key=len, reverse=True)
+    pattern = re.compile("|".join(re.escape(s) for s in surfaces))
+    parts: list[str] = []
+    last = 0
+    for m in pattern.finditer(text):
+        if m.start() > last:
+            parts.append(xml.sax.saxutils.escape(text[last : m.start()]))
+        surface = m.group(0)
+        yomi = readings[surface]
+        parts.append(
+            f'<sub alias="{xml.sax.saxutils.escape(yomi)}">'
+            f"{xml.sax.saxutils.escape(surface)}</sub>"
+        )
+        last = m.end()
+    if last < len(text):
+        parts.append(xml.sax.saxutils.escape(text[last:]))
+    return "".join(parts)
+
+
+def synthesize(
+    text: str,
+    api_key: str,
+    out_mp3: Path,
+    readings: dict[str, str] | None = None,
+) -> None:
+    if readings is None:
+        readings = load_tts_readings()
     # Slight pause after sentences via SSML breaks on blank-ish boundaries
     sentences = [s.strip() for s in re.split(r"(?<=[。！？])", text) if s.strip()]
     parts: list[str] = []
     for i, s in enumerate(sentences):
-        parts.append(xml.sax.saxutils.escape(s))
+        parts.append(ssml_escape_with_readings(s, readings))
         if i < len(sentences) - 1:
-            parts.append('<break time="350ms"/>')
+            parts.append('<break time="650ms"/>')
     ssml = "<speak>" + "".join(parts) + "</speak>"
     body = {
         "input": {"ssml": ssml},
@@ -366,9 +424,15 @@ def pick_photo(stem: str, heading: str, index: int) -> Path:
     table = weekly if stem.startswith("weekly") else kouhou
     name = table.get(index, "akita-winter-street.jpg")
     # heading-based overrides
-    if "ゆいなす" in heading or "湯沢" in heading:
+    if "ふわふわ" in heading or "ドーム" in heading:
+        name = "katagami-fuwafuwa-dome.jpg"
+    elif "しげの" in heading or "原画" in heading or "増田" in heading:
+        name = "yokote-shigeno-manga.jpg"
+    elif "北鹿" in heading or "鹿角" in heading or "資料館" in heading:
+        name = "kazuno-kitaka-travelers.jpg"
+    elif "ゆいなす" in heading or "Yuinas" in heading or "湯沢" in heading:
         name = "yuzawa-yuinas-open.jpg"
-    elif "よさこい" in heading or "潟上" in heading:
+    elif "よさこい" in heading:
         name = "katagami-yosakoi.jpg"
     elif "デマンド" in heading or "阿仁" in heading:
         name = "kitaakita-demand-taxi.jpg"
@@ -376,6 +440,14 @@ def pick_photo(stem: str, heading: str, index: int) -> Path:
         name = "fire-command-center.jpg"
     elif "ブルー" in heading or "暮らし" in heading:
         name = "yokote-blue-night.jpg"
+    elif "除雪" in heading or "踏切" in heading or "冬の道" in heading:
+        name = "akita-winter-street.jpg"
+    elif "バス" in heading or "支え合い" in heading:
+        name = "community-library.jpg"
+    elif "日本語" in heading or "ひろば" in heading or "講座" in heading:
+        name = "community-library.jpg"
+    elif "水道" in heading or "年末" in heading or "納期" in heading:
+        name = "akita-winter-street.jpg"
     return stills / name
 
 
@@ -539,6 +611,10 @@ def build_one(
     for sub in ("images", "audio", "subs", "out", "stills", "scripts"):
         (DATA / sub).mkdir(parents=True, exist_ok=True)
 
+    readings = load_tts_readings()
+    if readings:
+        print(f"[{stem}] TTS readings: {len(readings)} entries from {TTS_READINGS_PATH.name}")
+
     audio_parts: list[Path] = []
     video_parts: list[Path] = []
     cues: list[tuple[float, float, str]] = []
@@ -550,7 +626,7 @@ def build_one(
         print(f"[{stem}] section {i + 1}/{len(sections)}: {sec.heading}")
         clip_mp3 = work / f"sec_{i:02d}.mp3"
         if force_tts or not clip_mp3.exists():
-            synthesize(sec.speak_text, api_key, clip_mp3)
+            synthesize(sec.speak_text, api_key, clip_mp3, readings=readings)
         dur = audio_duration(clip_mp3)
 
         slide = DATA / "images" / f"{stem}_{i:02d}.png"

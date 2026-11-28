@@ -3,6 +3,9 @@
     "comments": true
   },
   "rules": {
+    "prh": {
+      "rulePaths": ["dict/prh-nabecco.yml"]
+    },
     "preset-ja-technical-writing": {
       "ja-no-mixed-period": true,
       "no-doubled-joshi": false,
